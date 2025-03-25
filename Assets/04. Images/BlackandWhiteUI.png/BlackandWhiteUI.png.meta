@@ -3526,13 +3526,13 @@ TextureImporter:
       name: BlackandWhiteUI_118
       rect:
         serializedVersion: 2
-        x: 226
-        y: 188
-        width: 30
-        height: 32
+        x: 227
+        y: 189
+        width: 28
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -3570,13 +3570,13 @@ TextureImporter:
       name: BlackandWhiteUI_120
       rect:
         serializedVersion: 2
-        x: 335
-        y: 100
-        width: 82
-        height: 123
+        x: 352
+        y: 145
+        width: 64
+        height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 9, z: 9, w: 11}
       customData: 
       outline: []
       physicsShape: []
@@ -5022,13 +5022,13 @@ TextureImporter:
       name: BlackandWhiteUI_186
       rect:
         serializedVersion: 2
-        x: 271
-        y: 79
-        width: 50
-        height: 18
+        x: 272
+        y: 80
+        width: 48
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 6, z: 9, w: 6}
       customData: 
       outline: []
       physicsShape: []
@@ -6738,9 +6738,9 @@ TextureImporter:
       name: BlackandWhiteUI_264
       rect:
         serializedVersion: 2
-        x: 132
+        x: 145
         y: 1
-        width: 27
+        width: 14
         height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -6818,6 +6818,50 @@ TextureImporter:
       bones: []
       spriteID: 7c197b6b0b635b370800000000000000
       internalID: 8337630417753969095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlackandWhiteUI_268
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 121
+        width: 48
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69166f07a7edfbf38bbc0d0677485a84
+      internalID: -2141698229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlackandWhiteUI_269
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 106
+        width: 48
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426ac9b8325f11a429e7e7ca691dc98c
+      internalID: -1067615277
       vertices: []
       indices: 
       edges: []
@@ -7024,6 +7068,8 @@ TextureImporter:
       BlackandWhiteUI_265: -8504192858066639990
       BlackandWhiteUI_266: -4166131514634257854
       BlackandWhiteUI_267: 8337630417753969095
+      BlackandWhiteUI_268: -2141698229
+      BlackandWhiteUI_269: -1067615277
       BlackandWhiteUI_27: 3983706305685600840
       BlackandWhiteUI_28: 3468632726360731539
       BlackandWhiteUI_29: 498200881219200104
