@@ -164,5 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc3218e6038a70d1b6cd78e0a21d06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_slot_mask: 31
+  m_slot_mask: -1
   m_item_image: {fileID: 361201000860721082}
