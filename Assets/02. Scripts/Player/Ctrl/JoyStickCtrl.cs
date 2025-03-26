@@ -28,7 +28,6 @@ public class JoyStickCtrl : MonoBehaviour, IDragHandler , IPointerDownHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("ÅÍÄ¡µÊ");
         m_start_position= eventData.position;
         m_back_ground.position= m_start_position;
         m_back_ground.gameObject.SetActive(true);
@@ -36,7 +35,6 @@ public class JoyStickCtrl : MonoBehaviour, IDragHandler , IPointerDownHandler, I
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        Debug.Log("µå·¡±×µÊ");
         Vector2 dir = eventData.position - m_start_position;
         m_input_vector = Vector2.ClampMagnitude(dir, m_back_ground_radius);
         m_handle.anchoredPosition= m_input_vector;
@@ -44,7 +42,6 @@ public class JoyStickCtrl : MonoBehaviour, IDragHandler , IPointerDownHandler, I
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("ÅÍÄ¡³¡");
         m_input_vector = Vector2.zero;
         m_handle.anchoredPosition = m_input_vector;
         m_back_ground.gameObject.SetActive(false) ; 
