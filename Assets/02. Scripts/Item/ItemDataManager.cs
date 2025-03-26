@@ -24,6 +24,8 @@ public class ItemDataManager : Singleton<ItemDataManager>
 
         m_item_name_dictionary = new Dictionary<int, string>();
         m_item_description_dictionary = new Dictionary<int, string>();
+
+        Initialize();
     }
 
     private void Initialize()
