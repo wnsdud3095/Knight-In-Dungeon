@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
@@ -56,7 +57,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
 
         if(count <= 0)
         {
-            ClearSlot();
+            DestroySlot();
         }
     }
 
@@ -68,8 +69,14 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         SetAlpha(0f);
     }
 
+    public void DestroySlot()
+    {
+        Destroy(gameObject);
+    }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
-        // 터치된 위치에서 말풍선 생성
+        var tooltip = GameObject.Find("Tooltip UI").GetComponent<InventoryTooltip>();
+        tooltip.OpenUI(Item, true);
     }
 }
