@@ -22,9 +22,18 @@ public class PrizeCtrl : MonoBehaviour
 
     private List<InventorySlot> m_slots = new List<InventorySlot>();
 
+    private int m_total_weight;
+
     public void OpenUI(Gacha gacha, int count)
     {
         m_prize_ui_object.SetBool("Open", true);
+
+        m_total_weight = 0;
+        foreach(int weight in gacha.Weights)
+        {
+            m_total_weight += weight;
+        }
+
         List<Item> m_prize_item = new List<Item>();
 
         StartCoroutine(ShowCoroutine(gacha, count));
@@ -45,21 +54,33 @@ public class PrizeCtrl : MonoBehaviour
     private IEnumerator ShowCoroutine(Gacha gacha, int count)
     {
         m_exit_button.enabled = false;
-
         yield return new WaitForSeconds(0.5f);
 
-        for(int i = 0; i < count; i++)
+        for(int j = 0; j < count; j++)
         {
-            int random = UnityEngine.Random.Range(0, gacha.Items.Length);
-            Item item = gacha.Items[random];
+            int random = Random.Range(0, m_total_weight);
+            int accumulated_weight = 0;
+            Item selected_item = null;
 
-            m_item_inventory.AcquireItem(item);
+            for(int i = 0; i < gacha.Items.Length; i++)
+            {
+                accumulated_weight += gacha.Weights[i];
+                if(random < accumulated_weight)
+                {
+                    selected_item = gacha.Items[i];
+                    break;
+                }
+            }
 
-            InventorySlot slot = ObjectManager.Instance.GetObject(ObjectType.InventorySlot).GetComponent<InventorySlot>();
-            slot.transform.SetParent(m_slot_parent);
-            slot.AddItem(item);
+            if(selected_item != null)
+            {
+                m_item_inventory.AcquireItem(selected_item);
 
-            m_slots.Add(slot);
+                InventorySlot slot = ObjectManager.Instance.GetObject(ObjectType.InventorySlot).GetComponent<InventorySlot>();
+                slot.transform.SetParent(m_slot_parent);
+                slot.AddItem(selected_item);
+                m_slots.Add(slot);
+            }
 
             yield return new WaitForSeconds(0.2f);
         }
