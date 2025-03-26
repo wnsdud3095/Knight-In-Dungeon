@@ -1,0 +1,124 @@
+{
+  "m_item_infos": [
+    {
+      "m_item_id": 0,
+      "m_item_name": "나무 투구",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 1,
+      "m_item_name": "동 투구",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 2,
+      "m_item_name": "은 투구",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 3,
+      "m_item_name": "에메랄드 투구",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 4,
+      "m_item_name": "토파즈 투구",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 5,
+      "m_item_name": "다이아몬드 투구",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 10,
+      "m_item_name": "나무 갑옷",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 11,
+      "m_item_name": "동 갑옷",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 12,
+      "m_item_name": "은 갑옷",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 13,
+      "m_item_name": "에메랄드 갑옷",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 14,
+      "m_item_name": "토파즈 갑옷",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 15,
+      "m_item_name": "다이아몬드 갑옷",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 20,
+      "m_item_name": "나무 신발",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 21,
+      "m_item_name": "동 신발",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 22,
+      "m_item_name": "은 신발",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 23,
+      "m_item_name": "에메랄드 신발",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 24,
+      "m_item_name": "토파즈 신발",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 25,
+      "m_item_name": "다이아몬드 신발",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 30,
+      "m_item_name": "나무 벨트",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 31,
+      "m_item_name": "동 벨트",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 32,
+      "m_item_name": "은 벨트",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 33,
+      "m_item_name": "에메랄드 벨트",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 34,
+      "m_item_name": "토파즈 벨트",
+      "m_item_description": "미정"
+    },
+    {
+      "m_item_id": 35,
+      "m_item_name": "다이아몬드 벨트",
+      "m_item_description": "미정"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f055143069b866fbe2586f06ff6aaf, type: 3}
+  m_Name: 30_Wood Belt
+  m_EditorClassIdentifier: 
+  m_id: 30
+  m_item_type: 8
+  m_item_image: {fileID: -2098916546, guid: 1e193e58fab1c0de181d6f97d410ab32, type: 3}
+  m_effect:
+    m_atk: 10
+    m_hp: 100
