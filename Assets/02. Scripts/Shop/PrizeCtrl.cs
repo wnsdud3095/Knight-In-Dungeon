@@ -34,7 +34,8 @@ public class PrizeCtrl : MonoBehaviour
     {
         foreach(var slot in m_slots)
         {
-            slot.DestroySlot();
+            slot.transform.SetParent(GameObject.Find("Inventory Slot Container").transform);
+            ObjectManager.Instance.ReturnObject(slot.gameObject, ObjectType.InventorySlot);
         }
         m_slots.Clear();
         
@@ -54,7 +55,8 @@ public class PrizeCtrl : MonoBehaviour
 
             m_item_inventory.AcquireItem(item);
 
-            InventorySlot slot = Instantiate(m_slot_prefab, m_slot_parent);
+            InventorySlot slot = ObjectManager.Instance.GetObject(ObjectType.InventorySlot).GetComponent<InventorySlot>();
+            slot.transform.SetParent(m_slot_parent);
             slot.AddItem(item);
 
             m_slots.Add(slot);
