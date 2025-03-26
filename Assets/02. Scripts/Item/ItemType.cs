@@ -8,6 +8,4 @@ public enum ItemType
     WEAPON = 1 << 2,
     BELT = 1 << 3,
     SHOES = 1 << 4,
-
-    MONEY = 1 << 5,
 }

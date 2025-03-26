@@ -30,6 +30,13 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     [Header("UI 관련 컴포넌트")]
     public Image m_item_image;
 
+    private ItemActionCtrl m_item_action_ctrl;
+
+    private void Awake()
+    {
+        m_item_action_ctrl = GameObject.Find("Inventory Manager").GetComponent<ItemActionCtrl>();
+    }
+
     private void SetAlpha(float alpha)
     {
         Color color = m_item_image.color;
@@ -73,10 +80,29 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     {
         Destroy(gameObject);
     }
+
+    public void UseItem()
+    {
+        if(Item is null)
+        {
+            return;
+        }
+
+        m_item_action_ctrl.UseItem(Item, this);
+    }
     
     public void OnPointerClick(PointerEventData eventData)
     {
         var tooltip = GameObject.Find("Tooltip UI").GetComponent<InventoryTooltip>();
-        tooltip.OpenUI(Item, true);
+
+        if(Item.CheckEquipmentType(SlotMask))
+        {
+            tooltip.OpenUI(Item, this, false);
+        }
+        else
+        {
+            tooltip.OpenUI(Item, this, true);
+        }
+        
     }
 }

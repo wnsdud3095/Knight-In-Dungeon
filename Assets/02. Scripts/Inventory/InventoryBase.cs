@@ -34,7 +34,7 @@ public class InventoryBase : MonoBehaviour
         get { return m_slots; }
     }
 
-    private void Awake()
+    protected void Awake()
     {
         m_slots = new List<InventorySlot>();
     }

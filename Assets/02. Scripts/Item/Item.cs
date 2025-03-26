@@ -23,4 +23,9 @@ public class Item : ScriptableObject
     {
         get { return m_item_image; }
     }
+
+    public static bool CheckEquipmentType(ItemType type)
+    {
+        return ItemType.HELMET <= type && type <= ItemType.SHOES;
+    }
 }

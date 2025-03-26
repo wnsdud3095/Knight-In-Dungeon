@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa33242dfccc989da78e6bfb546a287, type: 3}
+  m_Script: {fileID: 11500000, guid: f8f055143069b866fbe2586f06ff6aaf, type: 3}
   m_Name: 01_Bronze Helmet
   m_EditorClassIdentifier: 
   m_id: 1
   m_item_type: 1
   m_item_image: {fileID: -1888828702, guid: 1e193e58fab1c0de181d6f97d410ab32, type: 3}
+  m_effect:
+    m_atk: 20
+    m_hp: 200
