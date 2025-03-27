@@ -19,9 +19,9 @@ public class ItemInventory : InventoryBase
         }
     }
 
-    public void AcquireItem(Item item, InventorySlot target_slot)
+    public void AcquireItem(Item item, InventorySlot target_slot, int count = 1, int reinforcement = 0)
     {
-        target_slot.AddItem(item);
+        target_slot.AddItem(item, count, reinforcement);
     }
 
     public int GetItemCount(Item item)

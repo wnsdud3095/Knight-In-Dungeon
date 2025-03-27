@@ -22,6 +22,7 @@ public class Reinforcer : MonoBehaviour
     [SerializeField] private Button m_reinforce_button;
 
     private ItemInventory m_item_inventory;
+    private InventorySlot m_current_slot;
 
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class Reinforcer : MonoBehaviour
         m_ingredient_slots = m_ingredient_slot_parent.GetComponentsInChildren<InventorySlot>();
     }
 
-    public void OpenUI(Item item)
+    public void OpenUI(InventorySlot current_slot, Item item)
     {
         if(m_item_inventory is null)
         {
@@ -113,8 +114,12 @@ public class Reinforcer : MonoBehaviour
             m_ingredient_slots[i].ClearSlot();
         }
 
+        m_current_slot = null;
+
         m_tooltip_ui_object.SetBool("Open", true);
         m_reinforcement_ui_object.SetBool("Open", false);
+
+        m_tooltip_ui_object.GetComponent<InventoryTooltip>().UpdateReinforcementLabel();
     }
 
     public void Button_Reinforcement()
