@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    private JoyStickCtrl m_joy_stick;
+    public static PlayerCtrl Instance;
+
+    public JoyStickCtrl m_joy_stick;
     private Rigidbody2D m_rigid;
     private SpriteRenderer m_sprite_renderer;
     [SerializeField]
@@ -12,6 +14,8 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
+
         m_joy_stick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         m_rigid = GetComponent<Rigidbody2D>();
         m_sprite_renderer= GetComponent<SpriteRenderer>();

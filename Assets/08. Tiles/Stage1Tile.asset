@@ -18,20 +18,16 @@ MonoBehaviour:
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: -2188923288898987827, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: -6620768258802225657, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
     - {fileID: -5580178051479784154, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: 4256329747719841554, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: 4256329747719841554, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: 8353016380883712464, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
     - {fileID: 8353016380883712464, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
     - {fileID: -2188923288898987827, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: -2188923288898987827, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: -6620768258802225657, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
+    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
+    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
+    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
+    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
+    - {fileID: 4256329747719841554, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
+    - {fileID: -6978136671512635147, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
     - {fileID: 8738420372347068404, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
-    - {fileID: -758095170122577706, guid: 4f0443d5d92af1548986e02e3a5aa5e6, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
