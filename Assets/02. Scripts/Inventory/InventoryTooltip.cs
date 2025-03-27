@@ -38,7 +38,7 @@ public class InventoryTooltip : MonoBehaviour
         m_name_label.text = $"<color=yellow>{ItemDataManager.Instance.GetName(item.ID)}</color>";
         m_description_label.text = ItemDataManager.Instance.GetDescription(item.ID);
 
-        m_reinforcement_label.text = $"강화 [{current_slot.Reinforcement} / {(current_slot.Item as Item_Equipment).Effect.MaxReinforce}]";
+        m_reinforcement_label.text = $"강화 [{current_slot.Reinforcement} / {(current_slot.Item as Item_Equipment).MaxReinforce}]";
 
         m_button_label.text = equipment ? "장착" : "해제";
 

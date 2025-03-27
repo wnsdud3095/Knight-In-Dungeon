@@ -36,6 +36,7 @@ public class EquipmentInventory : InventoryBase
             }
 
             calculated_effect += (slot.Item as Item_Equipment).Effect;
+            calculated_effect += (slot.Item as Item_Equipment).GrowthEffect * slot.Reinforcement;
         }
 
         m_current_equipment_effect = calculated_effect;
