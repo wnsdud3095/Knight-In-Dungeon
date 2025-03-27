@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Reinforcer : MonoBehaviour
 {
     [Header("아이템 툴팁 UI의 애니메이터")]
-    [SerializeField] private Animator m_tooltip_ui_object;
+    [SerializeField] private InventoryTooltip m_tooltip_ui_object;
 
     [Space(50)] [Header("강화 UI의 컴포넌트")]
     [Header("강화 UI의 애니메이터")]
@@ -22,7 +22,6 @@ public class Reinforcer : MonoBehaviour
     [SerializeField] private Button m_reinforce_button;
 
     private ItemInventory m_item_inventory;
-    private InventorySlot m_current_slot;
 
     private void Awake()
     {
@@ -31,7 +30,7 @@ public class Reinforcer : MonoBehaviour
 
     public void Initialize()
     {
-        m_tooltip_ui_object = GameObject.Find("Tooltip UI").GetComponent<Animator>();
+        m_tooltip_ui_object = GameObject.Find("Tooltip UI").GetComponent<InventoryTooltip>();
         m_reinforcement_ui_object = GameObject.Find("Reinforcement UI").GetComponent<Animator>();
         m_item_inventory = GameObject.Find("Inventory Manager").GetComponent<ItemInventory>();
 
@@ -45,7 +44,7 @@ public class Reinforcer : MonoBehaviour
             return;
         }
 
-        m_tooltip_ui_object.SetBool("Open", false);
+        m_tooltip_ui_object.Button_CloseUI();
         m_reinforcement_ui_object.SetBool("Open", true);
 
         UpdateIngredientSlot(item);
@@ -114,37 +113,51 @@ public class Reinforcer : MonoBehaviour
             m_ingredient_slots[i].ClearSlot();
         }
 
-        m_current_slot = null;
-
-        m_tooltip_ui_object.SetBool("Open", true);
+        m_tooltip_ui_object.GetComponent<Animator>().SetBool("Open", true);
         m_reinforcement_ui_object.SetBool("Open", false);
+    }
 
-        m_tooltip_ui_object.GetComponent<InventoryTooltip>().UpdateReinforcementLabel();
+    public void CloseUI()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            m_ingredient_slots[i].ClearSlot();
+        }
+
+        for(int i = 0; i < m_item_inventory.Slots.Count; i++)
+        {
+            if(m_item_inventory.Slots[i].Item.ID == m_target_slot.Item.ID)
+            {
+                if(m_item_inventory.Slots[i].Reinforcement == GetNextReinforcement())
+                {
+                    m_tooltip_ui_object.OpenUI(m_item_inventory.Slots[i].Item, m_item_inventory.Slots[i]);
+                    break;
+                }
+            }
+            
+        }
+
+        m_reinforcement_ui_object.SetBool("Open", false);        
     }
 
     public void Button_Reinforcement()
     {
         m_item_inventory.AcquireItem(m_target_slot.Item, 1, GetNextReinforcement());
 
-        int index = 2;
-        for(int i = 0; i < m_item_inventory.Slots.Count; i++)
+        for(int index = 2; index >= 0; index--)
         {
-            if(index == -1)
+            for(int i = m_item_inventory.Slots.Count - 1; i >= 0; i--)
             {
-                break;
-            }
-
-            if(m_item_inventory.Slots[i].Item.ID == m_ingredient_slots[index].Item.ID)
-            {
-                if(m_item_inventory.Slots[i].Reinforcement == m_ingredient_slots[index].Reinforcement)
+                if(m_item_inventory.Slots[i].Item.ID == m_ingredient_slots[index].Item.ID &&
+                   m_item_inventory.Slots[i].Reinforcement == m_ingredient_slots[index].Reinforcement)
                 {
                     m_item_inventory.DestroySlot(i);
-                    index--;
+                    break;
                 }
             }
         }
 
-        Button_CloseUI();
+        CloseUI();
 
         m_target_slot.ClearSlot();
     }

@@ -33,12 +33,12 @@ public class InventoryTooltip : MonoBehaviour
 
     public void OpenUI(Item item, InventorySlot current_slot, bool equipment = true)
     {
-        m_slot.AddItem(item);
+        m_slot.AddItem(item, 1, current_slot.Reinforcement);
 
         m_name_label.text = $"<color=yellow>{ItemDataManager.Instance.GetName(item.ID)}</color>";
         m_description_label.text = ItemDataManager.Instance.GetDescription(item.ID);
 
-        UpdateReinforcementLabel();
+        m_reinforcement_label.text = $"강화 [{current_slot.Reinforcement} / {(current_slot.Item as Item_Equipment).Effect.MaxReinforce}]";
 
         m_button_label.text = equipment ? "장착" : "해제";
 
@@ -47,11 +47,6 @@ public class InventoryTooltip : MonoBehaviour
         m_current_slot = current_slot;
 
         m_reinforcement_button.interactable = !Item.CheckEquipmentType(m_current_slot.SlotMask);
-    }
-
-    public void UpdateReinforcementLabel()
-    {
-        //m_reinforcement_label.text = $"최고 강화 [{m_current_slot.Reinforcement} / {(m_current_slot.Item as Item_Equipment).Effect.MaxReinforce}]";
     }
 
     public void Button_CloseUI()
