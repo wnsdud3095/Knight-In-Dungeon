@@ -19,6 +19,10 @@ public class InventoryTooltip : MonoBehaviour
     [SerializeField] private TMP_Text m_description_label;
     [SerializeField] private TMP_Text m_button_label;
 
+    [Space(30)]
+    [Header("강화 UI 컴포넌트")]
+    [SerializeField] private Reinforcer m_reinforcer;
+
     private InventorySlot m_current_slot;
 
     private void Awake()
@@ -51,5 +55,10 @@ public class InventoryTooltip : MonoBehaviour
     {
         m_current_slot.UseItem();
         Button_CloseUI();
+    }
+
+    public void Button_Reinforcement()
+    {
+        m_reinforcer.OpenUI(m_slot.Item);
     }
 }
