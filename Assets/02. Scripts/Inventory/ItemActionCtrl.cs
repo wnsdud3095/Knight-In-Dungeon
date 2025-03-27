@@ -28,7 +28,7 @@ public class ItemActionCtrl : MonoBehaviour
             {
                 if(Item.CheckEquipmentType(called_slot.SlotMask))
                 {
-                    m_item_inventory.AcquireItem(item);
+                    m_item_inventory.AcquireItem(item, 1, called_slot.Reinforcement);
                     called_slot.ClearSlot();
                 }
                 else
@@ -36,15 +36,17 @@ public class ItemActionCtrl : MonoBehaviour
                     InventorySlot equipment_slot = m_equipment_inventory.GetEquipmentSlot(item.Type);
 
                     Item temp_item = equipment_slot.Item;
-                    equipment_slot.AddItem(item);
+                    int temp_reinforcement = equipment_slot.Reinforcement;
+
+                    equipment_slot.AddItem(item, 1, called_slot.Reinforcement);
 
                     if(temp_item is null)
                     {
-                        Destroy(called_slot.gameObject);
+                        m_item_inventory.DestroySlot(called_slot);
                     }
                     else
                     {
-                        called_slot.AddItem(temp_item);
+                        called_slot.AddItem(temp_item, 1, temp_reinforcement);
                     }
                 }
 

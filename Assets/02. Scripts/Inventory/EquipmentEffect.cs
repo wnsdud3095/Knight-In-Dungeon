@@ -27,4 +27,13 @@ public struct EquipmentEffect
             HP = arg1.HP + arg2.HP
         };
     }
+
+    public static EquipmentEffect operator*(EquipmentEffect arg1, int arg2)
+    {
+        return new EquipmentEffect
+        {
+            ATK = arg1.ATK * arg2,
+            HP = arg1.HP * arg2
+        };
+    }
 }

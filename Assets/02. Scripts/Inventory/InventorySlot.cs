@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
@@ -26,9 +27,17 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         get { return m_slot_mask; }
     }
 
+    private int m_reinforcement;
+    public int Reinforcement
+    {
+        get { return m_reinforcement; }
+        set { m_reinforcement = value; }
+    }
+
     [Space(30)]
     [Header("UI 관련 컴포넌트")]
-    public Image m_item_image;
+    [SerializeField] private Image m_item_image;
+    [SerializeField] private TMP_Text m_reinforcement_label;
 
     private ItemActionCtrl m_item_action_ctrl;
 
@@ -49,11 +58,13 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         return ((int)item.Type & (int)SlotMask) == 0 ? false : true;
     }
 
-    public void AddItem(Item item, int count = 1)
+    public void AddItem(Item item, int count = 1, int reinforcement = 0)
     {
         Item = item;
         Count = count;
         m_item_image.sprite = item.Image;
+        Reinforcement = reinforcement;
+        m_reinforcement_label.text = Reinforcement == 0 ? "" : $"+{Reinforcement}";
 
         SetAlpha(1f);
     }
@@ -73,6 +84,8 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         Item = null;
         Count = 0;
         m_item_image.sprite = null;
+        m_reinforcement_label.text = "";
+
         SetAlpha(0f);
     }
 
@@ -103,6 +116,5 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         {
             tooltip.OpenUI(Item, this, true);
         }
-        
     }
 }

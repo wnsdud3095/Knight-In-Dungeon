@@ -15,9 +15,14 @@ public class InventoryTooltip : MonoBehaviour
     [Header("툴팁 UI 컴포넌트")]
     [SerializeField] private InventorySlot m_slot;
     [SerializeField] private TMP_Text m_name_label;
-    [SerializeField] private int m_upgrade_count;
+    [SerializeField] private TMP_Text m_reinforcement_label;
     [SerializeField] private TMP_Text m_description_label;
     [SerializeField] private TMP_Text m_button_label;
+    [SerializeField] private Button  m_reinforcement_button;
+
+    [Space(30)]
+    [Header("강화 UI 컴포넌트")]
+    [SerializeField] private Reinforcer m_reinforcer;
 
     private InventorySlot m_current_slot;
 
@@ -28,16 +33,20 @@ public class InventoryTooltip : MonoBehaviour
 
     public void OpenUI(Item item, InventorySlot current_slot, bool equipment = true)
     {
-        m_slot.AddItem(item);
+        m_slot.AddItem(item, 1, current_slot.Reinforcement);
 
         m_name_label.text = $"<color=yellow>{ItemDataManager.Instance.GetName(item.ID)}</color>";
         m_description_label.text = ItemDataManager.Instance.GetDescription(item.ID);
+
+        m_reinforcement_label.text = $"강화 [{current_slot.Reinforcement} / {(current_slot.Item as Item_Equipment).MaxReinforce}]";
 
         m_button_label.text = equipment ? "장착" : "해제";
 
         m_tooltip_object.SetBool("Open", true);
 
         m_current_slot = current_slot;
+
+        m_reinforcement_button.interactable = !Item.CheckEquipmentType(m_current_slot.SlotMask);
     }
 
     public void Button_CloseUI()
@@ -51,5 +60,10 @@ public class InventoryTooltip : MonoBehaviour
     {
         m_current_slot.UseItem();
         Button_CloseUI();
+    }
+
+    public void Button_Reinforcement()
+    {
+        m_reinforcer.OpenUI(m_current_slot, m_slot.Item);
     }
 }
