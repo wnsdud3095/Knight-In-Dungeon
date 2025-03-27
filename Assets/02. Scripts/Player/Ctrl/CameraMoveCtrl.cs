@@ -11,7 +11,9 @@ public class CameraMoveCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 player_pos = PlayerCtrl.Instance.transform.position;
+        if (GameManager.Player == null) return;
+
+        Vector3 player_pos = GameManager.Player.transform.position;
         transform.position = new Vector3(player_pos.x,player_pos.y,-10f);
     }
 }

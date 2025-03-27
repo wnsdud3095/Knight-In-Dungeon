@@ -30,7 +30,7 @@ public class JoyStickCtrl : MonoBehaviour, IDragHandler , IPointerDownHandler, I
     {
         m_start_position= eventData.position;
         m_back_ground.position= m_start_position;
-        m_back_ground.gameObject.SetActive(true);
+        m_back_ground.gameObject.SetActive(true);      
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
