@@ -4,6 +4,7 @@ using TMPro;
 using Firebase.Auth;
 using System.Collections;
 using Firebase;
+using System;
 
 public class RegisterCtrl : MonoBehaviour
 {
@@ -110,7 +111,7 @@ public class RegisterCtrl : MonoBehaviour
         }
     }
 
-    public void Button_Register()
+    public async void Button_Register()
     {
         if(m_is_checked is false)
         {
@@ -122,18 +123,22 @@ public class RegisterCtrl : MonoBehaviour
             return;
         }
 
-        m_auth.CreateUserWithEmailAndPasswordAsync(m_email_input_field.text, m_password_input_field.text).ContinueWith
-        (
-            task => {
-                if(!task.IsCanceled && !task.IsFaulted)
-                {
-                    FirebaseUser new_user = task.Result.User;
+        try
+        {
+            var result = await m_auth.CreateUserWithEmailAndPasswordAsync(m_email_input_field.text, m_password_input_field.text);
 
-                    UserData new_user_data = new UserData(new_user.UserId);
-                    DataManager.Instance.SaveUserData(new_user_data);
-                }
+            if(result is not null && result.User is not null)
+            {
+                FirebaseUser new_user = result.User;
+                UserData new_user_data = new UserData(new_user.UserId);
+
+                StartCoroutine(SaveUserDataCoroutine(new_user_data));
             }
-        );
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
 
         Button_Exit();
     }
@@ -141,6 +146,20 @@ public class RegisterCtrl : MonoBehaviour
     public void Button_Exit()
     {
         m_register_ui_object.SetBool("Open", false);
+    }
+
+    private IEnumerator SaveUserDataCoroutine(UserData data)
+    {
+        yield return null;
+
+        DataManager.Instance.SaveUserData(data);
+
+        if(m_check_coroutine is not null)
+        {
+            StopCoroutine(m_check_coroutine);
+        }
+        StartCoroutine(CheckEmailCoroutine("<color=green>회원가입에 성공했습니다.</color>"));
+        Button_Exit();
     }
 
     private IEnumerator CheckEmailCoroutine(string text)

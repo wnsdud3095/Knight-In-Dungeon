@@ -1,5 +1,7 @@
 using UnityEngine;
 using Firebase.Database;
+using System;
+using System.Threading.Tasks;
 
 public class DataManager : Singleton<DataManager>
 {
@@ -33,30 +35,32 @@ public class DataManager : Singleton<DataManager>
         });
     }
 
-    public void LoadUserData(string user_id)
+    public async void LoadUserData(string user_id)
     {
-        ReadUserData(user_id);
+        await ReadUserData(user_id);
     }
 
-    private void ReadUserData(string user_id)
+    private async Task ReadUserData(string user_id)
     {
-        m_database_ref.Child("users").Child(user_id).GetValueAsync().ContinueWith(
-            task => {
-                if(task.IsFaulted)
-                {
-                    Debug.Log("데이터를 불러오는데 실패했습니다.");
-                }
-                else if(task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
+        try
+        {
+            var result = await m_database_ref.Child("users").Child(user_id).GetValueAsync();
 
-                    if(snapshot.Exists)
-                    {
-                        var json_data = snapshot.GetRawJsonValue();
+            if(result is not null)
+            {
+                DataSnapshot snapshot = result;
 
-                        Data = JsonUtility.FromJson<UserData>(json_data);
-                    }
+                if(snapshot.Exists)
+                {
+                    var json_data = snapshot.GetRawJsonValue();
+
+                    Data = JsonUtility.FromJson<UserData>(json_data);
                 }
-        });
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
     }
 }

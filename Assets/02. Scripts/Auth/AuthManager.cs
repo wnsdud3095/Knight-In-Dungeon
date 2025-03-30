@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Auth;
 using TMPro;
+using System.Collections;
+using System.Threading.Tasks;
+using System;
 public class AuthManager : MonoBehaviour
 {
     [Header("이메일 필드")]
@@ -29,26 +32,35 @@ public class AuthManager : MonoBehaviour
         m_register_ctrl = m_register_ui_object.GetComponent<RegisterCtrl>();
     }
 
-    public void Button_Login()
+    public async void Button_Login()
     {
-        m_auth.SignInWithEmailAndPasswordAsync(m_email_input_field.text, m_password_input_field.text).ContinueWith
-        (
-            task => {
-                if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
-                {
-                    FirebaseUser user = task.Result.User;
-                    DataManager.Instance.LoadUserData(user.UserId);
-                }
-                else
-                {
-                    Debug.Log("로그인에 실패했습니다.");
-                }
-        });
+        try
+        {
+            var result = await m_auth.SignInWithEmailAndPasswordAsync(m_email_input_field.text, m_password_input_field.text);
+
+            if(result is not null && result.User is not null)
+            {
+                FirebaseUser user = result.User;
+
+                StartCoroutine(LoadUserDataCoroutine(user.UserId));
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
     }
 
     public void Button_Register()
     {
         m_register_ui_object.SetBool("Open", true);
         m_register_ctrl.Initialize();
+    }
+
+    private IEnumerator LoadUserDataCoroutine(string user_id)
+    {
+        yield return null;
+
+        DataManager.Instance.LoadUserData(user_id);
     }
 }
