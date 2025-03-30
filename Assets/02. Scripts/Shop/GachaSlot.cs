@@ -71,28 +71,40 @@ public class GachaSlot : MonoBehaviour
 
     public void Refresh()
     {
-        //  레벨이 안된다면 비활성화
-
+        if (Gacha.Level > DataManager.Instance.Data.m_user_level)
         {
-            m_one_button.interactable = true;
-            m_set_button.interactable = true;
-
+            m_one_button.interactable = false;
+            m_set_button.interactable = false;
+            m_disabled_image.gameObject.SetActive(true);
+            return;
+        }
+        else
+        {
             m_disabled_image.gameObject.SetActive(false);
-            
+        }
+
+        if (Gacha.Cost > DataManager.Instance.Data.m_user_money)
+        {
+            m_one_button.interactable = false;
+            m_set_button.interactable = false;
             return;
         }
 
-
-        // 1개를 살 돈이 없다면
-        // 1개 구매 버튼과 세트 구매 버튼을 비활성화
-
-        // 10개를 살 돈이 없다면
-        // 세트 구매 버튼만 비활성화
+        if (Gacha.Cost * 9 > DataManager.Instance.Data.m_user_money)
+        {
+            m_one_button.interactable = true;
+            m_set_button.interactable = false;
+        }
+        else
+        {
+            m_one_button.interactable = true;
+            m_set_button.interactable = true;
+        }
     }
 
     public void Button_OneBuy()
     {
-        // 돈을 차감한다.
+        DataManager.Instance.Data.m_user_money -= Gacha.Cost;
 
         m_prize_ctrl.OpenUI(Gacha, 1);
 
@@ -101,7 +113,7 @@ public class GachaSlot : MonoBehaviour
 
     public void Button_SetBuy()
     {
-        // 돈을 차감한다.
+        DataManager.Instance.Data.m_user_money -= Gacha.Cost * 9;
 
         m_prize_ctrl.OpenUI(Gacha, 10);
 

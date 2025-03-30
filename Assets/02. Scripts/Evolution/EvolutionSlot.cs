@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Android.Gradle.Manifest;
 
 public class EvolutionSlot : MonoBehaviour
 {
@@ -63,12 +64,12 @@ public class EvolutionSlot : MonoBehaviour
         UpdateSlotState();
     }
 
-    private void UpdateSlotState()
+    public void UpdateSlotState()
     {
         SetSlotLabel();
         SetPipeColor(24f/255f, 24f/255f, 24f/255f, 1f);
 
-        if(7 < m_unlock_level)
+        if(DataManager.Instance.Data.m_user_level < m_unlock_level)
         {
             m_disable_image.gameObject.SetActive(true);
         }
@@ -77,7 +78,13 @@ public class EvolutionSlot : MonoBehaviour
             m_disable_image.gameObject.SetActive(false);
         }
 
-        // TODO: 저장된 값보다 더 작다면 Button_Evolution() 호출.
+        if(Level <= DataManager.Instance.Data.m_evolution_level)
+        {
+            Button_Evolution();
+        }
+
+            m_evolution_button.interactable = !(Cost > DataManager.Instance.Data.m_user_money);
+
     }
 
     private void SetPipeColor(float r, float g, float b, float a)
@@ -111,10 +118,15 @@ public class EvolutionSlot : MonoBehaviour
 
     public void Button_Evolution()
     {
+        DataManager.Instance.Data.m_user_money -= Cost;
+
         m_evolution_button.gameObject.SetActive(false);
 
         SetPipeColor(255f/255f, 100f/255f, 100f/255f, 1f);
 
-        // 최대 높이 갱신
+        if(Level > DataManager.Instance.Data.m_evolution_level)
+        {
+            DataManager.Instance.Data.m_evolution_level = Level;
+        }
     }
 }
