@@ -814,6 +814,7 @@ GameObject:
   - component: {fileID: 306184518}
   - component: {fileID: 306184517}
   - component: {fileID: 306184519}
+  - component: {fileID: 306184520}
   m_Layer: 5
   m_Name: Register UI
   m_TagString: Untagged
@@ -902,6 +903,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &306184520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306184515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b22e963620f400348ce463dbf9d18bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_register_ui_object: {fileID: 306184519}
+  m_email_input_field: {fileID: 1484445912}
+  m_password_input_field: {fileID: 788831590}
+  m_check_button: {fileID: 684300357}
+  m_check_label: {fileID: 1448460312}
+  m_register_button: {fileID: 1969372922}
+  m_is_checked: 0
 --- !u!1 &324917017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 306184520}
         m_TargetAssemblyTypeName: RegisterCtrl, Assembly-CSharp
         m_MethodName: Button_Check
         m_Mode: 1
@@ -2992,7 +3012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 306184520}
         m_TargetAssemblyTypeName: RegisterCtrl, Assembly-CSharp
         m_MethodName: Button_Exit
         m_Mode: 1
@@ -3103,6 +3123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1289631459}
+  - component: {fileID: 1289631458}
   m_Layer: 0
   m_Name: Authentication Manager
   m_TagString: Untagged
@@ -3110,6 +3131,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1289631458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289631457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ac63ebf2a02fe42a366cc0a45a4db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_email_input_field: {fileID: 292472282}
+  m_password_input_field: {fileID: 53958632}
+  m_login_button: {fileID: 1342949133}
+  m_register_button: {fileID: 2099590884}
+  m_register_ui_object: {fileID: 306184519}
+  m_register_ctrl: {fileID: 0}
 --- !u!4 &1289631459
 Transform:
   m_ObjectHideFlags: 0
@@ -3260,7 +3299,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1289631458}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
         m_MethodName: Button_Login
         m_Mode: 1
@@ -4639,7 +4678,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 306184520}
         m_TargetAssemblyTypeName: RegisterCtrl, Assembly-CSharp
         m_MethodName: Button_Register
         m_Mode: 1
@@ -4908,7 +4947,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1289631458}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
         m_MethodName: Button_Register
         m_Mode: 1
