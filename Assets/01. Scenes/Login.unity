@@ -438,7 +438,7 @@ Animator:
   m_GameObject: {fileID: 179608136}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53b094fce2589282d9aab576d43b9dcc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3ba32993db99e699ab94d1d7e78fa2f1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -891,7 +891,7 @@ Animator:
   m_GameObject: {fileID: 306184515}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bcf2adcdef0e8652784d0fc18792e604, type: 2}
+  m_Controller: {fileID: 9100000, guid: d729091a97d63ef2e8bfbb6959749b0b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -912,7 +912,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 306184515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b22e963620f400348ce463dbf9d18bb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad3ea231fe70dfbca84561c3224f801b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_register_ui_object: {fileID: 306184519}
@@ -921,7 +921,6 @@ MonoBehaviour:
   m_check_button: {fileID: 684300357}
   m_check_label: {fileID: 1448460312}
   m_register_button: {fileID: 1969372922}
-  m_is_checked: 0
 --- !u!1 &324917017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,7 +3122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1289631459}
-  - component: {fileID: 1289631458}
+  - component: {fileID: 1289631460}
   m_Layer: 0
   m_Name: Authentication Manager
   m_TagString: Untagged
@@ -3131,24 +3130,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1289631458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289631457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ac63ebf2a02fe42a366cc0a45a4db3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_email_input_field: {fileID: 292472282}
-  m_password_input_field: {fileID: 53958632}
-  m_login_button: {fileID: 1342949133}
-  m_register_button: {fileID: 2099590884}
-  m_register_ui_object: {fileID: 306184519}
-  m_register_ctrl: {fileID: 0}
 --- !u!4 &1289631459
 Transform:
   m_ObjectHideFlags: 0
@@ -3164,6 +3145,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289631460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289631457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc0f3463c13d1f5dba96742110d97d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_email_input_field: {fileID: 292472282}
+  m_password_input_field: {fileID: 53958632}
+  m_login_button: {fileID: 1342949133}
+  m_register_button: {fileID: 2099590884}
+  m_register_ui_object: {fileID: 306184519}
 --- !u!1 &1328129161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,8 +3297,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1289631458}
-        m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
+      - m_Target: {fileID: 1289631460}
+        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
         m_MethodName: Button_Login
         m_Mode: 1
         m_Arguments:
@@ -3415,8 +3413,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284795135
-  m_fontColor: {r: 1, g: 0.78431374, b: 0.39215687, a: 1}
+    rgba: 4283154431
+  m_fontColor: {r: 1, g: 0.74920946, b: 0.29565197, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4728,6 +4726,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969372920}
   m_CullTransparentMesh: 1
+--- !u!1 &1987432364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987432365}
+  m_Layer: 0
+  m_Name: Data Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1987432365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987432364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2072197055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,8 +4976,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1289631458}
-        m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
+      - m_Target: {fileID: 1289631460}
+        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
         m_MethodName: Button_Register
         m_Mode: 1
         m_Arguments:
@@ -5109,3 +5138,4 @@ SceneRoots:
   - {fileID: 2118676193}
   - {fileID: 1588154560}
   - {fileID: 1289631459}
+  - {fileID: 1987432365}
