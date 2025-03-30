@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 public class DataManager : Singleton<DataManager>
 {
     private DatabaseReference m_database_ref;
-    private UserData m_data;
+    [SerializeField] private UserData m_data;
     public UserData Data
     {
         get { return m_data; }

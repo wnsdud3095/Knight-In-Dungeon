@@ -62,5 +62,6 @@ public class AuthManager : MonoBehaviour
         yield return null;
 
         DataManager.Instance.LoadUserData(user_id);
+        LoadingManager.Instance.LoadScene("Title");
     }
 }
