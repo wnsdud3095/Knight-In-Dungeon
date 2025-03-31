@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 public class DataManager : Singleton<DataManager>
 {
     private DatabaseReference m_database_ref;
-    [SerializeField] private UserData m_data;
+    private UserData m_data;
     public UserData Data
     {
         get { return m_data; }
@@ -15,6 +15,8 @@ public class DataManager : Singleton<DataManager>
 
     private new void Awake()
     {
+        base.Awake();
+        
         m_database_ref = FirebaseDatabase.DefaultInstance.RootReference;
     }
 

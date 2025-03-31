@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.Android.Gradle.Manifest;
 
 public class EvolutionSlot : MonoBehaviour
 {
@@ -64,6 +63,11 @@ public class EvolutionSlot : MonoBehaviour
         UpdateSlotState();
     }
 
+    private void Update()
+    {
+        UpdateSlotState();   
+    }
+
     public void UpdateSlotState()
     {
         SetSlotLabel();
@@ -80,10 +84,10 @@ public class EvolutionSlot : MonoBehaviour
 
         if(Level <= DataManager.Instance.Data.m_evolution_level)
         {
-            Button_Evolution();
+            PastClear();
         }
 
-            m_evolution_button.interactable = !(Cost > DataManager.Instance.Data.m_user_money);
+        m_evolution_button.interactable = Cost > DataManager.Instance.Data.m_user_money ? false : true;
 
     }
 
@@ -128,5 +132,17 @@ public class EvolutionSlot : MonoBehaviour
         {
             DataManager.Instance.Data.m_evolution_level = Level;
         }
+    }
+
+    public void PastClear()
+    {
+        m_evolution_button.gameObject.SetActive(false);
+
+        SetPipeColor(255f/255f, 100f/255f, 100f/255f, 1f);
+
+        if(Level > DataManager.Instance.Data.m_evolution_level)
+        {
+            DataManager.Instance.Data.m_evolution_level = Level;
+        }        
     }
 }

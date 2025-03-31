@@ -12,6 +12,11 @@ public class Evolution : MonoBehaviour
         m_slots = m_slot_parent.GetComponentsInChildren<EvolutionSlot>();   
     }
 
+    private void Update()
+    {
+        UpdateSlots();
+    }
+
     public void UpdateSlots()
     {
         foreach(EvolutionSlot slot in m_slots)

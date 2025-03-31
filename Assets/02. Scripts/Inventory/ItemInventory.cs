@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public class ItemInventory : InventoryBase
@@ -6,6 +8,13 @@ public class ItemInventory : InventoryBase
     {
         Animator = GameObject.Find("Inventory UI").GetComponent<Animator>();
         Parent = GameObject.Find("Inventory Content").transform;
+
+        if(Slots is null)
+        {
+            Slots = new List<InventorySlot>();
+        }
+
+        LoadSlotData();
     }
 
     public void AcquireItem(Item item, int count = 1, int reinforcement = 0)
@@ -54,5 +63,23 @@ public class ItemInventory : InventoryBase
     {
         slot.DestroySlot();
         Slots.Remove(slot);
+    }
+
+    public void SaveSlotData()
+    {
+        DataManager.Instance.Data.m_item_inventory.Clear();
+
+        foreach(InventorySlot slot in Slots)
+        {
+            DataManager.Instance.Data.m_item_inventory.Add(new SlotData(slot.Item.ID, slot.Reinforcement));
+        }
+    }
+
+    public void LoadSlotData()
+    {
+        foreach(SlotData slot_data in DataManager.Instance.Data.m_item_inventory)
+        {
+            AcquireItem(ItemDataManager.Instance.GetItem(slot_data.m_item_id), 1, slot_data.m_reinforcement_level);
+        }
     }
 }
