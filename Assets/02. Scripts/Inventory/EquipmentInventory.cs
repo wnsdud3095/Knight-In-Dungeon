@@ -15,11 +15,20 @@ public class EquipmentInventory : InventoryBase
 
     private void Awake()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        Slots.Clear();
+
         InventorySlot[] equipment_slots = Parent.GetComponentsInChildren<InventorySlot>();
         foreach(InventorySlot slot in equipment_slots)
         {
             Slots.Add(slot);
         }
+
+        LoadSlotData();        
     }
 
     public void CalculateEffect()
@@ -39,6 +48,11 @@ public class EquipmentInventory : InventoryBase
 
         m_current_equipment_effect = calculated_effect;
 
+
+    }
+
+    public void SetEffectLabel()
+    {
         m_atk_label.text = EquipmentEffect.ATK.ToString();
         m_hp_label.text = EquipmentEffect.HP.ToString();
     }
@@ -64,5 +78,26 @@ public class EquipmentInventory : InventoryBase
         }
 
         return null;
+    }
+
+    public void SaveSlotData()
+    {
+        DataManager.Instance.Data.m_equipment_inventory.Clear();
+
+        foreach(InventorySlot slot in Slots)
+        {
+            if(slot.Item is not null)
+            {
+                DataManager.Instance.Data.m_equipment_inventory.Add(new SlotData(slot.Item.ID, slot.Item.Type, slot.Reinforcement));
+            }
+        }
+    }
+
+    public void LoadSlotData()
+    {
+        foreach(SlotData slot in DataManager.Instance.Data.m_equipment_inventory)
+        {
+            GetEquipmentSlot(slot.m_item_type).AddItem(ItemDataManager.Instance.GetItem(slot.m_item_id), 1, slot.m_reinforcement_level);
+        }
     }
 }
