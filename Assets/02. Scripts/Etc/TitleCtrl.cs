@@ -28,6 +28,11 @@ public class TitleCtrl : MonoBehaviour
     [Header("설정 패널")]
     [SerializeField] private Animator m_setting_panel;
 
+    private void Awake()
+    {
+        GameEventBus.Publish(GameEventType.Waiting);   
+    }
+
     public void Toggle_Shop()
     {
         m_shop_panel.SetBool("Open", true);

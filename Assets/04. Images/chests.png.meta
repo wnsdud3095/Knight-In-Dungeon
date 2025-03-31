@@ -1,0 +1,386 @@
+fileFormatVersion: 2
+guid: 0226cca0ecca42c7898417215214dd0a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4128261327662975977
+    second: chests_0
+  - first:
+      213: 7098417591714748056
+    second: chests_1
+  - first:
+      213: 4032033871735927925
+    second: chests_2
+  - first:
+      213: 9011289960348594601
+    second: chests_3
+  - first:
+      213: 6983191744819231628
+    second: chests_4
+  - first:
+      213: 3360777976935596823
+    second: chests_5
+  - first:
+      213: 2424983929796287158
+    second: chests_6
+  - first:
+      213: -7583737851726763313
+    second: chests_7
+  - first:
+      213: -2676174917004600479
+    second: chests_8
+  - first:
+      213: 3423162062024585544
+    second: chests_9
+  - first:
+      213: 4942452377479357786
+    second: chests_10
+  - first:
+      213: -4142809471852165686
+    second: chests_11
+  - first:
+      213: 1628204643719760110
+    second: chests_12
+  - first:
+      213: 3554250946983542004
+    second: chests_13
+  - first:
+      213: -1650437708545890937
+    second: chests_14
+  - first:
+      213: 5743116974164744705
+    second: chests_15
+  - first:
+      213: 7875333978410282761
+    second: chests_16
+  - first:
+      213: 2232977364189424843
+    second: chests_17
+  - first:
+      213: -9203097295571002407
+    second: chests_18
+  - first:
+      213: -7619112384665863892
+    second: chests_19
+  - first:
+      213: -153901254206552889
+    second: chests_20
+  - first:
+      213: -3602751982879410286
+    second: chests_21
+  - first:
+      213: -3000146885995259492
+    second: chests_22
+  - first:
+      213: -5581046057798961653
+    second: chests_23
+  - first:
+      213: -6107237155707098978
+    second: chests_24
+  - first:
+      213: -137877382581593868
+    second: chests_25
+  - first:
+      213: 14154301566390615
+    second: chests_26
+  - first:
+      213: 3800825119211780031
+    second: chests_27
+  - first:
+      213: -3995019248642528960
+    second: chests_28
+  - first:
+      213: 7101813511695110839
+    second: chests_29
+  - first:
+      213: -1800727503582564119
+    second: chests_30
+  - first:
+      213: -8643919096457619033
+    second: chests_31
+  - first:
+      213: 8751089041912577291
+    second: chests_32
+  - first:
+      213: 6027528426751870023
+    second: chests_33
+  - first:
+      213: -6504142471472250594
+    second: chests_34
+  - first:
+      213: -4932857573672029202
+    second: chests_35
+  - first:
+      213: -4558590775869890848
+    second: chests_36
+  - first:
+      213: 8700873016093472127
+    second: chests_37
+  - first:
+      213: -3909753356228967588
+    second: chests_38
+  - first:
+      213: -8322171294860262416
+    second: chests_39
+  - first:
+      213: 87626607473185575
+    second: chests_40
+  - first:
+      213: -4453573490119954063
+    second: chests_41
+  - first:
+      213: -3941554626913532730
+    second: chests_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: chests_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c927215fc04e332aea5b0ff6840951c9
+      internalID: -718107074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chests_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9939274b642c036c9ae455c05d05aee
+      internalID: -1579410296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chests_47
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aa3069dee4999210811487231a8a3e0
+      internalID: 1759929512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5bbe816f3aeef4846953886714259f55
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      chests_0: -718107074
+      chests_1: -1382167733
+      chests_10: -220297998
+      chests_11: -287694523
+      chests_12: -2141582302
+      chests_13: -234924287
+      chests_14: 875028574
+      chests_15: -1033783030
+      chests_16: 1994560370
+      chests_17: -1399140859
+      chests_18: 1736251337
+      chests_19: -736828801
+      chests_2: -117011375
+      chests_20: -1579410296
+      chests_21: -1762112765
+      chests_22: -1821209157
+      chests_23: -1374630308
+      chests_24: -985069652
+      chests_25: -735135467
+      chests_26: 769209512
+      chests_27: -353374059
+      chests_28: -386291289
+      chests_29: 833639612
+      chests_3: 1447334405
+      chests_30: -310292503
+      chests_31: -1498610352
+      chests_32: -222300113
+      chests_33: -775272521
+      chests_34: -1696711155
+      chests_35: 123076158
+      chests_36: 1156689406
+      chests_37: -303036339
+      chests_38: -566430651
+      chests_39: -172658188
+      chests_4: 308029032
+      chests_40: 1349208887
+      chests_41: 1201197440
+      chests_42: -1927201151
+      chests_43: -2072576634
+      chests_44: -1355733944
+      chests_45: 195829870
+      chests_46: 1132489116
+      chests_47: 1759929512
+      chests_5: -215773690
+      chests_6: -288764346
+      chests_7: 1323605152
+      chests_8: -693212758
+      chests_9: -1122526258
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

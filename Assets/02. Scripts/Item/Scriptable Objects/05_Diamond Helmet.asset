@@ -18,3 +18,7 @@ MonoBehaviour:
   m_effect:
     m_atk: 320
     m_hp: 3200
+  m_growth_effect:
+    m_atk: 32
+    m_hp: 320
+  m_reinforcement_limit: 40

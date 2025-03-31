@@ -72,13 +72,6 @@ public class ItemDataManager : Singleton<ItemDataManager>
 
         return null;
     }
-
-    public void Debug_AcquireRandomItem()
-    {
-        int random = UnityEngine.Random.Range(0, m_item_data_list.Length);
-
-        GameObject.Find("Inventory Manager").GetComponent<ItemInventory>().AcquireItem(m_item_data_list[random]);
-    }
 }
 
 [System.Serializable]
