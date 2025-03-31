@@ -19,6 +19,11 @@ public class Shop : MonoBehaviour
         Initialize();
     }
 
+    private void Update()
+    {
+        RefreshSlots();
+    }
+
     public void Initialize()
     {
         foreach(Gacha gacha in m_gachas)

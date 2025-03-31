@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "452803746517",
+    "project_id": "knight-in-the-dungeon-b097f",
+    "storage_bucket": "knight-in-the-dungeon-b097f.firebasestorage.app",
+    "firebase_url": "https://knight-in-the-dungeon-b097f-default-rtdb.firebaseio.com/"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452803746517:android:00df7c971dc65c6983605c",
+        "android_client_info": {
+          "package_name": "com.Jxngmin.DungeonKnight"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuW9DVonChYF3QAzfblXINVKUEIB32TAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

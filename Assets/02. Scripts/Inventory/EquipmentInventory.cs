@@ -13,10 +13,8 @@ public class EquipmentInventory : InventoryBase
         get { return m_current_equipment_effect; }
     }
 
-    private new void Awake()
+    private void Awake()
     {
-        base.Awake();
-
         InventorySlot[] equipment_slots = Parent.GetComponentsInChildren<InventorySlot>();
         foreach(InventorySlot slot in equipment_slots)
         {

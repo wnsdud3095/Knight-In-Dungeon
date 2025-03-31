@@ -28,14 +28,10 @@ public class InventoryBase : MonoBehaviour
     }
 
     [Header("인벤토리 슬롯 리스트")]
-    private List<InventorySlot> m_slots;
+    private List<InventorySlot> m_slots = new List<InventorySlot>();
     public List<InventorySlot> Slots
     {
         get { return m_slots; }
-    }
-
-    protected void Awake()
-    {
-        m_slots = new List<InventorySlot>();
+        protected set { m_slots = value; }
     }
 }
