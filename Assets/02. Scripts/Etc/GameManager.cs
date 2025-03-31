@@ -23,6 +23,13 @@ public class GameManager : Singleton<GameManager>
         private set { m_equipment_inventory = value; }
     }
 
+    private CalculatedStat m_calculated_stat;
+    public CalculatedStat CalculatedStat
+    {
+        get { return m_calculated_stat; }
+        set { m_calculated_stat = value; }
+    }
+
     private new void Awake()
     {
         base.Awake();

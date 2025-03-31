@@ -20,4 +20,11 @@ public class CalculatedStat
         get { return m_hp_regen; }
         set { m_hp_regen = value; }
     }
+
+    public CalculatedStat(float hp, float atk, float hp_regen)
+    {
+        HP = hp;
+        ATK = atk;
+        HP_REGEN = hp_regen;
+    }
 }

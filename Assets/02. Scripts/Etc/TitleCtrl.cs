@@ -3,6 +3,13 @@ using UnityEngine.UI;
 
 public class TitleCtrl : MonoBehaviour
 {
+    [Header("장비 인벤토리")]
+    [SerializeField] private EquipmentInventory m_equipment_inventory;
+
+    [Header("능력치 강화")]
+    [SerializeField] private Evolution m_evolution;
+
+    [Space(50)] [Header("UI 관련 컴포넌트")]
     [Header("상점 토글")]
     [SerializeField] private Toggle m_shop_toggle;
 
@@ -31,6 +38,39 @@ public class TitleCtrl : MonoBehaviour
     private void Awake()
     {
         GameEventBus.Publish(GameEventType.Waiting);   
+    }
+
+    public void SetCalculatedStat()
+    {
+        GameManager.Instance.CalculatedStat = new CalculatedStat(100f, 10f, 0f);
+
+        GameManager.Instance.CalculatedStat.HP += m_equipment_inventory.EquipmentEffect.HP;
+        GameManager.Instance.CalculatedStat.ATK += m_equipment_inventory.EquipmentEffect.ATK;
+
+        foreach(EvolutionSlot slot in m_evolution.Slots)
+        {
+            if(slot.Level > DataManager.Instance.Data.m_evolution_level)
+            {
+                break;
+            }
+
+            switch(slot.Type)
+            {
+                case EvolutionType.HP:
+                    GameManager.Instance.CalculatedStat.HP += slot.Rate;
+                    break;
+                
+                case EvolutionType.ATK:
+                    GameManager.Instance.CalculatedStat.ATK += slot.Rate;
+                    break;
+                
+                case EvolutionType.HP_REGEN:
+                    GameManager.Instance.CalculatedStat.HP_REGEN += slot.Rate;
+                    break;
+            }
+        }
+
+        Debug.Log($"HP:{GameManager.Instance.CalculatedStat.HP}\nATK:{GameManager.Instance.CalculatedStat.ATK}\nHP_REGEN:{GameManager.Instance.CalculatedStat.HP_REGEN}");
     }
 
     public void Toggle_Shop()

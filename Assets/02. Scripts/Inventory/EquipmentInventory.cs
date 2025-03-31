@@ -28,7 +28,9 @@ public class EquipmentInventory : InventoryBase
             Slots.Add(slot);
         }
 
-        LoadSlotData();        
+        LoadSlotData();
+        CalculateEffect();
+        SetEffectLabel(); 
     }
 
     public void CalculateEffect()
@@ -47,8 +49,6 @@ public class EquipmentInventory : InventoryBase
         }
 
         m_current_equipment_effect = calculated_effect;
-
-
     }
 
     public void SetEffectLabel()
