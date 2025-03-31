@@ -6,22 +6,13 @@ public class Evolution : MonoBehaviour
     [SerializeField] private Transform m_slot_parent;
 
     private EvolutionSlot[] m_slots;
+    public EvolutionSlot[] Slots
+    {
+        get { return m_slots; }
+    }
 
     private void Awake()
     {
         m_slots = m_slot_parent.GetComponentsInChildren<EvolutionSlot>();   
-    }
-
-    private void Update()
-    {
-        UpdateSlots();
-    }
-
-    public void UpdateSlots()
-    {
-        foreach(EvolutionSlot slot in m_slots)
-        {
-            slot.UpdateSlotState();
-        }
     }
 }

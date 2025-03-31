@@ -51,6 +51,7 @@ public class ItemActionCtrl : MonoBehaviour
                 }
 
                 m_equipment_inventory.CalculateEffect();
+                m_equipment_inventory.SetEffectLabel();
 
                 // TODO: 장비 착용 VFX 재생
 
