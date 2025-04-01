@@ -7,12 +7,18 @@ public class PlayerCtrl : MonoBehaviour
     private SpriteRenderer m_sprite_renderer;
     private SkillManager m_skill_manager;
 
+    [SerializeField]
+    private PlayerStat m_origin_stat;
+    public PlayerStat OriginStat { get; private set; }
+    public PlayerStat Stat { get; private set; }
     public JoyStickCtrl joyStick { get; private set; }
     public Animator Animator { get; private set; }
 
-    private float m_move_speed = 3f;
-
-    
+    private void Awake()
+    {
+        GetCalculatedStat();
+        InitStat();
+    }
 
     void Start()
     {
@@ -32,11 +38,31 @@ public class PlayerCtrl : MonoBehaviour
         m_skill_manager.UseSkills();
     }
 
+    public void GetCalculatedStat()
+    {
+        OriginStat.HP += GameManager.Instance.CalculatedStat.HP;
+        OriginStat.AtkDamage += GameManager.Instance.CalculatedStat.ATK;
+        OriginStat.HpRegen += GameManager.Instance.CalculatedStat.HP_REGEN;
+    }
+
+    public void InitStat()
+    {
+        Stat = ScriptableObject.CreateInstance<PlayerStat>();
+
+        Stat.HP = OriginStat.HP;
+        Stat.HpRegen = OriginStat.HpRegen;
+        Stat.MoveSpeed = OriginStat.MoveSpeed;
+        Stat.AtkDamage = OriginStat.AtkDamage;
+        Stat.BulletSize = OriginStat.BulletSize;
+        Stat.ExpBonusRatio = OriginStat.ExpBonusRatio;
+        Stat.CoolDownDecreaseRatio = OriginStat.CoolDownDecreaseRatio;
+    }
+
     private void Move()
     {
         Vector2 input_vector = joyStick.GetInputVector();
 
-        m_rigid.linearVelocity = new Vector2(input_vector.x * m_move_speed, input_vector.y * m_move_speed);
+        m_rigid.linearVelocity = new Vector2(input_vector.x * Stat.MoveSpeed, input_vector.y * Stat.MoveSpeed);
         if (input_vector.x > 0)
         {
             m_sprite_renderer.flipX = false;

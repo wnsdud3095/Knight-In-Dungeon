@@ -68,6 +68,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Playing()
     {
+        GameState = GameEventType.Playing;
         Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
         BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
     }
