@@ -108,6 +108,8 @@ public class Reinforcer : MonoBehaviour
 
     public void Button_CloseUI()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         for(int i = 0; i < 3; i++)
         {
             m_ingredient_slots[i].ClearSlot();
@@ -142,6 +144,8 @@ public class Reinforcer : MonoBehaviour
 
     public void Button_Reinforcement()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_item_inventory.AcquireItem(m_target_slot.Item, 1, GetNextReinforcement());
 
         for(int index = 2; index >= 0; index--)

@@ -69,13 +69,19 @@ public class GameManager : Singleton<GameManager>
     public void Playing()
     {
         GameState = GameEventType.Playing;
+
         Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
         BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
     }
 
     public void Setting()
     {
+        GameState = GameEventType.Setting;
+    }
 
+    public void Selecting()
+    {
+        GameState = GameEventType.Selecting;
     }
 
     private void OnApplicationPause(bool pause)

@@ -51,6 +51,8 @@ public class InventoryTooltip : MonoBehaviour
 
     public void Button_CloseUI()
     {   
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_current_slot = null;
 
         m_tooltip_object.SetBool("Open", false);
@@ -58,12 +60,14 @@ public class InventoryTooltip : MonoBehaviour
 
     public void Button_Equipment()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_current_slot.UseItem();
         Button_CloseUI();
     }
 
     public void Button_Reinforcement()
-    {
+    {   
         m_reinforcer.OpenUI(m_current_slot, m_slot.Item);
     }
 }

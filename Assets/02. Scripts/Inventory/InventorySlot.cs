@@ -106,6 +106,8 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     
     public void OnPointerClick(PointerEventData eventData)
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         var tooltip = GameObject.Find("Tooltip UI").GetComponent<InventoryTooltip>();
 
         if(Item.CheckEquipmentType(SlotMask))

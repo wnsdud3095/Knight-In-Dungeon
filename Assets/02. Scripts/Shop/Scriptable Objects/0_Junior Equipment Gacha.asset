@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 0_Junior Equipment Gacha
   m_EditorClassIdentifier: 
   m_id: 0
-  m_name: "<color=green>\uCD08\uAE09 \uC7A5\uBE44 \uC0C1\uC790</color>"
+  m_name: "\uCD08\uAE09 \uC7A5\uBE44 \uC0C1\uC790"
   m_description: "<color=yellow>\uB098\uBB34</color>\uC640 <color=yellow>\uB3D9</color>
     \uC0AC\uC774\uC758 \uC7A5\uBE44\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
   m_cost: 500

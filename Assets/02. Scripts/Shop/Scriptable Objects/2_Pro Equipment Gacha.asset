@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2_Pro Equipment Gacha
   m_EditorClassIdentifier: 
   m_id: 2
-  m_name: "<color=green>\uACE0\uAE09 \uC7A5\uBE44 \uC0C1\uC790</color>"
+  m_name: "\uACE0\uAE09 \uC7A5\uBE44 \uC0C1\uC790"
   m_description: "<color=yellow>\uC5D0\uBA54\uB784\uB4DC</color>\uC640 <color=yellow>\uB2E4\uC774\uC544\uBAAC\uB4DC</color>
     \uC0AC\uC774\uC758 \uC7A5\uBE44\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
   m_cost: 50000
