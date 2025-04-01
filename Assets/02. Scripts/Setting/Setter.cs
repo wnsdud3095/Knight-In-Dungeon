@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,5 +72,19 @@ public class Setter : MonoBehaviour
         SoundManager.Instance.PlayEffect("Button Click");
 
         SettingManager.Instance.Data.Damage = m_damage_toggle.isOn;
+    }
+
+    public void Button_Title()
+    {
+        LoadingManager.Instance.LoadScene("Title");
+    }
+
+    public void Button_Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
