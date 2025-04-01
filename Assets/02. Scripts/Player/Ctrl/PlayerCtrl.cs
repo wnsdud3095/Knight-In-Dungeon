@@ -9,14 +9,16 @@ public class PlayerCtrl : MonoBehaviour
 
     [SerializeField]
     private PlayerStat m_origin_stat;
-    public PlayerStat OriginStat { get; private set; }
+    public PlayerStat OriginStat { get { return m_origin_stat; } private set { m_origin_stat = value; } }
+    [SerializeField]
+    private PlayerStat m_stat;
     public PlayerStat Stat { get; private set; }
     public JoyStickCtrl joyStick { get; private set; }
     public Animator Animator { get; private set; }
 
     private void Awake()
     {
-        GetCalculatedStat();
+        //GetCalculatedStat();
         InitStat();
     }
 
@@ -48,7 +50,10 @@ public class PlayerCtrl : MonoBehaviour
     public void InitStat()
     {
         Stat = ScriptableObject.CreateInstance<PlayerStat>();
-
+        if(OriginStat == null)
+        {
+            Debug.Log("스탯이 없음");
+        }
         Stat.HP = OriginStat.HP;
         Stat.HpRegen = OriginStat.HpRegen;
         Stat.MoveSpeed = OriginStat.MoveSpeed;

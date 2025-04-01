@@ -3,16 +3,11 @@ using UnityEngine;
 public class Kunai : MonoBehaviour
 {
     [SerializeField]
-    private float m_speed = 0.4f;
+    private float m_speed = 0.8f;
     private float m_damage;
     
     private float m_life_time = 0;
     private float m_origin_life_time = 4f;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
