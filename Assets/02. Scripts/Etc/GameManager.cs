@@ -26,6 +26,13 @@ public class GameManager : Singleton<GameManager>
         private set { m_equipment_inventory = value; }
     }
 
+    private CalculatedStat m_calculated_stat;
+    public CalculatedStat CalculatedStat
+    {
+        get { return m_calculated_stat; }
+        set { m_calculated_stat = value; }
+    }
+
     private new void Awake()
     {
         base.Awake();
@@ -56,6 +63,7 @@ public class GameManager : Singleton<GameManager>
         Inventory.Initialize();
 
         Equipment = m_item_inventory.GetComponent<EquipmentInventory>();
+        Equipment.Initialize();
     }
 
     public void Playing()
@@ -76,7 +84,7 @@ public class GameManager : Singleton<GameManager>
             if(GameState == GameEventType.Waiting && DataManager.Instance.Data is not null)
             {
                 Inventory?.SaveSlotData();
-                // 장비 인벤토리 정보 저장
+                Equipment?.SaveSlotData();
                 DataManager.Instance.SaveUserData(DataManager.Instance.Data);
             }
         }
@@ -88,7 +96,7 @@ public class GameManager : Singleton<GameManager>
         {
 
             Inventory?.SaveSlotData();
-            // 장비 인벤토리 정보 저장
+            Equipment?.SaveSlotData();
             DataManager.Instance.SaveUserData(DataManager.Instance.Data);
         }
     }
