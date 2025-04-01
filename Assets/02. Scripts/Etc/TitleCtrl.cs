@@ -125,4 +125,15 @@ public class TitleCtrl : MonoBehaviour
         m_setting_panel.SetBool("Open", false);
         SettingManager.Instance.SaveSettingData();
     }
+
+    public void Button_SinglePlay()
+    {
+        SoundManager.Instance.PlayEffect("Button Click");
+        LoadingManager.Instance.LoadScene("Stage");
+    }
+
+    public void Button_MultiPlay()
+    {
+    
+    }
 }

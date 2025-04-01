@@ -1553,7 +1553,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 04cb0bd6260c4e81886f036df768adc9, type: 3}
   - {fileID: 8300000, guid: 81b7064762249ba4f897c6b132dedc35, type: 3}
   - {fileID: 8300000, guid: c6e16e36cba49d64682061243a07f041, type: 3}
-  m_effect_clips: []
+  m_effect_clips:
+  - {fileID: 8300000, guid: 8c1e719c0c642c5299ba6bc4c02a2a94, type: 3}
 --- !u!4 &592921303
 Transform:
   m_ObjectHideFlags: 0
