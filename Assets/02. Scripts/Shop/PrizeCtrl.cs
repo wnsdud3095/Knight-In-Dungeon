@@ -41,6 +41,8 @@ public class PrizeCtrl : MonoBehaviour
 
     public void Button_CloseUI()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         foreach(var slot in m_slots)
         {
             slot.transform.SetParent(GameObject.Find("Inventory Slot Container").transform);

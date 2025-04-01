@@ -54,7 +54,7 @@ public class GachaSlot : MonoBehaviour
     {
         Gacha = gacha;
         
-        m_name_label.text = Gacha.Name;
+        m_name_label.text = $"<color=#FFB74D>{Gacha.Name}</color>";
         m_description_label.text = Gacha.Description;
         m_image.sprite = Gacha.Image;
 
@@ -104,6 +104,8 @@ public class GachaSlot : MonoBehaviour
 
     public void Button_OneBuy()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         DataManager.Instance.Data.m_user_money -= Gacha.Cost;
 
         m_prize_ctrl.OpenUI(Gacha, 1);
@@ -113,6 +115,8 @@ public class GachaSlot : MonoBehaviour
 
     public void Button_SetBuy()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         DataManager.Instance.Data.m_user_money -= Gacha.Cost * 9;
 
         m_prize_ctrl.OpenUI(Gacha, 10);

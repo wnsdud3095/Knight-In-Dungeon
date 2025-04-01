@@ -37,7 +37,9 @@ public class TitleCtrl : MonoBehaviour
 
     private void Awake()
     {
-        GameEventBus.Publish(GameEventType.Waiting);   
+        GameEventBus.Publish(GameEventType.Waiting);
+
+        SoundManager.Instance.PlayBGM("Title Background"); 
     }
 
     public void SetCalculatedStat()
@@ -75,6 +77,8 @@ public class TitleCtrl : MonoBehaviour
 
     public void Toggle_Shop()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_shop_panel.SetBool("Open", true);
         m_inventory_panel.SetBool("Open", false);
         m_upgrade_panel.SetBool("Open", false);
@@ -82,6 +86,8 @@ public class TitleCtrl : MonoBehaviour
 
     public void Toggle_Inventory()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         m_shop_panel.SetBool("Open", false);
         m_inventory_panel.SetBool("Open", true);
         m_upgrade_panel.SetBool("Open", false);
@@ -89,6 +95,8 @@ public class TitleCtrl : MonoBehaviour
 
     public void Toggle_Game()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_shop_panel.SetBool("Open", false);
         m_inventory_panel.SetBool("Open", false);
         m_upgrade_panel.SetBool("Open", false);
@@ -96,6 +104,8 @@ public class TitleCtrl : MonoBehaviour
 
     public void Toggle_Upgrade()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_shop_panel.SetBool("Open", false);
         m_inventory_panel.SetBool("Open", false);
         m_upgrade_panel.SetBool("Open", true);
@@ -103,11 +113,27 @@ public class TitleCtrl : MonoBehaviour
 
     public void Button_SettingEnter()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         m_setting_panel.SetBool("Open", true);
     }
 
     public void Button_SettingExit()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         m_setting_panel.SetBool("Open", false);
+        SettingManager.Instance.SaveSettingData();
+    }
+
+    public void Button_SinglePlay()
+    {
+        SoundManager.Instance.PlayEffect("Button Click");
+        LoadingManager.Instance.LoadScene("Stage");
+    }
+
+    public void Button_MultiPlay()
+    {
+    
     }
 }

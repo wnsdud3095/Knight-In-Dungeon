@@ -44,6 +44,8 @@ public class RegisterCtrl : MonoBehaviour
 
     public async void Button_Check()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         try
         {
             if(string.IsNullOrEmpty(m_email_input_field.text))
@@ -113,6 +115,8 @@ public class RegisterCtrl : MonoBehaviour
 
     public async void Button_Register()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         if(m_is_checked is false)
         {
             if(m_check_coroutine is not null)
@@ -145,6 +149,8 @@ public class RegisterCtrl : MonoBehaviour
 
     public void Button_Exit()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         m_register_ui_object.SetBool("Open", false);
     }
 
