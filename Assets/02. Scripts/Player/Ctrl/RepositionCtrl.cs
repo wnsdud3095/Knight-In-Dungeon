@@ -8,13 +8,13 @@ public class RepositionCtrl : MonoBehaviour
     {
         if (!col.CompareTag("GroundCheckArea")) return;
 
-        Vector3 player_pos = GameManager.Player.transform.position;
+        Vector3 player_pos = GameManager.Instance.Player.transform.position;
         Vector3 my_pos = transform.position;
         
         float diff_x = Mathf.Abs(player_pos.x - my_pos.x);
         float diff_y = Mathf.Abs(player_pos.y - my_pos.y);
 
-        Vector3 player_dir = GameManager.Player.joyStick.GetInputVector();
+        Vector3 player_dir = GameManager.Instance.Player.joyStick.GetInputVector();
         float dir_x = player_dir.x > 0 ? 1 : -1;
         float dir_y = player_dir.y > 0 ? 1 : -1;
 

@@ -33,7 +33,14 @@ public class Setter : MonoBehaviour
 
         SettingManager.Instance.Data.BGM = !m_bgm_toggle.isOn;
 
-        // TODO: 사운드 매니저에서 배경음악 재생 조절
+        if(SettingManager.Instance.Data.BGM)
+        {
+            SoundManager.Instance.BGM.UnPause();
+        }
+        else
+        {
+            SoundManager.Instance.BGM.Pause();
+        }
     }
 
     public void Toggle_SFX()
@@ -62,7 +69,7 @@ public class Setter : MonoBehaviour
     public void Toggle_Damage()
     {
         SoundManager.Instance.PlayEffect("Button Click");
-        
+
         SettingManager.Instance.Data.Damage = m_damage_toggle.isOn;
     }
 }

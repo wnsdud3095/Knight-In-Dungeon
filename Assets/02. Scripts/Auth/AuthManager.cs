@@ -40,7 +40,7 @@ public class AuthManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlayBGM("Login Background");
+        GameEventBus.Publish(GameEventType.None);
     }
 
     public async void Button_Login()
