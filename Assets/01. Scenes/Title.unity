@@ -1463,7 +1463,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761810413}
+        m_TargetAssemblyTypeName: Setter, Assembly-CSharp
+        m_MethodName: Toggle_BGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &191667180
 GameObject:
@@ -3178,7 +3190,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761810413}
+        m_TargetAssemblyTypeName: Setter, Assembly-CSharp
+        m_MethodName: Toggle_Joystick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &489822865
 GameObject:
@@ -4165,7 +4189,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761810413}
+        m_TargetAssemblyTypeName: Setter, Assembly-CSharp
+        m_MethodName: Toggle_SFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &652247871
 GameObject:
@@ -5421,6 +5457,7 @@ GameObject:
   - component: {fileID: 761810411}
   - component: {fileID: 761810410}
   - component: {fileID: 761810412}
+  - component: {fileID: 761810413}
   m_Layer: 5
   m_Name: Setting UI
   m_TagString: Untagged
@@ -5509,6 +5546,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &761810413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761810408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f3d7956a7f63d218b833f98764ea78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bgm_toggle: {fileID: 190594956}
+  m_sfx_toggle: {fileID: 620369880}
+  m_vibe_toggle: {fileID: 1529475242}
+  m_joystick_toggle: {fileID: 486816724}
+  m_damage_toggle: {fileID: 1450555374}
 --- !u!1 &771387762
 GameObject:
   m_ObjectHideFlags: 0
@@ -10715,7 +10769,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761810413}
+        m_TargetAssemblyTypeName: Setter, Assembly-CSharp
+        m_MethodName: Toggle_Damage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1459087137
 GameObject:
@@ -11365,7 +11431,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761810413}
+        m_TargetAssemblyTypeName: Setter, Assembly-CSharp
+        m_MethodName: Toggle_VIBE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!224 &1530420738 stripped
 RectTransform:

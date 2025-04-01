@@ -15,7 +15,7 @@ public class SettingManager : Singleton<SettingManager>
     public new void Awake()
     {
         base.Awake();
-        
+
         m_setting_data_path = Path.Combine(Application.persistentDataPath, "SettingData.json");
 
         if(File.Exists(m_setting_data_path))
@@ -45,7 +45,7 @@ public class SettingManager : Singleton<SettingManager>
 
     public void SaveSettingData()
     {
-        string json_data = JsonUtility.ToJson(Data);
+        string json_data = JsonUtility.ToJson(Data, true);
 
         File.WriteAllText(m_setting_data_path, json_data);
 

@@ -109,5 +109,6 @@ public class TitleCtrl : MonoBehaviour
     public void Button_SettingExit()
     {
         m_setting_panel.SetBool("Open", false);
+        SettingManager.Instance.SaveSettingData();
     }
 }
