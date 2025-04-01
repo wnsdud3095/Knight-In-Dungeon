@@ -49,7 +49,7 @@ public class JoyStickCtrl : MonoBehaviour, IDragHandler , IPointerDownHandler, I
 
     public Vector2 GetInputVector()
     {
-        return m_input_vector != null ? m_input_vector/ m_back_ground_radius : Vector2.zero;
+        return m_input_vector != null ? m_input_vector.normalized : Vector2.zero;
     }
 
 }
