@@ -54,7 +54,7 @@ public class GachaSlot : MonoBehaviour
     {
         Gacha = gacha;
         
-        m_name_label.text = Gacha.Name;
+        m_name_label.text = $"<color=#FFB74D>{Gacha.Name}</color>";
         m_description_label.text = Gacha.Description;
         m_image.sprite = Gacha.Image;
 
