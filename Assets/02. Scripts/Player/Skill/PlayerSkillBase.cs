@@ -1,8 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
-public abstract class PlayerSkillBase //ÀÎÅÍÆäÀÌ½º ¸»°í Ãß»ó Å¬·¡½º·Î ±¸Çö
+public abstract class PlayerSkillBase  : MonoBehaviour//ì¸í„°í˜ì´ìŠ¤ ë§ê³  ì¶”ìƒ í´ë˜ìŠ¤ë¡œ êµ¬í˜„
 {
     public int Level { get; protected set; } = 1;
+
+    protected bool m_can_use = true;
+
+    protected float m_cool_time = 2f;
+    protected float m_cool_down_time = 0;
 
     public void LevelUP()
     {
@@ -10,6 +16,19 @@ public abstract class PlayerSkillBase //ÀÎÅÍÆäÀÌ½º ¸»°í Ãß»ó Å¬·¡½º·Î ±¸Çö
         ApplyLevelUpEffect(Level);
     }
 
+    protected void CoolTime()
+    {
+        if (m_cool_down_time < m_cool_time)
+        {
+            m_cool_down_time += Time.deltaTime;
+            if (m_can_use) m_can_use = false;
+        }
+        else
+        {
+            m_can_use = true;
+            m_cool_down_time = 0;
+        }
+    }
     public abstract void UseSKill();
     protected abstract void ApplyLevelUpEffect(int level);
 }

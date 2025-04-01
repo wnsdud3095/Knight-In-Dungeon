@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5bcb38da9d09bfb4a8f2a8294ff27700
+guid: bac6e386f50a52540b2a18ef7f4c859d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4913982344839117222
-    second: frame0000_0
+      213: -8398409672689469449
+    second: frame0004_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frame0000_0
+      name: frame0004_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a56c25fb7170ecbb0800000000000000
-      internalID: -4913982344839117222
+      spriteID: 7f7b32d36ead27b80800000000000000
+      internalID: -8398409672689469449
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 05bccae9c8c0d3e4daf1d6c340bc0739
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      frame0004_0: -8398409672689469449
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

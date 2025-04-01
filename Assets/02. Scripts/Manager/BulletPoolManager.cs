@@ -5,7 +5,7 @@ public class BulletPoolManager : MonoBehaviour
 {
     public GameObject[] m_prefabs;
 
-    List<GameObject>[] m_pools;
+    public List<GameObject>[] m_pools;
 
     void Awake()
     {
@@ -24,11 +24,11 @@ public class BulletPoolManager : MonoBehaviour
         
     }
 
-    public GameObject Get(int prefab_id)
+    public GameObject Get(SkillName skill_name)
     {
         GameObject select = null;
 
-        foreach(GameObject prefab in m_pools[prefab_id]) // 선택된 아이디의 풀에 비활성화된 오브젝트에 접근
+        foreach(GameObject prefab in m_pools[(int)skill_name]) // 선택된 아이디의 풀에 비활성화된 오브젝트에 접근
         {
             if(!prefab.activeSelf) 
             {
@@ -40,8 +40,8 @@ public class BulletPoolManager : MonoBehaviour
 
         if(!select)
         {
-            select = Instantiate(m_prefabs[prefab_id]);
-            m_pools[prefab_id].Add(select);
+            select = Instantiate(m_prefabs[(int)skill_name]);
+            m_pools[(int)skill_name].Add(select);
         }
 
         return select;

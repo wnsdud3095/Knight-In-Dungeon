@@ -9,7 +9,7 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        
+        AddSkill<Skill1_KunaiThorw>();
     }
 
     // Update is called once per frame
@@ -18,13 +18,13 @@ public class SkillManager : MonoBehaviour
         
     }
 
-    public void AddSkill<T>() where T : PlayerSkillBase, new() // µ¿ÀûÀ¸·Î ½ºÅ³ Ãß°¡
+    public void AddSkill<T>() where T : PlayerSkillBase, new() // ë™ì ìœ¼ë¡œ ìŠ¤í‚¬ ì¶”ê°€
     {
         if (UsingSKills.Count < m_max_using_skill)
         {
             PlayerSkillBase new_skill = new T();
             UsingSKills.Add(new_skill);
-            Debug.Log($"{typeof(T).Name} ½ºÅ³ Ãß°¡");
+            Debug.Log($"{typeof(T).Name} ìŠ¤í‚¬ ì¶”ê°€");
         }
     }
 

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public PlayerCtrl Player { get; set; }
+    public BulletPoolManager BulletPool { get; set; }
+
     private GameEventType m_game_state;
     public GameEventType GameState
     {
@@ -30,6 +33,7 @@ public class GameManager : Singleton<GameManager>
         GameEventBus.Subscribe(GameEventType.None, None);
         GameEventBus.Subscribe(GameEventType.Loading, Loading);
         GameEventBus.Subscribe(GameEventType.Waiting, Waiting);
+        GameEventBus.Subscribe(GameEventType.Playing, Playing);
 
         GameEventBus.Publish(GameEventType.None);
     }
@@ -56,7 +60,8 @@ public class GameManager : Singleton<GameManager>
 
     public void Playing()
     {
-        
+        Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
+        BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
     }
 
     public void Setting()

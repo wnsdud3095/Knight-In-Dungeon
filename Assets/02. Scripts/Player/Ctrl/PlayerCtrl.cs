@@ -16,15 +16,24 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
-        m_skill_manager = GameObject.Find("GameManager").GetComponent<SkillManager>();
+        m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         joyStick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         m_rigid = GetComponent<Rigidbody2D>();
         m_sprite_renderer= GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
+
+        GameEventBus.Publish(GameEventType.Playing);
     }
 
     void FixedUpdate()
-    {      
+    {
+        Move();
+
+        m_skill_manager.UseSkills();
+    }
+
+    private void Move()
+    {
         Vector2 input_vector = joyStick.GetInputVector();
 
         m_rigid.linearVelocity = new Vector2(input_vector.x * m_move_speed, input_vector.y * m_move_speed);
@@ -36,8 +45,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             m_sprite_renderer.flipX = true;
         }
-        Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0 );
-
-        m_skill_manager.UseSkills();
+        Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
     }
 }
