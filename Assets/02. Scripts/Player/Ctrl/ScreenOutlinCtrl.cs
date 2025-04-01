@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScreenOutlinManager : MonoBehaviour
+public class ScreenOutlinCtrl : MonoBehaviour
 {
     [SerializeField]
     private BoxCollider2D[] colliders;

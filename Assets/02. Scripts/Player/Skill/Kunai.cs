@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class Kunai : MonoBehaviour
 {
-    [SerializeField]
-    private float m_speed = 0.8f;
+    private float m_speed = 6f;
     private float m_damage;
     
     private float m_life_time = 0;
     private float m_origin_life_time = 4f;
+
+    private int m_reflect_angle_min = 130;
+    private int m_reflect_angle_max = 230;
+
+    private int m_reflect_count = 0;
 
     void Update()
     {
@@ -15,6 +19,11 @@ public class Kunai : MonoBehaviour
 
         transform.Translate(Vector3.up * m_speed * Time.deltaTime);
 
+        if(m_reflect_count < 0)
+        {
+            ReturnToPool();
+        }
+        /*
         if(m_life_time > 0)
         {
             m_life_time-= Time.deltaTime;
@@ -23,6 +32,12 @@ public class Kunai : MonoBehaviour
         {
             ReturnToPool();
         }
+        */
+    }
+
+    public void SetReflectCount(int count)
+    {
+        m_reflect_count = count;
     }
 
     public void SetDamage(float damage)
@@ -42,9 +57,14 @@ public class Kunai : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.CompareTag("Enemy"))
+        if (col.CompareTag("Enemy"))
         {
             //데미지 함수 호출
+        }
+        else if(col.CompareTag("ScreenOutLine"))
+        {
+            m_reflect_count--;
+            transform.rotation *= Quaternion.Euler(0f, 0f, Random.Range(m_reflect_angle_min, m_reflect_angle_max));
         }
     }
 }

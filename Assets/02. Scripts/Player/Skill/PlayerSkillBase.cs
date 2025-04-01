@@ -16,9 +16,9 @@ public abstract class PlayerSkillBase  : MonoBehaviour//인터페이스 말고 �
         ApplyLevelUpEffect(Level);
     }
 
-    protected void CoolTime()
+    protected void CoolTime(float cool_time)
     {
-        if (m_cool_down_time < m_cool_time)
+        if (m_cool_down_time < cool_time)
         {
             m_cool_down_time += Time.deltaTime;
             if (m_can_use) m_can_use = false;
