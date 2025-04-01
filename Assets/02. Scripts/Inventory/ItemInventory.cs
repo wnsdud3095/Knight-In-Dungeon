@@ -71,7 +71,7 @@ public class ItemInventory : InventoryBase
 
         foreach(InventorySlot slot in Slots)
         {
-            DataManager.Instance.Data.m_item_inventory.Add(new SlotData(slot.Item.ID, slot.Reinforcement));
+            DataManager.Instance.Data.m_item_inventory.Add(new SlotData(slot.Item.ID, slot.Item.Type, slot.Reinforcement));
         }
     }
 
