@@ -29,6 +29,8 @@ public class Setter : MonoBehaviour
 
     public void Toggle_BGM()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         SettingManager.Instance.Data.BGM = !m_bgm_toggle.isOn;
 
         // TODO: 사운드 매니저에서 배경음악 재생 조절
@@ -36,11 +38,15 @@ public class Setter : MonoBehaviour
 
     public void Toggle_SFX()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         SettingManager.Instance.Data.SFX = !m_sfx_toggle.isOn;
     }
 
     public void Toggle_VIBE()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         SettingManager.Instance.Data.Vibration = m_vibe_toggle.isOn;
 
         // TODO: 진동 출력
@@ -48,11 +54,15 @@ public class Setter : MonoBehaviour
 
     public void Toggle_Joystick()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         SettingManager.Instance.Data.JoyStick = m_joystick_toggle.isOn;
     }
 
     public void Toggle_Damage()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         SettingManager.Instance.Data.Damage = m_damage_toggle.isOn;
     }
 }

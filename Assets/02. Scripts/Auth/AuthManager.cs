@@ -38,8 +38,15 @@ public class AuthManager : MonoBehaviour
         m_register_ctrl = m_register_ui_object.GetComponent<RegisterCtrl>();
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM("Login Background");
+    }
+
     public async void Button_Login()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         try
         {
             var result = await m_auth.SignInWithEmailAndPasswordAsync(m_email_input_field.text, m_password_input_field.text);
@@ -82,6 +89,8 @@ public class AuthManager : MonoBehaviour
 
     public void Button_Register()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         m_register_ui_object.SetBool("Open", true);
         m_register_ctrl.Initialize();
     }

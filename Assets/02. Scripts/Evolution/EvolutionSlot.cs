@@ -122,6 +122,8 @@ public class EvolutionSlot : MonoBehaviour
 
     public void Button_Evolution()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         DataManager.Instance.Data.m_user_money -= Cost;
 
         m_evolution_button.gameObject.SetActive(false);

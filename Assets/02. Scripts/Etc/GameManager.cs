@@ -64,12 +64,17 @@ public class GameManager : Singleton<GameManager>
 
     public void Playing()
     {
-        
+        GameState = GameEventType.Playing;
     }
 
     public void Setting()
     {
+        GameState = GameEventType.Setting;
+    }
 
+    public void Selecting()
+    {
+        GameState = GameEventType.Selecting;
     }
 
     private void OnApplicationPause(bool pause)

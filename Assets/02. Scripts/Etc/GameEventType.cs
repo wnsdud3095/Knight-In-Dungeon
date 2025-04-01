@@ -5,4 +5,5 @@ public enum GameEventType
     Waiting = 2,
     Playing = 3,
     Setting = 4,
+    Selecting = 5,
 }
