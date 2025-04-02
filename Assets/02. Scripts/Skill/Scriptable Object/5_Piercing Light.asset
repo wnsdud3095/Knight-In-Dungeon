@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
+  m_Name: 5_Piercing Light
+  m_EditorClassIdentifier: 
+  m_skil_id: 5
+  m_skill_type: 0
+  m_skill_name: "\uAFF0\uB6AB\uB294 \uBE5B"
+  m_skill_description:
+  - "\xB7 \uAC00\uB85C \uCD95\uC744 \uAC00\uB85C\uC9C0\uB974\uB294 \uBE5B\uC744 \uBC1C\uC0AC"
+  - "\xB7 \uD53C\uD574\uB7C9 \uC99D\uAC00"
+  - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B\uC758 \uC218 \uC99D\uAC00"
+  - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B\uC758 \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  m_skill_image: {fileID: 0}

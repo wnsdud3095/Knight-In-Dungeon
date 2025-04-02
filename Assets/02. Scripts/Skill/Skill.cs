@@ -25,8 +25,8 @@ public class Skill : ScriptableObject
     }
 
     [Header("스킬의 설명")]
-    [SerializeField] private string m_skill_description;
-    public string Description
+    [SerializeField] private string[] m_skill_description = new string[3];
+    public string[] Description
     {
         get { return m_skill_description; }
     }
