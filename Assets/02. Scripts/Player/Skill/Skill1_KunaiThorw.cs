@@ -28,7 +28,7 @@ public class Skill1_KunaiThorw : PlayerSkillBase
 
     public override void UseSKill()
     {
-        CoolTime(m_skill1_cool_time);
+        CoolTime(m_cool_time);
 
         SaveInputVector();
 
@@ -57,7 +57,7 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, save_input_vector); //z축을 기준으로 벡터 방향을 바라보게 회전 시킴
             prefab.transform.Translate(Vector3.up * Random.Range(m_spawn_up_area_min, m_spawn_up_area_max));
             prefab.transform.Translate(Vector3.right * Random.Range(-m_spawn_right_area_max, m_spawn_right_area_max));
-            prefab.GetComponent<Kunai>().SetDamage(m_damage);
+            prefab.GetComponent<Kunai>().SetDamage(m_damage); //효율적인 참조를 위해 Get 말고 Set 방식 사용
             prefab.GetComponent<Kunai>().SetReflectCount(m_reflect_count);
             //prefab.GetComponent<Kunai>().SetLifeTime();
         }   
@@ -72,7 +72,7 @@ public class Skill1_KunaiThorw : PlayerSkillBase
         }
         else
         {
-            m_skill1_cool_time -= 1f;
+            m_cool_time -= 1f;
         }
 
     }

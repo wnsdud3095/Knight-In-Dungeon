@@ -9,7 +9,8 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        AddSkill<ESkill1_KunaiThorw>();
+        //AddSkill<ESkill1_KunaiThorw>();
+        AddSkill<Skill2_Severing>();
     }
 
     // Update is called once per frame
@@ -18,11 +19,11 @@ public class SkillManager : MonoBehaviour
         
     }
 
-    public void AddSkill<T>() where T : PlayerSkillBase, new() // 동적으로 스킬 추가
+    public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가
     {
         if (UsingSKills.Count < m_max_using_skill)
         {
-            PlayerSkillBase new_skill = new T();
+            PlayerSkillBase new_skill = gameObject.AddComponent<T>();
             UsingSKills.Add(new_skill);
             Debug.Log($"{typeof(T).Name} 스킬 추가");
         }
