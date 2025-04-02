@@ -35,8 +35,8 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
             prefab.transform.Rotate(rotate_vec);
             prefab.transform.Translate(Vector3.up);
 
-            prefab.GetComponent<Kunai>().SetDamage(m_e_damage);
-            prefab.GetComponent<Kunai>().SetReflectCount(m_e_reflect_count);
+            prefab.GetComponent<Kunai>().Damage = m_e_damage;
+            prefab.GetComponent<Kunai>().ReflectCount = m_e_reflect_count;
         }
     }
 }

@@ -15,10 +15,8 @@ public class BulletPoolManager : MonoBehaviour
         {
             m_pools[i]= new List<GameObject>();
         }
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         

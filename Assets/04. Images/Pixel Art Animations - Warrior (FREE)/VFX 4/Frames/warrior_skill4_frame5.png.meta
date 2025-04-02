@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -141,81 +141,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: warrior_skill4_frame5_0
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 9
-        width: 30
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c685a09516bd61eb0800000000000000
-      internalID: -4749367545863448468
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: warrior_skill4_frame5_1
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 50
-        width: 15
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 782953e02bd773f90800000000000000
-      internalID: -6973967294263881081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: warrior_skill4_frame5_2
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 32
-        width: 17
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3376fcff6ab738770800000000000000
-      internalID: 8611862869649090355
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: warrior_skill4_frame5_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 2
-        width: 72
-        height: 76
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -228,55 +162,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: warrior_skill4_frame5_4
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 30
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77a92246e21238ae0800000000000000
-      internalID: -1548357363753117065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: warrior_skill4_frame5_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 19
-        width: 10
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6d0d3174507283d60800000000000000
-      internalID: 7870083252450742486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a5d1931afbb952f459dfe2a7c24e4038
     internalID: 0
     vertices: []
     indices: 
@@ -285,7 +175,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      warrior_skill4_frame5_0: -4749367545863448468
+      warrior_skill4_frame5_1: -6973967294263881081
+      warrior_skill4_frame5_2: 8611862869649090355
+      warrior_skill4_frame5_3: -2857262941762681424
+      warrior_skill4_frame5_4: -1548357363753117065
+      warrior_skill4_frame5_5: 7870083252450742486
+      warrior_skill4_frame5_6: -1256813186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

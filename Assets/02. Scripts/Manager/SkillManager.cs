@@ -10,7 +10,7 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         //AddSkill<ESkill1_KunaiThorw>();
-        AddSkill<Skill2_Severing>();
+        AddSkill<ESkill2_Severing>();
     }
 
     // Update is called once per frame

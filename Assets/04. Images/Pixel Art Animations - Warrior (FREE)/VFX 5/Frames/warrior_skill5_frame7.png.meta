@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,37 +135,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: warrior_skill5_frame7_0
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 0
-        width: 76
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8df21606b66549000800000000000000
-      internalID: 41753315731648472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: warrior_skill5_frame7_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 34
-        width: 37
-        height: 27
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -178,55 +156,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: warrior_skill5_frame7_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d4a0ae3bbb3fe0970800000000000000
-      internalID: 8723177515766123085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: warrior_skill5_frame7_3
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 3
-        width: 20
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a96f53130abe25080800000000000000
-      internalID: -9200032015511587174
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 37e72eed2dba1a241b202f1e17145bf4
     internalID: 0
     vertices: []
     indices: 
@@ -235,7 +169,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      warrior_skill5_frame7_0: 41753315731648472
+      warrior_skill5_frame7_1: -8205186201752378459
+      warrior_skill5_frame7_2: 8723177515766123085
+      warrior_skill5_frame7_3: -9200032015511587174
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

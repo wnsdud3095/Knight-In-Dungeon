@@ -1,17 +1,18 @@
 using UnityEngine;
 
 public class Kunai : MonoBehaviour
-{
+{ 
+    public float Damage { get; set; }
+    public float ReflectCount { get; set; }
+
     private float m_speed = 6f;
-    private float m_damage;
-    
+ 
     private float m_life_time = 0;
     private float m_origin_life_time = 4f;
 
     private int m_reflect_angle_min = 130;
     private int m_reflect_angle_max = 230;
 
-    private int m_reflect_count = 0;
 
     void Update()
     {
@@ -19,7 +20,7 @@ public class Kunai : MonoBehaviour
 
         transform.Translate(Vector3.up * m_speed * Time.deltaTime);
 
-        if(m_reflect_count < 0)
+        if(ReflectCount < 0)
         {
             ReturnToPool();
         }
@@ -33,16 +34,6 @@ public class Kunai : MonoBehaviour
             ReturnToPool();
         }
         */
-    }
-
-    public void SetReflectCount(int count)
-    {
-        m_reflect_count = count;
-    }
-
-    public void SetDamage(float damage)
-    {
-        m_damage= damage;
     }
 
     public void SetLifeTime()
@@ -63,7 +54,7 @@ public class Kunai : MonoBehaviour
         }
         else if(col.CompareTag("ScreenOutLine"))
         {
-            m_reflect_count--;
+            ReflectCount--;
             transform.rotation *= Quaternion.Euler(0f, 0f, Random.Range(m_reflect_angle_min, m_reflect_angle_max));
         }
     }

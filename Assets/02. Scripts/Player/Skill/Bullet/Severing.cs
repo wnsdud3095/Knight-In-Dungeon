@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Severing : MonoBehaviour
 {
-    private Animator m_animator;
+    protected Animator m_animator;
 
-    private float m_damage;
+    public float Damage { get; set; }
+
+    public float Heal { get; set; }
 
     [SerializeField]
     private BoxCollider2D[] m_collders;
 
-    void Awake()
+    protected virtual void Awake()
     {
         m_animator = GetComponent<Animator>();
     }
@@ -21,12 +23,12 @@ public class Severing : MonoBehaviour
         StartCoroutine(EnableColliders());
     }
 
-    public void SetDamage(float damage)
+    public void ExpandArea(float ratio)
     {
-        m_damage = damage;
+        transform.localScale *= ratio;
     }
 
-    private IEnumerator EnableColliders()
+    protected IEnumerator EnableColliders()
     {
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지
 
@@ -67,12 +69,12 @@ public class Severing : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    protected void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Enemy"))
         {
+            GameManager.Instance.Player.UpdateHP(Heal);
             //데미지 함수 호출
         }
     }
-
 }

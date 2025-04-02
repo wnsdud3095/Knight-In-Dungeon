@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,59 +132,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: warrior_skill4_frame6_0
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 12
-        width: 108
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51d8c66a3e591db20800000000000000
-      internalID: 3157469618745675029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: warrior_skill4_frame6_1
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 51
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 27a642bd00f6e0d80800000000000000
-      internalID: -8282560615220483470
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: warrior_skill4_frame6_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 16
-        width: 16
-        height: 7
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cf412190f04d1d94291ed7dc83853b28
     internalID: 0
     vertices: []
     indices: 
@@ -210,7 +166,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      warrior_skill4_frame6_0: 3157469618745675029
+      warrior_skill4_frame6_1: -8282560615220483470
+      warrior_skill4_frame6_2: 9065352620217688773
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
