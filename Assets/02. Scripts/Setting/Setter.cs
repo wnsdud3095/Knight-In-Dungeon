@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +34,14 @@ public class Setter : MonoBehaviour
 
         SettingManager.Instance.Data.BGM = !m_bgm_toggle.isOn;
 
-        // TODO: 사운드 매니저에서 배경음악 재생 조절
+        if(SettingManager.Instance.Data.BGM)
+        {
+            SoundManager.Instance.BGM.UnPause();
+        }
+        else
+        {
+            SoundManager.Instance.BGM.Pause();
+        }
     }
 
     public void Toggle_SFX()
@@ -62,7 +70,21 @@ public class Setter : MonoBehaviour
     public void Toggle_Damage()
     {
         SoundManager.Instance.PlayEffect("Button Click");
-        
+
         SettingManager.Instance.Data.Damage = m_damage_toggle.isOn;
+    }
+
+    public void Button_Title()
+    {
+        LoadingManager.Instance.LoadScene("Title");
+    }
+
+    public void Button_Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

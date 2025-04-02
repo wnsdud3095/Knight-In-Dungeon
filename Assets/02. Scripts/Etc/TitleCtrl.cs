@@ -38,8 +38,6 @@ public class TitleCtrl : MonoBehaviour
     private void Awake()
     {
         GameEventBus.Publish(GameEventType.Waiting);
-
-        SoundManager.Instance.PlayBGM("Title Background"); 
     }
 
     public void SetCalculatedStat()
