@@ -94,15 +94,16 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            SoundManager.Instance.BGM.UnPause();
+            if(!SettingManager.Instance.Data.BGM)
+            {
+                SoundManager.Instance.BGM.UnPause();
+            }
         }
     }
 
     public void Setting()
     {
         GameState = GameEventType.Setting;
-
-        SoundManager.Instance.BGM.Pause();
     }
 
     public void Selecting()

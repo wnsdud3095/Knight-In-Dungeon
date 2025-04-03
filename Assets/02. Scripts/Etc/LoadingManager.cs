@@ -36,6 +36,10 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private TMP_Text m_rate_label;
 
     private string m_target_scene_name;
+    public string Current
+    {
+        get { return m_target_scene_name; }
+    }
 
     private void Awake()
     {

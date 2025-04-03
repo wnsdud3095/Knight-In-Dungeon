@@ -25,16 +25,12 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayBGM(string background_name)
     {
-        StartCoroutine(ChangeBGM(background_name));
-
         if(SettingManager.Instance.Data.BGM)
         {
-            m_background_source.volume = 1f;
+            return;
         }
-        else
-        {
-            m_background_source.volume = 0f;
-        }
+
+        StartCoroutine(ChangeBGM(background_name));
     }
 
     public IEnumerator ChangeBGM(string background_name)
@@ -85,7 +81,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             AudioSource effect_source = ObjectManager.Instance.GetObject(ObjectType.EffectSource).GetComponent<AudioSource>();
 
-            if(SettingManager.Instance.Data.SFX)
+            if(!SettingManager.Instance.Data.SFX)
             {
                 effect_source.volume = 1f;
             }

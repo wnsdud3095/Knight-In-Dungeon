@@ -39,6 +39,8 @@ public class GameUICtrl : MonoBehaviour
 
     public void Button_SettingEnter()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+
         GameEventBus.Publish(GameEventType.Setting);
 
         m_setting_ui_obect.SetBool("Open", true);
@@ -46,6 +48,8 @@ public class GameUICtrl : MonoBehaviour
 
     public void Button_SettingExit()
     {
+        SoundManager.Instance.PlayEffect("Button Click");
+        
         SettingManager.Instance.SaveSettingData();
 
         GameEventBus.Publish(GameEventType.Playing);
