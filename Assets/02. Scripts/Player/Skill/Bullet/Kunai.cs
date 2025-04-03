@@ -8,7 +8,7 @@ public class Kunai : MonoBehaviour
     private float m_speed = 6f;
  
     private float m_life_time = 0;
-    private float m_origin_life_time = 4f;
+    private float m_origin_life_time = 7f;
 
     private int m_reflect_angle_min = 130;
     private int m_reflect_angle_max = 230;
@@ -24,7 +24,7 @@ public class Kunai : MonoBehaviour
         {
             ReturnToPool();
         }
-        /*
+        
         if(m_life_time > 0)
         {
             m_life_time-= Time.deltaTime;
@@ -33,7 +33,7 @@ public class Kunai : MonoBehaviour
         {
             ReturnToPool();
         }
-        */
+        
     }
 
     public void SetLifeTime()

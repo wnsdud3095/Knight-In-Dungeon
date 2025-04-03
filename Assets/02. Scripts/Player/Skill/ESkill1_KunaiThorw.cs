@@ -37,6 +37,7 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
 
             prefab.GetComponent<Kunai>().Damage = m_e_damage;
             prefab.GetComponent<Kunai>().ReflectCount = m_e_reflect_count;
+            prefab.GetComponent<Kunai>().SetLifeTime();
         }
     }
 }

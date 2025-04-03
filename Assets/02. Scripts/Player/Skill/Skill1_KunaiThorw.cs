@@ -13,9 +13,9 @@ public class Skill1_KunaiThorw : PlayerSkillBase
     private int m_reflect_count = 1;
 
     private float m_spawn_up_area_min = 0.2f;
-    private float m_spawn_up_area_max = 1f;
+    private float m_spawn_up_area_max = 0.6f;
 
-    private float m_spawn_right_area_max = 0.7f;
+    private float m_spawn_right_area_max = 0.5f;
    
     private float m_damage_up_ratio = 1.2f;
 
@@ -63,7 +63,7 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             prefab.transform.Translate(Vector3.right * Random.Range(-m_spawn_right_area_max, m_spawn_right_area_max));
             prefab.GetComponent<Kunai>().Damage = m_damage; //효율적인 참조를 위해 Get 말고 Set 방식 사용
             prefab.GetComponent<Kunai>().ReflectCount = m_reflect_count;
-            //prefab.GetComponent<Kunai>().SetLifeTime();
+            prefab.GetComponent<Kunai>().SetLifeTime();
         }   
     }
 

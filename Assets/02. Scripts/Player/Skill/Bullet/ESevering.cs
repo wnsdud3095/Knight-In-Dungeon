@@ -23,6 +23,10 @@ public class ESevering : Severing
         m_col_groups[2] = m_combo3_cols;
         m_col_groups[3] = m_combo4_cols;
         m_col_groups[4] = m_combo5_cols;
+        for (int i = 0; i < m_col_groups.Length; i++)
+        {
+            Debug.Log($"m_col_groups[{i}]: {m_col_groups[i]?.Length} 개의 콜라이더");
+        }
     }
 
     private void OnEnable()
@@ -36,16 +40,20 @@ public class ESevering : Severing
         {
             string ani_name = $"Combo{m_current_comb_index + 1}";
             m_animator.Play(ani_name);
-
-            yield return StartCoroutine(EnableColliders(m_current_comb_index));
-
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(EnableColliders(m_current_comb_index));        
+            yield return new WaitForSeconds(GetAniLength());
             m_current_comb_index++;
-
-            yield return new WaitForSeconds(0.85f); // 콤보 간 딜레이
         }
-
         // 콤보 종료 후 비활성화
         transform.gameObject.SetActive(false);
+    }
+
+    private float GetAniLength()
+    {
+        AnimatorStateInfo Info = m_animator.GetCurrentAnimatorStateInfo(0);
+        float length = Info.length;
+        return length;
     }
 
     private IEnumerator EnableColliders(int comboIndex)
@@ -53,41 +61,52 @@ public class ESevering : Severing
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지
         BoxCollider2D[] colliders = m_col_groups[comboIndex]; // 현재 콤보의 콜라이더 그룹
 
-        int col_num = colliders.Length; // 콜라이더 개수 동적 할당
-
-        if (col_num == 0) yield break; // 만약 배열이 비어있으면 종료
-
-        float[] trigger_times = new float[col_num]; // 트리거 시간을 저장할 배열
-
-        // 콜라이더 개수에 따라 트리거 타이밍 자동 분배
-        for (int i = 0; i < col_num; i++)
-        {
-            trigger_times[i] = 1f / (col_num + 1) * (i + 1); // 예: 3개면 0.25, 0.5, 0.75
-        }
-
-        int currentIndex = 0;
 
         while (true)
         {
             AnimatorStateInfo info = m_animator.GetCurrentAnimatorStateInfo(0);
             float n_time = info.normalizedTime;
 
-            if (n_time >= 1f)
+            Debug.Log($" {colliders[0].gameObject.name} : n_time 값 {n_time}");
+
+            if (n_time >= 0.25f && !triggered_points.Contains(0.25f))
             {
-                colliders[^1].enabled = false; // 마지막 콜라이더 비활성화
+                colliders[0].enabled = true;
+                triggered_points.Add(0.25f);
+            }
+
+            if (n_time >= 0.5f && !triggered_points.Contains(0.5f))
+            {
+                colliders[0].enabled = false;
+                colliders[1].enabled = true;
+                triggered_points.Add(0.5f);
+            }
+
+            if (n_time >= 0.7f && !triggered_points.Contains(0.7f))
+            {
+                colliders[1].enabled = false;
+                colliders[2].enabled = true;
+
+                triggered_points.Add(0.7f);
+            }
+            if (n_time >= 0.9f && !triggered_points.Contains(0.9f))
+            {
+                colliders[2].enabled = false;
+                colliders[3].enabled = true;
+
+                triggered_points.Add(0.9f);
+            }
+
+            if (n_time >= 0.97f)
+            {
+                colliders[3].enabled = false; // 배열의 마지막 콜라이더 비활성화
+
+                foreach (var col in colliders)
+                {
+                    col.enabled = false;
+                }
                 yield break;
             }
-
-            // 현재 트리거 타이밍에 도달하면 콜라이더 활성화
-            if (currentIndex < col_num && n_time >= trigger_times[currentIndex] 
-                && !triggered_points.Contains(trigger_times[currentIndex]))
-            {
-                if (currentIndex > 0) colliders[currentIndex - 1].enabled = false; // 이전 콜라이더 비활성화
-                colliders[currentIndex].enabled = true;
-                triggered_points.Add(trigger_times[currentIndex]);
-                currentIndex++;
-            }
-
             yield return null;
         }
     }
