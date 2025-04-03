@@ -24,8 +24,16 @@ public class Setter : MonoBehaviour
         m_bgm_toggle.isOn = !SettingManager.Instance.Data.BGM;
         m_sfx_toggle.isOn = !SettingManager.Instance.Data.SFX;
         m_vibe_toggle.isOn = SettingManager.Instance.Data.Vibration;
-        m_joystick_toggle.isOn = SettingManager.Instance.Data.JoyStick;
-        m_damage_toggle.isOn = SettingManager.Instance.Data.Damage;   
+
+        if(m_joystick_toggle is not null)
+        {
+            m_joystick_toggle.isOn = SettingManager.Instance.Data.JoyStick;
+        }
+
+        if(m_damage_toggle is not null)
+        {
+            m_damage_toggle.isOn = SettingManager.Instance.Data.Damage;   
+        }
     }
 
     public void Toggle_BGM()

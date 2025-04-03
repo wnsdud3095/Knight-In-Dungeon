@@ -255,7 +255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7762758446442183122}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2192079685369842399}
+        m_TargetAssemblyTypeName: SkillSelectSlot, Assembly-CSharp
+        m_MethodName: Button_Slot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2490104405975481881
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +279,7 @@ GameObject:
   - component: {fileID: 3959636805880561388}
   - component: {fileID: 8164333797295709971}
   - component: {fileID: 3061723946260579272}
+  - component: {fileID: 2192079685369842399}
   m_Layer: 5
   m_Name: Skill Select Slot
   m_TagString: Untagged
@@ -334,6 +347,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2192079685369842399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2490104405975481881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54de59d787380fc1382a1d1eacef93d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skill: {fileID: 0}
+  m_skill_image: {fileID: 8529716507374680389}
+  m_skill_reinforcement_label: {fileID: 1468724539282252489}
+  m_skill_name_label: {fileID: 4020515527344421710}
+  m_skill_description_label: {fileID: 4629876675568596926}
 --- !u!1 &3400024804104517099
 GameObject:
   m_ObjectHideFlags: 0

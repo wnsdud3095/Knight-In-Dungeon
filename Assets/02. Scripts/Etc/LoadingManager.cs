@@ -106,8 +106,6 @@ public class LoadingManager : MonoBehaviour
             m_canvas_group.alpha = is_fade_in ? Mathf.Lerp(0f, 1f, elapsed_time) : Mathf.Lerp(1f, 0f, elapsed_time);
         }
 
-        Debug.Log("Fade 완료");
-
         if(is_fade_in is false)
         {
             gameObject.SetActive(false);

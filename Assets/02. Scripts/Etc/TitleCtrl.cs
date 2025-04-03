@@ -127,7 +127,7 @@ public class TitleCtrl : MonoBehaviour
     public void Button_SinglePlay()
     {
         SoundManager.Instance.PlayEffect("Button Click");
-        LoadingManager.Instance.LoadScene("Stage");
+        LoadingManager.Instance.LoadScene("Jongmin");
     }
 
     public void Button_MultiPlay()
