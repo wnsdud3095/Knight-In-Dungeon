@@ -92,4 +92,10 @@ public class PlayerCtrl : MonoBehaviour
         }
         Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
     }
+
+    public void UpdateHP(float hp)
+    {
+        Stat.HP += hp;
+        Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
+    }
 }
