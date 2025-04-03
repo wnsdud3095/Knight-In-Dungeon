@@ -6,6 +6,8 @@ public class ShurikenRotater : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.GameState != GameEventType.Playing) return;
+
         if (ChildrenCheck())
         {
             transform.Rotate(Vector3.back * SpinningSpeed * Time.deltaTime);

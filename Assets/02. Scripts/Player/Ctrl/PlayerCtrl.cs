@@ -12,7 +12,7 @@ public class PlayerCtrl : MonoBehaviour
     public PlayerStat OriginStat { get { return m_origin_stat; } private set { m_origin_stat = value; } }
     [SerializeField]
     private PlayerStat m_stat;
-    public PlayerStat Stat { get; private set; }
+    public PlayerStat Stat { get { return m_stat; } private set {m_stat = value; } }
     public JoyStickCtrl joyStick { get; private set; }
     public Animator Animator { get; private set; }
 
@@ -35,6 +35,8 @@ public class PlayerCtrl : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance.GameState != GameEventType.Playing) return;
+
         Move();
 
         m_skill_manager.UseSkills();
