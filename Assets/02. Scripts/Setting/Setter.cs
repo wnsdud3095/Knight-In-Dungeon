@@ -21,22 +21,57 @@ public class Setter : MonoBehaviour
 
     private void Awake()
     {
-        m_bgm_toggle.isOn = !SettingManager.Instance.Data.BGM;
-        m_sfx_toggle.isOn = !SettingManager.Instance.Data.SFX;
+        m_bgm_toggle.isOn = SettingManager.Instance.Data.BGM;
+        m_sfx_toggle.isOn = SettingManager.Instance.Data.SFX;
         m_vibe_toggle.isOn = SettingManager.Instance.Data.Vibration;
-        m_joystick_toggle.isOn = SettingManager.Instance.Data.JoyStick;
-        m_damage_toggle.isOn = SettingManager.Instance.Data.Damage;   
+
+        if(m_joystick_toggle is not null)
+        {
+            m_joystick_toggle.isOn = SettingManager.Instance.Data.JoyStick;
+        }
+
+        if(m_damage_toggle is not null)
+        {
+            m_damage_toggle.isOn = SettingManager.Instance.Data.Damage;   
+        }
     }
 
     public void Toggle_BGM()
     {
         SoundManager.Instance.PlayEffect("Button Click");
 
-        SettingManager.Instance.Data.BGM = !m_bgm_toggle.isOn;
+        SettingManager.Instance.Data.BGM = m_bgm_toggle.isOn;
 
-        if(SettingManager.Instance.Data.BGM)
+        if(!SettingManager.Instance.Data.BGM)
         {
-            SoundManager.Instance.BGM.UnPause();
+            string clip_name = "";
+            switch(LoadingManager.Instance.Current)
+            {
+                case "Title":
+                    clip_name = "Title Background";
+                    break;
+                
+                case "Jongmin":
+                    clip_name = "Game Background";
+                    break;
+            }
+
+            if(SoundManager.Instance.BGM.clip is null)
+            {
+                SoundManager.Instance.PlayBGM(clip_name);
+            }
+            else
+            {
+                if(clip_name == SoundManager.Instance.BGM.clip.name)
+                {
+                    SoundManager.Instance.BGM.UnPause();
+                }
+                else
+                {
+                    SoundManager.Instance.BGM.clip = null;
+                    SoundManager.Instance.PlayBGM(clip_name);
+                }
+            }
         }
         else
         {
@@ -48,7 +83,7 @@ public class Setter : MonoBehaviour
     {
         SoundManager.Instance.PlayEffect("Button Click");
 
-        SettingManager.Instance.Data.SFX = !m_sfx_toggle.isOn;
+        SettingManager.Instance.Data.SFX = m_sfx_toggle.isOn;
     }
 
     public void Toggle_VIBE()

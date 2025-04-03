@@ -22,6 +22,20 @@ public class PlayerCtrl : MonoBehaviour
         InitStat();
     }
 
+    private void OnEnable()
+    {
+        GameEventBus.Subscribe(GameEventType.Playing, GameManager.Instance.Playing);
+        GameEventBus.Subscribe(GameEventType.Setting, GameManager.Instance.Setting);
+        GameEventBus.Subscribe(GameEventType.Selecting, GameManager.Instance.Selecting);        
+    }
+
+    private void OnDisable()
+    {
+        GameEventBus.Unsubscribe(GameEventType.Playing, GameManager.Instance.Playing);
+        GameEventBus.Unsubscribe(GameEventType.Setting, GameManager.Instance.Setting);
+        GameEventBus.Unsubscribe(GameEventType.Selecting, GameManager.Instance.Selecting);                
+    }
+
     void Start()
     {
         m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();

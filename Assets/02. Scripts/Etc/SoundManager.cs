@@ -25,6 +25,11 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayBGM(string background_name)
     {
+        if(SettingManager.Instance.Data.BGM)
+        {
+            return;
+        }
+
         StartCoroutine(ChangeBGM(background_name));
     }
 
@@ -76,7 +81,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             AudioSource effect_source = ObjectManager.Instance.GetObject(ObjectType.EffectSource).GetComponent<AudioSource>();
 
-            if(SettingManager.Instance.Data.SFX)
+            if(!SettingManager.Instance.Data.SFX)
             {
                 effect_source.volume = 1f;
             }
@@ -117,11 +122,11 @@ public class SoundManager : Singleton<SoundManager>
 
             if(is_out)
             {
-                target_source.volume = Mathf.Lerp(0.5f, 0f, f);
+                target_source.volume = Mathf.Lerp(1f, 0f, f);
             }
             else
             {
-                target_source.volume = Mathf.Lerp(0f, 0.5f, f);
+                target_source.volume = Mathf.Lerp(0f, 1f, f);
             }
 
             elapsed_time += Time.deltaTime;
@@ -135,7 +140,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         else
         {
-            target_source.volume = 0.5f;
+            target_source.volume = 1f;
         }
     }
 }

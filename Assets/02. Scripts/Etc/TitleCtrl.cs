@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,9 +36,29 @@ public class TitleCtrl : MonoBehaviour
     [Header("설정 패널")]
     [SerializeField] private Animator m_setting_panel;
 
+    [Space(30)][Header("메뉴 UI 컴포넌트")]
+    [SerializeField] private TMP_Text m_money_label;
+
+    [SerializeField] private TMP_Text m_level_label;
+    [SerializeField] private Slider m_exp_slider;
+
+
+    [Header("스테이지 라벨")]
+    [SerializeField] private TMP_Text m_stage_label;
+
     private void Awake()
     {
         GameEventBus.Publish(GameEventType.Waiting);
+
+        m_stage_label.text = $"스테이지 {DataManager.Instance.Data.m_current_stage}";
+    
+        m_level_label.text = $"LV.{DataManager.Instance.Data.m_user_level}";
+        m_exp_slider.value = 0.3f;
+    }
+
+    private void Update()
+    {
+        m_money_label.text = DataManager.Instance.Data.m_user_money.ToString();
     }
 
     public void SetCalculatedStat()
@@ -127,7 +148,7 @@ public class TitleCtrl : MonoBehaviour
     public void Button_SinglePlay()
     {
         SoundManager.Instance.PlayEffect("Button Click");
-        LoadingManager.Instance.LoadScene("Stage");
+        LoadingManager.Instance.LoadScene("Jongmin");
     }
 
     public void Button_MultiPlay()
