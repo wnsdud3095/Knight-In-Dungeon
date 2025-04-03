@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,9 +36,14 @@ public class TitleCtrl : MonoBehaviour
     [Header("설정 패널")]
     [SerializeField] private Animator m_setting_panel;
 
+    [Header("스테이지 라벨")]
+    [SerializeField] private TMP_Text m_stage_label;
+
     private void Awake()
     {
         GameEventBus.Publish(GameEventType.Waiting);
+
+        m_stage_label.text = $"스테이지 {DataManager.Instance.Data.m_current_stage}";
     }
 
     public void SetCalculatedStat()

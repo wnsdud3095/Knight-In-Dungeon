@@ -10,7 +10,7 @@ public class UserData
     public List<SlotData> m_item_inventory;
     public List<SlotData> m_equipment_inventory;
     public int m_evolution_level;
-    public int m_clear_stage;
+    public int m_current_stage;
 
     public UserData(string user_id)
     {
@@ -21,6 +21,6 @@ public class UserData
         m_item_inventory = new List<SlotData>();
         m_equipment_inventory = new List<SlotData>();
         m_evolution_level = 1;
-        m_clear_stage = 0;
+        m_current_stage = 1;
     }
 }
