@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
+  m_Name: 1_Cut
+  m_EditorClassIdentifier: 
+  m_skil_id: 1
+  m_skill_type: 0
+  m_skill_name: "\uC808\uB2E8"
+  m_skill_description:
+  - "\xB7 \uD50C\uB808\uC774\uC5B4 \uADFC\uCC98\uC758 \uC801\uB4E4\uC744 1\uD68C
+    \uC808\uB2E8"
+  - "\xB7 \uD53C\uD574\uB7C9 \uC99D\uAC00"
+  - "\xB7 \uC808\uB2E8 \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  - "\xB7 \uC808\uB2E8 \uBC94\uC704 \uC99D\uAC00"
+  m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}

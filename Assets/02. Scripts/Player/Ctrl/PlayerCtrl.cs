@@ -22,6 +22,20 @@ public class PlayerCtrl : MonoBehaviour
         InitStat();
     }
 
+    private void OnEnable()
+    {
+        GameEventBus.Subscribe(GameEventType.Playing, GameManager.Instance.Playing);
+        GameEventBus.Subscribe(GameEventType.Setting, GameManager.Instance.Setting);
+        GameEventBus.Subscribe(GameEventType.Selecting, GameManager.Instance.Selecting);        
+    }
+
+    private void OnDisable()
+    {
+        GameEventBus.Unsubscribe(GameEventType.Playing, GameManager.Instance.Playing);
+        GameEventBus.Unsubscribe(GameEventType.Setting, GameManager.Instance.Setting);
+        GameEventBus.Unsubscribe(GameEventType.Selecting, GameManager.Instance.Selecting);                
+    }
+
     void Start()
     {
         m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
@@ -84,5 +98,11 @@ public class PlayerCtrl : MonoBehaviour
             m_sprite_renderer.flipX = true;
         }
         Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
+    }
+
+    public void UpdateHP(float hp)
+    {
+        Stat.HP += hp;
+        Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
     }
 }

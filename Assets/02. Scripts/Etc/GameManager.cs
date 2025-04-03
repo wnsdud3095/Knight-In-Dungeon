@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public PlayerCtrl Player { get; set; }
     public BulletPoolManager BulletPool { get; set; }
 
     private GameEventType m_game_state;
@@ -33,6 +32,15 @@ public class GameManager : Singleton<GameManager>
         set { m_calculated_stat = value; }
     }
 
+    private PlayerCtrl m_player_ctrl;
+    public PlayerCtrl Player
+    {
+        get { return m_player_ctrl; }
+        private set { m_player_ctrl = value; }
+    }
+
+    private bool m_can_init = false;
+
     private new void Awake()
     {
         base.Awake();
@@ -40,7 +48,6 @@ public class GameManager : Singleton<GameManager>
         GameEventBus.Subscribe(GameEventType.None, None);
         GameEventBus.Subscribe(GameEventType.Loading, Loading);
         GameEventBus.Subscribe(GameEventType.Waiting, Waiting);
-        GameEventBus.Subscribe(GameEventType.Playing, Playing);
 
         GameEventBus.Publish(GameEventType.None);
     }
@@ -48,6 +55,8 @@ public class GameManager : Singleton<GameManager>
     public void None()
     {
         GameState = GameEventType.None;
+
+        SoundManager.Instance.PlayBGM("Login Background");
     }
     
     public void Loading()
@@ -58,6 +67,10 @@ public class GameManager : Singleton<GameManager>
     public void Waiting()
     {
         GameState = GameEventType.Waiting;
+
+        SoundManager.Instance.PlayBGM("Title Background");
+
+        m_can_init = true;
 
         Inventory = GameObject.Find("Inventory Manager").GetComponent<ItemInventory>();
         Inventory.Initialize();
@@ -70,8 +83,22 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Playing;
 
-        Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
-        BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
+        if(m_can_init)
+        {
+            m_can_init = false;
+
+            SoundManager.Instance.PlayBGM("Game Background");
+            
+            Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
+            BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
+        }
+        else
+        {
+            if(!SettingManager.Instance.Data.BGM)
+            {
+                SoundManager.Instance.BGM.UnPause();
+            }
+        }
     }
 
     public void Setting()
