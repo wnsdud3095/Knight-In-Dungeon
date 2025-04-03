@@ -27,7 +27,7 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
     {
         for (int i = 0; i < m_e_kunai_count; i++)
         {
-            var prefab = GameManager.Instance.BulletPool.Get(SkillName.KunaiThrow);
+            var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.Kunai);
             prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = GameManager.Instance.Player.transform.position;
 
@@ -37,7 +37,8 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
 
             prefab.GetComponent<Kunai>().Damage = m_e_damage;
             prefab.GetComponent<Kunai>().ReflectCount = m_e_reflect_count;
-            prefab.GetComponent<Kunai>().SetLifeTime();
+            prefab.GetComponent<Kunai>().LifeTime = m_kunai_life_time;
+
         }
     }
 }

@@ -4,10 +4,11 @@ public class Kunai : MonoBehaviour
 { 
     public float Damage { get; set; }
     public float ReflectCount { get; set; }
+    public float LifeTime { get; set; }
 
     private float m_speed = 6f;
  
-    private float m_life_time = 0;
+
     private float m_origin_life_time = 7f;
 
     private int m_reflect_angle_min = 130;
@@ -24,21 +25,21 @@ public class Kunai : MonoBehaviour
         {
             ReturnToPool();
         }
-        
-        if(m_life_time > 0)
+
+        LifeTimeCheck();
+
+    }
+
+    public void LifeTimeCheck()
+    {
+        if (LifeTime > 0)
         {
-            m_life_time-= Time.deltaTime;
+            LifeTime -= Time.deltaTime;
         }
         else
         {
             ReturnToPool();
         }
-        
-    }
-
-    public void SetLifeTime()
-    {
-        m_life_time = m_origin_life_time;
     }
 
     public void ReturnToPool()

@@ -22,11 +22,11 @@ public class BulletPoolManager : MonoBehaviour
         
     }
 
-    public GameObject Get(SkillName skill_name)
+    public GameObject Get(SkillBullet bullet_name)
     {
         GameObject select = null;
 
-        foreach(GameObject prefab in m_pools[(int)skill_name]) // 선택된 아이디의 풀에 비활성화된 오브젝트에 접근
+        foreach(GameObject prefab in m_pools[(int)bullet_name]) // 선택된 아이디의 풀에 비활성화된 오브젝트에 접근
         {
             if(!prefab.activeSelf) 
             {
@@ -38,8 +38,8 @@ public class BulletPoolManager : MonoBehaviour
 
         if(!select)
         {
-            select = Instantiate(m_prefabs[(int)skill_name]);
-            m_pools[(int)skill_name].Add(select);
+            select = Instantiate(m_prefabs[(int)bullet_name]);
+            m_pools[(int)bullet_name].Add(select);
         }
 
         return select;

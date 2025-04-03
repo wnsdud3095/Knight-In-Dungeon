@@ -195,6 +195,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39007086}
   m_CullTransparentMesh: 1
+--- !u!1 &40775173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40775174}
+  - component: {fileID: 40775175}
+  m_Layer: 0
+  m_Name: ShurikenRotater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &40775174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40775173}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1355433954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &40775175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40775173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0395e26b3bcd14cb99e1fd01be37a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &98295487
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_prefabs:
   - {fileID: 7138263189276469870, guid: e8bd872ca993c734e9bb3f5c5d28cb43, type: 3}
+  - {fileID: 8586905676877126198, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
 --- !u!1 &308098276
 GameObject:
   m_ObjectHideFlags: 0
@@ -14015,6 +14060,7 @@ Transform:
   - {fileID: 508178632}
   - {fileID: 1563528513}
   - {fileID: 8023615368696463261}
+  - {fileID: 40775174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1355433955
@@ -18765,63 +18811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c6ff4ca460b434c8d66661201e2e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &5410714251670392071
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673710816883567376, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8586905676877126198, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-      propertyPath: m_Name
-      value: Shuriken
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
 --- !u!1001 &6968046951417086925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18896,4 +18885,3 @@ SceneRoots:
   - {fileID: 443361315}
   - {fileID: 2024817367}
   - {fileID: 1549283563}
-  - {fileID: 5410714251670392071}
