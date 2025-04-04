@@ -11,7 +11,8 @@ public class SkillManager : MonoBehaviour
     {
         //AddSkill<ESkill1_KunaiThorw>();
         //AddSkill<ESkill2_Severing>();
-        AddSkill<ESkill3_SpinningShuriken>();
+        //AddSkill<ESkill3_SpinningShuriken>();
+        AddSkill<Skill4_CallThunder>();
     }
 
     // Update is called once per frame

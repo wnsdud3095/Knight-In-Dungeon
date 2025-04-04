@@ -79,11 +79,6 @@ public class PlayerCtrl : MonoBehaviour
         Stat.CoolDownDecreaseRatio = OriginStat.CoolDownDecreaseRatio;
     }
 
-    public void UpdateHP(float hp)
-    {
-        Stat.HP += hp;
-    }
-
     private void Move()
     {
         Vector2 input_vector = joyStick.GetInputVector();
