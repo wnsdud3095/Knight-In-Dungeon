@@ -8,6 +8,8 @@ TagManager:
   - GroundCheckArea
   - Enemy
   - ScreenOutLine
+  - Exp
+  - Skill
   layers:
   - Default
   - TransparentFX

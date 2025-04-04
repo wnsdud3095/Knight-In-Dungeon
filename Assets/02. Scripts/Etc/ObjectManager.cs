@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 using UnityEngine;
 
 [Serializable]
@@ -78,6 +79,34 @@ public class ObjectManager : Singleton<ObjectManager>
         else
         {
             Destroy(obj);
+        }
+    }
+
+    public void ReturnRangeObject(ObjectType start, ObjectType end)
+    {
+        for(int i = (int)start; i <= (int)end; i++)
+        {
+            ReturnObjects((ObjectType)i);
+        }
+    }
+
+    private void ReturnObjects(ObjectType type)
+    {
+        foreach(PoolInfo pool in m_pool_info_list)
+        {
+            if(pool.m_type == type)
+            {
+                Transform[] objects = pool.m_container.GetComponentsInChildren<Transform>();
+                foreach(Transform obj in objects)
+                {
+                    if(obj == pool.m_container.transform)
+                    {
+                        continue;
+                    }
+                    
+                    ReturnObject(obj.gameObject, type);
+                }
+            }
         }
     }
 }
