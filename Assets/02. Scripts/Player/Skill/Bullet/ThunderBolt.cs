@@ -2,27 +2,10 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public class Thunder : MonoBehaviour
+public class ThunderBolt : Thunder
 {
-    protected Animator m_animator;
 
-    public float Damage { get; set; }
-
-    [SerializeField]
-    protected BoxCollider2D m_col;
-
-
-    protected virtual void Awake()
-    {
-        m_animator = GetComponent<Animator>();
-    }
-
-    protected void OnEnable()
-    {
-        StartCoroutine(EnableCollider());
-    }
-
-    protected virtual IEnumerator EnableCollider()
+    protected override IEnumerator EnableCollider()
     {
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지
 
@@ -36,6 +19,9 @@ public class Thunder : MonoBehaviour
             {
                 m_col.enabled = false;
                 transform.gameObject.SetActive(false);
+                var prefab =  GameManager.Instance.BulletPool.Get(SkillBullet.ThunderBoltSideEffect);
+                prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
+                prefab.transform.position = transform.position;
                 yield break; // 코루틴 종료
             }
 
@@ -46,15 +32,6 @@ public class Thunder : MonoBehaviour
             }
 
             yield return null; // 다음 프레임까지 대기
-        }
-    }
-
-    protected void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Enemy"))
-        {
-            //데미지 함수 호출
-            Debug.Log("적중");
         }
     }
 }

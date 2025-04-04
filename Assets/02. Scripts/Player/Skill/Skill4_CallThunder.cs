@@ -3,29 +3,27 @@ using System.Collections.Generic;
 
 public class Skill4_CallThunder : PlayerSkillBase
 {
-    private float m_skill4_cool_time = 3f;
-    private int m_thunder_count = 3;
+    private float m_skill4_cool_time = 5f;
+    protected int m_thunder_count = 1;
 
     private int m_thunder_increase = 1;
-    private float m_cool_time_decrease = 0.7f;
+    private float m_cool_time_decrease = 1f;
 
     private float m_damage_up_ratio = 1.2f;
-    private float m_damage;
+    protected float m_damage;
 
     private ScreenOutlinCtrl m_screen;
 
-    void Start()
+    protected SkillBullet m_bullet;
+
+    protected virtual void Start()
     {
+        m_bullet = SkillBullet.Thunder;
         m_cool_time = m_skill4_cool_time;
         m_screen = GameObject.FindAnyObjectByType<ScreenOutlinCtrl>();
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage;
+        m_damage = GameManager.Instance.Player.Stat.AtkDamage * 1.5f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void UseSKill()
     {
@@ -57,18 +55,13 @@ public class Skill4_CallThunder : PlayerSkillBase
         }
         Shuffle(rand_enemy_indexs);
 
-        for(int i =0; i < rand_enemy_indexs.Count; i++)
-        {
-            Debug.Log($"랜덤 적 리스트 {i} : {m_cols[rand_enemy_indexs[i]].name}");
-        }
 
         for (int i = 0; i < m_thunder_count; i++)
         {
-            var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.Thunder);
+            var prefab = GameManager.Instance.BulletPool.Get(m_bullet);
             prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = m_cols[rand_enemy_indexs[i % rand_enemy_indexs.Count]].transform.position;
-            Debug.Log($"번개 쏘는 인덱스 {rand_enemy_indexs[i % rand_enemy_indexs.Count] }");
-            Debug.Log($"{m_cols[rand_enemy_indexs[i % rand_enemy_indexs.Count]].name} 번개 쏨");
+
             prefab.GetComponent<Thunder>().Damage = m_damage;
             prefab.SetActive(true);
         }
@@ -94,11 +87,5 @@ public class Skill4_CallThunder : PlayerSkillBase
         {
             m_thunder_count += m_thunder_increase;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(m_screen.Cam.transform.position, new Vector2(m_screen.CamWidth, m_screen.CamHeight));
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Shuriken : Kunai
 {
+    public float LifeTime { get {return m_life_time; }  set { m_life_time =value; } }
 
     private void Update()
     {
