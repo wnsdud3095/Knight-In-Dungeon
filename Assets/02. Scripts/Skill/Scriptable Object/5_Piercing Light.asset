@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733fb16f173bf70c871185c6f520e95, type: 3}
   m_Name: 5_Piercing Light
   m_EditorClassIdentifier: 
   m_skil_id: 5
@@ -17,7 +17,9 @@ MonoBehaviour:
   m_skill_name: "\uAFF0\uB6AB\uB294 \uBE5B"
   m_skill_description:
   - "\xB7 \uAC00\uB85C \uCD95\uC744 \uAC00\uB85C\uC9C0\uB974\uB294 \uBE5B\uC744 \uBC1C\uC0AC"
-  - "\xB7 \uD53C\uD574\uB7C9 \uC99D\uAC00"
+  - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B \uD53C\uD574\uB7C9 \uC99D\uAC00"
   - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B\uC758 \uC218 \uC99D\uAC00"
-  - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B\uC758 \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
   m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_combination_skill: {fileID: 11400000, guid: a50100188eeb54c3abb26d15687d814b, type: 2}
+  m_evolution_skill: {fileID: 0}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2733fb16f173bf70c871185c6f520e95, type: 3}
+  m_Name: 3_Call Lightning
+  m_EditorClassIdentifier: 
+  m_skil_id: 3
+  m_skill_type: 0
+  m_skill_name: "\uB1CC\uC9C4"
+  m_skill_description:
+  - "\xB7 \uBB34\uC791\uC704 \uC801\uC5D0\uAC8C \uB5A8\uC5B4\uC9C0\uB294 \uBC88\uAC1C
+    \uC18C\uD658"
+  - "\xB7 \uBC88\uAC1C \uD53C\uD574\uB7C9 \uC99D\uAC00"
+  - "\xB7 \uBC88\uAC1C \uC218 \uC99D\uAC00"
+  - "\xB7 \uBC88\uAC1C \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_combination_skill: {fileID: 11400000, guid: 5bb93061ea62e501c8e1e902126c630a, type: 2}
+  m_evolution_skill: {fileID: 11400000, guid: 21477a9b24448e7cc9bf61b016000189, type: 2}

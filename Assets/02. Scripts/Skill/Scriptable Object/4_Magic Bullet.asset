@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733fb16f173bf70c871185c6f520e95, type: 3}
   m_Name: 4_Magic Bullet
   m_EditorClassIdentifier: 
   m_skil_id: 4
@@ -18,7 +18,9 @@ MonoBehaviour:
   m_skill_description:
   - "\xB7 \uD50C\uB808\uC774\uC5B4\uC640 \uAC00\uC7A5 \uAC00\uAE4C\uC6B4 \uC801\uC5D0\uAC8C
     \uBC1C\uC0AC\uB418\uB294 \uD0C4\uD658 \uBC1C\uC0AC"
-  - "\xB7 \uD53C\uD574\uB7C9 \uC99D\uAC00"
-  - "\xB7 \uD0C4\uD658\uC758 \uBC1C\uC0AC \uC18D\uB3C4 \uC99D\uAC00"
-  - "\xB7 \uD0C4\uD658 \uBC1C\uC0AC \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  - "\xB7 \uB9C8\uBC95 \uD0C4\uD658 \uD53C\uD574\uB7C9 \uC99D\uAC00"
+  - "\xB7 \uB9C8\uBC95 \uD0C4\uD658 \uBC1C\uC0AC \uC18D\uB3C4 \uC99D\uAC00"
+  - "\xB7 \uB9C8\uBC95 \uD0C4\uD658 \uBC1C\uC0AC \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
   m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_combination_skill: {fileID: 11400000, guid: a47be217adcec2cab96eb0728b526847, type: 2}
+  m_evolution_skill: {fileID: 11400000, guid: 646543426259ff9e38b56b8fc24c713f, type: 2}

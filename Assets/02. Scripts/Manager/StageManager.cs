@@ -29,6 +29,7 @@ public class StageManager : MonoBehaviour
     public float CurrentExp
     {
         get { return m_current_exp; }
+        set { m_current_exp = value; }
     }
 
     private int m_kill_count;
@@ -37,6 +38,9 @@ public class StageManager : MonoBehaviour
         get { return m_kill_count; }
         set { m_kill_count = value; }
     }
+
+    [Header("스킬 선택 매니저")]
+    [SerializeField] private SkillSelector m_skill_selector;
 
     private void Awake()
     {
@@ -59,6 +63,8 @@ public class StageManager : MonoBehaviour
         if(m_current_exp >= m_max_exp)
         {
             m_player_level++;
+            m_current_exp -= m_max_exp;
+
             if(m_player_level <= 39)
             {
                 m_max_exp = m_exp_arr[m_player_level - 1];
@@ -68,7 +74,7 @@ public class StageManager : MonoBehaviour
                 m_max_exp = m_exp_arr[39];
             }
 
-            m_current_exp = 0f;
+            m_skill_selector.OpenUI();
         }
     }
 }
