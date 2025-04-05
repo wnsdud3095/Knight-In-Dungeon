@@ -30,13 +30,4 @@ public class BoxCtrl : MonoBehaviour
         GameObject box = ObjectManager.Instance.GetObject(ObjectType.Item_Box);
         box.transform.position = spawnPos;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(GameManager.Instance.Player.transform.position, m_in_radius);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(GameManager.Instance.Player.transform.position, m_out_radius);
-    }
 }

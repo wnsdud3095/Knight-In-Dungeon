@@ -7,4 +7,5 @@ public enum ObjectType
     Item_Potion,
     Item_Magnet,
     Item_Bomb,
+    Exp,
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Principal;
 using UnityEngine;
 
 [Serializable]
@@ -108,5 +107,32 @@ public class ObjectManager : Singleton<ObjectManager>
                 }
             }
         }
+    }
+
+    public GameObject[] GetActiveObjects(ObjectType type)
+    {
+        List<GameObject> object_list = new List<GameObject>();
+
+        foreach(PoolInfo pool in m_pool_info_list)
+        {
+            if(pool.m_type == type)
+            {
+                Transform[] objects = pool.m_container.GetComponentsInChildren<Transform>();
+
+                foreach(Transform obj in objects)
+                {
+                    if(obj.gameObject == pool.m_container)
+                    {
+                        continue;
+                    }
+
+                    object_list.Add(obj.gameObject);
+                }
+
+                break;
+            }
+        }
+
+        return object_list.ToArray();
     }
 }
