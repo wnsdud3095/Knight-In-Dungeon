@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
-  m_Name: 12_More bigger
+  m_Name: 23_Evolution Call Lightning
   m_EditorClassIdentifier: 
-  m_skil_id: 12
-  m_skill_type: 1
-  m_skill_name: "\uAC70\uAC70\uC775\uC120"
+  m_skil_id: 23
+  m_skill_type: 0
+  m_skill_name: "\uB1CC\uBA78"
   m_skill_description:
-  - "\xB7 \uD22C\uC0AC\uCCB4 \uD06C\uAE30 \uC99D\uAC00"
+  - "\xB7 \uB1CC\uC9C4 \uC9C4\uD654"
   m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
-  m_combination_skill: {fileID: 11400000, guid: 9ea077ab35130af1fad4b40cfafdf368, type: 2}
+  m_combination_skill: {fileID: 11400000, guid: 5bb93061ea62e501c8e1e902126c630a, type: 2}

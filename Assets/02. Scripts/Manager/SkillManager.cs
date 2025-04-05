@@ -22,7 +22,7 @@ public class SkillManager : MonoBehaviour
     {
         if (UsingSKills.Count < m_max_using_skill)
         {
-            PlayerSkillBase new_skill = new T();
+            PlayerSkillBase new_skill = gameObject.AddComponent<Skill1_KunaiThorw>();
             UsingSKills.Add(new_skill);
             Debug.Log($"{typeof(T).Name} 스킬 추가");
         }

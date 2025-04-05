@@ -39,6 +39,9 @@ public class StageManager : MonoBehaviour
         set { m_kill_count = value; }
     }
 
+    [Header("스킬 선택 매니저")]
+    [SerializeField] private SkillSelector m_skill_selector;
+
     private void Awake()
     {
         m_game_timer = 24 * 60f;
@@ -70,6 +73,8 @@ public class StageManager : MonoBehaviour
             {
                 m_max_exp = m_exp_arr[39];
             }
+
+            m_skill_selector.OpenUI();
         }
     }
 }
