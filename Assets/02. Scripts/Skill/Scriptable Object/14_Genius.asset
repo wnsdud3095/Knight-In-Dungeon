@@ -18,3 +18,4 @@ MonoBehaviour:
   m_skill_description:
   - "\xB7 \uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 \uC99D\uAC00"
   m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_combination_skill: {fileID: 11400000, guid: 8a91065d6f2e764bcb33b72eace88a5f, type: 2}

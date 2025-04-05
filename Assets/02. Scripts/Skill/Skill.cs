@@ -37,4 +37,11 @@ public class Skill : ScriptableObject
     {
         get { return m_skill_image; }
     }
+
+    [Header("조합 스킬")]
+    [SerializeField] private Skill m_combination_skill;
+    public Skill Combination
+    {
+        get { return m_combination_skill; }
+    }
 }

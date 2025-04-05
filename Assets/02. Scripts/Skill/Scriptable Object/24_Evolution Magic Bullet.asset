@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
-  m_Name: 0_Throw Shuriken
+  m_Name: 24_Evolution Magic Bullet
   m_EditorClassIdentifier: 
-  m_skil_id: 0
+  m_skil_id: 24
   m_skill_type: 0
-  m_skill_name: "\uCFE0\uB098\uC774"
+  m_skill_name: "\uB9C8\uBC95 \uD3ED\uACA9"
   m_skill_description:
-  - "\xB7 \uAC00\uC7A5\uC790\uB9AC\uC5D0\uC11C 1\uD68C \uD295\uAE30\uB294 \uC218\uB9AC\uAC80\uC744
-    \uD22C\uCC99"
-  - "\xB7 \uD53C\uD574\uB7C9 \uC99D\uAC00"
-  - "\xB7 \uD22C\uCC99 \uC218 \uC99D\uAC00"
-  - "\xB7 \uD22C\uCC99 \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  - "\xB7 \uB9C8\uBC95 \uD0C4\uD658 \uC9C4\uD654"
   m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_combination_skill: {fileID: 11400000, guid: a47be217adcec2cab96eb0728b526847, type: 2}

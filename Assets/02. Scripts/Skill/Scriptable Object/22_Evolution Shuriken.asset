@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62507835b75e04083802faece174b8d8, type: 3}
-  m_Name: 3_Call lightning
+  m_Name: 22_Evolution Shuriken
   m_EditorClassIdentifier: 
-  m_skil_id: 3
+  m_skil_id: 22
   m_skill_type: 0
-  m_skill_name: "\uBC88\uAC1C \uBD80\uB974\uAE30"
+  m_skill_name: "\uD3ED\uD48D \uC218\uB9AC\uAC80"
   m_skill_description:
-  - "\xB7 \uBB34\uC791\uC704 \uC801\uC5D0\uAC8C \uB5A8\uC5B4\uC9C0\uB294 \uBC88\uAC1C
-    \uC18C\uD658"
-  - "\xB7 \uD53C\uD574\uB7C9 \uC99D\uAC00"
-  - "\xB7 \uBC88\uAC1C \uC218 \uC99D\uAC00"
-  - "\xB7 \uBC88\uAC1C \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
+  - "\xB7 \uD68C\uC804 \uC218\uB9AC\uAC80 \uC9C4\uD654"
   m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_combination_skill: {fileID: 11400000, guid: d683ab654f18206e884b971e8ba6a788, type: 2}
