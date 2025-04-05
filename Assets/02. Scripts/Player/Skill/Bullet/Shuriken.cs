@@ -14,7 +14,7 @@ public class Shuriken : Kunai
     {
         if (col.CompareTag("Enemy"))
         {
-            //데미지
+            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
             //넉백
         }
     }

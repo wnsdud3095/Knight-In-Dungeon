@@ -56,7 +56,7 @@ public class Kunai : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            //데미지 함수 호출
+            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
         }
         else if(col.CompareTag("ScreenOutLine"))
         {
