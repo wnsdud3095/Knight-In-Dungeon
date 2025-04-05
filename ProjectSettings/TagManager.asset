@@ -8,6 +8,7 @@ TagManager:
   - GroundCheckArea
   - Enemy
   - ScreenOutLine
+  - ScreenBox
   - Exp
   - Skill
   layers:

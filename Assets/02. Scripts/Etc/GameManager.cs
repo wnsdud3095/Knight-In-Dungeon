@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
         private set { m_player_ctrl = value; }
     }
 
-    private bool m_can_init = false;
+    private bool m_can_init = true;
 
     private new void Awake()
     {

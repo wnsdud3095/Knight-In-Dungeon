@@ -3,10 +3,17 @@ using UnityEngine;
 public class ScreenOutlinCtrl : MonoBehaviour
 {
     [SerializeField]
-    private BoxCollider2D[] colliders;
+    private BoxCollider2D[] m_outline_colliders;
+
+    public Camera Cam { get; private set; }
+    public float CamHeight { get; private set; }
+    public float CamWidth { get; private set; }
 
     void Start()
-    {
+    {        
+        Cam = Camera.main;
+        CamHeight = Cam.orthographicSize * 2f;
+        CamWidth = CamHeight * Cam.aspect;
         MakeOutLine();
     }
 
@@ -18,23 +25,18 @@ public class ScreenOutlinCtrl : MonoBehaviour
 
     public void MakeOutLine()
     {
-        Camera cam = Camera.main;
-        if (cam == null) return;
+        m_outline_colliders[0].size = new Vector2(0.1f, CamHeight); // Left
+        m_outline_colliders[0].offset = new Vector2(-CamWidth / 2, 0);
 
-        float cam_height = cam.orthographicSize * 2f;
-        float cam_width = cam_height * cam.aspect;
+        m_outline_colliders[1].size = new Vector2(0.1f, CamHeight); // Right
+        m_outline_colliders[1].offset = new Vector2(CamWidth / 2, 0);
 
-        colliders[0].size = new Vector2(0.1f, cam_height); // Left
-        colliders[0].offset = new Vector2(-cam_width / 2, 0);
+        m_outline_colliders[2].size = new Vector2(CamWidth, 0.1f); // Bottom
+        m_outline_colliders[2].offset = new Vector2(0, -CamHeight / 2);
 
-        colliders[1].size = new Vector2(0.1f, cam_height); // Right
-        colliders[1].offset = new Vector2(cam_width / 2, 0);
-
-        colliders[2].size = new Vector2(cam_width, 0.1f); // Bottom
-        colliders[2].offset = new Vector2(0, -cam_height / 2);
-
-        colliders[3].size = new Vector2(cam_width, 0.1f); // Top
-        colliders[3].offset = new Vector2(0, cam_height / 2);
+        m_outline_colliders[3].size = new Vector2(CamWidth, 0.1f); // Top
+        m_outline_colliders[3].offset = new Vector2(0, CamHeight / 2);
 
     }
+
 }
