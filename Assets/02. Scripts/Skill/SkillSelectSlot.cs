@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +32,13 @@ public class SkillSelectSlot : MonoBehaviour
     public PlayerSkillBase Base
     {
         get { return m_skill_base; }
+    }
+
+    private SkillSelector m_skill_selector;
+
+    private void Awake()
+    {
+        m_skill_selector = GameObject.Find("Select UI").GetComponent<SkillSelector>();   
     }
 
     public void Initialize()
@@ -195,12 +201,54 @@ public class SkillSelectSlot : MonoBehaviour
                 m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
                 break;
         }
-
-        Debug.Log(m_skill.ID);
     }
 
     public void Button_Slot()
     {
+        bool can_select = false;
+        if(Skill.Type == SkillType.Active)
+        {
+            foreach(SkillSlot slot in m_skill_selector.ActiveSkillSlots)
+            {
+                if(slot.Skill is null)
+                {
+                    can_select = true;
+                    slot.Add(Skill);
+                }
+
+                if(slot.Skill == Skill)
+                {
+                    can_select = true;
+                }
+            }
+
+            if(can_select is false)
+            {
+                return;
+            }
+        }
+        else
+        {
+            foreach(SkillSlot slot in m_skill_selector.PassiveSkillSlots)
+            {
+                if(slot.Skill is null)
+                {
+                    can_select = true;
+                    slot.Add(Skill);
+                }
+
+                if(slot.Skill == Skill)
+                {
+                    can_select = true;
+                }
+            }
+
+            if(can_select is false)
+            {
+                return;
+            }
+        }
+
         GameEventBus.Publish(GameEventType.Playing);
         
         m_skill_base.LevelUP();

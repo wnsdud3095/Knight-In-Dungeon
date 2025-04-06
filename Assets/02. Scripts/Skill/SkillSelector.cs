@@ -9,6 +9,22 @@ public class SkillSelector : MonoBehaviour
     [Header("스킬 선택 슬롯 UI의 부모 트랜스폼")]
     [SerializeField] private Transform m_slot_parent;
 
+    [Header("공격 스킬 슬롯 UI의 부모 트랜스폼")]
+    [SerializeField] private Transform m_active_skill_slot_parent;
+    private SkillSlot[] m_active_skill_slots;
+    public SkillSlot[] ActiveSkillSlots
+    {
+        get { return m_active_skill_slots; }
+    }
+
+    [Header("버프 스킬 슬롯 UI의 부모 트랜스폼")]
+    [SerializeField] private Transform m_passive_skill_slot_parent;
+    private SkillSlot[] m_passive_skill_slots;
+    public SkillSlot[] PassiveSkillSlots
+    {
+        get { return m_passive_skill_slots; }
+    }
+
     private SkillSelectSlot[] m_skill_select_slots;
 
     private List<int> m_selected_slots;
@@ -16,6 +32,9 @@ public class SkillSelector : MonoBehaviour
     private void Awake()
     {
         m_skill_select_slots = m_slot_parent.GetComponentsInChildren<SkillSelectSlot>();
+        m_active_skill_slots = m_active_skill_slot_parent.GetComponentsInChildren<SkillSlot>();
+        m_passive_skill_slots = m_passive_skill_slot_parent.GetComponentsInChildren<SkillSlot>();
+        
         m_selected_slots = new List<int>();
     }
 

@@ -24352,6 +24352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_selector_ui_animator: {fileID: 1829770033}
   m_slot_parent: {fileID: 1759623502}
+  m_active_skill_slot_parent: {fileID: 1550242991}
+  m_passive_skill_slot_parent: {fileID: 398122540}
 --- !u!1001 &1859331435
 PrefabInstance:
   m_ObjectHideFlags: 0

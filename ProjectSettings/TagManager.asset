@@ -9,7 +9,6 @@ TagManager:
   - Enemy
   - ScreenOutLine
   - ScreenBox
-  - Exp
   - Skill
   layers:
   - Default
