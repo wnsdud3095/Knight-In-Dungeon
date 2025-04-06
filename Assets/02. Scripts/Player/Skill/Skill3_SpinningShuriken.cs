@@ -14,6 +14,7 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
 
     protected float m_life_time = 5f;
 
+    [SerializeField]
     protected float m_damage;
     private float m_damage_up_ratio = 1.2f;
 

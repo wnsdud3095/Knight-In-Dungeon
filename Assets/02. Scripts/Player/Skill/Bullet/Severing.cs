@@ -74,7 +74,7 @@ public class Severing : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             GameManager.Instance.Player.UpdateHP(Heal);
-            //데미지 함수 호출
+            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
         }
     }
 }

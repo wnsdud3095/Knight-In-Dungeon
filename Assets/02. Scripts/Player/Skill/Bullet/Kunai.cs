@@ -4,16 +4,21 @@ public class Kunai : MonoBehaviour
 { 
     public float Damage { get; set; }
     public float ReflectCount { get; set; }
-    public float LifeTime { get; set; }
+
+    [HideInInspector]
+    protected float m_life_time = 0;
+    private float m_origin_life_time = 6f;
 
     private float m_speed = 6f;
  
-
-    private float m_origin_life_time = 7f;
-
     private int m_reflect_angle_min = 130;
     private int m_reflect_angle_max = 230;
 
+
+    private void OnEnable()
+    {
+        m_life_time = m_origin_life_time;
+    }
 
     void Update()
     {
@@ -32,9 +37,9 @@ public class Kunai : MonoBehaviour
 
     public void LifeTimeCheck()
     {
-        if (LifeTime > 0)
+        if (m_life_time > 0)
         {
-            LifeTime -= Time.deltaTime;
+            m_life_time -= Time.deltaTime;
         }
         else
         {
@@ -51,7 +56,7 @@ public class Kunai : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            //데미지 함수 호출
+            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
         }
         else if(col.CompareTag("ScreenOutLine"))
         {

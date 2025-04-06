@@ -23,10 +23,6 @@ public class ESevering : Severing
         m_col_groups[2] = m_combo3_cols;
         m_col_groups[3] = m_combo4_cols;
         m_col_groups[4] = m_combo5_cols;
-        for (int i = 0; i < m_col_groups.Length; i++)
-        {
-            Debug.Log($"m_col_groups[{i}]: {m_col_groups[i]?.Length} 개의 콜라이더");
-        }
     }
 
     private void OnEnable()
@@ -66,8 +62,6 @@ public class ESevering : Severing
         {
             AnimatorStateInfo info = m_animator.GetCurrentAnimatorStateInfo(0);
             float n_time = info.normalizedTime;
-
-            Debug.Log($" {colliders[0].gameObject.name} : n_time 값 {n_time}");
 
             if (n_time >= 0.25f && !triggered_points.Contains(0.25f))
             {

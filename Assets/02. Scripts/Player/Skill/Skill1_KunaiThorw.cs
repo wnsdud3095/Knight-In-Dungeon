@@ -19,8 +19,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
    
     private float m_damage_up_ratio = 1.2f;
 
-    protected float m_kunai_life_time = 5f;
-
     private Vector2 save_input_vector = Vector2.right;
 
 
@@ -63,7 +61,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             prefab.transform.Translate(Vector3.right * Random.Range(-m_spawn_right_area_max, m_spawn_right_area_max));
             prefab.GetComponent<Kunai>().Damage = m_damage; //효율적인 참조를 위해 Get 말고 Set 방식 사용
             prefab.GetComponent<Kunai>().ReflectCount = m_reflect_count;
-            prefab.GetComponent<Kunai>().LifeTime = m_kunai_life_time;
         }   
     }
 

@@ -6,6 +6,7 @@ public class EnemyFSM : MonoBehaviour
 
     [SerializeField] private EnemyData enemyData;
     private float currentHealth;
+    public float currentMoveSpeed;
 
     private Transform player;
     private Animator animator;
@@ -13,7 +14,6 @@ public class EnemyFSM : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isDead = false;
     private Collider2D coll;
-    public GameObject expOrbPrefab; 
 
     void Awake()
     {
@@ -45,6 +45,7 @@ public class EnemyFSM : MonoBehaviour
     {
         isDead = false;
         currentHealth = enemyData.maxHealth;
+        currentMoveSpeed = enemyData.moveSpeed;
         rb.simulated = true;
         coll.enabled = true;
         spriteRenderer.sortingOrder = 2;
@@ -62,11 +63,22 @@ public class EnemyFSM : MonoBehaviour
         if (player == null) return;
 
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * enemyData.moveSpeed;
+        rb.linearVelocity = direction * currentMoveSpeed;
 
         animator.SetFloat("Speed", rb.linearVelocity.magnitude);
         spriteRenderer.flipX = player.position.x < transform.position.x;
     }
+
+    public void Slow(float slowValue)
+    {
+        currentMoveSpeed = enemyData.moveSpeed * slowValue;
+    }
+
+    public void ClearSlow()
+    {
+        currentMoveSpeed = enemyData.moveSpeed;
+    }
+
 
     public void TakeDamage(float damage)
     {
@@ -99,13 +111,22 @@ public class EnemyFSM : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    
+
     void DropExp()
     {
-        GameObject exp_orb = ObjectManager.Instance.GetObject(ObjectType.Exp);
-        exp_orb.GetComponent<Exp>().SetExpAmount(enemyData.Exp);
-        
-        exp_orb.transform.position = transform.position;
+        GameObject expOrb = ExpPool.Instance.GetExp();
+        expOrb.transform.position = transform.position;
+
+        exp orbScript = expOrb.GetComponent<exp>();
+        if (orbScript != null)
+        {
+            orbScript.SetExpAmount(enemyData.Exp);
+        }
+    }
+
+    public EnemyData GetEnemyData()
+    {
+        return enemyData;
     }
 }
 
