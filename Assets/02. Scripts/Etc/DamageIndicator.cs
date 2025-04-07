@@ -28,7 +28,7 @@ public class DamageIndicator : MonoBehaviour
 
     public void Initialize(float damage)
     {
-        m_damage_label.text = damage.ToString();
+        m_damage_label.text = NumberFormatter.FormatNumber(damage);
     }
 
     public void Return()

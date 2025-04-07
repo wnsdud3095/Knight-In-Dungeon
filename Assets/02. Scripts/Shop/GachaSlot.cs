@@ -58,8 +58,8 @@ public class GachaSlot : MonoBehaviour
         m_description_label.text = Gacha.Description;
         m_image.sprite = Gacha.Image;
 
-        m_one_button_label.text = $"<color=green>1회 구매</color> {Gacha.Cost}";
-        m_set_button_label.text = $"<color=green>10회 구매</color> {Gacha.Cost * 9}";
+        m_one_button_label.text = $"<color=green>1회 구매</color> {NumberFormatter.FormatNumber(Gacha.Cost)}";
+        m_set_button_label.text = $"<color=green>10회 구매</color> {NumberFormatter.FormatNumber(Gacha.Cost * 9)}";
 
         SetAlpha(1f);
     }

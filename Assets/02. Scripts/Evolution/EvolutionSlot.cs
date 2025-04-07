@@ -99,18 +99,18 @@ public class EvolutionSlot : MonoBehaviour
     private void SetSlotLabel()
     {
         m_unlock_label.text = $"LV.{m_unlock_level}";
-        m_button_label.text = Cost.ToString();
+        m_button_label.text = NumberFormatter.FormatNumber(Cost);
 
         switch(Type)
         {
             case EvolutionType.HP:
                 m_name_label.text = "<color=green>체력 강화</color>";
-                m_description_label.text = $"체력 <color=#47D8CD>+{Rate}</color>";
+                m_description_label.text = $"체력 <color=#47D8CD>+{NumberFormatter.FormatNumber(Rate)}</color>";
                 break;
             
             case EvolutionType.ATK:
                 m_name_label.text  = "<color=#FF7F00>공격력 강화</color>";
-                m_description_label.text = $"공격력 <color=#47D8CD>+{Rate}</color>";
+                m_description_label.text = $"공격력 <color=#47D8CD>+{NumberFormatter.FormatNumber(Rate)}</color>";
                 break;
             
             case EvolutionType.HP_REGEN:
