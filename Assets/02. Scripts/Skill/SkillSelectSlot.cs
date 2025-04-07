@@ -116,25 +116,25 @@ public class SkillSelectSlot : MonoBehaviour
             case 1:
                 if(m_skill_base is null)
                 {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
+                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill2_Severing>();
                 }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
+                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill2_Severing>();
                 break;
             
             case 2:
                 if(m_skill_base is null)
                 {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
+                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill3_SpinningShuriken>();
                 }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
+                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill3_SpinningShuriken>();
                 break;
             
             case 3:
                 if(m_skill_base is null)
                 {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
+                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill4_CallThunder>();
                 }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
+                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill4_CallThunder>();
                 break;
             
             case 4:
@@ -214,11 +214,14 @@ public class SkillSelectSlot : MonoBehaviour
                 {
                     can_select = true;
                     slot.Add(Skill);
+
+                    break;
                 }
 
                 if(slot.Skill == Skill)
                 {
                     can_select = true;
+                    break;
                 }
             }
 
@@ -235,11 +238,14 @@ public class SkillSelectSlot : MonoBehaviour
                 {
                     can_select = true;
                     slot.Add(Skill);
+
+                    break;
                 }
 
                 if(slot.Skill == Skill)
                 {
                     can_select = true;
+                    break;
                 }
             }
 

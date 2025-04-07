@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.262, y: 3.378, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -215,4 +215,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: ad0bf84bf35308d4fb2d6d8cc96a9acb, type: 2}
   value: 0
-  target: {fileID: 6430480736450189984, guid: 2a24dfc5f216f4a47b296e954cfc9aa8, type: 3}

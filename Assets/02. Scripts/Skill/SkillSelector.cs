@@ -65,36 +65,61 @@ public class SkillSelector : MonoBehaviour
     {
         Initialize();
 
-        while(m_selected_slots.Count < 3)
-        {
-            // TOOD: 인벤에 있는 애들이 모두 만렙이라면 소비 아이템 바꿔치기.
-
-            int random_idx = UnityEngine.Random.Range(0, m_skill_select_slots.Length);
-
-            if(m_selected_slots.Contains(random_idx))
+            while(m_selected_slots.Count < 3)
             {
-                continue;
+                // TOOD: 인벤에 있는 애들이 모두 만렙이라면 소비 아이템 바꿔치기.
+
+                int random_idx = UnityEngine.Random.Range(0, m_skill_select_slots.Length);
+
+                if(m_selected_slots.Contains(random_idx))
+                {
+                    continue;
+                }
+
+                if(m_skill_select_slots[random_idx].Base?.Level > 6)
+                {
+                    continue;
+                }
+
+                m_selected_slots.Add(random_idx);
             }
 
-            if(m_skill_select_slots[random_idx].Base?.Level > 6)
+            foreach(int index in m_selected_slots)
             {
-                continue;
+                m_skill_select_slots[index].Initialize();
+                
+                if(m_skill_select_slots[index].Base.Level == 5)
+                {
+                    m_skill_select_slots[index].ChangeToEvolution();
+                }
+
+                m_skill_select_slots[index].gameObject.SetActive(true);
             }
+        // else
+        // {
+        //     while(m_selected_slots.Count < 3)
+        //     {
+        //         int random_idx = UnityEngine.Random.Range(0, m_skill_select_slots.Length);
 
-            m_selected_slots.Add(random_idx);
-        }
+        //         if(m_skill_select_slots[random_idx].Skill.Type is SkillType.Active)
+        //         {
+        //             foreach(SkillSlot slot in ActiveSkillSlots)
+        //             {
+        //                 if(slot.Skill.ID == m_skill_select_slots[random_idx].Skill.ID)
+        //                 {
+                            
+        //                 }
+        //             }
+        //         }
+        //         else
+        //         {
+        //             foreach(SkillSlot slot in PassiveSkillSlots)
+        //             {
 
-        foreach(int index in m_selected_slots)
-        {
-            m_skill_select_slots[index].Initialize();
-            
-            if(m_skill_select_slots[index].Base.Level == 5)
-            {
-                m_skill_select_slots[index].ChangeToEvolution();
-            }
-
-            m_skill_select_slots[index].gameObject.SetActive(true);
-        }
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     private void DeactiveSlots()
