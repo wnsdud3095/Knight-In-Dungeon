@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 8164333797295709971}
   - component: {fileID: 3061723946260579272}
   - component: {fileID: 2192079685369842399}
-  - component: {fileID: 4489048051503499557}
   m_Layer: 5
   m_Name: Skill Select Slot
   m_TagString: Untagged
@@ -368,28 +367,6 @@ MonoBehaviour:
   m_skill_name_label: {fileID: 4020515527344421710}
   m_skill_description_label: {fileID: 4629876675568596926}
   m_combination_image: {fileID: 2001638406803245808}
---- !u!95 &4489048051503499557
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2490104405975481881}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 872e4c1bc2e878bfbb1125bf502c85dc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3210635934112296419
 GameObject:
   m_ObjectHideFlags: 0

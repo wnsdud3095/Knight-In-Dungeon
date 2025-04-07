@@ -75,6 +75,11 @@ public class Severing : MonoBehaviour
         {
             GameManager.Instance.Player.UpdateHP(Heal);
             col.GetComponent<EnemyFSM>().TakeDamage(Damage);
+
+            GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
+            
+            damage_indicator.GetComponent<DamageIndicator>().Initialize(Damage);
+            damage_indicator.transform.position = col.transform.position;
         }
     }
 }

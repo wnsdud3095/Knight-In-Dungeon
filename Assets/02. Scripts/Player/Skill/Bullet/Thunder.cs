@@ -56,6 +56,11 @@ public class Thunder : MonoBehaviour
             col.GetComponent<EnemyFSM>().TakeDamage(Damage);
 
             Debug.Log("적중");
+
+            GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
+            
+            damage_indicator.GetComponent<DamageIndicator>().Initialize(Damage);
+            damage_indicator.transform.position = col.transform.position;
         }
     }
 }

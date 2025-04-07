@@ -211,6 +211,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &47408702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47408703}
+  m_Layer: 0
+  m_Name: Damage Indicator Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &47408703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47408702}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613947692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &53958630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,6 +5073,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pool_info_list:
+  - m_type: 0
+    m_init_count: 50
+    m_Prefab: {fileID: 3994228217906456388, guid: 2a4d8b1fe31a0ee0f9f0e794c6cd5fbd, type: 3}
+    m_container: {fileID: 47408702}
   - m_type: 1
     m_init_count: 10
     m_Prefab: {fileID: 5554795892748523664, guid: ff050046aaaba754bb4e4c1ce392e841, type: 3}
@@ -5090,6 +5125,7 @@ Transform:
   - {fileID: 498560671}
   - {fileID: 2091685899}
   - {fileID: 1311534627}
+  - {fileID: 47408703}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644722856
