@@ -53,8 +53,8 @@ public class EquipmentInventory : InventoryBase
 
     public void SetEffectLabel()
     {
-        m_atk_label.text = EquipmentEffect.ATK.ToString();
-        m_hp_label.text = EquipmentEffect.HP.ToString();
+        m_atk_label.text = NumberFormatter.FormatNumber(EquipmentEffect.ATK);
+        m_hp_label.text = NumberFormatter.FormatNumber(EquipmentEffect.HP);
     }
 
     public InventorySlot GetEquipmentSlot(ItemType type)

@@ -102,6 +102,8 @@ public class EnemyFSM : MonoBehaviour
         spriteRenderer.sortingOrder = 1;
         animator.SetTrigger("Die");
 
+        GameObject.Find("Stage Manager").GetComponent<StageManager>().Kill++;
+
         DropExp();
 
         Invoke("DisableEnemy", 2f);
@@ -114,14 +116,10 @@ public class EnemyFSM : MonoBehaviour
 
     void DropExp()
     {
-        GameObject expOrb = ExpPool.Instance.GetExp();
-        expOrb.transform.position = transform.position;
+        GameObject exp_orb = ObjectManager.Instance.GetObject(ObjectType.Exp);
+        exp_orb.transform.position = transform.position;
 
-        exp orbScript = expOrb.GetComponent<exp>();
-        if (orbScript != null)
-        {
-            orbScript.SetExpAmount(enemyData.Exp);
-        }
+        exp_orb.GetComponent<Exp>().SetExpAmount(enemyData.Exp);
     }
 
     public EnemyData GetEnemyData()

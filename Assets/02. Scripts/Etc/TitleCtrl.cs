@@ -58,7 +58,7 @@ public class TitleCtrl : MonoBehaviour
 
     private void Update()
     {
-        m_money_label.text = DataManager.Instance.Data.m_user_money.ToString();
+        m_money_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.m_user_money);
     }
 
     public void SetCalculatedStat()

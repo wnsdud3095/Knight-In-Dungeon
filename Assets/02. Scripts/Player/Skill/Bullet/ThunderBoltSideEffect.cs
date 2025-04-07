@@ -5,11 +5,16 @@ public class ThunderBoltSideEffect : MonoBehaviour
     private float m_life_time = 1f;
     private float m_origin_life_time = 3f;
 
-    private float m_damage = GameManager.Instance.Player.Stat.AtkDamage / 10f;
+    private float m_damage;
 
     private void OnEnable()
     {
         m_life_time = m_origin_life_time;
+    }
+
+    private void Awake()
+    {
+        m_damage = GameManager.Instance.Player.Stat.AtkDamage / 10f;
     }
 
     // Update is called once per frame
