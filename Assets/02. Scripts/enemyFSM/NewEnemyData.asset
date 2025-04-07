@@ -15,4 +15,4 @@ MonoBehaviour:
   moveSpeed: 1
   attackRange: 2
   maxHealth: 5
-  Exp: 10
+  Exp: 5

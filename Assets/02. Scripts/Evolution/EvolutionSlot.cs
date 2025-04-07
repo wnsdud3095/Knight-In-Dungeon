@@ -104,7 +104,7 @@ public class EvolutionSlot : MonoBehaviour
         switch(Type)
         {
             case EvolutionType.HP:
-                m_name_label.text = "<color=green>체력 강화</color>";
+                m_name_label.text = "<color=#FF7F00>체력 강화</color>";
                 m_description_label.text = $"체력 <color=#47D8CD>+{NumberFormatter.FormatNumber(Rate)}</color>";
                 break;
             
@@ -114,7 +114,7 @@ public class EvolutionSlot : MonoBehaviour
                 break;
             
             case EvolutionType.HP_REGEN:
-                m_name_label.text = "<color=red>체력재생력 강화</color>";
+                m_name_label.text = "<color=#FF7F00>체력재생력 강화</color>";
                 m_description_label.text = $"체력재생력 <color=#47D8CD>+{Rate}%</color>";
                 break;
         }

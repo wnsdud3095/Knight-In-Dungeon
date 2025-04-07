@@ -53,8 +53,6 @@ public class InventoryTooltip : MonoBehaviour
     {   
         SoundManager.Instance.PlayEffect("Button Click");
 
-        m_current_slot = null;
-
         m_tooltip_object.SetBool("Open", false);
     }
 
