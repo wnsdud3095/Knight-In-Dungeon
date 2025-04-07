@@ -16,7 +16,7 @@ public class Skill5_MagicMissile : PlayerSkillBase
 
     private Collider2D[] cols;
 
-    private Transform m_nearest_target;
+    protected Transform m_nearest_target;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class Skill5_MagicMissile : PlayerSkillBase
         }
     }
 
-    private Transform GetNearest()
+    protected Transform GetNearest()
     {
         Transform result = null;
         float min = 100f;

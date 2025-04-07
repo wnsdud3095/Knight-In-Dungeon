@@ -13,7 +13,7 @@ public class SkillManager : MonoBehaviour
         //AddSkill<ESkill2_Severing>();
         //AddSkill<ESkill3_SpinningShuriken>();
         //AddSkill<ESkill4_CallThunder>();
-        AddSkill<Skill5_MagicMissile>();
+        AddSkill<ESkill5_MagicMissile>();
     }
 
     // Update is called once per frame

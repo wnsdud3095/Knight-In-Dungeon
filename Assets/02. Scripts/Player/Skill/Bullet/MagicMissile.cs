@@ -2,35 +2,47 @@ using UnityEngine;
 
 public class MagicMissile : MonoBehaviour
 {
-    public float Damage { get; set; }
+    private float m_damage;  
+
+    public float Damage
+    {
+        get { return m_damage; }
+        set { m_damage = value * m_damage_up; }
+    }
     public float Speed { get; set; } = 6f;
 
     private int m_per_count = 1;
 
-    private float m_life_time = 0;
-    private float m_origin_life_time = 4f;
+    protected float m_life_time = 0;
+    protected float m_origin_life_time = 4f;
 
+    protected float m_damage_up = 1f;
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         m_life_time = m_origin_life_time;
         m_per_count = 1;
     }
 
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
 
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
 
+        PerCheck();
         LifeTimeCheck();
     }
 
-    public void LifeTimeCheck()
+    private void PerCheck()
     {
-        if(m_per_count<=0) ReturnToPool();
+        if (m_per_count <= 0) ReturnToPool();
+    }
+
+    protected void LifeTimeCheck()
+    {
+        
 
         if (m_life_time > 0)
         {
@@ -42,7 +54,7 @@ public class MagicMissile : MonoBehaviour
         }
     }
 
-    public void ReturnToPool()
+    protected void ReturnToPool()
     {
         gameObject.SetActive(false);
     }
@@ -50,7 +62,7 @@ public class MagicMissile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        /*
+        
         if (col.CompareTag("Enemy"))
         {
             col.GetComponent<EnemyFSM>().TakeDamage(Damage);
@@ -60,6 +72,6 @@ public class MagicMissile : MonoBehaviour
             damage_indicator.GetComponent<DamageIndicator>().Initialize(Damage);
             damage_indicator.transform.position = col.transform.position;
             m_per_count--;
-        }*/
+        }
     }
 }
