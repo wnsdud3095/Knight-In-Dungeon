@@ -79,7 +79,6 @@ public class EnemyFSM : MonoBehaviour
         currentMoveSpeed = enemyData.moveSpeed;
     }
 
-
     public void TakeDamage(float damage)
     {
         if (isDead) return;
