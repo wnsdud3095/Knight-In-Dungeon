@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Skill3_SpinningShuriken : PlayerSkillBase
 {
+    //데미지 관련
+    protected float m_skill3_damage_ratio = 1.2f; // 스킬의 공격력 계수
+    protected float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
+    private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
+
     protected float m_skill3_cool_time = 5f;
     protected int m_shuriken_count = 2;
 
@@ -14,16 +19,11 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
 
     protected float m_life_time = 5f;
 
-    [SerializeField]
-    protected float m_damage;
-    private float m_damage_up_ratio = 1.2f;
-
     protected GameObject m_rotater;
 
     protected virtual void Start()
     {
         m_cool_time = m_skill3_cool_time;
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage;
 
         Transform[] transforms = GameManager.Instance.Player.transform.GetComponentsInChildren<Transform>(true);
         foreach (Transform t in transforms)
@@ -69,7 +69,8 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
             Vector3 rot_vec = Vector3.forward * 360 * i / m_shuriken_count;
             prefab.transform.Rotate(rot_vec);
             prefab.transform.Translate(prefab.transform.up * m_spinning_radius , Space.World);
-            prefab.GetComponent<Shuriken>().Damage = m_damage;
+
+            prefab.GetComponent<Shuriken>().Damage = GetFinallDamage(m_skill3_damage_ratio, m_damage_level_ratio);
             prefab.GetComponent<Shuriken>().LifeTime = m_life_time;
             m_rotater.SetActive(true);
             m_rotater.GetComponent<ShurikenRotater>().SpinningSpeed = m_spinning_spped;
@@ -78,8 +79,8 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
-        m_damage *= m_damage_up_ratio;
-        if(level % 2 ==0)
+        m_damage_level_ratio += m_damage_levelup_ratio;
+        if (level % 2 ==0)
         {
             m_spinning_spped *= m_spinning_spped_up_ratio;
         }

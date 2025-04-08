@@ -8,11 +8,12 @@ public class ESkill6_PiercingLight : Skill6_PiercingLight
 
     private float m_v_light_expand = 6.2f;
 
+    private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
+
     protected override void Awake()
     {
         base.Awake();
         m_cool_time = m_e_skill6_cool_time;
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage*6;
         m_light_count = m_h_light_count;
     }
 
@@ -30,7 +31,7 @@ public class ESkill6_PiercingLight : Skill6_PiercingLight
             float y = m_cam.transform.position.y + m_cam_height / 2f;
 
             prefab.transform.position = new Vector2(x, y);
-            prefab.GetComponent<PiercingLight>().Damage = m_damage;
+            prefab.GetComponent<PiercingLight>().Damage = GetFinallDamage(m_skill6_damage_ratio, m_damage_e_level_ratio);
             prefab.GetComponent<PiercingLight>().LightExpand = m_v_light_expand;
         }
     }

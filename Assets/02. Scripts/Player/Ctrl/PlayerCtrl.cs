@@ -49,7 +49,11 @@ public class PlayerCtrl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameManager.Instance.GameState != GameEventType.Playing) return;
+        if (GameManager.Instance.GameState != GameEventType.Playing)
+        {
+            m_rigid.linearVelocity = Vector2.zero;
+            return;
+        }
 
         Move();
 

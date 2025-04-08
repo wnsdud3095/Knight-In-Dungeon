@@ -4,12 +4,11 @@ public class ESkill5_MagicMissile : Skill5_MagicMissile
 {
     private float m_e_skill5_cool_time = 1f;
     private float m_e_throw_speed = 8f;
-    private float m_e_damage;
+    private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
 
     void Awake()
     {
         m_cool_time = m_e_skill5_cool_time;
-        m_e_damage = GameManager.Instance.Player.Stat.AtkDamage * 4f;
     }
 
     protected override void SpawnMissile()
@@ -32,7 +31,7 @@ public class ESkill5_MagicMissile : Skill5_MagicMissile
         }
 
         prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, dir);
-        prefab.GetComponent<MagicMissile>().Damage = m_e_damage;
+        prefab.GetComponent<MagicMissile>().Damage = GetFinallDamage(m_skill5_damage_ratio, m_damage_e_level_ratio);
         prefab.GetComponent<MagicMissile>().Speed = m_e_throw_speed;
     }
 }

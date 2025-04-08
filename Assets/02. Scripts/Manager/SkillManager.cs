@@ -9,12 +9,13 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        //AddSkill<Skill1_KunaiThorw>();
+        AddSkill<Skill1_KunaiThorw>();
+        AddSkill<DamageBuffSkill>();
         //AddSkill<ESkill2_Severing>();
         //AddSkill<ESkill3_SpinningShuriken>();
         //AddSkill<ESkill4_CallThunder>();
         //AddSkill<ESkill5_MagicMissile>();
-        AddSkill<ESkill6_PiercingLight>();
+        //AddSkill<ESkill6_PiercingLight>();
     }
 
     // Update is called once per frame

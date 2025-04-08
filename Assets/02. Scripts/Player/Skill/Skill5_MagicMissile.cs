@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class Skill5_MagicMissile : PlayerSkillBase
 {
+    //데미지 관련
+    protected float m_skill5_damage_ratio = 1.1f; // 스킬의 공격력 계수
+    private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
+    private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
+
     private float m_skill5_cool_time = 1f;
     private float m_throw_speed = 6f;
 
     private float m_throw_speed_increase = 2f;
     private float m_cool_time_decrease = 0.25f;
-
-    private float m_damage;
-
-    private float m_damage_up_ratio = 1.2f;
 
     private float m_detect_radius = 4f;
 
@@ -21,7 +22,6 @@ public class Skill5_MagicMissile : PlayerSkillBase
     private void Awake()
     {
         m_cool_time = m_skill5_cool_time;
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage *2;
     }
 
 
@@ -80,14 +80,14 @@ public class Skill5_MagicMissile : PlayerSkillBase
         }
         
         prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, dir);
-        prefab.GetComponent<MagicMissile>().Damage = m_damage;
+        prefab.GetComponent<MagicMissile>().Damage = GetFinallDamage(m_skill5_damage_ratio, m_damage_level_ratio);
         prefab.GetComponent<MagicMissile>().Speed = m_throw_speed;
     }
 
     protected override void ApplyLevelUpEffect(int level)
     {
-        m_damage *= m_damage_up_ratio;
-        if(level%2 == 0)
+        m_damage_level_ratio += m_damage_levelup_ratio;
+        if (level%2 == 0)
         {
             m_cool_time -= m_cool_time_decrease;
         }

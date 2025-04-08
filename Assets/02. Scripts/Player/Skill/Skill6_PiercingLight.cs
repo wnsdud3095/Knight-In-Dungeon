@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class Skill6_PiercingLight : PlayerSkillBase
 {
+    //데미지 관련
+    protected float m_skill6_damage_ratio = 1f; // 스킬의 공격력 계수
+    private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
+    private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
+
     private float m_skill6_cool_time = 5f;
     protected int m_light_count = 2;
 
     private int m_light_increase = 1;
     private float m_cool_time_decrease = 1;
 
-    protected float m_damage;
-
     protected Camera m_cam;
     protected float m_cam_height;
     protected float m_cam_width;
-
-    private float m_damage_up_ratio = 1.4f;
 
     private float m_light_expand = 3.2f;
 
@@ -25,7 +26,6 @@ public class Skill6_PiercingLight : PlayerSkillBase
         m_cam_width = m_cam_height * m_cam.aspect;
 
         m_cool_time = m_skill6_cool_time;
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage;
     }
 
     public override void UseSKill()
@@ -50,14 +50,14 @@ public class Skill6_PiercingLight : PlayerSkillBase
             float y = m_cam.transform.position.y - m_cam_height / 2f + spacing * (i + 1); //카메라 기준으로 y 좌표 계산
 
             prefab.transform.position = new Vector2(x, y);
-            prefab.GetComponent<PiercingLight>().Damage= m_damage;
+            prefab.GetComponent<PiercingLight>().Damage= GetFinallDamage(m_skill6_damage_ratio, m_damage_level_ratio);
             prefab.GetComponent<PiercingLight>().LightExpand = m_light_expand;
         }
     }
 
     protected override void ApplyLevelUpEffect(int level)
     {
-        m_damage *= m_damage_up_ratio;
+        m_damage_level_ratio += m_damage_levelup_ratio;
         if (level % 2 == 0)
         {
             m_light_count += m_light_increase;
