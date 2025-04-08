@@ -4,6 +4,21 @@ using System.Collections.Generic;
 public class SkillManager : MonoBehaviour
 {
     public List<PlayerSkillBase> UsingSKills { get; set; } = new List<PlayerSkillBase>();
+    private Dictionary<int, System.Type> m_skill_map = new Dictionary<int, System.Type>()
+    {
+        {0, typeof(Skill1_KunaiThorw)},
+        {1, typeof(Skill2_Severing)},
+        {2, typeof(Skill3_SpinningShuriken)},
+        {3, typeof(Skill4_CallThunder)},
+        {4, typeof(Skill1_KunaiThorw)},
+        {5, typeof(Skill1_KunaiThorw)},
+        {10, typeof(Skill1_KunaiThorw)},
+        {11, typeof(Skill1_KunaiThorw)},
+        {12, typeof(Skill1_KunaiThorw)},
+        {13, typeof(Skill1_KunaiThorw)},
+        {14, typeof(Skill1_KunaiThorw)},
+        {15, typeof(Skill1_KunaiThorw)}
+    };
 
     private int m_max_using_skill = 4;
 
@@ -31,6 +46,21 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    public void AddSkill(int skill_id)
+    {
+        if(UsingSKills.Count >= m_max_using_skill)
+        {
+            return;
+        }
+
+        if(m_skill_map.TryGetValue(skill_id, out var type))
+        {
+            var new_skill = (PlayerSkillBase)gameObject.AddComponent(type);
+            UsingSKills.Add(new_skill);
+            Debug.Log($"{type.Name} 스킬 추가");
+        }
+    } 
+
     public void UseSkills()
     {
         if (UsingSKills == null) return;
@@ -41,4 +71,13 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    public PlayerSkillBase GetSkillBase(int skill_id)
+    {
+        if(m_skill_map.TryGetValue(skill_id, out var type))
+        {
+            return (PlayerSkillBase)gameObject.GetComponent(type);
+        }
+
+        return null;
+    }
 }

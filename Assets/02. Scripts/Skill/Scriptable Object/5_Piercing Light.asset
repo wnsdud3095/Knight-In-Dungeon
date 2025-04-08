@@ -20,6 +20,6 @@ MonoBehaviour:
   - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B \uD53C\uD574\uB7C9 \uC99D\uAC00"
   - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B\uC758 \uC218 \uC99D\uAC00"
   - "\xB7 \uAFF0\uB6AB\uB294 \uBE5B \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
-  m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_skill_image: {fileID: 21300000, guid: 8705ed94ad90dbc8dbcb9be5f0adf0dc, type: 3}
   m_combination_skill: {fileID: 11400000, guid: a50100188eeb54c3abb26d15687d814b, type: 2}
-  m_evolution_skill: {fileID: 0}
+  m_evolution_skill: {fileID: 11400000, guid: c7b00908f7eb8859b9b7d8f0236f8a92, type: 2}

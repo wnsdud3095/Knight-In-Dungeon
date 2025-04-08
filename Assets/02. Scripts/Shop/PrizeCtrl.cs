@@ -24,6 +24,13 @@ public class PrizeCtrl : MonoBehaviour
 
     private int m_total_weight;
 
+    private Transform m_inventory_slot_container;
+
+    private void Awake()
+    {
+        m_inventory_slot_container = GameObject.Find("Inventory Slot Container").transform;
+    }
+
     public void OpenUI(Gacha gacha, int count)
     {
         m_prize_ui_object.SetBool("Open", true);
@@ -45,7 +52,7 @@ public class PrizeCtrl : MonoBehaviour
         
         foreach(var slot in m_slots)
         {
-            slot.transform.SetParent(GameObject.Find("Inventory Slot Container").transform);
+            slot.transform.SetParent(m_inventory_slot_container);
             ObjectManager.Instance.ReturnObject(slot.gameObject, ObjectType.InventorySlot);
         }
         m_slots.Clear();
