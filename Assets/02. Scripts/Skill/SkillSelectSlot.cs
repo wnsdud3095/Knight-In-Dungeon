@@ -35,15 +35,19 @@ public class SkillSelectSlot : MonoBehaviour
     }
 
     private SkillSelector m_skill_selector;
+    private SkillManager m_skill_manager;
+    private Animator m_select_animator;
 
     private void Awake()
     {
-        m_skill_selector = GameObject.Find("Select UI").GetComponent<SkillSelector>();   
+        m_skill_selector = GameObject.Find("Select UI").GetComponent<SkillSelector>();
+        m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
+        m_select_animator = GameObject.Find("Select UI").GetComponent<Animator>();
     }
 
     public void Initialize()
     {
-        SetSkill();  
+        m_skill_base = GameObject.Find("Skill Manager").GetComponent<SkillManager>().GetSkillBase(m_skill.ID);
 
         m_skill_image.sprite = m_skill.Image;
         SetAlpha(1f);
@@ -56,7 +60,7 @@ public class SkillSelectSlot : MonoBehaviour
         
         if(m_skill.Type is SkillType.Active)
         {
-            if(m_skill_base.Level == 1)
+            if(m_skill_base is null)
             {
                 m_skill_description_label.text = m_skill.Description[0];
             }
@@ -101,108 +105,6 @@ public class SkillSelectSlot : MonoBehaviour
         m_skill_image.color = color;
     }
 
-    private void SetSkill()
-    {
-        switch(m_skill.ID)
-        {
-            case 0:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 1:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill2_Severing>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill2_Severing>();
-                break;
-            
-            case 2:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill3_SpinningShuriken>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill3_SpinningShuriken>();
-                break;
-            
-            case 3:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill4_CallThunder>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill4_CallThunder>();
-                break;
-            
-            case 4:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 5:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-
-            case 10:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 11:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 12:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 13:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 14:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-            
-            case 15:
-                if(m_skill_base is null)
-                {
-                    GameObject.Find("Skill Manager").GetComponent<SkillManager>().AddSkill<Skill1_KunaiThorw>();
-                }
-                m_skill_base = GameObject.Find("Skill Manager").GetComponent<Skill1_KunaiThorw>();
-                break;
-        }
-    }
-
     public void Button_Slot()
     {
         bool can_select = false;
@@ -210,55 +112,55 @@ public class SkillSelectSlot : MonoBehaviour
         {
             foreach(SkillSlot slot in m_skill_selector.ActiveSkillSlots)
             {
-                if(slot.Skill is null)
+                if(!slot.Skill)
                 {
                     can_select = true;
                     slot.Add(Skill);
-
                     break;
                 }
 
-                if(slot.Skill == Skill)
+                if(slot.Skill.ID == Skill.ID)
                 {
                     can_select = true;
                     break;
                 }
-            }
-
-            if(can_select is false)
-            {
-                return;
             }
         }
         else
         {
             foreach(SkillSlot slot in m_skill_selector.PassiveSkillSlots)
             {
-                if(slot.Skill is null)
+                if(!slot.Skill)
                 {
                     can_select = true;
                     slot.Add(Skill);
-
                     break;
                 }
 
-                if(slot.Skill == Skill)
+                if(slot.Skill.ID == Skill.ID)
                 {
                     can_select = true;
                     break;
                 }
             }
+        }
 
-            if(can_select is false)
-            {
-                return;
-            }
+        if(can_select is false)
+        {
+            return;
         }
 
         GameEventBus.Publish(GameEventType.Playing);
         
-        m_skill_base.LevelUP();
+        if(m_skill_base is null)
+        {
+            m_skill_manager.AddSkill(Skill.ID);
+        }
+        else
+        {
+            m_skill_base.LevelUP();
+        }
 
-        GameObject.Find("Select UI").GetComponent<Animator>().SetBool("Open", false);
+        m_select_animator.SetBool("Open", false);
     }
 }

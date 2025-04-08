@@ -21,6 +21,6 @@ MonoBehaviour:
   - "\xB7 \uBC88\uAC1C \uD53C\uD574\uB7C9 \uC99D\uAC00"
   - "\xB7 \uBC88\uAC1C \uC218 \uC99D\uAC00"
   - "\xB7 \uBC88\uAC1C \uB300\uAE30 \uC2DC\uAC04 \uAC10\uC18C"
-  m_skill_image: {fileID: -7478538369679687451, guid: c4488ce75b8fdcb28acb71fa080f5291, type: 3}
+  m_skill_image: {fileID: 21300000, guid: 4fc54a4eeaf6802948f2dbf3ab8152c1, type: 3}
   m_combination_skill: {fileID: 11400000, guid: 5bb93061ea62e501c8e1e902126c630a, type: 2}
   m_evolution_skill: {fileID: 11400000, guid: 21477a9b24448e7cc9bf61b016000189, type: 2}

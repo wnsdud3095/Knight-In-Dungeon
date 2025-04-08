@@ -3,9 +3,8 @@ using UnityEngine.UI;
 using Firebase.Auth;
 using TMPro;
 using System.Collections;
-using System;
 using Firebase;
-using Unity.VisualScripting;
+
 public class AuthManager : MonoBehaviour
 {
     [Header("이메일 필드")]
