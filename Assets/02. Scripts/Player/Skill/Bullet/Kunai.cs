@@ -56,7 +56,7 @@ public class Kunai : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
+            //col.GetComponent<EnemyFSM>().TakeDamage(Damage);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
             

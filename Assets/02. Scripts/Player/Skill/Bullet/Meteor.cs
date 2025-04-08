@@ -26,7 +26,7 @@ public class Meteor : MagicMissile
             Debug.Log($"메테오 : {Damage}");
             EnemyController e_ctrl = col.GetComponent<EnemyController>();
 
-            e_ctrl.StartCoroutine(e_ctrl.KnockBackRoutine(transform.position, 5f));
+            e_ctrl.StartCoroutine(e_ctrl.KnockBackRoutine(transform.position, 15f));
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
 

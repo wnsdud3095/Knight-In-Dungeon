@@ -15,9 +15,16 @@ public abstract class PlayerSkillBase  : MonoBehaviour//인터페이스 말고 �
         Level++;
         ApplyLevelUpEffect(Level);
     }
+    
+    protected float GetFinallDamage(float m_skill_damage_ratio, float m_level_damage_ratio)
+    {
+        float finall_damage = GameManager.Instance.Player.Stat.AtkDamage * m_skill_damage_ratio * m_level_damage_ratio;
+        return finall_damage;
+    }
 
     protected void CoolTime(float cool_time)
     {
+        cool_time *= GameManager.Instance.Player.Stat.CoolDownDecreaseRatio; // 쿨타임 감소 버프 값
         if (m_cool_down_time < cool_time)
         {
             m_cool_down_time += Time.deltaTime;
@@ -29,6 +36,7 @@ public abstract class PlayerSkillBase  : MonoBehaviour//인터페이스 말고 �
             m_cool_down_time = 0;
         }
     }
+
     public abstract void UseSKill();
     protected abstract void ApplyLevelUpEffect(int level);
 }

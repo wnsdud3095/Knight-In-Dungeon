@@ -10,5 +10,6 @@ public enum SkillBullet
     MagicMissile = 5,
     FireBall = 6,
     Meteor = 7,
-    IceBolt = 8
+    IceBolt = 8,
+    PiercingLight = 9
 }

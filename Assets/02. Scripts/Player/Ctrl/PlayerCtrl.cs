@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PlayerCtrl : MonoBehaviour
 { 
     private Rigidbody2D m_rigid;
-    private SpriteRenderer m_sprite_renderer;
+    public SpriteRenderer m_sprite_renderer;
     private SkillManager m_skill_manager;
 
     [SerializeField]
@@ -49,7 +49,11 @@ public class PlayerCtrl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameManager.Instance.GameState != GameEventType.Playing) return;
+        if (GameManager.Instance.GameState != GameEventType.Playing)
+        {
+            m_rigid.linearVelocity = Vector2.zero;
+            return;
+        }
 
         Move();
 

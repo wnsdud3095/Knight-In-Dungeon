@@ -52,7 +52,7 @@ public class Exp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameObject.Find("Stage Manager").GetComponent<StageManager>().CurrentExp += m_exp_amount;
+            GameObject.Find("Stage Manager").GetComponent<StageManager>().CurrentExp += m_exp_amount * GameManager.Instance.Player.Stat.ExpBonusRatio;
 
             ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Exp);
         }
