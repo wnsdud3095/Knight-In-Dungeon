@@ -293,6 +293,7 @@ MonoBehaviour:
   - {fileID: 2561221239782311277, guid: d717076731aaf7d49b7b4af4485eedc1, type: 3}
   - {fileID: 2175614307476699641, guid: 85ddfeee87701284ca2644da11fd1ea8, type: 3}
   - {fileID: 3259691472786216708, guid: d77c7c6301594354e92aaa4cdd929649, type: 3}
+  - {fileID: 6427437046304586041, guid: d5d500f982f65ef4ab0d39b189c723b6, type: 3}
 --- !u!1 &308098276
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,63 +5095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f2f30bb1dc0f6439731de4469a67ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &630349088
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.1048036
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376822463088146542, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_Name
-      value: Armored Axeman
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
 --- !u!1 &656721483
 GameObject:
   m_ObjectHideFlags: 0
@@ -9611,63 +9555,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1204320604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &809761089
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.44146156
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376822463088146542, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_Name
-      value: Armored Axeman (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
 --- !u!1 &823042920
 GameObject:
   m_ObjectHideFlags: 0
@@ -14201,7 +14088,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.3958335
+  orthographic size: 4.340625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -14387,63 +14274,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019528281}
   m_CullTransparentMesh: 1
---- !u!1001 &1176837698
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.213974
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5327182
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376822463088146542, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_Name
-      value: Armored Axeman (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
 --- !u!1 &1204320602
 GameObject:
   m_ObjectHideFlags: 0
@@ -14529,63 +14359,6 @@ Transform:
   - {fileID: 748579172}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1214731754
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.12271738
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.0823874
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376822463088146542, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_Name
-      value: Armored Axeman (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
 --- !u!1 &1355433952
 GameObject:
   m_ObjectHideFlags: 0
@@ -14791,63 +14564,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1470667322
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7145941
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376822463088146542, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_Name
-      value: Armored Axeman (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
 --- !u!1 &1496382286
 GameObject:
   m_ObjectHideFlags: 0
@@ -19543,63 +19259,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &2022636955
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.2594429
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.6955824
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152059650862745728, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376822463088146542, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
-      propertyPath: m_Name
-      value: Armored Axeman (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6235ba7ffeaca064a8a987acb7e40657, type: 3}
 --- !u!1 &2024817366
 GameObject:
   m_ObjectHideFlags: 0
@@ -19625,7 +19284,7 @@ Transform:
   m_GameObject: {fileID: 2024817366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4501482, y: 0.36268142, z: -0.0048639704}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19831,12 +19490,6 @@ SceneRoots:
   - {fileID: 2024817367}
   - {fileID: 1549283563}
   - {fileID: 839475260}
-  - {fileID: 630349088}
-  - {fileID: 1470667322}
-  - {fileID: 2022636955}
-  - {fileID: 1176837698}
-  - {fileID: 1214731754}
-  - {fileID: 809761089}
   - {fileID: 1814703997}
   - {fileID: 1388791632}
   - {fileID: 1204320604}
