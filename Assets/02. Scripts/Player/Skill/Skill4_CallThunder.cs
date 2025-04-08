@@ -62,6 +62,7 @@ public class Skill4_CallThunder : PlayerSkillBase
             var prefab = GameManager.Instance.BulletPool.Get(m_bullet);
             prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = m_cols[rand_enemy_indexs[i % rand_enemy_indexs.Count]].transform.position;
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
             prefab.GetComponent<Thunder>().Damage = GetFinallDamage(m_skill4_damage_ratio, m_damage_level_ratio);
 

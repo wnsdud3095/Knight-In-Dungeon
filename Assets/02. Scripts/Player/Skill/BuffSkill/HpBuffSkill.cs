@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HpBuffSkill : PlayerSkillBase
 {
-    public float HpBuff { get; private set; } = 50f;
+    public float m_hp_buff= 50f;
 
     private float m_buff_increase = 30f;
 
@@ -12,6 +12,8 @@ public class HpBuffSkill : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
-        HpBuff += m_buff_increase;
+        GameManager.Instance.Player.OriginStat.HP += m_hp_buff;
+        GameManager.Instance.Player.Stat.HP += m_hp_buff;
+        m_hp_buff += m_buff_increase;
     }
 }

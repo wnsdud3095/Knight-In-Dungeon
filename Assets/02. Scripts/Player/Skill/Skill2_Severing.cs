@@ -41,6 +41,8 @@ public class Skill2_Severing : PlayerSkillBase
 
         if(m_can_use)
         {
+            m_effect.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
+
             m_effect.SetActive(true);
         }
     }

@@ -50,6 +50,8 @@ public class Skill6_PiercingLight : PlayerSkillBase
             float y = m_cam.transform.position.y - m_cam_height / 2f + spacing * (i + 1); //카메라 기준으로 y 좌표 계산
 
             prefab.transform.position = new Vector2(x, y);
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
+
             prefab.GetComponent<PiercingLight>().Damage= GetFinallDamage(m_skill6_damage_ratio, m_damage_level_ratio);
             prefab.GetComponent<PiercingLight>().LightExpand = m_light_expand;
         }

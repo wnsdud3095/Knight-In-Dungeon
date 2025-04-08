@@ -80,6 +80,8 @@ public class Skill5_MagicMissile : PlayerSkillBase
         }
         
         prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, dir);
+        prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
+
         prefab.GetComponent<MagicMissile>().Damage = GetFinallDamage(m_skill5_damage_ratio, m_damage_level_ratio);
         prefab.GetComponent<MagicMissile>().Speed = m_throw_speed;
     }

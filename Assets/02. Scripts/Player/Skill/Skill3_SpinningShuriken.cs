@@ -69,6 +69,7 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
             Vector3 rot_vec = Vector3.forward * 360 * i / m_shuriken_count;
             prefab.transform.Rotate(rot_vec);
             prefab.transform.Translate(prefab.transform.up * m_spinning_radius , Space.World);
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
             prefab.GetComponent<Shuriken>().Damage = GetFinallDamage(m_skill3_damage_ratio, m_damage_level_ratio);
             prefab.GetComponent<Shuriken>().LifeTime = m_life_time;

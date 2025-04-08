@@ -24,6 +24,7 @@ public abstract class PlayerSkillBase  : MonoBehaviour//인터페이스 말고 �
 
     protected void CoolTime(float cool_time)
     {
+        cool_time *= GameManager.Instance.Player.Stat.CoolDownDecreaseRatio; // 쿨타임 감소 버프 값
         if (m_cool_down_time < cool_time)
         {
             m_cool_down_time += Time.deltaTime;

@@ -31,6 +31,8 @@ public class ESkill6_PiercingLight : Skill6_PiercingLight
             float y = m_cam.transform.position.y + m_cam_height / 2f;
 
             prefab.transform.position = new Vector2(x, y);
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
+
             prefab.GetComponent<PiercingLight>().Damage = GetFinallDamage(m_skill6_damage_ratio, m_damage_e_level_ratio);
             prefab.GetComponent<PiercingLight>().LightExpand = m_v_light_expand;
         }
