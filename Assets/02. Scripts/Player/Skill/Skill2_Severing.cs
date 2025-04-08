@@ -7,7 +7,6 @@ public class Skill2_Severing : PlayerSkillBase
     private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
     private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
 
-
     protected GameObject m_effect;
     private float m_skill2_cool_time = 3f;
 
@@ -34,13 +33,21 @@ public class Skill2_Severing : PlayerSkillBase
         m_effect.GetComponent<Severing>().Heal = m_heal;
     }
 
-
     public override void UseSKill()
     {
         CoolTime(m_cool_time);
 
         if(m_can_use)
         {
+            if(GameManager.Instance.Player.m_sprite_renderer.flipX == false )
+            {
+                m_effect.transform.rotation = Quaternion.Euler(0, 0, -72f);
+            }
+            else
+            {
+                m_effect.transform.rotation = Quaternion.Euler(0, -180, -72f);
+            }
+
             m_effect.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
             m_effect.SetActive(true);
@@ -62,6 +69,4 @@ public class Skill2_Severing : PlayerSkillBase
         m_effect.GetComponent<Severing>().Damage = GetFinallDamage(m_skill2_damage_ratio, m_damage_level_ratio);
 
     }
-
-
 }

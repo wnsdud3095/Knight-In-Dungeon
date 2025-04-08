@@ -25,7 +25,6 @@ public class Skill4_CallThunder : PlayerSkillBase
         m_screen = GameObject.FindAnyObjectByType<ScreenOutlinCtrl>();
     }
 
-
     public override void UseSKill()
     {
         CoolTime(m_cool_time);
@@ -55,7 +54,6 @@ public class Skill4_CallThunder : PlayerSkillBase
             return;
         }
         Shuffle(rand_enemy_indexs);
-
 
         for (int i = 0; i < m_thunder_count; i++)
         {

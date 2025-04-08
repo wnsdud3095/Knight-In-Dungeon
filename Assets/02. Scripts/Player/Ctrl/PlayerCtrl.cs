@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PlayerCtrl : MonoBehaviour
 { 
     private Rigidbody2D m_rigid;
-    private SpriteRenderer m_sprite_renderer;
+    public SpriteRenderer m_sprite_renderer;
     private SkillManager m_skill_manager;
 
     [SerializeField]

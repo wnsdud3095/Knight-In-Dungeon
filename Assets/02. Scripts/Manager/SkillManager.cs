@@ -9,9 +9,9 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        AddSkill<Skill1_KunaiThorw>();
-        AddSkill<DamageBuffSkill>();
-        //AddSkill<ESkill2_Severing>();
+        //AddSkill<Skill1_KunaiThorw>();
+        //AddSkill<DamageBuffSkill>();
+        AddSkill<Skill2_Severing>();
         //AddSkill<ESkill3_SpinningShuriken>();
         //AddSkill<ESkill4_CallThunder>();
         //AddSkill<ESkill5_MagicMissile>();

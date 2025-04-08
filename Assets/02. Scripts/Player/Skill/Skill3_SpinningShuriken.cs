@@ -15,7 +15,7 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
     protected float m_spinning_spped = 150f;
     protected float m_spinning_radius = 1f;
     private float m_spinning_spped_up_ratio = 1.2f;
-    private float m_spinning_radius_increase = 1.5f;
+    private float m_spinning_radius_increase = 0.3f;
 
     protected float m_life_time = 5f;
 
@@ -34,8 +34,6 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
             }
         }
     }
-
-
     public override void UseSKill()
     {
         CoolTime(m_cool_time + m_life_time);
@@ -90,6 +88,5 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
             m_shuriken_count += m_shuriken_increase;
             m_spinning_radius += m_spinning_radius_increase;
         }
-
     }
 }
