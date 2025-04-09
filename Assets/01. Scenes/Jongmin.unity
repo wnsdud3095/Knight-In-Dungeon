@@ -1974,6 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cdf0c9a0a051c46830531dd7c368ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_sprite_renderer: {fileID: 0}
   m_origin_stat: {fileID: 11400000, guid: 2412b55fd5ad1ba4e979c242122de3bf, type: 2}
   m_stat: {fileID: 0}
 --- !u!212 &317426396
@@ -12299,6 +12300,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770732419}
   m_CullTransparentMesh: 1
+--- !u!1 &780561722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780561723}
+  - component: {fileID: 780561724}
+  m_Layer: 0
+  m_Name: Bullet Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &780561723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780561722}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4501482, y: -0.36268142, z: 0.0048639704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2024817367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780561724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780561722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b10d2ccafae2749a7d5d5e0e0645ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_prefabs:
+  - {fileID: 7138263189276469870, guid: e8bd872ca993c734e9bb3f5c5d28cb43, type: 3}
+  - {fileID: 8586905676877126198, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
+  - {fileID: 4199712593757125373, guid: 193929c7ab4100144ae524308c2fd96d, type: 3}
+  - {fileID: 8516077441977121493, guid: 8a43c50bfc167d049b95dd135407dd85, type: 3}
+  - {fileID: 8364830284522140489, guid: 2dd5291831cefa34fa05dabd3e511134, type: 3}
+  - {fileID: 2399739608505702039, guid: 5a80b7d8cadef02408eb4a5bfdf00696, type: 3}
+  - {fileID: 2561221239782311277, guid: d717076731aaf7d49b7b4af4485eedc1, type: 3}
+  - {fileID: 2175614307476699641, guid: 85ddfeee87701284ca2644da11fd1ea8, type: 3}
+  - {fileID: 3259691472786216708, guid: d77c7c6301594354e92aaa4cdd929649, type: 3}
+  - {fileID: 6427437046304586041, guid: d5d500f982f65ef4ab0d39b189c723b6, type: 3}
 --- !u!1001 &817097563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18461,56 +18517,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1322442703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1322442704}
-  - component: {fileID: 1322442705}
-  m_Layer: 0
-  m_Name: Bullet Pool Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1322442704
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322442703}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2024817367}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1322442705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322442703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b10d2ccafae2749a7d5d5e0e0645ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_prefabs:
-  - {fileID: 7138263189276469870, guid: e8bd872ca993c734e9bb3f5c5d28cb43, type: 3}
-  - {fileID: 8586905676877126198, guid: 858664da5662aae4d93222c9af837ca8, type: 3}
-  - {fileID: 4199712593757125373, guid: 193929c7ab4100144ae524308c2fd96d, type: 3}
-  - {fileID: 8516077441977121493, guid: 8a43c50bfc167d049b95dd135407dd85, type: 3}
-  - {fileID: 8364830284522140489, guid: 2dd5291831cefa34fa05dabd3e511134, type: 3}
 --- !u!1 &1396417242
 GameObject:
   m_ObjectHideFlags: 0
@@ -25086,7 +25092,7 @@ Transform:
   m_Children:
   - {fileID: 2055926440}
   - {fileID: 177805509}
-  - {fileID: 1322442704}
+  - {fileID: 780561723}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055926439

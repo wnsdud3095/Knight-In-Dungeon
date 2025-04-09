@@ -10,23 +10,23 @@ public class SkillManager : MonoBehaviour
         {1, typeof(Skill2_Severing)},
         {2, typeof(Skill3_SpinningShuriken)},
         {3, typeof(Skill4_CallThunder)},
-        {4, typeof(Skill1_KunaiThorw)},
-        {5, typeof(Skill1_KunaiThorw)},
-        {10, typeof(Skill1_KunaiThorw)},
-        {11, typeof(Skill1_KunaiThorw)},
-        {12, typeof(Skill1_KunaiThorw)},
-        {13, typeof(Skill1_KunaiThorw)},
-        {14, typeof(Skill1_KunaiThorw)},
-        {15, typeof(Skill1_KunaiThorw)}
+        {4, typeof(Skill5_MagicMissile)},
+        {5, typeof(Skill6_PiercingLight)},
+        {10, typeof(DamageBuffSkill)},
+        {11, typeof(HpBuffSkill)},
+        {12, typeof(ScaleBuffSKill)},
+        {13, typeof(MoveSpeedBuffSkill)},
+        {14, typeof(ExpBuffSKill)},
+        {15, typeof(CoolTimeBuffSKll)}
     };
 
     private int m_max_using_skill = 4;
 
     void Start()
     {
-        //AddSkill<Skill1_KunaiThorw>();
+        AddSkill<Skill3_SpinningShuriken>();
         //AddSkill<DamageBuffSkill>();
-        AddSkill<Skill2_Severing>();
+        //AddSkill<Skill2_Severing>();
         //AddSkill<ESkill3_SpinningShuriken>();
         //AddSkill<ESkill4_CallThunder>();
         //AddSkill<ESkill5_MagicMissile>();

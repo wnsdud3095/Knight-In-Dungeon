@@ -24,9 +24,12 @@ public class Exp : MonoBehaviour
 
     private void Update()
     {
-        if(m_is_magneted)
+        if(GameManager.Instance.GameState == GameEventType.Playing)
         {
-            transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.Player.transform.position, 10f * Time.deltaTime);
+            if(m_is_magneted)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.Player.transform.position, 10f * Time.deltaTime);
+            }
         }   
     }
 

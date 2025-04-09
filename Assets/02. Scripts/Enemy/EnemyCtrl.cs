@@ -56,6 +56,17 @@ public class EnemyCtrl : MonoBehaviour
         Animator.runtimeAnimatorController = Script.Animator;
         Animator.SetTrigger("Move");
 
+        if (m_knockback_coroutine != null)
+        {
+            StopCoroutine(m_knockback_coroutine);
+            m_knockback_coroutine = null;
+        }
+        if (m_freeze_coroutine != null)
+        {
+            StopCoroutine(m_freeze_coroutine);
+            m_freeze_coroutine = null;
+        }
+
         Collider.enabled = true;
     }
 
@@ -103,6 +114,17 @@ public class EnemyCtrl : MonoBehaviour
 
         Animator.SetTrigger("Die");
 
+        if (m_knockback_coroutine != null)
+        {
+            StopCoroutine(m_knockback_coroutine);
+            m_knockback_coroutine = null;
+        }
+        if (m_freeze_coroutine != null)
+        {
+            StopCoroutine(m_freeze_coroutine);
+            m_freeze_coroutine = null;
+        }
+
         GameObject.Find("Stage Manager").GetComponent<StageManager>().Kill++;
 
         if(Script.Boss)
@@ -132,7 +154,7 @@ public class EnemyCtrl : MonoBehaviour
     {
         if(m_knockback_coroutine is not null)
         {
-            StopCoroutine(CoKnockBack(current_position, amount));
+            StopCoroutine(m_knockback_coroutine);
         }
 
         m_knockback_coroutine = StartCoroutine(CoKnockBack(current_position, amount));
@@ -143,17 +165,21 @@ public class EnemyCtrl : MonoBehaviour
         Vector2 direction = -((Vector2)GameManager.Instance.Player.transform.position - current_position).normalized;
 
         float elasped_time = 0f;
-        float target_time = 0.2f;
+        float target_time = 0.5f;
+
+        Vector2 kps = direction * (amount / target_time);
 
         while(elasped_time <= target_time)
         {
             elasped_time += Time.deltaTime;
             yield return null;
 
-            Rigidbody.MovePosition((Vector2)transform.position + direction * amount * Time.deltaTime);
+            float t = elasped_time / target_time;
+
+            Rigidbody.MovePosition(Rigidbody.position + kps * Time.deltaTime);
         }
 
-        transform.position += new Vector3(direction.x * amount, direction.y * amount, transform.position.z);
+        m_knockback_coroutine = null;
     }
 
     public void SlowEnter(float amount)
@@ -170,7 +196,7 @@ public class EnemyCtrl : MonoBehaviour
     {
         if(m_freeze_coroutine is not null)
         {
-            StopCoroutine(CoFreeze(duration));
+            StopCoroutine(m_freeze_coroutine);
         }
 
         m_freeze_coroutine = StartCoroutine(CoFreeze(duration));
