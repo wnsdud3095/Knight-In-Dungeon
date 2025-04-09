@@ -2,21 +2,14 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public class Severing : MonoBehaviour
+public class Severing : BulletBase
 {
-    protected Animator m_animator;
-
     public float Damage { get; set; }
 
     public float Heal { get; set; }
 
     [SerializeField]
     private BoxCollider2D[] m_collders;
-
-    protected virtual void Awake()
-    {
-        m_animator = GetComponent<Animator>();
-    }
 
     private void OnEnable()
     {
@@ -28,12 +21,18 @@ public class Severing : MonoBehaviour
         transform.localScale *= ratio;
     }
 
+    public void Update()
+    {
+        GameStateCheck();
+    }
+
     protected IEnumerator EnableColliders()
     {
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지
 
         while (true)
         {
+            
             //현재 실행중인 애니메이션의 정보 불러옴
             AnimatorStateInfo info = m_animator.GetCurrentAnimatorStateInfo(0);
             float n_time = info.normalizedTime; // 값을 시간으로 정규

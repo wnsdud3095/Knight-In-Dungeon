@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Skill6_PiercingLight : PlayerSkillBase
 {
+    private int m_skill_id = 5;
     //데미지 관련
     protected float m_skill6_damage_ratio = 1f; // 스킬의 공격력 계수
     private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
@@ -19,8 +20,9 @@ public class Skill6_PiercingLight : PlayerSkillBase
 
     private float m_light_expand = 3.2f;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         m_cam = Camera.main;
         m_cam_height = m_cam.orthographicSize * 2f;
         m_cam_width = m_cam_height * m_cam.aspect;
@@ -50,7 +52,6 @@ public class Skill6_PiercingLight : PlayerSkillBase
             float y = m_cam.transform.position.y - m_cam_height / 2f + spacing * (i + 1); //카메라 기준으로 y 좌표 계산
 
             prefab.transform.position = new Vector2(x, y);
-            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
             prefab.GetComponent<PiercingLight>().Damage= GetFinallDamage(m_skill6_damage_ratio, m_damage_level_ratio);
             prefab.GetComponent<PiercingLight>().LightExpand = m_light_expand;
@@ -59,6 +60,7 @@ public class Skill6_PiercingLight : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
+        CheckSkillEvolve(m_skill_id);
         m_damage_level_ratio += m_damage_levelup_ratio;
         if (level % 2 == 0)
         {

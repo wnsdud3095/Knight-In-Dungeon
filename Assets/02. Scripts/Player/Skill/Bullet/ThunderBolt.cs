@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ThunderBolt : Thunder
 {
-
     protected override IEnumerator EnableCollider()
     {
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지

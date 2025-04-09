@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Skill5_MagicMissile : PlayerSkillBase
 {
+    private int m_skill_id = 4;
     //데미지 관련
     protected float m_skill5_damage_ratio = 1.1f; // 스킬의 공격력 계수
     private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
@@ -19,8 +20,9 @@ public class Skill5_MagicMissile : PlayerSkillBase
 
     protected Transform m_nearest_target;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         m_cool_time = m_skill5_cool_time;
     }
 
@@ -88,6 +90,7 @@ public class Skill5_MagicMissile : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
+        CheckSkillEvolve(m_skill_id);
         m_damage_level_ratio += m_damage_levelup_ratio;
         if (level%2 == 0)
         {

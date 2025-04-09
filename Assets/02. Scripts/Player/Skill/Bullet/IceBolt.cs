@@ -4,6 +4,7 @@ public class IceBolt : MagicMissile
 {
     void Update()
     {
+        GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
 
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
@@ -15,10 +16,9 @@ public class IceBolt : MagicMissile
     {       
         if (col.CompareTag("Enemy"))
         {
-            //col.GetComponent<EnemyFSM>().TakeDamage(Damage);
+            col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
-            Debug.Log($"아이스볼트 : {Damage}");
-            col.GetComponent<EnemyController>().Freeze(2f);
+            col.GetComponent<EnemyCtrl>().Freeze(2f);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
 

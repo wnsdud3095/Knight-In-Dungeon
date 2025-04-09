@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Kunai : MonoBehaviour
+public class Kunai : BulletBase
 { 
     public float Damage { get; set; }
     public float ReflectCount { get; set; }
@@ -22,7 +22,8 @@ public class Kunai : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.Instance.GameState != GameEventType.Playing) return;
+        GameStateCheck();
+        if (GameManager.Instance.GameState != GameEventType.Playing) return;
 
         transform.Translate(Vector3.up * m_speed * Time.deltaTime);
 

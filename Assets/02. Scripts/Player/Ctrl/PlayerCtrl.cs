@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerCtrl : MonoBehaviour
 { 
@@ -16,6 +17,7 @@ public class PlayerCtrl : MonoBehaviour
     public JoyStickCtrl joyStick { get; private set; }
     public Animator Animator { get; private set; }
 
+    private bool m_invincibility;
     private void Awake()
     {
         //GetCalculatedStat();
@@ -103,5 +105,37 @@ public class PlayerCtrl : MonoBehaviour
     {
         Stat.HP += hp;
         Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Debug.Log($"[트리거 감지] 이름: {collision.name}, 위치: {collision.transform.position}, active: {collision.gameObject.activeSelf}, tag: {collision.tag}");
+            if (m_invincibility is true)
+            {
+                return;
+            }
+
+            m_invincibility = true;
+
+            UpdateHP(-collision.GetComponent<EnemyCtrl>().Script.ATK);
+
+            StartCoroutine(Invincibility());
+        }
+    }
+
+    private IEnumerator Invincibility()
+    {
+        Color color = m_sprite_renderer.color;
+        color.a = 100f / 255f;
+        m_sprite_renderer.color = color;
+
+        yield return new WaitForSeconds(1f);
+
+        color.a = 1f;
+        m_sprite_renderer.color = color;
+
+        m_invincibility = false;
     }
 }
