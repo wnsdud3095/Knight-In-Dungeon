@@ -74,7 +74,7 @@ public class Severing : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             GameManager.Instance.Player.UpdateHP(Heal);
-            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
+            col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
             

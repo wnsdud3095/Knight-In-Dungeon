@@ -11,6 +11,7 @@ public class StageManager : MonoBehaviour
     public float GameTimer
     {
         get { return m_game_timer; }
+        set { m_game_timer = value; }
     }
 
     private int m_player_level;
@@ -57,7 +58,7 @@ public class StageManager : MonoBehaviour
         if(GameManager.Instance.GameState == GameEventType.Playing)
         {
             m_game_timer -= Time.deltaTime;
-            m_game_timer = Mathf.Clamp(m_game_timer, 0f, 24 * 60f);
+            m_game_timer = Mathf.Clamp(m_game_timer, 0f, 30 * 60f);
         }
 
         if(m_current_exp >= m_max_exp)

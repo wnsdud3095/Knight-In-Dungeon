@@ -54,7 +54,7 @@ public class LoadingManager : MonoBehaviour
 
     public void LoadScene(string scene_name)
     {
-        ObjectManager.Instance.ReturnRangeObject(ObjectType.Item_Box, ObjectType.Exp);
+        ObjectManager.Instance.ReturnRangeObject(ObjectType.Item_Box, ObjectType.Enemy);
         
         GameEventBus.Publish(GameEventType.Loading);
         

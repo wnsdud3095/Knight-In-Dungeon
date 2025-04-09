@@ -14,7 +14,7 @@ public class Shuriken : Kunai
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
+            col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
             

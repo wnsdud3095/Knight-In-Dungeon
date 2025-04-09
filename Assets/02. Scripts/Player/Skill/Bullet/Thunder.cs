@@ -53,7 +53,7 @@ public class Thunder : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<EnemyFSM>().TakeDamage(Damage);
+            col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
             Debug.Log("적중");
 
