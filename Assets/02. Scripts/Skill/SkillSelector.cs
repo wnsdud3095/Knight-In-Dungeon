@@ -111,7 +111,7 @@ public class SkillSelector : MonoBehaviour
         {
             foreach(SkillSelectSlot select_slot in m_skill_select_slots)
             {
-                if(slot.Skill.ID == select_slot.Skill.ID)
+                if(slot.Skill.m_id == select_slot.Skill.ID)
                 {
                     if(select_slot.Base.Level < 6)
                     {
@@ -125,7 +125,7 @@ public class SkillSelector : MonoBehaviour
         {
             foreach(SkillSelectSlot select_slot in m_skill_select_slots)
             {
-                if(slot.Skill.ID == select_slot.Skill.ID)
+                if(slot.Skill.m_id == select_slot.Skill.ID)
                 {
                     if(select_slot.Base.Level < 5)
                     {
@@ -168,7 +168,14 @@ public class SkillSelector : MonoBehaviour
             {
                 if(m_skill_select_slots[index].Base.Level == 5)
                 {
-                    m_skill_select_slots[index].ChangeToEvolution();
+                    foreach(SkillSlot slot in PassiveSkillSlots)
+                    {
+                        if(slot.Skill.m_id == m_skill_select_slots[index].Skill.Combination.ID)
+                        {
+                            m_skill_select_slots[index].ChangeToEvolution();
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -197,7 +204,7 @@ public class SkillSelector : MonoBehaviour
             {
                 foreach (SkillSlot slot in ActiveSkillSlots)
                 {
-                    if (slot.Skill != null && slot.Skill.ID == skill.ID)
+                    if (slot.Skill != null && slot.Skill.m_id == skill.ID)
                     {
                         has_skill = true;
                         can_level_up = select_slot.Base.Level < 6;
@@ -209,7 +216,7 @@ public class SkillSelector : MonoBehaviour
             {
                 foreach (SkillSlot slot in PassiveSkillSlots)
                 {
-                    if (slot.Skill != null && slot.Skill.ID == skill.ID)
+                    if (slot.Skill != null && slot.Skill.m_id == skill.ID)
                     {
                         has_skill = true;
                         can_level_up = select_slot.Base.Level < 5;
@@ -233,7 +240,14 @@ public class SkillSelector : MonoBehaviour
 
             if (slot.Base.Level == 5)
             {
-                slot.ChangeToEvolution();
+                foreach(SkillSlot passive_slot in PassiveSkillSlots)
+                {
+                    if(passive_slot.Skill.m_id == slot.Skill.Combination.ID)
+                    {
+                        slot.ChangeToEvolution();
+                        break;
+                    }
+                }
             }
 
             slot.gameObject.SetActive(true);
