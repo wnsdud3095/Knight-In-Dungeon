@@ -3784,6 +3784,37 @@ MonoBehaviour:
   m_register_button: {fileID: 2099590884}
   m_check_label: {fileID: 93972345}
   m_register_ui_object: {fileID: 306184519}
+--- !u!1 &1304206036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1304206037}
+  m_Layer: 0
+  m_Name: Enemy Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1304206037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304206036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613947692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311534626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5105,6 +5136,10 @@ MonoBehaviour:
     m_init_count: 100
     m_Prefab: {fileID: 1439874335136518160, guid: 8dba25721d89d14f4ad7db84a2b48839, type: 3}
     m_container: {fileID: 1311534626}
+  - m_type: 8
+    m_init_count: 100
+    m_Prefab: {fileID: 1508379008619853423, guid: e6049e7ed415946469de52fde04ba860, type: 3}
+    m_container: {fileID: 1304206036}
 --- !u!4 &1613947692
 Transform:
   m_ObjectHideFlags: 0
@@ -5126,6 +5161,7 @@ Transform:
   - {fileID: 2091685899}
   - {fileID: 1311534627}
   - {fileID: 47408703}
+  - {fileID: 1304206037}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644722856

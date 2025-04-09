@@ -8,4 +8,5 @@ public enum ObjectType
     Item_Magnet,
     Item_Bomb,
     Exp,
+    Enemy,
 }
