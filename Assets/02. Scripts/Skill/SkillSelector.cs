@@ -70,6 +70,7 @@ public class SkillSelector : MonoBehaviour
 
         if(CheckAllSlotsAreFull() is false)
         {
+            Debug.Log("진입1");
             if(CheckActiveSlotsAreFull())
             {
                 SetRandomSlotsExceptNonSelectActive();
@@ -85,6 +86,7 @@ public class SkillSelector : MonoBehaviour
         }
         else
         {
+            Debug.Log("진입2");
             if(CheckAllSlotsAreMax() is false)
             {
                 if(CheckAnySkillsAreMax() is false)
@@ -706,7 +708,7 @@ public class SkillSelector : MonoBehaviour
                         {
                             break;
                         }
-                        
+
                         if(m_final_select_list[idx].Skill.Combination.ID == slot.Skill.m_id)
                         {
                             m_final_select_list[idx].ChangeToEvolution();

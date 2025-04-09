@@ -72,7 +72,7 @@ public class StageManager : MonoBehaviour
             }
             else
             {
-                m_max_exp = m_exp_arr[39];
+                m_max_exp = m_exp_arr[38];
             }
 
             m_skill_selector.OpenUI();

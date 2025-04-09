@@ -47,8 +47,6 @@ public class SkillSelectSlot : MonoBehaviour
 
     public void Initialize()
     {
-        m_skill_base = GameObject.Find("Skill Manager").GetComponent<SkillManager>().GetSkillBase(m_skill.ID);
-
         m_skill_image.sprite = m_skill.Image;
         SetAlpha(1f);
 
@@ -156,6 +154,7 @@ public class SkillSelectSlot : MonoBehaviour
         if(m_skill_base is null)
         {
             m_skill_manager.AddSkill(Skill.ID);
+            m_skill_base = GameObject.Find("Skill Manager").GetComponent<SkillManager>().GetSkillBase(m_skill.ID);
         }
         else
         {
