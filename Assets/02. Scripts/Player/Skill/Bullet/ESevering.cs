@@ -53,6 +53,13 @@ public class ESevering : Severing
 
     public void AnimationEnd()
     {
+        foreach(var cols in m_col_groups)
+        {
+            foreach(var col in cols)
+            {
+                col.enabled= false;
+            }
+        }
         m_is_ani_end = true;
     }
 
