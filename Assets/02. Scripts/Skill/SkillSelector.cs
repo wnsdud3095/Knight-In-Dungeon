@@ -383,6 +383,7 @@ public class SkillSelector : MonoBehaviour
             }
             else
             {
+                if (select_slot.Base == null) Debug.LogError("select_slot.Base 가 널임");
                 if(select_slot.Base.Level >= 5)
                 {
                     return true;

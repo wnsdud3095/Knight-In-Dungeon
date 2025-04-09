@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ThunderBoltSideEffect : MonoBehaviour
+public class ThunderBoltSideEffect : BulletBase
 {
     private float m_life_time = 1f;
     private float m_origin_life_time = 3f;
@@ -12,14 +12,15 @@ public class ThunderBoltSideEffect : MonoBehaviour
         m_life_time = m_origin_life_time;
     }
 
-    private void Awake()
+    protected override void Awake()
     {
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage / 10f;
+        base.Awake();
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
         LifeTimeCheck();
     }
@@ -45,16 +46,7 @@ public class ThunderBoltSideEffect : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
-            Debug.Log($"{collision.gameObject.name} 둔화");
-            //둔화 메서드
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            
+            collision.GetComponent<EnemyCtrl>().SlowEnter(0.5f);
         }
     }
 
@@ -62,8 +54,7 @@ public class ThunderBoltSideEffect : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log($"{collision.gameObject.name} 둔화 끝");
-            //둔화 해제 메서드 
+            collision.GetComponent<EnemyCtrl>().SlowExit();
         }
     }
 }

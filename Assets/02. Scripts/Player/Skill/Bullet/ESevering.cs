@@ -37,26 +37,18 @@ public class ESevering : Severing
             string ani_name = $"Combo{m_current_comb_index + 1}";
             m_animator.Play(ani_name);
             yield return new WaitForSeconds(0.1f);
-            StartCoroutine(EnableColliders(m_current_comb_index));        
-            yield return new WaitForSeconds(GetAniLength());
-            m_current_comb_index++;
+            yield return StartCoroutine(EnableColliders(m_current_comb_index));
+
+            m_current_comb_index++;            
         }
         // 콤보 종료 후 비활성화
         transform.gameObject.SetActive(false);
-    }
-
-    private float GetAniLength()
-    {
-        AnimatorStateInfo Info = m_animator.GetCurrentAnimatorStateInfo(0);
-        float length = Info.length;
-        return length;
     }
 
     private IEnumerator EnableColliders(int comboIndex)
     {
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지
         BoxCollider2D[] colliders = m_col_groups[comboIndex]; // 현재 콤보의 콜라이더 그룹
-
 
         while (true)
         {

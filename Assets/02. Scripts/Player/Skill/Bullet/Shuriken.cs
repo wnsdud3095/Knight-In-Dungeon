@@ -6,6 +6,7 @@ public class Shuriken : Kunai
 
     private void Update()
     {
+        GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
         LifeTimeCheck();
     }

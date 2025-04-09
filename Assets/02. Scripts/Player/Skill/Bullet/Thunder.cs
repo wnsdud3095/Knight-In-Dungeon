@@ -2,26 +2,22 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public class Thunder : MonoBehaviour
+public class Thunder : BulletBase
 {
-    protected Animator m_animator;
-
     public float Damage { get; set; }
 
     [SerializeField]
     protected BoxCollider2D m_col;
-
-
-    protected virtual void Awake()
-    {
-        m_animator = GetComponent<Animator>();
-    }
 
     protected void OnEnable()
     {
         StartCoroutine(EnableCollider());
     }
 
+    public void Update()
+    {
+        GameStateCheck();
+    }
     protected virtual IEnumerator EnableCollider()
     {
         HashSet<float> triggered_points = new HashSet<float>(); // 중복 실행 방지
@@ -54,8 +50,6 @@ public class Thunder : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
-
-            Debug.Log("적중");
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
             

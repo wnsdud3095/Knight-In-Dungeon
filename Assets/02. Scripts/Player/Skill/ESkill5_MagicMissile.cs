@@ -6,7 +6,7 @@ public class ESkill5_MagicMissile : Skill5_MagicMissile
     private float m_e_throw_speed = 8f;
     private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
 
-    void Awake()
+    new void Awake()
     {
         m_cool_time = m_e_skill5_cool_time;
     }

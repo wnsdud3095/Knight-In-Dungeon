@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Collections;
 
 
-public class PiercingLight : MonoBehaviour
+public class PiercingLight : BulletBase
 {
-    private Animator m_animator;
     public float Damage { get; set; }
 
     public float LightExpand { get; set; }
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         m_animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        GameStateCheck();
     }
 
     private void OnEnable()

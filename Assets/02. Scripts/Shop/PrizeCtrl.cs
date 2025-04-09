@@ -26,7 +26,7 @@ public class PrizeCtrl : MonoBehaviour
 
     private Transform m_inventory_slot_container;
 
-    private void Awake()
+    private void Start()
     {
         m_inventory_slot_container = GameObject.Find("Inventory Slot Container").transform;
     }

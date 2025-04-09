@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Skill2_Severing : PlayerSkillBase
 {
+    private int m_skill_id = 1;
     //데미지 관련
     protected float m_skill2_damage_ratio = 2f; // 스킬의 공격력 계수
     private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
@@ -10,7 +11,7 @@ public class Skill2_Severing : PlayerSkillBase
     protected GameObject m_effect;
     private float m_skill2_cool_time = 3f;
 
-    private float m_heal = 0.2f;
+    private float m_heal_ratio = 0.2f;
 
     private float m_area_expand_ratio = 1.5f;
     private float m_cool_down_decrease = 0.7f;
@@ -30,7 +31,7 @@ public class Skill2_Severing : PlayerSkillBase
 
         m_effect.GetComponent<Severing>().Damage = GetFinallDamage(m_skill2_damage_ratio, m_damage_level_ratio);
 
-        m_effect.GetComponent<Severing>().Heal = m_heal;
+        m_effect.GetComponent<Severing>().Heal = m_heal_ratio;
     }
 
     public override void UseSKill()
@@ -48,14 +49,13 @@ public class Skill2_Severing : PlayerSkillBase
                 m_effect.transform.rotation = Quaternion.Euler(0, -180, -72f);
             }
 
-            m_effect.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
-
             m_effect.SetActive(true);
         }
     }
 
     protected override void ApplyLevelUpEffect(int level)
     {
+        CheckSkillEvolve(m_skill_id);
         m_damage_level_ratio += m_damage_levelup_ratio;
         if (level % 2 ==0)
         {
