@@ -72,7 +72,8 @@ public class Severing : BulletBase
     {
         if (col.CompareTag("Enemy"))
         {
-            GameManager.Instance.Player.UpdateHP(Heal);
+            float heal_ratio = GameManager.Instance.Player.OriginStat.HP * (Heal / 100f);
+            GameManager.Instance.Player.UpdateHP(heal_ratio);
             col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);

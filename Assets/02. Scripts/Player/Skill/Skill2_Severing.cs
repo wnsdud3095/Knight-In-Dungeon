@@ -11,7 +11,7 @@ public class Skill2_Severing : PlayerSkillBase
     protected GameObject m_effect;
     private float m_skill2_cool_time = 3f;
 
-    private float m_heal = 0.2f;
+    private float m_heal_ratio = 0.2f;
 
     private float m_area_expand_ratio = 1.5f;
     private float m_cool_down_decrease = 0.7f;
@@ -31,7 +31,7 @@ public class Skill2_Severing : PlayerSkillBase
 
         m_effect.GetComponent<Severing>().Damage = GetFinallDamage(m_skill2_damage_ratio, m_damage_level_ratio);
 
-        m_effect.GetComponent<Severing>().Heal = m_heal;
+        m_effect.GetComponent<Severing>().Heal = m_heal_ratio;
     }
 
     public override void UseSKill()

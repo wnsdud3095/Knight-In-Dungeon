@@ -26,17 +26,21 @@ public class Skill5_MagicMissile : PlayerSkillBase
         m_cool_time = m_skill5_cool_time;
     }
 
-
-
     public override void UseSKill()
     {
         cols = Physics2D.OverlapCircleAll(GameManager.Instance.Player.transform.position, m_detect_radius);
         m_nearest_target = GetNearest();
 
+        if (m_nearest_target == null || m_nearest_target.gameObject.activeSelf == false)
+        {
+            return;
+        }
+
         CoolTime(m_cool_time);
 
         if(m_can_use)
         {
+
             SpawnMissile();
         }
     }

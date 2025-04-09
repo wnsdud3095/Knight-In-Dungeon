@@ -15,8 +15,6 @@ public class ESevering : Severing
     private int m_current_comb_index = 0; // 현재 진행 중인 콤보 인덱스
     private int m_max_combo = 5; // 최대 콤보 수
 
-    private bool m_is_ani_end = false;
-
     protected override void Awake()
     {
         base.Awake();
@@ -30,39 +28,22 @@ public class ESevering : Severing
     private void OnEnable()
     {
         m_current_comb_index = 0;
-        m_is_ani_end = false;
         StartCoroutine(ComboSequence());
     }
     private IEnumerator ComboSequence()
     {
         while (m_current_comb_index < m_max_combo)
         {
-            m_is_ani_end = false;
             string ani_name = $"Combo{m_current_comb_index + 1}";
             m_animator.Play(ani_name);
             yield return new WaitForSeconds(0.1f);
-            StartCoroutine(EnableColliders(m_current_comb_index));
-
-            yield return new WaitUntil(() => m_is_ani_end);
+            yield return StartCoroutine(EnableColliders(m_current_comb_index));
 
             m_current_comb_index++;            
         }
         // 콤보 종료 후 비활성화
         transform.gameObject.SetActive(false);
     }
-
-    public void AnimationEnd()
-    {
-        foreach(var cols in m_col_groups)
-        {
-            foreach(var col in cols)
-            {
-                col.enabled= false;
-            }
-        }
-        m_is_ani_end = true;
-    }
-
 
     private IEnumerator EnableColliders(int comboIndex)
     {

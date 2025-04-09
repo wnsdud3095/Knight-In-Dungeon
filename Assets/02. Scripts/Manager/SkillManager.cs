@@ -30,7 +30,7 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        AddSkill(2);
+        AddSkill(4);
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가
