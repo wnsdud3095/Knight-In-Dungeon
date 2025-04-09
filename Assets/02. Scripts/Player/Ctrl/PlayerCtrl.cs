@@ -18,6 +18,7 @@ public class PlayerCtrl : MonoBehaviour
     public Animator Animator { get; private set; }
 
     private bool m_invincibility;
+    private bool m_is_dead;
 
     private void Awake()
     {
@@ -121,6 +122,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         GameEventBus.Publish(GameEventType.Dead);
 
+        m_is_dead = true;
         Animator.SetTrigger("Death");
     }
 
@@ -128,7 +130,11 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
-            Debug.Log($"[트리거 감지] 이름: {collision.name}, 위치: {collision.transform.position}, active: {collision.gameObject.activeSelf}, tag: {collision.tag}");
+            if(m_is_dead)
+            {
+                return;
+            }
+
             if(m_invincibility is true)
             {
                 return;
