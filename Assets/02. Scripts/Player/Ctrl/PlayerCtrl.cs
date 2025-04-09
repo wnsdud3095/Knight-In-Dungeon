@@ -29,14 +29,18 @@ public class PlayerCtrl : MonoBehaviour
     {
         GameEventBus.Subscribe(GameEventType.Playing, GameManager.Instance.Playing);
         GameEventBus.Subscribe(GameEventType.Setting, GameManager.Instance.Setting);
-        GameEventBus.Subscribe(GameEventType.Selecting, GameManager.Instance.Selecting);        
+        GameEventBus.Subscribe(GameEventType.Selecting, GameManager.Instance.Selecting);
+        GameEventBus.Subscribe(GameEventType.Dead, GameManager.Instance.Dead);
+        GameEventBus.Subscribe(GameEventType.Clear, GameManager.Instance.Clear);
     }
 
     private void OnDisable()
     {
         GameEventBus.Unsubscribe(GameEventType.Playing, GameManager.Instance.Playing);
         GameEventBus.Unsubscribe(GameEventType.Setting, GameManager.Instance.Setting);
-        GameEventBus.Unsubscribe(GameEventType.Selecting, GameManager.Instance.Selecting);                
+        GameEventBus.Unsubscribe(GameEventType.Selecting, GameManager.Instance.Selecting);
+        GameEventBus.Unsubscribe(GameEventType.Dead, GameManager.Instance.Dead);
+        GameEventBus.Unsubscribe(GameEventType.Clear, GameManager.Instance.Clear);           
     }
 
     void Start()
@@ -115,7 +119,9 @@ public class PlayerCtrl : MonoBehaviour
 
     public void Dead()
     {
-        
+        GameEventBus.Publish(GameEventType.Dead);
+
+        Animator.SetTrigger("Death");
     }
 
     private void OnTriggerStay2D(Collider2D collision)

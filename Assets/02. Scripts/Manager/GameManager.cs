@@ -137,6 +137,16 @@ public class GameManager : Singleton<GameManager>
         Player.Animator.speed = 0f;
     }
 
+    public void Dead()
+    {
+        GameState = GameEventType.Dead;
+    }
+
+    public void Clear()
+    {
+        GameState = GameEventType.Clear;
+    }
+
     private void OnApplicationPause(bool pause)
     {
         if(pause)
