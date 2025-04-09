@@ -99,16 +99,42 @@ public class GameManager : Singleton<GameManager>
                 SoundManager.Instance.BGM.UnPause();
             }
         }
+
+        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        foreach(GameObject enemy in enemies)
+        {
+            enemy.GetComponent<Animator>().speed = 1f;
+        }
+
+        Player.Animator.speed = 1f;
     }
 
     public void Setting()
     {
         GameState = GameEventType.Setting;
+
+        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        foreach(GameObject enemy in enemies)
+        {
+            enemy.GetComponent<EnemyCtrl>().Rigidbody.linearVelocity = Vector2.zero;
+            enemy.GetComponent<Animator>().speed = 0f;
+        }
+
+        Player.Animator.speed = 0f;
     }
 
     public void Selecting()
     {
         GameState = GameEventType.Selecting;
+
+        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        foreach(GameObject enemy in enemies)
+        {
+            enemy.GetComponent<EnemyCtrl>().Rigidbody.linearVelocity = Vector2.zero;
+            enemy.GetComponent<Animator>().speed = 0f;
+        }
+
+        Player.Animator.speed = 0f;
     }
 
     private void OnApplicationPause(bool pause)
