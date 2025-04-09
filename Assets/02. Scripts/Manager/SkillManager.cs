@@ -20,7 +20,7 @@ public class SkillManager : MonoBehaviour
         {15, typeof(CoolTimeBuffSKll)}
     };
 
-    private int m_max_using_skill = 4;
+    private int m_max_using_skill = 9;
 
     void Start()
     {
