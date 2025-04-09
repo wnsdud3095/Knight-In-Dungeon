@@ -4,9 +4,9 @@ public class Bomb : MonoBehaviour, IItem
 {
     public void Use()
     {
-        EnemyFSM[] enemies = FindObjectsByType<EnemyFSM>(sortMode: FindObjectsSortMode.None);
+        EnemyCtrl[] enemies = FindObjectsByType<EnemyCtrl>(sortMode: FindObjectsSortMode.None);
 
-        foreach(EnemyFSM enemy in enemies)
+        foreach(EnemyCtrl enemy in enemies)
         {
             Vector3 view_position = Camera.main.WorldToViewportPoint(enemy.transform.position);
 

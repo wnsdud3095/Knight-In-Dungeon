@@ -16,7 +16,7 @@ public class Shuriken : Kunai
         {
             EnemyCtrl enemy = col.GetComponent<EnemyCtrl>();
             enemy.UpdateHP(-Damage);
-            enemy.Knockback(transform.position, 5f);
+            enemy.KnockBack(transform.position, 0.2f);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
             

@@ -108,18 +108,19 @@ public class SkillSelectSlot : MonoBehaviour
     public void Button_Slot()
     {
         bool can_select = false;
+
         if(Skill.Type == SkillType.Active)
         {
             foreach(SkillSlot slot in m_skill_selector.ActiveSkillSlots)
             {
-                if(!slot.Skill)
+                if(slot.Skill == null)
                 {
                     can_select = true;
                     slot.Add(Skill);
                     break;
                 }
 
-                if(slot.Skill.ID == Skill.ID)
+                if(slot.Skill.m_id == Skill.ID)
                 {
                     can_select = true;
                     break;
@@ -130,14 +131,14 @@ public class SkillSelectSlot : MonoBehaviour
         {
             foreach(SkillSlot slot in m_skill_selector.PassiveSkillSlots)
             {
-                if(!slot.Skill)
+                if(slot.Skill is null)
                 {
                     can_select = true;
                     slot.Add(Skill);
                     break;
                 }
 
-                if(slot.Skill.ID == Skill.ID)
+                if(slot.Skill.m_id == Skill.ID)
                 {
                     can_select = true;
                     break;

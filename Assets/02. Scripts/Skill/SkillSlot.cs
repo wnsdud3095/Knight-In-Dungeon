@@ -1,10 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public class SkillData
+{
+    public int m_id;
+
+    public SkillData(int id)
+    {
+        m_id = id;
+    }
+}
+
 public class SkillSlot : MonoBehaviour
 {
-    private Skill m_skill;
-    public Skill Skill
+    private SkillData m_skill = null;
+    public SkillData Skill
     {
         get { return m_skill; }
         private set { m_skill = value; }
@@ -27,8 +37,8 @@ public class SkillSlot : MonoBehaviour
 
     public void Add(Skill skill)
     {
-        Skill = skill;
-        Image.sprite = Skill.Image;
+        Skill = new SkillData(skill.ID);
+        Image.sprite = skill.Image;
 
         SetAlpha(1f);
     }
