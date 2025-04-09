@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
         // }
     }
 
-    IEnumerator KnockBackRoutine(Vector2 CurrentPlace, float KnockBackValue)
+    public IEnumerator KnockBackRoutine(Vector2 CurrentPlace, float KnockBackValue)
     {
         isKnockBack = true;
         Vector2 dir = ((Vector2)transform.position - CurrentPlace).normalized;

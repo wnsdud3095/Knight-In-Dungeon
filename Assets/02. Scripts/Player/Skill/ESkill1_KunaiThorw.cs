@@ -4,13 +4,9 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
 {
     private float m_e_skill_cool_time = 2f;
     private int m_e_kunai_count = 25;
-    private float m_e_damage;
+    private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
     private int m_e_reflect_count = 2;
 
-    void Start()
-    {
-        m_e_damage = GameManager.Instance.Player.Stat.AtkDamage * 2.2f;
-    }
 
     public override void UseSKill()
     {
@@ -34,8 +30,9 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
             Vector3 rotate_vec = Vector3.forward * 360 * i / m_e_kunai_count;
             prefab.transform.Rotate(rotate_vec);
             prefab.transform.Translate(Vector3.up);
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
-            prefab.GetComponent<Kunai>().Damage = m_e_damage;
+            prefab.GetComponent<Kunai>().Damage = GetFinallDamage(m_skill1_damage_ratio,m_damage_e_level_ratio);
             prefab.GetComponent<Kunai>().ReflectCount = m_e_reflect_count;
 
         }

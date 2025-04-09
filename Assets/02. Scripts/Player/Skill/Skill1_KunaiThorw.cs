@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class Skill1_KunaiThorw : PlayerSkillBase
 {
-    [SerializeField]
+    //데미지 관련
+    protected float m_skill1_damage_ratio = 1f; // 스킬의 공격력 계수
+    private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
+    private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
+
     private float m_skill1_cool_time = 4f;
     private int m_kunal_count = 1;
 
     private int m_kunai_increase = 2;
     private float m_cool_time_decrease = 1;
 
-    private float m_damage;
     private int m_reflect_count = 1;
 
-    private float m_spawn_up_area_min = 0.2f;
-    private float m_spawn_up_area_max = 0.6f;
+    //private float m_spawn_up_area_min = 0.2f;
+    //private float m_spawn_up_area_max = 0.6f;
 
     private float m_spawn_right_area_max = 0.5f;
    
-    private float m_damage_up_ratio = 1.2f;
 
     private Vector2 save_input_vector = Vector2.right;
 
@@ -25,7 +27,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
     void Start()
     {
         m_cool_time = m_skill1_cool_time;
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage;
     }
 
     public override void UseSKill()
@@ -39,7 +40,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             SpawnKunai();
         }
     }
-
     private void SaveInputVector()
     {
         if (GameManager.Instance.Player.joyStick.GetInputVector() != Vector2.zero)
@@ -47,7 +47,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             save_input_vector = GameManager.Instance.Player.joyStick.GetInputVector();
         }
     }
-
     protected virtual void SpawnKunai()
     {
         for (int i = 0; i < m_kunal_count; i++)
@@ -57,16 +56,18 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             prefab.transform.position = GameManager.Instance.Player.transform.position;
 
             prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, save_input_vector); //z축을 기준으로 벡터 방향을 바라보게 회전 시킴
-            prefab.transform.Translate(Vector3.up * Random.Range(m_spawn_up_area_min, m_spawn_up_area_max));
+            //prefab.transform.Translate(Vector3.up * Random.Range(m_spawn_up_area_min, m_spawn_up_area_max));
             prefab.transform.Translate(Vector3.right * Random.Range(-m_spawn_right_area_max, m_spawn_right_area_max));
-            prefab.GetComponent<Kunai>().Damage = m_damage; //효율적인 참조를 위해 Get 말고 Set 방식 사용
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
+                 
+            prefab.GetComponent<Kunai>().Damage = GetFinallDamage(m_skill1_damage_ratio, m_damage_level_ratio); //효율적인 참조를 위해 Get 말고 Set 방식 사용
             prefab.GetComponent<Kunai>().ReflectCount = m_reflect_count;
         }   
     }
 
     protected override void ApplyLevelUpEffect(int level)
     {
-        m_damage *= m_damage_up_ratio;
+        m_damage_level_ratio += m_damage_levelup_ratio;
         if(level%2 == 0)
         {
             m_kunal_count += m_kunai_increase;
@@ -75,6 +76,5 @@ public class Skill1_KunaiThorw : PlayerSkillBase
         {
             m_cool_time -= m_cool_time_decrease;
         }
-
     }
 }

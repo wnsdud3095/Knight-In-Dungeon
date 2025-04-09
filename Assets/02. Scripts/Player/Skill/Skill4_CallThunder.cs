@@ -3,14 +3,16 @@ using System.Collections.Generic;
 
 public class Skill4_CallThunder : PlayerSkillBase
 {
+    //데미지 관련
+    protected float m_skill4_damage_ratio = 1.3f; // 스킬의 공격력 계수
+    protected float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
+    private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
+
     private float m_skill4_cool_time = 5f;
     protected int m_thunder_count = 1;
 
     private int m_thunder_increase = 1;
     private float m_cool_time_decrease = 1f;
-
-    private float m_damage_up_ratio = 1.2f;
-    protected float m_damage;
 
     private ScreenOutlinCtrl m_screen;
 
@@ -21,9 +23,7 @@ public class Skill4_CallThunder : PlayerSkillBase
         m_bullet = SkillBullet.Thunder;
         m_cool_time = m_skill4_cool_time;
         m_screen = GameObject.FindAnyObjectByType<ScreenOutlinCtrl>();
-        m_damage = GameManager.Instance.Player.Stat.AtkDamage * 1.5f;
     }
-
 
     public override void UseSKill()
     {
@@ -55,14 +55,15 @@ public class Skill4_CallThunder : PlayerSkillBase
         }
         Shuffle(rand_enemy_indexs);
 
-
         for (int i = 0; i < m_thunder_count; i++)
         {
             var prefab = GameManager.Instance.BulletPool.Get(m_bullet);
             prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = m_cols[rand_enemy_indexs[i % rand_enemy_indexs.Count]].transform.position;
+            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
-            prefab.GetComponent<Thunder>().Damage = m_damage;
+            prefab.GetComponent<Thunder>().Damage = GetFinallDamage(m_skill4_damage_ratio, m_damage_level_ratio);
+
             prefab.SetActive(true);
         }
     }
@@ -78,8 +79,8 @@ public class Skill4_CallThunder : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
-        m_damage *= m_damage_up_ratio;
-        if(level%2 == 0)
+        m_damage_level_ratio += m_damage_levelup_ratio;
+        if (level%2 == 0)
         {
             m_cool_time -= m_cool_time_decrease;
         }

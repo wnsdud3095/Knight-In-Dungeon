@@ -14,15 +14,14 @@ public class Shuriken : Kunai
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
+            EnemyCtrl enemy = col.GetComponent<EnemyCtrl>();
+            enemy.UpdateHP(-Damage);
+            enemy.Knockback(transform.position, 5f);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
             
             damage_indicator.GetComponent<DamageIndicator>().Initialize(Damage);
             damage_indicator.transform.position = col.transform.position;
-            
-            //넉백
         }
     }
-
 }
