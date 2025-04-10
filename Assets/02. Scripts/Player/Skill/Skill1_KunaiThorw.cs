@@ -16,9 +16,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
 
     private int m_reflect_count = 1;
 
-    //private float m_spawn_up_area_min = 0.2f;
-    //private float m_spawn_up_area_max = 0.6f;
-
     private float m_spawn_right_area_max = 0.5f;
    
 
@@ -57,7 +54,6 @@ public class Skill1_KunaiThorw : PlayerSkillBase
             prefab.transform.position = GameManager.Instance.Player.transform.position;
 
             prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, save_input_vector); //z축을 기준으로 벡터 방향을 바라보게 회전 시킴
-            //prefab.transform.Translate(Vector3.up * Random.Range(m_spawn_up_area_min, m_spawn_up_area_max));
             prefab.transform.Translate(Vector3.right * Random.Range(-m_spawn_right_area_max, m_spawn_right_area_max));
             prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
                  

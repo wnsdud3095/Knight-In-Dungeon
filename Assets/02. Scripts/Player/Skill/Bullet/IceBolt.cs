@@ -18,7 +18,7 @@ public class IceBolt : MagicMissile
         {
             col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
-            col.GetComponent<EnemyCtrl>().Freeze(2f);
+            col.GetComponent<EnemyCtrl>().Freeze(1.5f);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
 
