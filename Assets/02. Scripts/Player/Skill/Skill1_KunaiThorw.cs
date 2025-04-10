@@ -14,10 +14,7 @@ public class Skill1_KunaiThorw : PlayerSkillBase
     private int m_kunai_increase = 2;
     private float m_cool_time_decrease = 1;
 
-    private int m_reflect_count = 1;
-
-    private float m_spawn_right_area_max = 0.5f;
-   
+    private int m_reflect_count = 1;   
 
     private Vector2 save_input_vector = Vector2.right;
 
@@ -47,20 +44,34 @@ public class Skill1_KunaiThorw : PlayerSkillBase
     }
     protected virtual void SpawnKunai()
     {
+        if (save_input_vector == Vector2.zero) return;
+
+        float total_angle = 60f; // 전체 부채꼴 각도
+        float start_angle = -total_angle / 2f;
+        float angle_step = (m_kunal_count > 1) ? total_angle / (m_kunal_count - 1) : 0f;
+
         for (int i = 0; i < m_kunal_count; i++)
         {
+            float angle = start_angle + angle_step * i;
+
+            // 중심 방향에서 각도만큼 회전된 방향 구하기
+            Vector2 rotated_dir = Quaternion.Euler(0, 0, angle) * save_input_vector.normalized;
+
             var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.Kunai);
             prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = GameManager.Instance.Player.transform.position;
 
-            prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, save_input_vector); //z축을 기준으로 벡터 방향을 바라보게 회전 시킴
-            prefab.transform.Translate(Vector3.right * Random.Range(-m_spawn_right_area_max, m_spawn_right_area_max));
+            // 방향에 따라 회전 적용
+            prefab.transform.rotation = Quaternion.LookRotation(Vector3.forward, rotated_dir);
+
             prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
-                 
-            prefab.GetComponent<Kunai>().Damage = GetFinallDamage(m_skill1_damage_ratio, m_damage_level_ratio); //효율적인 참조를 위해 Get 말고 Set 방식 사용
-            prefab.GetComponent<Kunai>().ReflectCount = m_reflect_count;
-        }   
-    }
+
+            var kunai = prefab.GetComponent<Kunai>();
+            kunai.Damage = GetFinallDamage(m_skill1_damage_ratio, m_damage_level_ratio);
+            kunai.ReflectCount = m_reflect_count;
+        }
+    }   
+    
 
     protected override void ApplyLevelUpEffect(int level)
     {
