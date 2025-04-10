@@ -969,6 +969,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292472280}
   m_CullTransparentMesh: 1
+--- !u!1 &295306619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295306620}
+  m_Layer: 0
+  m_Name: Money Bag Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &295306620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295306619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613947692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &306184515
 GameObject:
   m_ObjectHideFlags: 0
@@ -5133,10 +5164,14 @@ MonoBehaviour:
     m_Prefab: {fileID: 2795193310059974105, guid: ab4e55035009ed242b4bc72fa508ff87, type: 3}
     m_container: {fileID: 2091685898}
   - m_type: 7
+    m_init_count: 7
+    m_Prefab: {fileID: 3143057060175690006, guid: 7a5070c8faefd8a35856cb5efa5c6dc3, type: 3}
+    m_container: {fileID: 295306619}
+  - m_type: 8
     m_init_count: 100
     m_Prefab: {fileID: 1439874335136518160, guid: 8dba25721d89d14f4ad7db84a2b48839, type: 3}
     m_container: {fileID: 1311534626}
-  - m_type: 8
+  - m_type: 9
     m_init_count: 100
     m_Prefab: {fileID: 1508379008619853423, guid: e6049e7ed415946469de52fde04ba860, type: 3}
     m_container: {fileID: 1304206036}
@@ -5159,6 +5194,7 @@ Transform:
   - {fileID: 1335320034}
   - {fileID: 498560671}
   - {fileID: 2091685899}
+  - {fileID: 295306620}
   - {fileID: 1311534627}
   - {fileID: 47408703}
   - {fileID: 1304206037}

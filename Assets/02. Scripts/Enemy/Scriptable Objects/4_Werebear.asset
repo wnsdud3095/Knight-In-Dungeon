@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
-  m_Name: 4_Werewolf
+  m_Name: 4_Werebear
   m_EditorClassIdentifier: 
   m_hp: 960
   m_atk: 25
   m_speed: 1.5
   m_exp: 30
-  m_animator: {fileID: 9100000, guid: e2e0aa5c30b3cf941836c4831744c1d1, type: 2}
+  m_animator: {fileID: 9100000, guid: 7069d82da443b48bfb57fa6535522b3f, type: 2}
   m_is_boss: 0

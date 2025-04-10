@@ -51,10 +51,8 @@ public class EnemyCtrl : MonoBehaviour
 
         Rigidbody.simulated = true;
 
-        Renderer.sortingOrder = 2;
-
         Animator.runtimeAnimatorController = Script.Animator;
-        Animator.SetTrigger("Move");
+        Animator.ResetTrigger("Die");
 
         if (m_knockback_coroutine != null)
         {
@@ -109,8 +107,6 @@ public class EnemyCtrl : MonoBehaviour
         Rigidbody.simulated = false;
 
         Collider.enabled = false;
-
-        Renderer.sortingOrder = 1;
 
         Animator.SetTrigger("Die");
 
