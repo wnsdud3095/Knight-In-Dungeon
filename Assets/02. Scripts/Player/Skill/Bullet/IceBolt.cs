@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class IceBolt : MagicMissile
 {
+
+
     void Update()
     {
         GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
 
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
-
+        PerCheck();
         LifeTimeCheck();
     }
 
@@ -18,12 +20,13 @@ public class IceBolt : MagicMissile
         {
             col.GetComponent<EnemyCtrl>().UpdateHP(-Damage);
 
-            col.GetComponent<EnemyCtrl>().Freeze(2f);
+            col.GetComponent<EnemyCtrl>().Freeze(1.5f);
 
             GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
 
             damage_indicator.GetComponent<DamageIndicator>().Initialize(Damage);
             damage_indicator.transform.position = col.transform.position;
+            m_per_count--;
         }
     }
 }

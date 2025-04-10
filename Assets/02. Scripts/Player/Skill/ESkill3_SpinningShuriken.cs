@@ -7,11 +7,18 @@ public class ESkill3_SpinningShuriken : Skill3_SpinningShuriken
     private float m_e_spinning_radius = 2f;
     private float m_e_life_time = float.PositiveInfinity;
     private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
+    private BulletPoolManager m_bullet_manager;
 
     private bool m_is_started = false;
     protected override void Start()
     {
         base.Start();
+        m_bullet_manager = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
+
+        foreach (GameObject ob in m_bullet_manager.m_pools[(int)SkillBullet.Shuriken])
+        {
+            ob.SetActive(false);
+        }
         m_shuriken_count = m_e_shuriken_count;
         m_spinning_spped = m_e_spinning_spped;
         m_spinning_radius = m_e_spinning_radius;

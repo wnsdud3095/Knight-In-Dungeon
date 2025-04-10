@@ -11,7 +11,7 @@ public class MagicMissile : BulletBase
     }
     public float Speed { get; set; } = 6f;
 
-    private int m_per_count = 1;
+    protected int m_per_count = 1;
 
     protected float m_life_time = 0;
     protected float m_origin_life_time = 4f;
@@ -36,7 +36,7 @@ public class MagicMissile : BulletBase
         LifeTimeCheck();
     }
 
-    private void PerCheck()
+    protected void PerCheck()
     {
         if (m_per_count <= 0) ReturnToPool();
     }

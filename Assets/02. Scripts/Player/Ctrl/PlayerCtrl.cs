@@ -9,11 +9,11 @@ public class PlayerCtrl : MonoBehaviour
     private SkillManager m_skill_manager;
 
     [SerializeField]
-    private PlayerStat m_origin_stat;
-    public PlayerStat OriginStat { get { return m_origin_stat; } private set { m_origin_stat = value; } }
+    private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
+    public PlayerStat OriginStat { get; set; } // 기본스탯 + 진화스탯 , 런타임 스탯이 디버프 될시 값 복구를 위한 원본 값
     [SerializeField]
-    private PlayerStat m_stat;
-    public PlayerStat Stat { get { return m_stat; } private set {m_stat = value; } }
+    private PlayerStat m_stat; // 런타임에서 현재 스탯 확인용
+    public PlayerStat Stat { get { return m_stat; } private set {m_stat = value; } } // 런타임에 변경되는 스테이지 내부 스탯
     public JoyStickCtrl joyStick { get; private set; }
     public Animator Animator { get; private set; }
 
@@ -25,8 +25,8 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Awake()
     {
-        //GetCalculatedStat();
-        InitStat();
+        GetCalculatedStat();
+        m_stat = CloneStat(OriginStat);
     }
 
     private void OnEnable()
@@ -74,25 +74,27 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetCalculatedStat()
     {
+        OriginStat = CloneStat(m_stat_scriptable);
         OriginStat.HP += GameManager.Instance.CalculatedStat.HP;
         OriginStat.AtkDamage += GameManager.Instance.CalculatedStat.ATK;
         OriginStat.HpRegen += GameManager.Instance.CalculatedStat.HP_REGEN;
     }
 
-    public void InitStat()
+    public PlayerStat CloneStat(PlayerStat origin_stat)
     {
-        Stat = ScriptableObject.CreateInstance<PlayerStat>();
+        PlayerStat new_stat = ScriptableObject.CreateInstance<PlayerStat>();
         if(OriginStat == null)
         {
             Debug.Log("스탯이 없음");
         }
-        Stat.HP = OriginStat.HP;
-        Stat.HpRegen = OriginStat.HpRegen;
-        Stat.MoveSpeed = OriginStat.MoveSpeed;
-        Stat.AtkDamage = OriginStat.AtkDamage;
-        Stat.BulletSize = OriginStat.BulletSize;
-        Stat.ExpBonusRatio = OriginStat.ExpBonusRatio;
-        Stat.CoolDownDecreaseRatio = OriginStat.CoolDownDecreaseRatio;
+        new_stat.HP = origin_stat.HP;
+        new_stat.HpRegen = origin_stat.HpRegen;
+        new_stat.MoveSpeed = origin_stat.MoveSpeed;
+        new_stat.AtkDamage = origin_stat.AtkDamage;
+        new_stat.BulletSize = origin_stat.BulletSize;
+        new_stat.ExpBonusRatio = origin_stat.ExpBonusRatio;
+        new_stat.CoolDownDecreaseRatio = origin_stat.CoolDownDecreaseRatio;
+        return new_stat;
     }
 
     private void HpRegen()
