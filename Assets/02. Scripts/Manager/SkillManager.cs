@@ -30,7 +30,15 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        AddSkill(4);
+        //AddSkill<Skill3_SpinningShuriken>();
+        //AddSkill<DamageBuffSkill>();
+        AddSkill<Skill2_Severing>();
+        //AddSkill<ESkill3_SpinningShuriken>();
+        //AddSkill<ESkill4_CallThunder>();
+        //AddSkill<ESkill5_MagicMissile>();
+        //AddSkill<ESkill6_PiercingLight>();
+        //AddSkill<ESkill2_Severing>();
+        //AddSkill<ESkill1_KunaiThorw>();
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가

@@ -33,9 +33,9 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        m_stage_manager = GetComponent<StageManager>();
-
         m_current_stage = m_stage_list[DataManager.Instance.Data.m_current_stage - 1];
+
+        m_stage_manager = GetComponent<StageManager>();
 
         float total_time = 0f;
         foreach(WaveData wave in Stage.Waves)
@@ -49,11 +49,13 @@ public class SpawnManager : MonoBehaviour
                 total_time += (wave.Pattern as BossWave).Duration;
             }
         }
+
         m_stage_manager.GameTimer = total_time;
-        
+        m_stage_manager.OriginTimer = total_time;
+
         StartStage(Stage);
     }
-
+    
     private void Update()
     {
         if(GameManager.Instance.GameState != GameEventType.Playing || !m_wave_active)
@@ -179,7 +181,7 @@ public class SpawnManager : MonoBehaviour
                     m_boss_spawn = false;
                     m_boss_count = 0;
 
-                    m_stage_manager.GameTimer -= boss_pattern.Duration - m_wave_timer;
+                    GameManager.Instance.StageManager.GameTimer -= boss_pattern.Duration - m_wave_timer;
                     NextWave();
                 }
 

@@ -6,4 +6,6 @@ public enum GameEventType
     Playing = 3,
     Setting = 4,
     Selecting = 5,
+    Dead = 6,
+    Clear = 7,
 }

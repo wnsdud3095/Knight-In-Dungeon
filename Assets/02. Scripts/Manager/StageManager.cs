@@ -14,6 +14,13 @@ public class StageManager : MonoBehaviour
         set { m_game_timer = value; }
     }
 
+    private float m_origin_timer;
+    public float OriginTimer
+    {
+        get { return m_origin_timer; }
+        set { m_origin_timer = value; }
+    }
+
     private int m_player_level;
     public int Level
     {

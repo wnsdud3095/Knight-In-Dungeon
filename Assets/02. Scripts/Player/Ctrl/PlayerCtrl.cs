@@ -1,6 +1,6 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 { 
@@ -21,6 +21,8 @@ public class PlayerCtrl : MonoBehaviour
     private float m_regen_cool_time = 1f;
 
     private bool m_invincibility;
+    private bool m_is_dead;
+
     private void Awake()
     {
         //GetCalculatedStat();
@@ -31,14 +33,18 @@ public class PlayerCtrl : MonoBehaviour
     {
         GameEventBus.Subscribe(GameEventType.Playing, GameManager.Instance.Playing);
         GameEventBus.Subscribe(GameEventType.Setting, GameManager.Instance.Setting);
-        GameEventBus.Subscribe(GameEventType.Selecting, GameManager.Instance.Selecting);        
+        GameEventBus.Subscribe(GameEventType.Selecting, GameManager.Instance.Selecting);
+        GameEventBus.Subscribe(GameEventType.Dead, GameManager.Instance.Dead);
+        GameEventBus.Subscribe(GameEventType.Clear, GameManager.Instance.Clear);
     }
 
     private void OnDisable()
     {
         GameEventBus.Unsubscribe(GameEventType.Playing, GameManager.Instance.Playing);
         GameEventBus.Unsubscribe(GameEventType.Setting, GameManager.Instance.Setting);
-        GameEventBus.Unsubscribe(GameEventType.Selecting, GameManager.Instance.Selecting);                
+        GameEventBus.Unsubscribe(GameEventType.Selecting, GameManager.Instance.Selecting);
+        GameEventBus.Unsubscribe(GameEventType.Dead, GameManager.Instance.Dead);
+        GameEventBus.Unsubscribe(GameEventType.Clear, GameManager.Instance.Clear);           
     }
 
     void Start()
@@ -122,14 +128,31 @@ public class PlayerCtrl : MonoBehaviour
     {
         Stat.HP += hp;
         Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
+
+        if(Stat.HP <= 0f)
+        {
+            Dead();
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Dead()
     {
-        if (collision.CompareTag("Enemy"))
+        GameEventBus.Publish(GameEventType.Dead);
+
+        m_is_dead = true;
+        Animator.SetTrigger("Death");
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Enemy"))
         {
-            Debug.Log($"[트리거 감지] 이름: {collision.name}, 위치: {collision.transform.position}, active: {collision.gameObject.activeSelf}, tag: {collision.tag}");
-            if (m_invincibility is true)
+            if(m_is_dead)
+            {
+                return;
+            }
+
+            if(m_invincibility is true)
             {
                 return;
             }

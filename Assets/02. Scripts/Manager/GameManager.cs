@@ -39,6 +39,20 @@ public class GameManager : Singleton<GameManager>
         private set { m_player_ctrl = value; }
     }
 
+    private StageManager m_stage_manager;
+    public StageManager StageManager
+    {
+        get { return m_stage_manager; }
+        private set { m_stage_manager = value; }
+    }
+
+    private Finisher m_finisher;
+    public Finisher Finisher
+    {
+        get { return m_finisher; }
+        private set { m_finisher = value; }
+    }
+
     private bool m_can_init = true;
 
     private new void Awake()
@@ -90,6 +104,8 @@ public class GameManager : Singleton<GameManager>
             SoundManager.Instance.PlayBGM("Game Background");
             
             Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
+            StageManager = GameObject.Find("Stage Manager").GetComponent<StageManager>();
+            Finisher = GameObject.Find("Finish UI").GetComponent<Finisher>();
             BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
         }
         else
@@ -135,6 +151,27 @@ public class GameManager : Singleton<GameManager>
         }
 
         Player.Animator.speed = 0f;
+    }
+
+    public void Dead()
+    {
+        GameState = GameEventType.Dead;
+
+        DataManager.Instance.Data.m_user_money += StageManager.Kill;
+        DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);
+
+        Finisher.OpenUI(false);
+    }
+
+    public void Clear()
+    {
+        GameState = GameEventType.Clear;
+
+        DataManager.Instance.Data.m_user_money += StageManager.Kill;
+        DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);
+        DataManager.Instance.Data.m_current_stage++;
+
+        Finisher.OpenUI(true);
     }
 
     private void OnApplicationPause(bool pause)
