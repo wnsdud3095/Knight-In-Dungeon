@@ -22,9 +22,11 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
 
     protected GameObject m_rotater;
 
+
     protected virtual void Start()
     {
         m_cool_time = m_skill3_cool_time;
+
 
         Transform[] transforms = GameManager.Instance.Player.transform.GetComponentsInChildren<Transform>(true);
         foreach (Transform t in transforms)

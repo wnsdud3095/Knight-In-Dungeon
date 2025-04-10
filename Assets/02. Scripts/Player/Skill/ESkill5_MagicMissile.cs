@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ESkill5_MagicMissile : Skill5_MagicMissile
 {
-    private float m_e_skill5_cool_time = 1f;
+    private float m_e_skill5_cool_time = 0.5f;
     private float m_e_throw_speed = 8f;
     private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
 
@@ -13,9 +13,7 @@ public class ESkill5_MagicMissile : Skill5_MagicMissile
 
     protected override void SpawnMissile()
     {
-        int rand_missile = Random.Range((int)SkillBullet.FireBall,(int)SkillBullet.IceBolt + 1 );
-
-        var prefab = GameManager.Instance.BulletPool.Get((SkillBullet)rand_missile);
+        var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.IceBolt);
         prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
         prefab.transform.position = GameManager.Instance.Player.transform.position;
 
