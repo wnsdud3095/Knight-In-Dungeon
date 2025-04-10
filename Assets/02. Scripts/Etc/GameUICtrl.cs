@@ -28,12 +28,9 @@ public class GameUICtrl : MonoBehaviour
     [Header("체력 UI 슬라이더")]
     [SerializeField] private Slider m_hp_slider;
 
-    [Space(30)][Header("스테이지 매니저")]
-    [SerializeField] private StageManager m_stage_manager;
-
     public void Update()
     {
-        m_exp_slider.value = Mathf.Clamp(m_stage_manager.CurrentExp / m_stage_manager.MaxExp, 0f, 1f);
+        m_exp_slider.value = Mathf.Clamp(GameManager.Instance.StageManager.CurrentExp / GameManager.Instance.StageManager.MaxExp, 0f, 1f);
         m_hp_slider.value = GameManager.Instance.Player.Stat.HP / GameManager.Instance.Player.OriginStat.HP;
 
         if(GameManager.Instance.GameState is not GameEventType.Playing)
@@ -41,11 +38,11 @@ public class GameUICtrl : MonoBehaviour
             return;
         }
 
-        m_play_time_label.text = (m_stage_manager.GameTimer / 60).ToString("00") + ":" + (m_stage_manager.GameTimer % 60).ToString("00");
+        m_play_time_label.text = (GameManager.Instance.StageManager.GameTimer / 60).ToString("00") + ":" + (GameManager.Instance.StageManager.GameTimer % 60).ToString("00");
 
-        m_level_label.text = $"LV.{m_stage_manager.Level}";
+        m_level_label.text = $"LV.{GameManager.Instance.StageManager.Level}";
         
-        m_money_label.text = m_stage_manager.Kill.ToString("00000");
+        m_money_label.text = GameManager.Instance.StageManager.Kill.ToString("00000");
 
         if(m_hp_slider.value == 1f)
         {
