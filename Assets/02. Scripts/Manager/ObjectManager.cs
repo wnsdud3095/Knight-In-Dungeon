@@ -135,4 +135,31 @@ public class ObjectManager : Singleton<ObjectManager>
 
         return object_list.ToArray();
     }
+
+    public GameObject[] GetAllObjects(ObjectType type)
+    {
+        List<GameObject> object_list = new List<GameObject>();
+
+        foreach(PoolInfo pool in m_pool_info_list)
+        {
+            if(pool.m_type == type)
+            {
+                Transform[] objects = pool.m_container.GetComponentsInChildren<Transform>(true);
+
+                foreach(Transform obj in objects)
+                {
+                    if(obj.gameObject == pool.m_container)
+                    {
+                        continue;
+                    }
+
+                    object_list.Add(obj.gameObject);
+                }
+
+                break;
+            }
+        }
+
+        return object_list.ToArray();
+    }
 }

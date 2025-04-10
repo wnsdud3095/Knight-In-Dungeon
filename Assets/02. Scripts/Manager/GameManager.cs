@@ -116,7 +116,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
         foreach(GameObject enemy in enemies)
         {
             enemy.GetComponent<Animator>().speed = 1f;
@@ -129,7 +129,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Setting;
 
-        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
         foreach(GameObject enemy in enemies)
         {
             enemy.GetComponent<EnemyCtrl>().Rigidbody.linearVelocity = Vector2.zero;
@@ -143,7 +143,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Selecting;
 
-        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
         foreach(GameObject enemy in enemies)
         {
             enemy.GetComponent<EnemyCtrl>().Rigidbody.linearVelocity = Vector2.zero;
