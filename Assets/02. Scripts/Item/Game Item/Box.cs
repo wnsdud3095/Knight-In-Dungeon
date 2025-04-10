@@ -55,7 +55,7 @@ public class Box : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        int item_code = UnityEngine.Random.Range(0, 3);
+        int item_code = UnityEngine.Random.Range(0, 4);
 
         GameObject item = null;
         switch(item_code)
@@ -70,6 +70,10 @@ public class Box : MonoBehaviour
         
             case 2:
                 item = ObjectManager.Instance.GetObject(ObjectType.Item_Bomb);
+                break;
+
+            case 3:
+                item = ObjectManager.Instance.GetObject(ObjectType.Item_MoneyBag);
                 break;
 
             default:
