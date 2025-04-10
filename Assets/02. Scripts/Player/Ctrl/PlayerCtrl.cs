@@ -17,6 +17,9 @@ public class PlayerCtrl : MonoBehaviour
     public JoyStickCtrl joyStick { get; private set; }
     public Animator Animator { get; private set; }
 
+    private float m_regen_time = 0;
+    private float m_regen_cool_time = 1f;
+
     private bool m_invincibility;
     private bool m_is_dead;
 
@@ -64,6 +67,7 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         Move();
+        HpRegen();
 
         m_skill_manager.UseSkills();
     }
@@ -89,6 +93,19 @@ public class PlayerCtrl : MonoBehaviour
         Stat.BulletSize = OriginStat.BulletSize;
         Stat.ExpBonusRatio = OriginStat.ExpBonusRatio;
         Stat.CoolDownDecreaseRatio = OriginStat.CoolDownDecreaseRatio;
+    }
+
+    private void HpRegen()
+    {
+        if(m_regen_time <= m_regen_cool_time )
+        {
+            m_regen_time += Time.deltaTime;
+        }
+        else
+        {
+            m_regen_time = 0;
+            UpdateHP(OriginStat.HP * (Stat.HpRegen / 100f)); //최대 체력의 HpRegen% 만큼 회복
+        }
     }
 
     private void Move()

@@ -4,7 +4,17 @@ public class ESkill2_Severing : Skill2_Severing
 {
     private float m_e_skill2_cool_time = 1.5f;
     private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
-    private float m_e_heal = 0.5f;
+    private float m_e_heal_ratio = 0.6f;
+
+    public override void UseSKill()
+    {
+        CoolTime(m_cool_time);
+
+        if (m_can_use)
+        {
+            m_effect.SetActive(true);
+        }
+    }
 
     void Start()
     {
@@ -20,7 +30,7 @@ public class ESkill2_Severing : Skill2_Severing
         }
 
         m_effect.GetComponent<ESevering>().Damage = GetFinallDamage(m_skill2_damage_ratio, m_damage_e_level_ratio);
-        m_effect.GetComponent<ESevering>().Heal = m_e_heal;
+        m_effect.GetComponent<ESevering>().Heal = m_e_heal_ratio;
     }
 
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Skill1_KunaiThorw : PlayerSkillBase
 {
+    private int m_skill_id = 0;
     //데미지 관련
     protected float m_skill1_damage_ratio = 1f; // 스킬의 공격력 계수
     private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
@@ -67,6 +68,7 @@ public class Skill1_KunaiThorw : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
+        CheckSkillEvolve(m_skill_id);
         m_damage_level_ratio += m_damage_levelup_ratio;
         if(level%2 == 0)
         {

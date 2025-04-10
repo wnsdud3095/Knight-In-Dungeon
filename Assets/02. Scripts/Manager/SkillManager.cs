@@ -17,7 +17,13 @@ public class SkillManager : MonoBehaviour
         {12, typeof(ScaleBuffSKill)},
         {13, typeof(MoveSpeedBuffSkill)},
         {14, typeof(ExpBuffSKill)},
-        {15, typeof(CoolTimeBuffSKll)}
+        {15, typeof(CoolTimeBuffSKll)},
+        {20, typeof(ESkill1_KunaiThorw)},
+        {21, typeof(ESkill2_Severing)},
+        {22, typeof(ESkill3_SpinningShuriken)},
+        {23, typeof(ESkill4_CallThunder)},
+        {24, typeof(ESkill5_MagicMissile)},
+        {25, typeof(ESkill6_PiercingLight)}
     };
 
     private int m_max_using_skill = 9;
@@ -33,12 +39,6 @@ public class SkillManager : MonoBehaviour
         //AddSkill<ESkill6_PiercingLight>();
         //AddSkill<ESkill2_Severing>();
         //AddSkill<ESkill1_KunaiThorw>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가
@@ -66,6 +66,16 @@ public class SkillManager : MonoBehaviour
         }
     } 
 
+    public void RemoveSkill(int skill_id)
+    {
+        if (m_skill_map.TryGetValue(skill_id, out var type))
+        {
+            var old_skill = gameObject.GetComponent(type);
+            Destroy(old_skill);
+            UsingSKills.Remove(old_skill as PlayerSkillBase);
+        }
+    }
+
     public void UseSkills()
     {
         if (UsingSKills == null) return;
@@ -84,5 +94,11 @@ public class SkillManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void SkillEvolve(int skill_id)
+    {
+        RemoveSkill(skill_id);
+        AddSkill(skill_id + 20);
     }
 }

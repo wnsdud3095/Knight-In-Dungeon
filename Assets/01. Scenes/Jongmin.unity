@@ -2468,6 +2468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 544154246}
   - component: {fileID: 544154247}
+  - component: {fileID: 544154248}
   m_Layer: 0
   m_Name: Area
   m_TagString: GroundCheckArea
@@ -2536,6 +2537,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 20, y: 20}
   m_EdgeRadius: 0
+--- !u!114 &544154248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544154245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765233f26fbd80e4ba1caa00f962f178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &550981916
 GameObject:
   m_ObjectHideFlags: 0
@@ -26129,6 +26142,7 @@ Transform:
   - {fileID: 1017543149}
   - {fileID: 308098278}
   - {fileID: 629966799}
+  - {fileID: 544154246}
   - {fileID: 317426392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

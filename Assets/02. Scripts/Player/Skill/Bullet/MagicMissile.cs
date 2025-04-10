@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MagicMissile : MonoBehaviour
+public class MagicMissile : BulletBase
 {
     private float m_damage;  
 
@@ -27,6 +27,7 @@ public class MagicMissile : MonoBehaviour
 
     private void Update()
     {
+        GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
 
         transform.Translate(Vector3.up * Speed * Time.deltaTime);

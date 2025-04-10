@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Skill4_CallThunder : PlayerSkillBase
 {
+    private int m_skill_id = 3;
     //데미지 관련
     protected float m_skill4_damage_ratio = 1.3f; // 스킬의 공격력 계수
     protected float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
@@ -60,7 +61,6 @@ public class Skill4_CallThunder : PlayerSkillBase
             var prefab = GameManager.Instance.BulletPool.Get(m_bullet);
             prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = m_cols[rand_enemy_indexs[i % rand_enemy_indexs.Count]].transform.position;
-            prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
             prefab.GetComponent<Thunder>().Damage = GetFinallDamage(m_skill4_damage_ratio, m_damage_level_ratio);
 
@@ -79,6 +79,7 @@ public class Skill4_CallThunder : PlayerSkillBase
 
     protected override void ApplyLevelUpEffect(int level)
     {
+        CheckSkillEvolve(m_skill_id);
         m_damage_level_ratio += m_damage_levelup_ratio;
         if (level%2 == 0)
         {
