@@ -163,16 +163,19 @@ public class EnemyCtrl : MonoBehaviour
         float elasped_time = 0f;
         float target_time = 0.5f;
 
-        Vector2 kps = direction * (amount / target_time);
+        Vector2 kps = direction * (amount - Script.AntiKnockback / target_time);
 
-        while(elasped_time <= target_time)
+        if(kps.magnitude > 0f)
         {
-            elasped_time += Time.deltaTime;
-            yield return null;
+            while(elasped_time <= target_time)
+            {
+                elasped_time += Time.deltaTime;
+                yield return null;
 
-            float t = elasped_time / target_time;
+                float t = elasped_time / target_time;
 
-            Rigidbody.MovePosition(Rigidbody.position + kps * Time.deltaTime);
+                Rigidbody.MovePosition(Rigidbody.position + kps * Time.deltaTime);
+            }
         }
 
         m_knockback_coroutine = null;
@@ -180,7 +183,7 @@ public class EnemyCtrl : MonoBehaviour
 
     public void SlowEnter(float amount)
     {
-        m_current_speed *= amount;
+        m_current_speed *= amount + Script.AntiSlow;
     }
 
     public void SlowExit()
@@ -202,7 +205,7 @@ public class EnemyCtrl : MonoBehaviour
     {
         m_current_speed = 0f;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration - Script.AntiFreeze);
 
         m_current_speed = Script.SPD;
     }

@@ -16,5 +16,8 @@ MonoBehaviour:
   m_atk: 15
   m_speed: 1
   m_exp: 10
+  m_slow_resistance: 0.2
+  m_knockback_resistance: 0.05
+  m_freeze_resistance: 0
   m_animator: {fileID: 9100000, guid: e8929388bbcab4b4f8e887c16fcbb1f8, type: 2}
   m_is_boss: 0
