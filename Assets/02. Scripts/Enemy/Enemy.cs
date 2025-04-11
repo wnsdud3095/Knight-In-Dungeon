@@ -31,6 +31,27 @@ public class Enemy : ScriptableObject
         get { return m_exp; }
     }
 
+    [Header("몬스터의 둔화저항력")]
+    [SerializeField] private float m_slow_resistance;
+    public float AntiSlow
+    {
+        get { return m_slow_resistance; }
+    }
+
+    [Header("몬스터의 넉백저항력")]
+    [SerializeField] private float m_knockback_resistance;
+    public float AntiKnockback
+    {
+        get { return m_knockback_resistance; }
+    }
+
+    [Header("몬스터의 빙결저항력")]
+    [SerializeField] private float m_freeze_resistance;
+    public float AntiFreeze
+    {
+        get { return m_freeze_resistance; }
+    }
+
     [Header("몬스터의 애니메이터")]
     [SerializeField] private RuntimeAnimatorController m_animator;
     public RuntimeAnimatorController Animator

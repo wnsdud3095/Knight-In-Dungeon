@@ -90,6 +90,8 @@ public class SpawnManager : MonoBehaviour
         {
             m_wave_active = false;
             
+            GameEventBus.Publish(GameEventType.Clear);
+
             DataManager.Instance.Data.m_current_stage++;
 
             return;
