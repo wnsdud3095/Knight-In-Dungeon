@@ -5,7 +5,8 @@ public class Kunai : BulletBase
     public float Damage { get; set; }
     public float ReflectCount { get; set; }
 
-    [HideInInspector]
+    //[HideInInspector]
+    [SerializeField]
     protected float m_life_time = 0;
     private float m_origin_life_time = 6f;
 

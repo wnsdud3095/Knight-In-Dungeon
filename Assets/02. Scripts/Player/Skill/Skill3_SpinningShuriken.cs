@@ -39,12 +39,11 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
     }
     public override void UseSKill()
     {
-        CoolTime(m_cool_time + m_life_time);
-
         if(m_can_use)
         {
             SpawnShuriken();
         }
+        CoolTime(m_cool_time + m_life_time);
     }
 
     protected void SpawnShuriken()
@@ -73,7 +72,7 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
             prefab.transform.localScale = Vector3.one * GameManager.Instance.Player.Stat.BulletSize;
 
             prefab.GetComponent<Shuriken>().Damage = GetFinallDamage(m_skill3_damage_ratio, m_damage_level_ratio);
-            prefab.GetComponent<Shuriken>().LifeTime = m_life_time;
+            m_rotater.GetComponent<ShurikenRotater>().LifeTime = m_life_time;
             m_rotater.SetActive(true);
             m_rotater.GetComponent<ShurikenRotater>().SpinningSpeed = m_spinning_spped;
         }
