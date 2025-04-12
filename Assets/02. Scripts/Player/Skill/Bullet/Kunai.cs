@@ -11,10 +11,6 @@ public class Kunai : BulletBase
     private float m_origin_life_time = 6f;
 
     private float m_speed = 6f;
- 
-    private int m_reflect_angle_min = 130;
-    private int m_reflect_angle_max = 230;
-
 
     private void OnEnable()
     {
@@ -68,7 +64,8 @@ public class Kunai : BulletBase
         else if(col.CompareTag("ScreenOutLine"))
         {
             ReflectCount--;
-            transform.rotation *= Quaternion.Euler(0f, 0f, Random.Range(m_reflect_angle_min, m_reflect_angle_max));
+            Vector3 dir = GameManager.Instance.Player.transform.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, dir);
         }
     }
 }
