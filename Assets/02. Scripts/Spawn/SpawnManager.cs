@@ -92,8 +92,6 @@ public class SpawnManager : MonoBehaviour
             
             GameEventBus.Publish(GameEventType.Clear);
 
-            DataManager.Instance.Data.m_current_stage++;
-
             return;
         }
 
