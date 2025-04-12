@@ -4,7 +4,7 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
 {
     private int m_skill_id = 2;
     //데미지 관련
-    protected float m_skill3_damage_ratio = 1.0f; // 스킬의 공격력 계수
+    protected float m_skill3_damage_ratio = 1.2f; // 스킬의 공격력 계수
     protected float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
     private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
 
@@ -18,7 +18,7 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
     private float m_spinning_spped_up_ratio = 1.2f;
     private float m_spinning_radius_increase = 0.3f;
 
-    protected float m_life_time = 5f;
+    protected float m_life_time = 4f;
 
     protected GameObject m_rotater;
 
