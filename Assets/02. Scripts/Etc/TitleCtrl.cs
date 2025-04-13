@@ -63,7 +63,7 @@ public class TitleCtrl : MonoBehaviour
 
     public void SetCalculatedStat()
     {
-        GameManager.Instance.CalculatedStat = new CalculatedStat(100f, 10f, 0f);
+        GameManager.Instance.CalculatedStat = new CalculatedStat(0f, 0f, 0f);
 
         GameManager.Instance.CalculatedStat.HP += m_equipment_inventory.EquipmentEffect.HP;
         GameManager.Instance.CalculatedStat.ATK += m_equipment_inventory.EquipmentEffect.ATK;
@@ -148,6 +148,7 @@ public class TitleCtrl : MonoBehaviour
     public void Button_SinglePlay()
     {
         SoundManager.Instance.PlayEffect("Button Click");
+        GameManager.Instance.Save();
         LoadingManager.Instance.LoadScene("Jongmin");
     }
 

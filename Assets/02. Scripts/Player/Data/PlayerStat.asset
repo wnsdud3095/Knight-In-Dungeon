@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bade6e31a2020848a62f3fe647eb6d8, type: 3}
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
-  m_hp: 500
+  m_hp: 100
   m_hp_regen: 0
-  m_atk_damage: 5
+  m_atk_damage: 10
   m_bullet_size: 1
   m_move_speed: 2
-  m_exp_bonus_ratio: 10
+  m_exp_bonus_ratio: 1
   m_cool_down_decrease_ratio: 1

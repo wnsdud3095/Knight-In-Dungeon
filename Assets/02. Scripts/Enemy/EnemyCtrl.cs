@@ -171,7 +171,7 @@ public class EnemyCtrl : MonoBehaviour
         {
             while(elasped_time <= target_time)
             {
-                if(GameManager.Instance.GameState is not GameEventType.Playing)
+                while (GameManager.Instance.GameState is not GameEventType.Playing)
                 {
                     yield return null;
                 }

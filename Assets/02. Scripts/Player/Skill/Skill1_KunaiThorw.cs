@@ -54,6 +54,8 @@ public class Skill1_KunaiThorw : PlayerSkillBase
         {
             float angle = start_angle + angle_step * i;
 
+            if(m_kunal_count == 1) angle = 0f; //1개면 -30 도 방향으로 움직임
+
             // 중심 방향에서 각도만큼 회전된 방향 구하기
             Vector2 rotated_dir = Quaternion.Euler(0, 0, angle) * save_input_vector.normalized;
 

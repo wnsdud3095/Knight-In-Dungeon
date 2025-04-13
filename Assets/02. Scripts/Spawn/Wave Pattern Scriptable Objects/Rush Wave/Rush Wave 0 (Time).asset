@@ -15,5 +15,5 @@ MonoBehaviour:
   m_spawn_type: 1
   m_spawn_pattern: 0
   m_end_type: 1
-  m_duration: 20
+  m_duration: 60
   m_interval: 0.1
