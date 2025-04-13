@@ -115,6 +115,8 @@ public class Setter : MonoBehaviour
 
     public void Button_Exit()
     {
+        GameManager.Instance.Save();
+        
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

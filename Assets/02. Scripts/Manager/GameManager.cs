@@ -178,16 +178,16 @@ public class GameManager : Singleton<GameManager>
     {
         if(pause)
         {
-            if(GameState == GameEventType.Waiting && DataManager.Instance.Data is not null)
-            {
-                Inventory?.SaveSlotData();
-                Equipment?.SaveSlotData();
-                DataManager.Instance.SaveUserData(DataManager.Instance.Data);
-            }
+            Save();
         }
     }
 
     private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    public void Save()
     {
         if(GameState == GameEventType.Waiting && DataManager.Instance.Data is not null)
         {

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
+using UnityEngine.Networking;
 
 public class ItemDataManager : Singleton<ItemDataManager>
 {
@@ -20,33 +22,33 @@ public class ItemDataManager : Singleton<ItemDataManager>
     {
         base.Awake();
 
+#if UNITY_ANDROID && !UNITY_EDITOR
         m_item_data_path = Path.Combine(Application.streamingAssetsPath, "ItemData.json");
+#else
+        m_item_data_path = "file://" + Path.Combine(Application.streamingAssetsPath, "ItemData.json");
+#endif
 
         m_item_name_dictionary = new Dictionary<int, string>();
         m_item_description_dictionary = new Dictionary<int, string>();
 
-        Initialize();
+        StartCoroutine(Initialize());
     }
 
-    private void Initialize()
+    private IEnumerator Initialize()
     {
-        if(File.Exists(m_item_data_path))
-        {
-            var json_data = File.ReadAllText(m_item_data_path);
-            var item_list = JsonUtility.FromJson<ItemInfos>(json_data);
+        UnityWebRequest request = UnityWebRequest.Get(m_item_data_path);
+        yield return request.SendWebRequest();
 
-            if(item_list is not null && item_list.m_item_infos is not null)
-            {
-                foreach(var item in item_list.m_item_infos)
-                {
-                    m_item_name_dictionary.Add(item.m_item_id, item.m_item_name);
-                    m_item_description_dictionary.Add(item.m_item_id, item.m_item_description);
-                }
-            }
-        }
-        else
+        var json_data = request.downloadHandler.text;
+        var item_list = JsonUtility.FromJson<ItemInfos>(json_data);
+
+        if(item_list is not null && item_list.m_item_infos is not null)
         {
-            Debug.Log($"{m_item_data_path}가 존재하지 않습니다.");
+            foreach(var item in item_list.m_item_infos)
+            {
+                m_item_name_dictionary.Add(item.m_item_id, item.m_item_name);
+                m_item_description_dictionary.Add(item.m_item_id, item.m_item_description);
+            }
         }
     }
 
