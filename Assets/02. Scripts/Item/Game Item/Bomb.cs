@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour, IItem
 {
+    [Header("폭발 이펙트")]
+    [SerializeField] private GameObject m_explosion_effect;
+
     public void Use()
     {
+        Instantiate(m_explosion_effect);
+
         EnemyCtrl[] enemies = FindObjectsByType<EnemyCtrl>(sortMode: FindObjectsSortMode.None);
 
         foreach(EnemyCtrl enemy in enemies)
