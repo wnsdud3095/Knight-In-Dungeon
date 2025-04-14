@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 102_Boss Armored Skeleton
   m_EditorClassIdentifier: 
-  m_hp: 5000
+  m_hp: 10000
   m_atk: 30
   m_speed: 1
   m_exp: 50

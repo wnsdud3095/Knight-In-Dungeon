@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 103_Boss Werewolf
   m_EditorClassIdentifier: 
-  m_hp: 15000
+  m_hp: 30000
   m_atk: 35
   m_speed: 1.5
   m_exp: 50
