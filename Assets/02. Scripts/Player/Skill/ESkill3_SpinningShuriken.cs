@@ -4,7 +4,7 @@ public class ESkill3_SpinningShuriken : Skill3_SpinningShuriken
 {
     private int m_e_shuriken_count = 8;
     private float m_e_spinning_spped = 250f;
-    private float m_e_spinning_radius = 2f;
+    private float m_e_spinning_radius = 1.6f;
     private float m_e_life_time = float.PositiveInfinity;
     private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
     private BulletPoolManager m_bullet_manager;
