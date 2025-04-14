@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.Assertions.Must;
 
 public class Reinforcer : MonoBehaviour
 {
@@ -49,9 +50,9 @@ public class Reinforcer : MonoBehaviour
 
         UpdateIngredientSlot(item);
 
+        m_reinforce_button.interactable = CheckCanReinforcement();
         if(CheckCanReinforcement())
         {
-            m_reinforce_button.interactable = CheckCanReinforcement();
             m_target_slot.AddItem(item, 1, GetNextReinforcement());
         }
     }

@@ -45,9 +45,29 @@ public class Exp : MonoBehaviour
         {
             m_sprite_renderer.sprite = m_exp_sprites[1];
         }
-        else
+        else if(m_exp_amount <= 20)
         {
             m_sprite_renderer.sprite = m_exp_sprites[2];
+        }
+        else if(m_exp_amount <= 30)
+        {
+            m_sprite_renderer.sprite = m_exp_sprites[3];
+        }
+        else if(m_exp_amount <= 40)
+        {
+            m_sprite_renderer.sprite = m_exp_sprites[4];
+        }
+        else if(m_exp_amount <= 50)
+        {
+            m_sprite_renderer.sprite = m_exp_sprites[5];
+        }
+        else if(m_exp_amount <= 60)
+        {
+            m_sprite_renderer.sprite = m_exp_sprites[6];
+        }
+        else
+        {
+            m_sprite_renderer.sprite = m_exp_sprites[7];
         }
     }
 

@@ -185,7 +185,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             if(GameManager.Instance.GameState is GameEventType.Playing)
             {
-                elasped_time += target_time;
+                elasped_time += Time.deltaTime;
             }
 
             yield return null;

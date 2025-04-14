@@ -191,10 +191,13 @@ public class GameManager : Singleton<GameManager>
     {
         if(GameState == GameEventType.Waiting && DataManager.Instance.Data is not null)
         {
-
             Inventory?.SaveSlotData();
             Equipment?.SaveSlotData();
-            DataManager.Instance.SaveUserData(DataManager.Instance.Data);
+
+            if(Inventory is not null && Equipment is not null)
+            {
+                DataManager.Instance.SaveUserData(DataManager.Instance.Data);
+            }
         }
     }
 }

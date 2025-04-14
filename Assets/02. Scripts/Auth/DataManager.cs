@@ -3,6 +3,14 @@ using Firebase.Database;
 using System;
 using System.Threading.Tasks;
 
+public static class ExpData
+{
+    public static int[] m_exp_list = new int[3]
+    {
+        5000, 10000, 15000
+    };
+}
+
 public class DataManager : Singleton<DataManager>
 {
     private DatabaseReference m_database_ref;
