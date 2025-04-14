@@ -51,7 +51,13 @@ public class TitleCtrl : MonoBehaviour
         GameEventBus.Publish(GameEventType.Waiting);
 
         m_stage_label.text = $"스테이지 {DataManager.Instance.Data.m_current_stage}";
-    
+
+        if(m_exp_slider.value >= 1f)
+        {
+            DataManager.Instance.Data.m_user_exp = DataManager.Instance.Data.m_user_exp - ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
+            DataManager.Instance.Data.m_user_level++;
+        }
+        m_exp_slider.value = DataManager.Instance.Data.m_user_exp / ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
         m_level_label.text = $"LV.{DataManager.Instance.Data.m_user_level}";
     }
 
