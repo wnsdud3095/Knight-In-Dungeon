@@ -13,6 +13,12 @@ public class UserStatusCtrl : MonoBehaviour
     {
         m_money_label.text = DataManager.Instance.Data.m_user_money.ToString();
         m_level_label.text = DataManager.Instance.Data.m_user_level.ToString();
-        m_exp_slider.value = 0.3f;   
+        m_exp_slider.value = DataManager.Instance.Data.m_user_exp / ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
+
+        if(m_exp_slider.value >= 1f)
+        {
+            DataManager.Instance.Data.m_user_exp = DataManager.Instance.Data.m_user_exp - ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
+            DataManager.Instance.Data.m_user_level++;
+        }
     }
 }

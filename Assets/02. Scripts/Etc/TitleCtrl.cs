@@ -53,7 +53,6 @@ public class TitleCtrl : MonoBehaviour
         m_stage_label.text = $"스테이지 {DataManager.Instance.Data.m_current_stage}";
     
         m_level_label.text = $"LV.{DataManager.Instance.Data.m_user_level}";
-        m_exp_slider.value = 0.3f;
     }
 
     private void Update()

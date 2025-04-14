@@ -10,10 +10,6 @@ public class Kunai : BulletBase
     private float m_origin_life_time = 6f;
 
     private float m_speed = 6f;
- 
-    private int m_reflect_angle_min = 130;
-    private int m_reflect_angle_max = 230;
-
 
     private void OnEnable()
     {
