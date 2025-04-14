@@ -1172,6 +1172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_stage_list:
   - {fileID: 11400000, guid: 4178b0a533297ed199791ebd0a223b2a, type: 2}
+  - {fileID: 11400000, guid: 1d398527d8495463388c025679adcde1, type: 2}
   m_current_stage: {fileID: 11400000, guid: 4178b0a533297ed199791ebd0a223b2a, type: 2}
 --- !u!1 &198353669
 GameObject:
