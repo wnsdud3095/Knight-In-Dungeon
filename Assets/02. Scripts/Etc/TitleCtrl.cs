@@ -51,9 +51,14 @@ public class TitleCtrl : MonoBehaviour
         GameEventBus.Publish(GameEventType.Waiting);
 
         m_stage_label.text = $"스테이지 {DataManager.Instance.Data.m_current_stage}";
-    
+
+        if(m_exp_slider.value >= 1f)
+        {
+            DataManager.Instance.Data.m_user_exp = DataManager.Instance.Data.m_user_exp - ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
+            DataManager.Instance.Data.m_user_level++;
+        }
+        m_exp_slider.value = DataManager.Instance.Data.m_user_exp / ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
         m_level_label.text = $"LV.{DataManager.Instance.Data.m_user_level}";
-        m_exp_slider.value = 0.3f;
     }
 
     private void Update()
@@ -63,7 +68,7 @@ public class TitleCtrl : MonoBehaviour
 
     public void SetCalculatedStat()
     {
-        GameManager.Instance.CalculatedStat = new CalculatedStat(100f, 10f, 0f);
+        GameManager.Instance.CalculatedStat = new CalculatedStat(0f, 0f, 0f);
 
         GameManager.Instance.CalculatedStat.HP += m_equipment_inventory.EquipmentEffect.HP;
         GameManager.Instance.CalculatedStat.ATK += m_equipment_inventory.EquipmentEffect.ATK;
@@ -148,6 +153,7 @@ public class TitleCtrl : MonoBehaviour
     public void Button_SinglePlay()
     {
         SoundManager.Instance.PlayEffect("Button Click");
+        GameManager.Instance.Save();
         LoadingManager.Instance.LoadScene("Jongmin");
     }
 

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 100_Boss Armored Axeman
   m_EditorClassIdentifier: 
-  m_hp: 1000
+  m_hp: 2500
   m_atk: 30
   m_speed: 1
-  m_exp: 0
+  m_exp: 50
   m_slow_resistance: 0.4
   m_knockback_resistance: 0.2
   m_freeze_resistance: 1.8

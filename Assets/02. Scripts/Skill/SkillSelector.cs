@@ -149,6 +149,29 @@ public class SkillSelector : MonoBehaviour
                     {
                         continue;
                     }
+
+                    if(skill_select_list[idx].Base.Level == 5)
+                    {
+                        bool is_exist = true;
+                        foreach(SkillSlot slot in PassiveSkillSlots)
+                        {
+                            if(slot.Skill is null)
+                            {
+                                is_exist = false;
+                                break;
+                            }
+
+                            if(slot.Skill.m_id == skill_select_list[idx].Skill.Combination.ID)
+                            {
+                                is_exist = true;
+                            }
+                        }
+
+                        if(!is_exist)
+                        {
+                            continue;
+                        }
+                    }
                 }
                 else
                 {
@@ -230,6 +253,29 @@ public class SkillSelector : MonoBehaviour
                     if(skill_select_list[idx].Base.Level >= 6)
                     {
                         continue;
+                    }
+
+                    if(skill_select_list[idx].Base.Level == 5)
+                    {
+                        bool is_exist = true;
+                        foreach(SkillSlot slot in PassiveSkillSlots)
+                        {
+                            if(slot.Skill is null)
+                            {
+                                is_exist = false;
+                                break;
+                            }
+
+                            if(slot.Skill.m_id == skill_select_list[idx].Skill.Combination.ID)
+                            {
+                                is_exist = true;
+                            }
+                        }
+
+                        if(!is_exist)
+                        {
+                            continue;
+                        }
                     }
                 }
                 else
@@ -523,6 +569,29 @@ public class SkillSelector : MonoBehaviour
                     if(m_skill_select_slots[idx].Base.Level >= 6)
                     {
                         continue;
+                    }
+
+                    if(m_skill_select_slots[idx].Base.Level == 5)
+                    {
+                        bool is_exist = true;
+                        foreach(SkillSlot slot in PassiveSkillSlots)
+                        {
+                            if(slot.Skill is null)
+                            {
+                                is_exist = false;
+                                break;
+                            }
+
+                            if(slot.Skill.m_id == m_skill_select_slots[idx].Skill.Combination.ID)
+                            {
+                                is_exist = true;
+                            }
+                        }
+
+                        if(!is_exist)
+                        {
+                            continue;
+                        }
                     }
                 }
                 else

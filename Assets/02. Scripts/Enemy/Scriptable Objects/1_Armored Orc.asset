@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 1_Armored Orc
   m_EditorClassIdentifier: 
-  m_hp: 20
-  m_atk: 10
+  m_hp: 90
+  m_atk: 15
   m_speed: 1
-  m_exp: 6
+  m_exp: 3
+  m_slow_resistance: 0
+  m_knockback_resistance: 0
+  m_freeze_resistance: 0
   m_animator: {fileID: 9100000, guid: 915d2bc1acd6526499815241eca1f759, type: 2}
+  m_is_boss: 0

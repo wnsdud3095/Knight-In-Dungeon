@@ -106,6 +106,8 @@ public class EnemyCtrl : MonoBehaviour
         Rigidbody.linearVelocity = Vector2.zero;
         Rigidbody.simulated = false;
 
+        Renderer.sortingOrder = 0;
+
         Collider.enabled = false;
 
         Animator.SetTrigger("Die");
@@ -169,6 +171,11 @@ public class EnemyCtrl : MonoBehaviour
         {
             while(elasped_time <= target_time)
             {
+                while (GameManager.Instance.GameState is not GameEventType.Playing)
+                {
+                    yield return null;
+                }
+
                 elasped_time += Time.deltaTime;
                 yield return null;
 
@@ -204,6 +211,11 @@ public class EnemyCtrl : MonoBehaviour
     private IEnumerator CoFreeze(float duration)
     {
         m_current_speed = 0f;
+
+        if(GameManager.Instance.GameState is not GameEventType.Playing)
+        {
+            yield return null;
+        }
 
         yield return new WaitForSeconds(duration - Script.AntiFreeze);
 

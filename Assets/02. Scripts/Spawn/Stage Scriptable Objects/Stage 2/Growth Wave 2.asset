@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca42516a1f86cc1d498bb4f612a2a6e1, type: 3}
+  m_Name: Growth Wave 2
+  m_EditorClassIdentifier: 
+  m_pattern: {fileID: 11400000, guid: 695fe40038925de3f8b47f470e907249, type: 2}
+  m_enemies:
+  - {fileID: 11400000, guid: 7426f0f8f9c745ccab34e1480faf7632, type: 2}

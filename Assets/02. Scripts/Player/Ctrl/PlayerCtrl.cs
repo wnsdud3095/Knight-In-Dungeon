@@ -147,6 +147,11 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if(GameManager.Instance.GameState is not GameEventType.Playing)
+        {
+            return;
+        }
+
         if(collision.CompareTag("Enemy"))
         {
             if(m_is_dead)
@@ -173,7 +178,18 @@ public class PlayerCtrl : MonoBehaviour
         color.a = 100f / 255f;
         m_sprite_renderer.color = color;
 
-        yield return new WaitForSeconds(1f);
+        float elasped_time = 0f;
+        float target_time = 1f;
+
+        while(elasped_time <= target_time)
+        {
+            if(GameManager.Instance.GameState is GameEventType.Playing)
+            {
+                elasped_time += Time.deltaTime;
+            }
+
+            yield return null;
+        }
 
         color.a = 1f;
         m_sprite_renderer.color = color;
