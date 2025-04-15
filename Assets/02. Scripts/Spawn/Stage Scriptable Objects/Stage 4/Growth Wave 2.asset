@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca42516a1f86cc1d498bb4f612a2a6e1, type: 3}
-  m_Name: Growth Wave 1
+  m_Name: Growth Wave 2
   m_EditorClassIdentifier: 
   m_pattern: {fileID: 11400000, guid: 695fe40038925de3f8b47f470e907249, type: 2}
   m_enemies:
-  - {fileID: 11400000, guid: 1926eddd1d8e7f44f8d94764c3958ff1, type: 2}
+  - {fileID: 11400000, guid: 335aeb2fa41ec795a9e2fe4b42c9b434, type: 2}

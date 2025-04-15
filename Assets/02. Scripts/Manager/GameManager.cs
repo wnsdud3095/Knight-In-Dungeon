@@ -216,7 +216,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Clear;
 
-        DataManager.Instance.Data.m_user_money += StageManager.Kill;
+        DataManager.Instance.Data.m_user_money += StageManager.Kill * DataManager.Instance.Data.m_current_stage;
         DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);
         DataManager.Instance.Data.m_current_stage++;
 
