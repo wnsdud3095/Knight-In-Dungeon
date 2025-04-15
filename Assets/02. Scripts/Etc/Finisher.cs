@@ -30,7 +30,7 @@ public class Finisher : MonoBehaviour
             m_result_label.text += "<color=red>실패</color>";
         }
 
-        m_money_label.text = "획득한 골드: " + NumberFormatter.FormatNumber(GameManager.Instance.StageManager.Kill);
+        m_money_label.text = "획득한 골드: " + NumberFormatter.FormatNumber(GameManager.Instance.StageManager.Kill * DataManager.Instance.Data.m_current_stage);
         m_exp_label.text = "획득한 EXP: " + NumberFormatter.FormatNumber(Mathf.FloorToInt(GameManager.Instance.StageManager.OriginTimer - GameManager.Instance.StageManager.GameTimer));
     }
 

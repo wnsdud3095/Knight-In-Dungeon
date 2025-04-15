@@ -10,4 +10,5 @@ public enum ObjectType
     Item_MoneyBag,
     Exp,
     Enemy,
+    Arrow,
 }

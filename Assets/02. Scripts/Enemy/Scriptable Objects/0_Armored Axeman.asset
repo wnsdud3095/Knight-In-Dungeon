@@ -20,4 +20,5 @@ MonoBehaviour:
   m_knockback_resistance: 0
   m_freeze_resistance: 0
   m_animator: {fileID: 9100000, guid: 2c4616493a4108649b72ae78709a72a5, type: 2}
+  m_enemy_type: 0
   m_is_boss: 0

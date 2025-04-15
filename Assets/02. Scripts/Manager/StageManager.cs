@@ -56,7 +56,7 @@ public class StageManager : MonoBehaviour
 
         m_player_level = 1;
         
-        m_max_exp = m_exp_arr[m_player_level - 1];
+        m_max_exp = m_exp_arr[m_player_level - 1] * DataManager.Instance.Data.m_current_stage * DataManager.Instance.Data.m_current_stage;
         m_current_exp = 0f;
     }
 
@@ -75,11 +75,11 @@ public class StageManager : MonoBehaviour
 
             if(m_player_level <= 39)
             {
-                m_max_exp = m_exp_arr[m_player_level - 1];
+                m_max_exp = m_exp_arr[m_player_level - 1] * DataManager.Instance.Data.m_current_stage * DataManager.Instance.Data.m_current_stage;
             }
             else
             {
-                m_max_exp = m_exp_arr[38];
+                m_max_exp = m_exp_arr[38] * DataManager.Instance.Data.m_current_stage * DataManager.Instance.Data.m_current_stage;
             }
 
             m_skill_selector.OpenUI();
