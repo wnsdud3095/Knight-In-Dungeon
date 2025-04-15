@@ -1,82 +1,50 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyCtrl : MonoBehaviour
+public abstract class EnemyCtrl : MonoBehaviour
 {
-    [Header("몬스터의 강체")]
-    [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
+    [field: SerializeField] public Rigidbody2D Rigidbody { get; protected set; }
 
-    [Header("몬스터의 스프라이트 렌더러")]
-    [field: SerializeField] public SpriteRenderer Renderer { get; private set; }
+    [field: SerializeField] public SpriteRenderer Renderer { get; protected set; }
+    [field: SerializeField] public Animator Animator { get; protected set; }
+    [field: SerializeField] public CircleCollider2D Collider { get; protected set; }
 
-    [Header("몬스터의 애니메이터")]
-    [field: SerializeField] public Animator Animator { get; private set; }
-
-    [Header("몬스터의 콜라이더")]
-    [field: SerializeField] public CircleCollider2D Collider { get; private set; }
-
-    private Enemy m_scriptable_object;
+    protected Enemy m_scriptable_object;
     public Enemy Script
     {
         get { return m_scriptable_object; }
         set { m_scriptable_object = value; }
     }
 
-    private float m_current_hp;
-    private float m_current_speed;
-    private bool m_is_dead;
+    protected float m_current_hp;
+    protected float m_current_speed;
+    protected bool m_is_dead;
 
-    private Coroutine m_knockback_coroutine;
-    private Coroutine m_freeze_coroutine;
+    protected Coroutine m_knockback_coroutine;
+    protected Coroutine m_freeze_coroutine;
 
-    private void FixedUpdate()
+    protected abstract void FixedUpdate();
+
+    public virtual void Initialize()
     {
-        if(GameManager.Instance.GameState is not GameEventType.Playing)
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Renderer = GetComponent<SpriteRenderer>();
+        Animator = GetComponent<Animator>();
+        Collider = GetComponent<CircleCollider2D>();
+    }
+
+    protected virtual void MoveTowardsPlayer()
+    {
+        Vector2 direction = GameManager.Instance.Player.transform.position - transform.position;
+        if(direction == Vector2.zero)
         {
             return;
         }
 
-        if(m_is_dead is false && m_knockback_coroutine is null)
-        {
-            MoveTowardsPlayer();
-        }
-    }
-
-    public void Initialize()
-    {
-        m_current_hp = Script.HP;
-        m_current_speed = Script.SPD;
-
-        m_is_dead = false;
-
-        Rigidbody.simulated = true;
-
-        Animator.runtimeAnimatorController = Script.Animator;
-        Animator.ResetTrigger("Die");
-
-        if (m_knockback_coroutine != null)
-        {
-            StopCoroutine(m_knockback_coroutine);
-            m_knockback_coroutine = null;
-        }
-        if (m_freeze_coroutine != null)
-        {
-            StopCoroutine(m_freeze_coroutine);
-            m_freeze_coroutine = null;
-        }
-
-        Collider.enabled = true;
-    }
-
-    private void MoveTowardsPlayer()
-    {
-        Vector2 direction = (GameManager.Instance.Player.transform.position - transform.position).normalized;
-
+        direction.Normalize();
         Rigidbody.linearVelocity = direction * m_current_speed;
 
         Renderer.flipX = GameManager.Instance.Player.transform.position.x < transform.position.x;
-
-        Animator.SetFloat("Speed", Rigidbody.linearVelocity.magnitude);
     }
 
     public void UpdateHP(float amount)
@@ -135,7 +103,7 @@ public class EnemyCtrl : MonoBehaviour
         Invoke("ReturnEnemy", 2f);
     }
 
-    private void InstantiateExp()
+    protected void InstantiateExp()
     {
         GameObject exp = ObjectManager.Instance.GetObject(ObjectType.Exp);
         exp.transform.position = transform.position;
@@ -143,8 +111,23 @@ public class EnemyCtrl : MonoBehaviour
         exp.GetComponent<Exp>().SetExpAmount(Script.EXP);
     }
 
-    private void ReturnEnemy()
+    protected void ReturnEnemy()
     {
+        switch(Script.EnemyType)
+        {
+            case EnemyType.Melee:
+                Destroy(GetComponent<MeleeEnemyCtrl>());
+                break;
+            
+            case EnemyType.Ranged:
+                Destroy(GetComponent<RangedEnemyCtrl>());
+                break;
+            
+            case EnemyType.Suicide:
+                Destroy(GetComponent<SuicideEnemyCtrl>());
+                break;
+        }
+
         ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Enemy);
     }
 
@@ -165,7 +148,7 @@ public class EnemyCtrl : MonoBehaviour
         float elasped_time = 0f;
         float target_time = 0.5f;
 
-        Vector2 kps = direction * (amount - Script.AntiKnockback / target_time);
+        Vector2 kps = direction * ((amount - Script.AntiKnockback) / target_time);
 
         if(kps.magnitude > 0f)
         {

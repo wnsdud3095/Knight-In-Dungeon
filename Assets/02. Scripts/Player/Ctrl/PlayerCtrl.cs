@@ -170,6 +170,22 @@ public class PlayerCtrl : MonoBehaviour
 
             StartCoroutine(Invincibility());
         }
+        else if(collision.CompareTag("Projectile"))
+        {
+            if(m_is_dead)
+            {
+                return;
+            }
+
+            if(m_invincibility is true)
+            {
+                return;
+            }
+
+            UpdateHP(-collision.GetComponent<Arrow>().ATK);
+
+            StartCoroutine(Invincibility());
+        }
     }
 
     private IEnumerator Invincibility()

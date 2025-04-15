@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f894b07f7ead04780881854ee960fe, type: 3}
+  m_Name: 9_Skeleton Archer
+  m_EditorClassIdentifier: 
+  m_hp: 30
+  m_atk: 10
+  m_speed: 1
+  m_exp: 1
+  m_slow_resistance: 0
+  m_knockback_resistance: 0
+  m_freeze_resistance: 0
+  m_animator: {fileID: 9100000, guid: fca43356edf99e41c85a96e7caa7c020, type: 2}
+  m_enemy_type: 1
+  m_is_boss: 0
+  m_atk_range: 2
+  m_projectile_speed: 2

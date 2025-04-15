@@ -193,7 +193,22 @@ public class SpawnManager : MonoBehaviour
     private void Spawn(WaveData wave)
     {
         Enemy enemy_data = SelectEnemy(wave.Enemies);
-        EnemyCtrl enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).GetComponent<EnemyCtrl>();
+
+        EnemyCtrl enemy = null;
+        switch(enemy_data.EnemyType)
+        {
+            case EnemyType.Melee:
+                enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).AddComponent<MeleeEnemyCtrl>();
+                break;
+            
+            case EnemyType.Ranged:
+                enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).AddComponent<RangedEnemyCtrl>();
+                break;
+            
+            case EnemyType.Suicide:
+                enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).AddComponent<SuicideEnemyCtrl>();
+                break;
+        }
 
         Vector2 spawn_position = GetSpawnPosition(wave.Pattern.Pattern);
 

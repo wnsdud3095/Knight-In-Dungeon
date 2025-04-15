@@ -66,6 +66,63 @@ public class GameManager : Singleton<GameManager>
         GameEventBus.Publish(GameEventType.None);
     }
 
+    private void PlayEnemies()
+    {
+        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
+        foreach(GameObject enemy in enemies)
+        {
+            EnemyCtrl enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+            
+            if(enemy_ctrl)
+            {
+                enemy.GetComponent<Animator>().speed = 1f;
+            }
+        }
+    }
+
+    private void StopEnemies()
+    {
+        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
+        foreach(GameObject enemy in enemies)
+        {
+            EnemyCtrl enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+            
+            if(enemy_ctrl)
+            {
+                enemy_ctrl.Rigidbody.linearVelocity = Vector2.zero;
+                enemy.GetComponent<Animator>().speed = 0f;
+            }
+        }        
+    }
+
+    private void PlayArrows()
+    {
+        GameObject[] arrows = ObjectManager.Instance.GetAllObjects(ObjectType.Arrow);
+        foreach(GameObject arrow_object in arrows)
+        {
+            Arrow arrow = arrow_object.GetComponent<Arrow>();
+
+            if(arrow)
+            {
+                arrow.Resume();
+            }
+        }
+    }
+
+    private void StopArrows()
+    {
+        GameObject[] arrows = ObjectManager.Instance.GetAllObjects(ObjectType.Arrow);
+        foreach(GameObject arrow_object in arrows)
+        {
+            Arrow arrow = arrow_object.GetComponent<Arrow>();
+
+            if(arrow)
+            {
+                arrow.Stop();
+            }
+        }
+    }
+
     public void None()
     {
         GameState = GameEventType.None;
@@ -116,11 +173,8 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
-        foreach(GameObject enemy in enemies)
-        {
-            enemy.GetComponent<Animator>().speed = 1f;
-        }
+        PlayEnemies();
+        PlayArrows();
 
         Player.Animator.speed = 1f;
     }
@@ -129,12 +183,8 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Setting;
 
-        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
-        foreach(GameObject enemy in enemies)
-        {
-            enemy.GetComponent<EnemyCtrl>().Rigidbody.linearVelocity = Vector2.zero;
-            enemy.GetComponent<Animator>().speed = 0f;
-        }
+        StopEnemies();
+        StopArrows();
 
         Player.Animator.speed = 0f;
     }
@@ -143,12 +193,8 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Selecting;
 
-        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
-        foreach(GameObject enemy in enemies)
-        {
-            enemy.GetComponent<EnemyCtrl>().Rigidbody.linearVelocity = Vector2.zero;
-            enemy.GetComponent<Animator>().speed = 0f;
-        }
+        StopEnemies();
+        StopArrows();
 
         Player.Animator.speed = 0f;
     }
@@ -160,6 +206,9 @@ public class GameManager : Singleton<GameManager>
         DataManager.Instance.Data.m_user_money += StageManager.Kill;
         DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);
 
+        StopEnemies();
+        StopArrows();
+
         Finisher.OpenUI(false);
     }
 
@@ -170,6 +219,9 @@ public class GameManager : Singleton<GameManager>
         DataManager.Instance.Data.m_user_money += StageManager.Kill;
         DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);
         DataManager.Instance.Data.m_current_stage++;
+
+        StopEnemies();
+        StopArrows();
 
         Finisher.OpenUI(true);
     }
