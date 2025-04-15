@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class PlayerCtrl : MonoBehaviour
+public class PlayerCtrl : NetworkBehaviour
 { 
-    private Rigidbody2D m_rigid;
-    public SpriteRenderer m_sprite_renderer;
+    //private Rigidbody2D m_rigid;
+    public SpriteRenderer SpriteRenderer { get; private set; }
     private SkillManager m_skill_manager;
+
+    public NetworkTransform NetTransform { get; private set; }
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -22,12 +25,6 @@ public class PlayerCtrl : MonoBehaviour
 
     private bool m_invincibility;
     private bool m_is_dead;
-
-    private void Awake()
-    {
-        GetCalculatedStat();
-        m_stat = CloneStat(OriginStat);
-    }
 
     private void OnEnable()
     {
@@ -47,26 +44,38 @@ public class PlayerCtrl : MonoBehaviour
         GameEventBus.Unsubscribe(GameEventType.Clear, GameManager.Instance.Clear);           
     }
 
-    void Start()
+    public override void Spawned()
     {
-        m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
-        joyStick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
-        m_rigid = GetComponent<Rigidbody2D>();
-        m_sprite_renderer= GetComponent<SpriteRenderer>();
-        Animator = GetComponent<Animator>();
-
-        GameEventBus.Publish(GameEventType.Playing);
-    }
-
-    void FixedUpdate()
-    {
-        if (GameManager.Instance.GameState != GameEventType.Playing)
+        if(HasInputAuthority == false ) //내가 조작 가능한 오브젝트인지 판단(내 input을 처리할 권한이 있는 오브젝트) 미사용시 한쪽의 인풋으로 이 스크립트 가진 오브젝트 둘다 움직임(Shared Mode라)
         {
-            m_rigid.linearVelocity = Vector2.zero;
+            joyStick = null;
             return;
         }
+        OriginStat = CloneStat(m_stat_scriptable);
+        GetCalculatedStat();
+        m_stat = CloneStat(OriginStat);
+        if (m_stat == null) Debug.Log("스탯 널");
+        m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
+        joyStick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        Animator = GetComponent<Animator>();
+        NetTransform = GetComponent<NetworkTransform>();
 
-        Move();
+        GameManager.Instance.Player = this;
+        GameEventBus.Publish(GameEventType.Playing);
+    }
+    public override void FixedUpdateNetwork()
+    {
+        if (!HasInputAuthority) return;
+        if (GameManager.Instance.GameState != GameEventType.Playing)
+        {
+            //m_character_ctrl.Move(Vector3.zero);
+            return;
+        }
+        if (GetInput<NetworkInputData>(out var input))
+        {
+            Move(input.MoveDirection);
+        }
         HpRegen();
 
         m_skill_manager.UseSkills();
@@ -74,7 +83,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetCalculatedStat()
     {
-        OriginStat = CloneStat(m_stat_scriptable);
+        //OriginStat = CloneStat(m_stat_scriptable);
         OriginStat.HP += GameManager.Instance.CalculatedStat.HP;
         OriginStat.AtkDamage += GameManager.Instance.CalculatedStat.ATK;
         OriginStat.HpRegen += GameManager.Instance.CalculatedStat.HP_REGEN;
@@ -110,18 +119,20 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    private void Move()
+    private void Move(Vector2 input_vector)
     {
-        Vector2 input_vector = joyStick.GetInputVector();
-
-        m_rigid.linearVelocity = new Vector2(input_vector.x * Stat.MoveSpeed, input_vector.y * Stat.MoveSpeed);
+        //m_character_ctrl.Move(input_vector * Stat.MoveSpeed * Runner.DeltaTime); 캐릭터까지 회전해버림
+        //rigidbody.linearvelocity 는 버벅임이 심함 
+        //m_rigid.linearVelocity = input_vector * Stat.MoveSpeed; //Runner.DeltaTime는 안곱함
+        NetTransform.transform.Translate(input_vector * Stat.MoveSpeed * Runner.DeltaTime);
+        transform.rotation = Quaternion.identity;
         if (input_vector.x > 0)
         {
-            m_sprite_renderer.flipX = false;
+            SpriteRenderer.flipX = false;
         }
         else if (input_vector.x < 0)
         {
-            m_sprite_renderer.flipX = true;
+            SpriteRenderer.flipX = true;
         }
         Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
     }
@@ -190,9 +201,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private IEnumerator Invincibility()
     {
-        Color color = m_sprite_renderer.color;
+        Color color = SpriteRenderer.color;
         color.a = 100f / 255f;
-        m_sprite_renderer.color = color;
+        SpriteRenderer.color = color;
 
         float elasped_time = 0f;
         float target_time = 1f;
@@ -208,7 +219,7 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         color.a = 1f;
-        m_sprite_renderer.color = color;
+        SpriteRenderer.color = color;
 
         m_invincibility = false;
     }

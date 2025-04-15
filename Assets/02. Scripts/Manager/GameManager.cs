@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
     public PlayerCtrl Player
     {
         get { return m_player_ctrl; }
-        private set { m_player_ctrl = value; }
+        set { m_player_ctrl = value; }
     }
 
     private StageManager m_stage_manager;
@@ -139,6 +139,7 @@ public class GameManager : Singleton<GameManager>
 
     public void None()
     {
+        Debug.Log("논");
         GameState = GameEventType.None;
 
         SoundManager.Instance.PlayBGM("Login Background");
@@ -146,11 +147,13 @@ public class GameManager : Singleton<GameManager>
     
     public void Loading()
     {
+        Debug.Log("로딩");
         GameState = GameEventType.Loading;
     }
 
     public void Waiting()
     {
+        Debug.Log("웨이팅");
         GameState = GameEventType.Waiting;
 
         SoundManager.Instance.PlayBGM("Title Background");
@@ -169,14 +172,15 @@ public class GameManager : Singleton<GameManager>
     public void Playing()
     {
         GameState = GameEventType.Playing;
-
+        Debug.Log("플레잉");
         if(m_can_init)
         {
             m_can_init = false;
 
             SoundManager.Instance.PlayBGM("Game Background");
             
-            Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
+            //Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
+            Debug.Log("스테이지 매니저 초기화");
             StageManager = GameObject.Find("Stage Manager").GetComponent<StageManager>();
             Finisher = GameObject.Find("Finish UI").GetComponent<Finisher>();
             BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
@@ -191,7 +195,10 @@ public class GameManager : Singleton<GameManager>
 
         PlayEnemies();
         PlayArrows();
-
+        if(Player == null)
+        {
+            Debug.Log("애니메이터 널");
+        }
         Player.Animator.speed = 1f;
     }
 

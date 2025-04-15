@@ -1,6 +1,7 @@
 using UnityEngine;
+using Fusion;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+public class Singleton<T> : NetworkBehaviour where T : Component
 {
     private static T m_instance;
     public static T Instance

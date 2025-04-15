@@ -55,9 +55,14 @@ public class StageManager : MonoBehaviour
         m_game_timer = 24 * 60f;
 
         m_player_level = 1;
-        
+
         m_max_exp = m_exp_arr[m_player_level - 1] * DataManager.Instance.Data.m_current_stage * DataManager.Instance.Data.m_current_stage;
         m_current_exp = 0f;
+    }
+
+    public void Playing()
+    {
+        GameEventBus.Publish(GameEventType.Playing);
     }
 
     private void Update()
