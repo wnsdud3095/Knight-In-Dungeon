@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class Shuriken : Kunai
 {
-    public float LifeTime { get {return m_life_time; }  set { m_life_time =value; } }
-
     private void Update()
     {
         GameStateCheck();
-        if (GameManager.Instance.GameState != GameEventType.Playing) return;
-        LifeTimeCheck();
+        //if (GameManager.Instance.GameState != GameEventType.Playing) return;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
