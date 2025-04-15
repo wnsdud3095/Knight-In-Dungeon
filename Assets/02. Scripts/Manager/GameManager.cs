@@ -95,6 +95,20 @@ public class GameManager : Singleton<GameManager>
         }        
     }
 
+    private void InitEnemies()
+    {
+        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
+        foreach(GameObject enemy in enemies)
+        {
+            var enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+            
+            if(enemy_ctrl)
+            {
+                Destroy(enemy_ctrl);
+            }
+        }     
+    }
+
     private void PlayArrows()
     {
         GameObject[] arrows = ObjectManager.Instance.GetAllObjects(ObjectType.Arrow);
@@ -148,6 +162,8 @@ public class GameManager : Singleton<GameManager>
 
         Equipment = m_item_inventory.GetComponent<EquipmentInventory>();
         Equipment.Initialize();
+
+        InitEnemies();
     }
 
     public void Playing()

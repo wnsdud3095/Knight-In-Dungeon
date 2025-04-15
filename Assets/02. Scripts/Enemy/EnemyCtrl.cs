@@ -31,6 +31,8 @@ public abstract class EnemyCtrl : MonoBehaviour
         Renderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
         Collider = GetComponent<CircleCollider2D>();
+
+        Animator.speed = 1f;
     }
 
     protected virtual void MoveTowardsPlayer()
@@ -113,20 +115,9 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     protected void ReturnEnemy()
     {
-        switch(Script.EnemyType)
-        {
-            case EnemyType.Melee:
-                Destroy(GetComponent<MeleeEnemyCtrl>());
-                break;
-            
-            case EnemyType.Ranged:
-                Destroy(GetComponent<RangedEnemyCtrl>());
-                break;
-            
-            case EnemyType.Suicide:
-                Destroy(GetComponent<SuicideEnemyCtrl>());
-                break;
-        }
+        var ctrl = GetComponent<EnemyCtrl>();
+        if (ctrl != null)
+            Destroy(ctrl);
 
         ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Enemy);
     }
