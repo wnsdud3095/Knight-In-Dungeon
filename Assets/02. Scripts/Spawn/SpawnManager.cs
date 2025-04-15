@@ -15,6 +15,9 @@ public class SpawnManager : MonoBehaviour
         get { return m_current_stage; }
     }
 
+    [Header("경고 UI 프리펩")]
+    [SerializeField] private GameObject m_warning_ui_object;
+
     private int m_current_wave_index;
     private int m_spawned_count;
     private float m_wave_timer;
@@ -30,6 +33,8 @@ public class SpawnManager : MonoBehaviour
 
     private float m_out_radius = 10f;
     private float m_in_radius = 5f;
+
+    private bool m_warning = false;
 
     private void Awake()
     {
@@ -80,6 +85,7 @@ public class SpawnManager : MonoBehaviour
         m_spawned_count = 0;
         m_wave_timer = 0f;
         m_spawn_timer = 0f;
+        m_warning = false;
     }
 
     private void NextWave()
@@ -140,6 +146,18 @@ public class SpawnManager : MonoBehaviour
                     m_spawn_timer = 0f;
                 }
 
+                if(m_wave_timer + 10 >= time_pattern.Duration  && !m_warning)
+                {
+                    if(m_current_wave_index + 1 < m_current_stage.Waves.Length)
+                    {
+                        if(m_current_stage.Waves[m_current_wave_index + 1].Pattern.EndType is WaveEndType.Boss)
+                        {
+                            m_warning = true;
+                            Instantiate(m_warning_ui_object);
+                        }
+                    }
+                }
+
                 if(m_wave_timer >= time_pattern.Duration)
                 {
                     NextWave();
@@ -194,22 +212,29 @@ public class SpawnManager : MonoBehaviour
     {
         Enemy enemy_data = SelectEnemy(wave.Enemies);
 
+        GameObject obj = ObjectManager.Instance.GetObject(ObjectType.Enemy);
+        EnemyCtrl prev_enemy = obj.GetComponent<EnemyCtrl>();
+        if(prev_enemy)
+        {
+            Destroy(prev_enemy);
+        }
+
         EnemyCtrl enemy = null;
         switch(enemy_data.EnemyType)
         {
             case EnemyType.Melee:
-                enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).AddComponent<MeleeEnemyCtrl>();
+                enemy = obj.AddComponent<MeleeEnemyCtrl>();
                 break;
             
             case EnemyType.Ranged:
-                enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).AddComponent<RangedEnemyCtrl>();
+                enemy = obj.AddComponent<RangedEnemyCtrl>();
                 break;
             
             case EnemyType.Suicide:
-                enemy = ObjectManager.Instance.GetObject(ObjectType.Enemy).AddComponent<SuicideEnemyCtrl>();
+                enemy = obj.AddComponent<SuicideEnemyCtrl>();
                 break;
         }
-
+        
         Vector2 spawn_position = GetSpawnPosition(wave.Pattern.Pattern);
 
         enemy.transform.position = spawn_position;
