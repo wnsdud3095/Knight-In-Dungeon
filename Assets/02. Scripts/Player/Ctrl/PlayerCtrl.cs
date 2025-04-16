@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.Windows;
 
 public class PlayerCtrl : NetworkBehaviour
-{ 
-    public SpriteRenderer SpriteRenderer { get; private set; }
+{
+    public SpriteRenderer SpriteRenderer { get ;  private set ; }
     private SkillManager m_skill_manager;
 
-    public NetworkTransform NetTransform { get; private set; }
+    public GameObject m_visual_ob;
 
-    [Networked] public NetworkBool IsFlippedX { get;set; }
+    public NetworkTransform NetTransform { get; private set; }
+    [Networked] public NetworkBool IsFlippedX { get; set; } = false;
     [Networked] public NetworkBool IsMoving { get; set; }
+
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -59,8 +62,8 @@ public class PlayerCtrl : NetworkBehaviour
         if (m_stat == null) Debug.Log("스탯 널");
         m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         joyStick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        Animator = GetComponent<Animator>();
+        //SpriteRenderer = GetComponent<SpriteRenderer>();
+        Animator = m_visual_ob.GetComponent<Animator>();
         NetTransform = GetComponent<NetworkTransform>();
 
         GameManager.Instance.Player = this;
@@ -79,6 +82,7 @@ public class PlayerCtrl : NetworkBehaviour
         {
             Move(input.MoveDirection);
         }
+
         HpRegen();
 
         m_skill_manager.UseSkills();
@@ -108,15 +112,22 @@ public class PlayerCtrl : NetworkBehaviour
         new_stat.CoolDownDecreaseRatio = origin_stat.CoolDownDecreaseRatio;
         return new_stat;
     }
-
     public override void Render() //네트워크 예측 보간 처리 후에 호출되는 Update(), 모든 클라이언트에서 실행됨, 시각적인 요소만 처리하는데 적합
     {                               //FixedUpdateNetwork와 차이는 FixedUpdateNetwork는 네트워크 논리 실행용이라 클라이언트끼리 달라질수도 있음 Render는 모든 플레이어에게 동일한 결과를 보여주기위해 존재
-                                    //움직임은 Render에서 안해도 똑같아 보이는 이유는 NetworkTransform같은 컴포넌트들이 보간/예측해서 알아서 부드럽게 처리해줌
+                                    //움직임은 Render에서 안해도 똑같아 보이는 이유는 NetworkTransform같은 컴포넌트들이 보간/예측해서 알아서 부드럽게 처리해줌        
+        if (Animator == null) return;
 
-        if (SpriteRenderer == null || Animator == null) return;
-
-        SpriteRenderer.flipX = IsFlippedX;
-        Animator.SetBool("IsMove", IsMoving);
+        float y_rot = IsFlippedX ? 180f : 0f;
+        Quaternion target_rotation = Quaternion.Euler(0, y_rot, 0);
+        var net_transform = m_visual_ob.GetComponent<NetworkTransform>();
+        if (net_transform != null)
+        {
+            net_transform.Teleport( //보간 때문에 회전이 자연스럽지 않아 보간없이 이동 시키는 메서드 사용
+                m_visual_ob.transform.position,
+                target_rotation
+            );
+        }
+        Animator.SetBool("IsMove", IsMoving); //Network Mechanim Animator 컴포넌트를 추가 해야 동기화 됨
     }
 
     private void HpRegen()
@@ -137,24 +148,26 @@ public class PlayerCtrl : NetworkBehaviour
         //m_character_ctrl.Move(input_vector * Stat.MoveSpeed * Runner.DeltaTime); 캐릭터까지 회전해버림
         //rigidbody.linearvelocity 는 버벅임이 심함 
         //m_rigid.linearVelocity = input_vector * Stat.MoveSpeed; //Runner.DeltaTime는 안곱함
-        NetTransform.transform.Translate(input_vector * Stat.MoveSpeed * Runner.DeltaTime);
-        transform.rotation = Quaternion.identity;
-        if (input_vector.x > 0)
+        if (HasInputAuthority)
         {
-            IsFlippedX = false;
-            //SpriteRenderer.flipX = false;
+            NetTransform.transform.Translate(input_vector * Stat.MoveSpeed * Runner.DeltaTime);
+            
+            if (input_vector.x > 0)
+            {
+                IsFlippedX = false;
+            }
+            else if (input_vector.x < 0)
+            {
+                IsFlippedX = true;
+            }
+            IsMoving = input_vector.sqrMagnitude > 0;
+            //Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
         }
-        else if (input_vector.x < 0)
-        {
-            IsFlippedX = true;
-            //SpriteRenderer.flipX = true;
-        }
-        IsMoving = input_vector.sqrMagnitude > 0;
-        //Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
     }
 
     public void UpdateHP(float hp)
     {
+        return;
         Stat.HP += hp;
         Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
 
@@ -174,7 +187,8 @@ public class PlayerCtrl : NetworkBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(GameManager.Instance.GameState is not GameEventType.Playing)
+        return;
+        if (GameManager.Instance.GameState is not GameEventType.Playing)
         {
             return;
         }
