@@ -9,7 +9,7 @@ public class NetworkStart : NetworkBehaviour
         var runner = Instantiate(runner_prefab);
         runner.ProvideInput = true;
 
-        var pooledProvider = gameObject.AddComponent<Test>();
+        var pooledProvider = FindFirstObjectByType<NetworkObjectManager>();
 
         SceneRef scene_ref = SceneRef.FromIndex(4);
     

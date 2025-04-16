@@ -7,6 +7,7 @@ using static Unity.Collections.Unicode;
 
 public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
 {
+    private NetworkObjectManager m_network_object_manager;
     public GameObject m_player_prefab;
     public JoyStickCtrl m_joy_stick_ctrl;
 
@@ -60,13 +61,19 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        m_network_object_manager = FindFirstObjectByType<NetworkObjectManager>();
+
         if (player == runner.LocalPlayer)
         {
-            for(int i = 0; i < 100; i++)
-            {
-                runner.Spawn(m_player_prefab, Vector3.zero, Quaternion.identity, player);
+            GameObject item = m_network_object_manager.GetPrefab(ObjectType.Item_Potion);
+            runner.Spawn(item, Vector3.zero, Quaternion.identity, player);
 
-            }
+            item = m_network_object_manager.GetPrefab(ObjectType.Item_Magnet);
+            runner.Spawn(item, Vector3.zero, Quaternion.identity, player);
+
+            item = m_network_object_manager.GetPrefab(ObjectType.Item_MoneyBag);
+            runner.Spawn(item, Vector3.zero, Quaternion.identity, player);
+
             //m_joy_stick_ctrl = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         }
     }

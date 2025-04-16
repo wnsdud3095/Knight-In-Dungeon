@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 959412964053409011}
   - component: {fileID: 1861873940674705022}
   - component: {fileID: 831199716756029307}
+  - component: {fileID: 7987633405404542353}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -260,3 +261,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_box_renderer: {fileID: 4815778339703985356}
   m_shadow_renderer: {fileID: 4728338821449430558}
+--- !u!114 &7987633405404542353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579022631231845375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1007890446
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
