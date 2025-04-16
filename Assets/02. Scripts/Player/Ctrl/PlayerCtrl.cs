@@ -5,11 +5,13 @@ using Fusion;
 
 public class PlayerCtrl : NetworkBehaviour
 { 
-    //private Rigidbody2D m_rigid;
     public SpriteRenderer SpriteRenderer { get; private set; }
     private SkillManager m_skill_manager;
 
     public NetworkTransform NetTransform { get; private set; }
+
+    [Networked] public NetworkBool IsFlippedX { get;set; }
+    [Networked] public NetworkBool IsMoving { get; set; }
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -62,6 +64,7 @@ public class PlayerCtrl : NetworkBehaviour
         NetTransform = GetComponent<NetworkTransform>();
 
         GameManager.Instance.Player = this;
+
         GameEventBus.Publish(GameEventType.Playing);
     }
     public override void FixedUpdateNetwork()
@@ -106,6 +109,16 @@ public class PlayerCtrl : NetworkBehaviour
         return new_stat;
     }
 
+    public override void Render() //네트워크 예측 보간 처리 후에 호출되는 Update(), 모든 클라이언트에서 실행됨, 시각적인 요소만 처리하는데 적합
+    {                               //FixedUpdateNetwork와 차이는 FixedUpdateNetwork는 네트워크 논리 실행용이라 클라이언트끼리 달라질수도 있음 Render는 모든 플레이어에게 동일한 결과를 보여주기위해 존재
+                                    //움직임은 Render에서 안해도 똑같아 보이는 이유는 NetworkTransform같은 컴포넌트들이 보간/예측해서 알아서 부드럽게 처리해줌
+
+        if (SpriteRenderer == null || Animator == null) return;
+
+        SpriteRenderer.flipX = IsFlippedX;
+        Animator.SetBool("IsMove", IsMoving);
+    }
+
     private void HpRegen()
     {
         if(m_regen_time <= m_regen_cool_time )
@@ -128,13 +141,16 @@ public class PlayerCtrl : NetworkBehaviour
         transform.rotation = Quaternion.identity;
         if (input_vector.x > 0)
         {
-            SpriteRenderer.flipX = false;
+            IsFlippedX = false;
+            //SpriteRenderer.flipX = false;
         }
         else if (input_vector.x < 0)
         {
-            SpriteRenderer.flipX = true;
+            IsFlippedX = true;
+            //SpriteRenderer.flipX = true;
         }
-        Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
+        IsMoving = input_vector.sqrMagnitude > 0;
+        //Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
     }
 
     public void UpdateHP(float hp)

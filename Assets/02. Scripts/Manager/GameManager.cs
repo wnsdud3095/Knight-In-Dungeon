@@ -1,8 +1,11 @@
 using UnityEngine;
+using Fusion;
 
 public class GameManager : Singleton<GameManager>
 {
     public BulletPoolManager BulletPool { get; set; }
+
+    public NetworkRunner NowRunner { get; set; }
 
     private GameEventType m_game_state;
     public GameEventType GameState

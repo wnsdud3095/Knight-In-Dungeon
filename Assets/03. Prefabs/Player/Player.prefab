@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 1047984147527394298}
   - component: {fileID: 4812983961064994424}
   - component: {fileID: 562014915989430421}
+  - component: {fileID: 3652348554947347279}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -336,6 +337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cdf0c9a0a051c46830531dd7c368ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _IsFlippedX:
+    _value: 0
+  _IsMoving:
+    _value: 0
   m_stat_scriptable: {fileID: 11400000, guid: 2412b55fd5ad1ba4e979c242122de3bf, type: 2}
   m_stat: {fileID: 0}
 --- !u!95 &8305803558292824574
@@ -379,6 +384,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 7739039745798827596}
   - {fileID: 1047984147527394298}
+  - {fileID: 3652348554947347279}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &1047984147527394298
 MonoBehaviour:
@@ -470,6 +476,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3652348554947347279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657314724168796948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 8305803558292824574}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 000000002b1a167c794069556bd5a32d398fdc042afa8626a8b5caa3
+  TriggerHashes: 000000002afa8626
+  TotalWords: 1
 --- !u!1 &3053256783676340992
 GameObject:
   m_ObjectHideFlags: 0
