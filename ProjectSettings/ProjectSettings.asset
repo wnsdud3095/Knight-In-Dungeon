@@ -770,6 +770,7 @@ PlayerSettings:
   webWasm2023: 0
   scriptingDefineSymbols:
     Android: FUSION_LOGLEVEL_INFO;FUSION_WEAVER;FUSION2
+    Standalone: FUSION_ENABLE_ADDRESSABLES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

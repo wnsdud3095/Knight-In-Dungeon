@@ -40,7 +40,7 @@ public class Skill2_Severing : PlayerSkillBase
 
         if(m_can_use)
         {
-            if(GameManager.Instance.Player.m_sprite_renderer.flipX == false )
+            if(GameManager.Instance.Player.SpriteRenderer.flipX == false )
             {
                 m_effect.transform.rotation = Quaternion.Euler(0, 0, -72f);
             }

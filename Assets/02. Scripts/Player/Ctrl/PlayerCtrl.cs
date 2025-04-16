@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class PlayerCtrl : MonoBehaviour
+public class PlayerCtrl : NetworkBehaviour
 { 
-    private Rigidbody2D m_rigid;
-    public SpriteRenderer m_sprite_renderer;
+    public SpriteRenderer SpriteRenderer { get; private set; }
     private SkillManager m_skill_manager;
+
+    public NetworkTransform NetTransform { get; private set; }
+
+    [Networked] public NetworkBool IsFlippedX { get;set; }
+    [Networked] public NetworkBool IsMoving { get; set; }
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -22,12 +27,6 @@ public class PlayerCtrl : MonoBehaviour
 
     private bool m_invincibility;
     private bool m_is_dead;
-
-    private void Awake()
-    {
-        GetCalculatedStat();
-        m_stat = CloneStat(OriginStat);
-    }
 
     private void OnEnable()
     {
@@ -47,26 +46,39 @@ public class PlayerCtrl : MonoBehaviour
         GameEventBus.Unsubscribe(GameEventType.Clear, GameManager.Instance.Clear);           
     }
 
-    void Start()
+    public override void Spawned()
     {
+        if(HasInputAuthority == false ) //내가 조작 가능한 오브젝트인지 판단(내 input을 처리할 권한이 있는 오브젝트) 미사용시 한쪽의 인풋으로 이 스크립트 가진 오브젝트 둘다 움직임(Shared Mode라)
+        {
+            joyStick = null;
+            return;
+        }
+        OriginStat = CloneStat(m_stat_scriptable);
+        GetCalculatedStat();
+        m_stat = CloneStat(OriginStat);
+        if (m_stat == null) Debug.Log("스탯 널");
         m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         joyStick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
-        m_rigid = GetComponent<Rigidbody2D>();
-        m_sprite_renderer= GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
+        NetTransform = GetComponent<NetworkTransform>();
+
+        GameManager.Instance.Player = this;
 
         GameEventBus.Publish(GameEventType.Playing);
     }
-
-    void FixedUpdate()
+    public override void FixedUpdateNetwork()
     {
+        if (!HasInputAuthority) return;
         if (GameManager.Instance.GameState != GameEventType.Playing)
         {
-            m_rigid.linearVelocity = Vector2.zero;
+            //m_character_ctrl.Move(Vector3.zero);
             return;
         }
-
-        Move();
+        if (GetInput<NetworkInputData>(out var input))
+        {
+            Move(input.MoveDirection);
+        }
         HpRegen();
 
         m_skill_manager.UseSkills();
@@ -74,7 +86,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetCalculatedStat()
     {
-        OriginStat = CloneStat(m_stat_scriptable);
+        //OriginStat = CloneStat(m_stat_scriptable);
         OriginStat.HP += GameManager.Instance.CalculatedStat.HP;
         OriginStat.AtkDamage += GameManager.Instance.CalculatedStat.ATK;
         OriginStat.HpRegen += GameManager.Instance.CalculatedStat.HP_REGEN;
@@ -97,6 +109,16 @@ public class PlayerCtrl : MonoBehaviour
         return new_stat;
     }
 
+    public override void Render() //네트워크 예측 보간 처리 후에 호출되는 Update(), 모든 클라이언트에서 실행됨, 시각적인 요소만 처리하는데 적합
+    {                               //FixedUpdateNetwork와 차이는 FixedUpdateNetwork는 네트워크 논리 실행용이라 클라이언트끼리 달라질수도 있음 Render는 모든 플레이어에게 동일한 결과를 보여주기위해 존재
+                                    //움직임은 Render에서 안해도 똑같아 보이는 이유는 NetworkTransform같은 컴포넌트들이 보간/예측해서 알아서 부드럽게 처리해줌
+
+        if (SpriteRenderer == null || Animator == null) return;
+
+        SpriteRenderer.flipX = IsFlippedX;
+        Animator.SetBool("IsMove", IsMoving);
+    }
+
     private void HpRegen()
     {
         if(m_regen_time <= m_regen_cool_time )
@@ -110,20 +132,25 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    private void Move()
+    private void Move(Vector2 input_vector)
     {
-        Vector2 input_vector = joyStick.GetInputVector();
-
-        m_rigid.linearVelocity = new Vector2(input_vector.x * Stat.MoveSpeed, input_vector.y * Stat.MoveSpeed);
+        //m_character_ctrl.Move(input_vector * Stat.MoveSpeed * Runner.DeltaTime); 캐릭터까지 회전해버림
+        //rigidbody.linearvelocity 는 버벅임이 심함 
+        //m_rigid.linearVelocity = input_vector * Stat.MoveSpeed; //Runner.DeltaTime는 안곱함
+        NetTransform.transform.Translate(input_vector * Stat.MoveSpeed * Runner.DeltaTime);
+        transform.rotation = Quaternion.identity;
         if (input_vector.x > 0)
         {
-            m_sprite_renderer.flipX = false;
+            IsFlippedX = false;
+            //SpriteRenderer.flipX = false;
         }
         else if (input_vector.x < 0)
         {
-            m_sprite_renderer.flipX = true;
+            IsFlippedX = true;
+            //SpriteRenderer.flipX = true;
         }
-        Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
+        IsMoving = input_vector.sqrMagnitude > 0;
+        //Animator.SetBool("IsMove", input_vector.sqrMagnitude > 0);
     }
 
     public void UpdateHP(float hp)
@@ -190,9 +217,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private IEnumerator Invincibility()
     {
-        Color color = m_sprite_renderer.color;
+        Color color = SpriteRenderer.color;
         color.a = 100f / 255f;
-        m_sprite_renderer.color = color;
+        SpriteRenderer.color = color;
 
         float elasped_time = 0f;
         float target_time = 1f;
@@ -208,7 +235,7 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         color.a = 1f;
-        m_sprite_renderer.color = color;
+        SpriteRenderer.color = color;
 
         m_invincibility = false;
     }
