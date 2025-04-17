@@ -15,7 +15,6 @@ public class PlayerCtrl : NetworkBehaviour
     public NetworkTransform NetTransform { get; private set; }
     [Networked] public NetworkBool IsFlippedX { get; set; } = false;
     [Networked] public NetworkBool IsMoving { get; set; }
-    [Networked] public PlayerRef OwnerRef { get; set; }
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -69,6 +68,8 @@ public class PlayerCtrl : NetworkBehaviour
         m_screen = FindAnyObjectByType<ScreenOutlinCtrl>();
 
         GameManager.Instance.Player = this;
+
+        GameManager.Instance.InitPlayers();
 
         GameEventBus.Publish(GameEventType.Playing);
     }
@@ -149,11 +150,17 @@ public class PlayerCtrl : NetworkBehaviour
     {
         Vector3 limit_pos = transform.position;
 
-        // x축이 카메라 밖으로 못나가게 제한
-        limit_pos.x = Mathf.Clamp(transform.position.x, m_screen.transform.position.x- m_screen.CamWidth / 2, m_screen.transform.position.x + m_screen.CamWidth / 2);
+        float cam_half_width = m_screen.CamWidth / 2;
+        float cam_half_height = m_screen.CamHeight / 2;
+        Vector3 cam_pos = m_screen.transform.position;
 
-        // y축이 카메라 밖으로 못나가게 제한
-        limit_pos.y = Mathf.Clamp(transform.position.y, m_screen.transform.position.y - m_screen.CamHeight / 2, m_screen.transform.position.y + m_screen.CamHeight / 2);
+        float left = cam_pos.x - cam_half_width;
+        float right = cam_pos.x + cam_half_width;
+        float bottom = cam_pos.y - cam_half_height;
+        float top = cam_pos.y + cam_half_height;
+
+        limit_pos.x = Mathf.Clamp(limit_pos.x, left, right);
+        limit_pos.y = Mathf.Clamp(limit_pos.y, bottom, top);
 
         transform.position = limit_pos;
     }
