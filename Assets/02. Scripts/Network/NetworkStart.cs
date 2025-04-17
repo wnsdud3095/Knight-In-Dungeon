@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fusion;
+using UnityEngine.SceneManagement;
 
 public class NetworkStart : NetworkBehaviour
 {
@@ -11,19 +12,17 @@ public class NetworkStart : NetworkBehaviour
 
         var pooledProvider = gameObject.AddComponent<Test>();
 
-        SceneRef scene_ref = SceneRef.FromIndex(4);
-    
+        SceneRef scene_ref = SceneRef.FromIndex(2);
+
         await runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,
-            SessionName = "TestRoom",
+            SessionName = "TestRoom1",
             Scene = scene_ref,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
             ObjectProvider = pooledProvider
         }); ;
         GameManager.Instance.NowRunner = runner;
-
-
     }
 
 }

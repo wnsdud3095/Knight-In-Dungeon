@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5340101447866353014}
   - component: {fileID: 6429166447783099476}
   - component: {fileID: 2682033781153004135}
+  - component: {fileID: -911821911712248321}
   m_Layer: 0
   m_Name: NetworkCallBack
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dd65654327eff4899d37ddb86003e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player_prefab: {fileID: 4197416594924690680, guid: db16fd618c67a994f936ca66a1d7170a, type: 3}
+  m_player_prefab: {fileID: 2657314724168796948, guid: d75d36bd36260e14281e1d05bdc92962, type: 3}
   m_joy_stick_ctrl: {fileID: 0}
 --- !u!114 &2682033781153004135
 MonoBehaviour:
@@ -57,5 +58,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1199893898, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-911821911712248321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252308824741831634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8edbe7108d8a43ab838cf8b8d9453df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
