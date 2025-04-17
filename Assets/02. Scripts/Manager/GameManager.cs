@@ -42,6 +42,9 @@ public class GameManager : Singleton<GameManager>
         set { m_player_ctrl = value; }
     }
 
+    public PlayerCtrl Player1 { get; set; }
+    public PlayerCtrl Player2 { get; set; }
+
     private StageManager m_stage_manager;
     public StageManager StageManager
     {

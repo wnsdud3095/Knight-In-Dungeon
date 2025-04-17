@@ -10,11 +10,12 @@ public class PlayerCtrl : NetworkBehaviour
     private SkillManager m_skill_manager;
 
     public GameObject m_visual_ob;
+    private ScreenOutlinCtrl m_screen;
 
     public NetworkTransform NetTransform { get; private set; }
     [Networked] public NetworkBool IsFlippedX { get; set; } = false;
     [Networked] public NetworkBool IsMoving { get; set; }
-
+    [Networked] public PlayerRef OwnerRef { get; set; }
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -65,6 +66,7 @@ public class PlayerCtrl : NetworkBehaviour
         //SpriteRenderer = GetComponent<SpriteRenderer>();
         Animator = m_visual_ob.GetComponent<Animator>();
         NetTransform = GetComponent<NetworkTransform>();
+        m_screen = FindAnyObjectByType<ScreenOutlinCtrl>();
 
         GameManager.Instance.Player = this;
 
@@ -82,7 +84,7 @@ public class PlayerCtrl : NetworkBehaviour
         {
             Move(input.MoveDirection);
         }
-
+        MoveLimit();
         HpRegen();
 
         m_skill_manager.UseSkills();
@@ -141,6 +143,19 @@ public class PlayerCtrl : NetworkBehaviour
             m_regen_time = 0;
             UpdateHP(OriginStat.HP * (Stat.HpRegen / 100f)); //최대 체력의 HpRegen% 만큼 회복
         }
+    }
+
+    private void MoveLimit()
+    {
+        Vector3 limit_pos = transform.position;
+
+        // x축이 카메라 밖으로 못나가게 제한
+        limit_pos.x = Mathf.Clamp(transform.position.x, m_screen.transform.position.x- m_screen.CamWidth / 2, m_screen.transform.position.x + m_screen.CamWidth / 2);
+
+        // y축이 카메라 밖으로 못나가게 제한
+        limit_pos.y = Mathf.Clamp(transform.position.y, m_screen.transform.position.y - m_screen.CamHeight / 2, m_screen.transform.position.y + m_screen.CamHeight / 2);
+
+        transform.position = limit_pos;
     }
 
     private void Move(Vector2 input_vector)

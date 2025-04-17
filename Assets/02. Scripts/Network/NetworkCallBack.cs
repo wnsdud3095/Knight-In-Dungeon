@@ -10,6 +10,7 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
     public GameObject m_player_prefab;
     public JoyStickCtrl m_joy_stick_ctrl;
 
+    public List<PlayerRef> PlayerRefs = new();
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
@@ -60,9 +61,11 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        PlayerRefs.Add(player);
         if (player == runner.LocalPlayer)
         {
-            runner.Spawn(m_player_prefab, Vector3.zero, Quaternion.identity, player);      
+            var ob = runner.Spawn(m_player_prefab, Vector3.zero, Quaternion.identity, player);
+            ob.GetComponent<PlayerCtrl>().OwnerRef = player;
             m_joy_stick_ctrl = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         }
     }
