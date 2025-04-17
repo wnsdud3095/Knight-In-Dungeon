@@ -22,7 +22,7 @@ public class NetworkStart : NetworkBehaviour
             ObjectProvider = pooledProvider
         }); ;
         GameManager.Instance.NowRunner = runner;
-
+        GameManager.Instance.NetworkObjectManager = pooledProvider;
 
     }
 

@@ -156,7 +156,7 @@ public class TitleCtrl : MonoBehaviour
     {
         SoundManager.Instance.PlayEffect("Button Click");
         GameManager.Instance.Save();
-        LoadingManager.Instance.LoadScene("Stage");
+        LoadingManager.Instance.LoadScene("jongmin test");
     }
 
     public void Button_MultiPlay()

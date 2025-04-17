@@ -34,7 +34,6 @@ public class NetworkObjectManager : NetworkObjectProviderDefault
     public override NetworkObjectAcquireResult AcquirePrefabInstance(NetworkRunner runner, in NetworkPrefabAcquireContext context, out NetworkObject instance)
     {
         var prefab_id = context.PrefabId;
-        Debug.Log(context.PrefabId.RawValue);
 
         if(m_object_pool.TryGetValue(prefab_id, out var network_pool) && network_pool.m_pool.Count > 0)
         {
@@ -51,7 +50,11 @@ public class NetworkObjectManager : NetworkObjectProviderDefault
             }
 
             instance = Instantiate(prefab);
-            instance.transform.SetParent(network_pool.m_container);
+
+            if(network_pool is not null)
+            {
+                instance.transform.SetParent(network_pool.m_container);
+            }
         }
 
         if(context.DontDestroyOnLoad)

@@ -1,7 +1,8 @@
 using System.Collections;
+using Fusion;
 using UnityEngine;
 
-public class Box : MonoBehaviour
+public class Box : NetworkBehaviour
 {
     private Animator m_animator;
     private Coroutine m_coroutine;
@@ -14,45 +15,104 @@ public class Box : MonoBehaviour
         m_animator = GetComponent<Animator>();   
     }
 
-    private void OnEnable()
+    private void ResetTrigger()
     {
-        SetColor(1f);
+        if(HasStateAuthority)
+        {
+            RPC_ResetTrigger();
+        }
+        else
+        {
+            RPC_RequestResetTrigger();
+        }
     }
 
-    private void OnDisable()
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_RequestResetTrigger()
     {
-        m_coroutine = null;
+        RPC_ResetTrigger();
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_ResetTrigger()
+    {
         m_animator.ResetTrigger("Open");
-    }
-
-    private void SetColor(float alpha)
-    {
-        Color color = m_box_renderer.color;
-        color.a = alpha;
-        m_box_renderer.color = color;
-
-        color = m_shadow_renderer.color;
-        color.a = alpha;
-        m_shadow_renderer.color = color;
     }
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.CompareTag("Skill"))
+        if(!HasStateAuthority)
         {
-            if(m_coroutine is not null)
-            {
-                return;
-            }
+            return;
+        }
 
-            m_animator.SetTrigger("Open");
-
-            m_coroutine = StartCoroutine(InstantiateItem());
+        if(coll.CompareTag("Skill") && m_coroutine is null)
+        {
+            SetTrigger();
+            InstantiateItem();
         }
     }
 
-    private IEnumerator InstantiateItem()
+    private void SetTrigger()
     {
+        if(HasStateAuthority)
+        {
+            RPC_SetTrigger();
+        }
+        else
+        {
+            RPC_RequestSetTrigger();
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetTrigger()
+    {
+        RPC_SetTrigger();
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetTrigger()
+    {
+        m_animator.SetTrigger("Open");
+    }
+
+    public void InstantiateItem()
+    {
+        if(HasStateAuthority)
+        {
+            RPC_InstantiateItem();
+        }
+        else
+        {
+            RPC_ReqeustInstantiateItem();
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    public void RPC_ReqeustInstantiateItem()
+    {
+        RPC_InstantiateItem();
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    public void RPC_InstantiateItem()
+    {
+        if(m_coroutine != null)
+        {
+            StopCoroutine(m_coroutine);
+        }
+
+        m_coroutine = StartCoroutine(CoInstantiateItem());
+    }
+
+    private IEnumerator CoInstantiateItem()
+    {
+        if(!HasStateAuthority)
+        {
+            yield break;
+        }
+
         yield return new WaitForSeconds(0.5f);
 
         int item_code = UnityEngine.Random.Range(0, 4);
@@ -61,31 +121,28 @@ public class Box : MonoBehaviour
         switch(item_code)
         {
             case 0:
-                item = ObjectManager.Instance.GetObject(ObjectType.Item_Potion);
+                item = GameManager.Instance.NetworkObjectManager.GetPrefab(ObjectType.Item_Potion);
                 break;
 
             case 1:
-                item = ObjectManager.Instance.GetObject(ObjectType.Item_Magnet);
+                item = GameManager.Instance.NetworkObjectManager.GetPrefab(ObjectType.Item_Magnet);
                 break;
         
             case 2:
-                item = ObjectManager.Instance.GetObject(ObjectType.Item_Bomb);
+                item = GameManager.Instance.NetworkObjectManager.GetPrefab(ObjectType.Item_Bomb);
                 break;
 
             case 3:
-                item = ObjectManager.Instance.GetObject(ObjectType.Item_MoneyBag);
-                break;
-
-            default:
-                Debug.LogWarning($"[Box] Unknown item_code: {item_code}");
+                item = GameManager.Instance.NetworkObjectManager.GetPrefab(ObjectType.Item_MoneyBag);
                 break;
         }
 
-        item.transform.position = transform.position;
-
+        GameManager.Instance.NowRunner.Spawn(item, transform.position);
 
         yield return new WaitForSeconds(0.5f);
 
-        ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Item_Box);
+        GameManager.Instance.NowRunner.Despawn(GetComponent<NetworkObject>());
+        ResetTrigger();
+        m_coroutine = null;
     }
 }

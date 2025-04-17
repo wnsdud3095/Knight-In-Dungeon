@@ -65,16 +65,9 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
 
         if (player == runner.LocalPlayer)
         {
-            GameObject item = m_network_object_manager.GetPrefab(ObjectType.Item_Potion);
-            runner.Spawn(item, Vector3.zero, Quaternion.identity, player);
+            runner.Spawn(m_player_prefab, Vector3.zero, Quaternion.identity, player);
 
-            item = m_network_object_manager.GetPrefab(ObjectType.Item_Magnet);
-            runner.Spawn(item, Vector3.zero, Quaternion.identity, player);
-
-            item = m_network_object_manager.GetPrefab(ObjectType.Item_MoneyBag);
-            runner.Spawn(item, Vector3.zero, Quaternion.identity, player);
-
-            //m_joy_stick_ctrl = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
+            m_joy_stick_ctrl = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         }
     }
 

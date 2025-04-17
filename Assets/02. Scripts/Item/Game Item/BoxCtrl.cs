@@ -1,18 +1,32 @@
+using Fusion;
 using UnityEngine;
 
-public class BoxCtrl : MonoBehaviour
+public class BoxCtrl : NetworkBehaviour
 {
+    private NetworkObjectManager m_object_pool_manager;
+
     [SerializeField] private float m_out_radius = 10f;
     [SerializeField] private float m_in_radius = 5f;
-    [SerializeField] private float m_timer = 0f;
 
-    private void Update()
+    [Networked] [SerializeField] public float Timer { get; private set; }
+
+    public override void Spawned()
     {
-        m_timer += Time.deltaTime;
+        m_object_pool_manager = FindFirstObjectByType<NetworkObjectManager>();
+    }
 
-        if(m_timer >= 60f)
+    public override void FixedUpdateNetwork()
+    {
+        if(!HasStateAuthority)
         {
-            m_timer = 0f;
+            return;
+        }
+
+        Timer += GameManager.Instance.NowRunner.DeltaTime;
+
+        if(Timer >= 60f)
+        {
+            Timer = 0f;
             CreateBox();
         }
     }
@@ -25,9 +39,8 @@ public class BoxCtrl : MonoBehaviour
         float distance = Random.Range(m_in_radius, m_out_radius);
 
         Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
-        Vector2 spawnPos = center + offset;
+        Vector2 spawn_position = center + offset;
 
-        GameObject box = ObjectManager.Instance.GetObject(ObjectType.Item_Box);
-        box.transform.position = spawnPos;
+        GameManager.Instance.NowRunner.Spawn(m_object_pool_manager.GetPrefab(ObjectType.Item_Box), spawn_position);
     }
 }

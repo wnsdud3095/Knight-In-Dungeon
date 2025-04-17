@@ -101,6 +101,8 @@ GameObject:
   - component: {fileID: 1861873940674705022}
   - component: {fileID: 831199716756029307}
   - component: {fileID: 7987633405404542353}
+  - component: {fileID: -8783227994955096212}
+  - component: {fileID: -7818496416990074885}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -277,5 +279,43 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 831199716756029307}
+  - {fileID: -8783227994955096212}
+  - {fileID: -7818496416990074885}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &-8783227994955096212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579022631231845375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
+--- !u!114 &-7818496416990074885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579022631231845375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 959412964053409011}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 000000009a2c4204c8763d2df1afa2dfa3f5ddf6
+  TriggerHashes: 000000009a2c4204
+  TotalWords: 1
