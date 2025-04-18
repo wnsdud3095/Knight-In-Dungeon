@@ -13,7 +13,6 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
 
     public List<PlayerRef> PlayerRefs = new();
 
-
     public void OnConnectedToServer(NetworkRunner runner)
     {
     }

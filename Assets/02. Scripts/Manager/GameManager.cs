@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 using Fusion;
 using System.Collections;
 
@@ -43,7 +45,6 @@ public class GameManager : Singleton<GameManager>
         get { return m_player_ctrl; }
         set { m_player_ctrl = value; }
     }
-
 
     public PlayerCtrl Player1 { get; set; }
     public PlayerCtrl Player2 { get; set; }
@@ -148,6 +149,40 @@ public class GameManager : Singleton<GameManager>
                 }
             }
         }
+    }
+
+    public IEnumerator InitPlayers()
+    {
+        yield return new WaitForSeconds(1f);
+        PlayerCtrl[] all_players = FindObjectsByType<PlayerCtrl>(FindObjectsSortMode.None);
+
+        NetworkCallBack runner = NowRunner.GetComponent<NetworkCallBack>();
+        Debug.Log($"플레이어 스크립트 수 : {all_players.Length} 플레이어Ref 수 : {runner.PlayerRefs.Count}");
+
+        foreach (PlayerRef playerRef in runner.PlayerRefs)
+        {
+            foreach (PlayerCtrl player in all_players)
+            {
+                var authority = player.GetComponent<NetworkObject>().InputAuthority;
+
+                Debug.Log($"비교 중 - Ref: {playerRef}, Player Authority: {authority}, player ID {playerRef.PlayerId}");
+
+                if (playerRef == authority)
+                {
+                    if (playerRef.PlayerId == 1)
+                    {
+                        Player1 = player;
+                        Debug.Log($" Player1로 등록됨: {playerRef}");
+                    }
+                    else if (playerRef.PlayerId == 2)
+                    {
+                        Player2 = player;
+                        Debug.Log($" Player2로 등록됨: {playerRef}");
+                    }
+                }
+            }
+        }
+
     }
 
     private void PlayArrows()
