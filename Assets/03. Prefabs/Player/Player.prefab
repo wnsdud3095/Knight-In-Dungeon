@@ -342,6 +342,8 @@ MonoBehaviour:
     _value: 0
   m_stat_scriptable: {fileID: 11400000, guid: 2412b55fd5ad1ba4e979c242122de3bf, type: 2}
   m_stat: {fileID: 0}
+  m_hp_group: {fileID: 1605057375438263713}
+  m_hp_slider: {fileID: 6900519975558166943}
 --- !u!114 &756524778011041729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +586,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.35
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

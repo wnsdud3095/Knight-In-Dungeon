@@ -17,7 +17,7 @@ public class NetworkStart : NetworkBehaviour
         await runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,
-            SessionName = "TestRoom1",
+            SessionName = "TestRoom2",
             Scene = scene_ref,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
             ObjectProvider = pooledProvider

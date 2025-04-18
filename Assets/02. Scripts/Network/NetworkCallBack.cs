@@ -72,7 +72,7 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
             m_joy_stick_ctrl = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         }
 
-        StartCoroutine(GameManager.Instance.InitPlayers());
+        GameManager.Instance.StartCoroutine(GameManager.Instance.InitPlayers());
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

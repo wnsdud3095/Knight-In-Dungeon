@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using UnityEngine.Windows;
+using UnityEngine.UI;
 
 public class PlayerCtrl : NetworkBehaviour
 {
@@ -30,6 +31,26 @@ public class PlayerCtrl : NetworkBehaviour
 
     private bool m_invincibility;
     private bool m_is_dead;
+
+    [Space(30)]
+    [Header("체력 UI")]
+    [Header("체력 UI 캔버스 그룹")]
+    [SerializeField] private CanvasGroup m_hp_group;
+
+    [Header("체력 UI 슬라이더")]
+    [SerializeField] private Slider m_hp_slider;
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetHP()
+    {
+        float ratio = GameManager.Instance.Player.Stat.HP / GameManager.Instance.Player.OriginStat.HP;
+        RPC_SetHP(ratio);
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetHP(float ratio)
+    {
+        m_hp_slider.value = ratio;
+    }
 
     private void OnEnable()
     {
@@ -62,15 +83,13 @@ public class PlayerCtrl : NetworkBehaviour
         if (m_stat == null) Debug.Log("스탯 널");
         m_skill_manager = GameObject.Find("Skill Manager").GetComponent<SkillManager>();
         joyStick = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
-        //SpriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer = m_visual_ob.GetComponent<SpriteRenderer>();
         Animator = m_visual_ob.GetComponent<Animator>();
         NetTransform = GetComponent<NetworkTransform>();
         m_screen = FindAnyObjectByType<ScreenOutlinCtrl>();
 
         GameManager.Instance.Player = this;
-
-        GameManager.Instance.InitPlayers();
-
+        SetHpSlider();
         GameEventBus.Publish(GameEventType.Playing);
     }
     public override void FixedUpdateNetwork()
@@ -189,13 +208,34 @@ public class PlayerCtrl : NetworkBehaviour
 
     public void UpdateHP(float hp)
     {
-        return;
         Stat.HP += hp;
         Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
-
-        if(Stat.HP <= 0f)
+        SetHpSlider();
+        if (Stat.HP <= 0f)
         {
             Dead();
+        }
+    }
+
+    public void SetHpSlider()
+    {
+        if (HasStateAuthority)
+        {
+            float ratio = GameManager.Instance.Player.Stat.HP / GameManager.Instance.Player.OriginStat.HP;
+            RPC_SetHP(ratio);
+        }
+        else
+        {
+            RPC_RequestSetHP();
+        }
+
+        if (m_hp_slider.value == 1f)
+        {
+            m_hp_group.alpha = 0f;
+        }
+        else
+        {
+            m_hp_group.alpha = 1f;
         }
     }
 
@@ -209,7 +249,6 @@ public class PlayerCtrl : NetworkBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        return;
         if (GameManager.Instance.GameState is not GameEventType.Playing)
         {
             return;

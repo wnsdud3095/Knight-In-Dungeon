@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Fusion;
 
 public class GameUICtrl : MonoBehaviour
 {
@@ -21,24 +22,10 @@ public class GameUICtrl : MonoBehaviour
     [Header("설정 UI 애니메이터")]
     [SerializeField] private Animator m_setting_ui_obect;
 
-    [Space(30)][Header("체력 UI")]
-    [Header("체력 UI 캔버스 그룹")]
-    [SerializeField] private CanvasGroup m_hp_group;
-    
-    [Header("체력 UI 슬라이더")]
-    [SerializeField] private Slider m_hp_slider;
-
     public void Update()
     {
         if(GameManager.Instance.Player!= null && GameManager.Instance.Player.OriginStat!=null)
         {
-            RectTransform[] transforms = GameManager.Instance.Player.gameObject.GetComponentsInChildren<RectTransform>();
-            foreach(Transform t in transforms)
-            {
-                if (t.name == "HP UI") m_hp_group = t.gameObject.GetComponent<CanvasGroup>();
-                if(t.name == "Slider") m_hp_slider= t.gameObject.GetComponent<Slider>();
-            }
-            m_hp_slider.value = GameManager.Instance.Player.Stat.HP / GameManager.Instance.Player.OriginStat.HP;
             m_exp_slider.value = Mathf.Clamp(GameManager.Instance.StageManager.CurrentExp / GameManager.Instance.StageManager.MaxExp, 0f, 1f);
         }
         if (GameManager.Instance.GameState is not GameEventType.Playing)
@@ -46,22 +33,14 @@ public class GameUICtrl : MonoBehaviour
             return;
         }
 
-
         m_play_time_label.text = (GameManager.Instance.StageManager.GameTimer / 60).ToString("00") + ":" + (GameManager.Instance.StageManager.GameTimer % 60).ToString("00");
 
         m_level_label.text = $"LV.{GameManager.Instance.StageManager.Level}";
         
         m_money_label.text = GameManager.Instance.StageManager.Kill.ToString("00000");
 
-        if(m_hp_slider.value == 1f)
-        {
-            m_hp_group.alpha = 0f;
-        }
-        else
-        {
-            m_hp_group.alpha = 1f;
-        }
     }
+
 
     public void Button_SettingEnter()
     {
