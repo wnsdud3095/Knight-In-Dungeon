@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 101_Boss Orc
   m_EditorClassIdentifier: 
+  m_id: 101
   m_hp: 10000
   m_atk: 35
   m_speed: 1
@@ -20,4 +21,5 @@ MonoBehaviour:
   m_knockback_resistance: 0.2
   m_freeze_resistance: 1.8
   m_animator: {fileID: 9100000, guid: 8b9032ef235ba2341b363c9c74c6477d, type: 2}
+  m_enemy_type: 0
   m_is_boss: 1

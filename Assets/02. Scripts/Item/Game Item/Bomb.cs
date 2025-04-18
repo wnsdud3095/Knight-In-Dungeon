@@ -1,11 +1,12 @@
 using UnityEngine;
+using Fusion;
 
-public class Bomb : MonoBehaviour, IItem
+public class Bomb : NetworkBehaviour, IItem
 {
     [Header("폭발 이펙트")]
     [SerializeField] private GameObject m_explosion_effect;
 
-    public void Use()
+    public void Use(NetworkObject player_object)
     {
         Instantiate(m_explosion_effect);
 
@@ -24,10 +25,20 @@ public class Bomb : MonoBehaviour, IItem
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!HasStateAuthority)
+        {
+            return;
+        }
+
         if(collision.CompareTag("Player"))
         {
-            Use();
-            ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Item_Bomb);
+            NetworkObject player_object = collision.GetComponent<NetworkObject>();
+
+            if(player_object)
+            {
+                Use(player_object);
+                ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Item_Bomb);
+            }
         }
     }
 }

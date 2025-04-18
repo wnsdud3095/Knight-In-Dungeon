@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fusion;
+using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -43,6 +44,10 @@ public class GameManager : Singleton<GameManager>
         set { m_player_ctrl = value; }
     }
 
+
+    public PlayerCtrl Player1 { get; set; }
+    public PlayerCtrl Player2 { get; set; }
+
     private StageManager m_stage_manager;
     public StageManager StageManager
     {
@@ -72,45 +77,77 @@ public class GameManager : Singleton<GameManager>
 
     private void PlayEnemies()
     {
-        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
-        foreach(GameObject enemy in enemies)
-        {
-            EnemyCtrl enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+        // GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
+        // foreach(GameObject enemy in enemies)
+        // {
+        //     EnemyCtrl enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
             
-            if(enemy_ctrl)
-            {
-                enemy.GetComponent<Animator>().speed = 1f;
-            }
-        }
+        //     if(enemy_ctrl)
+        //     {
+        //         enemy.GetComponent<Animator>().speed = 1f;
+        //     }
+        // }
     }
 
     private void StopEnemies()
     {
-        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
-        foreach(GameObject enemy in enemies)
-        {
-            EnemyCtrl enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+        // GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
+        // foreach(GameObject enemy in enemies)
+        // {
+        //     EnemyCtrl enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
             
-            if(enemy_ctrl)
-            {
-                enemy_ctrl.Rigidbody.linearVelocity = Vector2.zero;
-                enemy.GetComponent<Animator>().speed = 0f;
-            }
-        }        
+        //     if(enemy_ctrl)
+        //     {
+        //         enemy_ctrl.Rigidbody.linearVelocity = Vector2.zero;
+        //         enemy.GetComponent<Animator>().speed = 0f;
+        //     }
+        // }        
     }
 
     private void InitEnemies()
     {
-        GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
-        foreach(GameObject enemy in enemies)
-        {
-            var enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+        // GameObject[] enemies = ObjectManager.Instance.GetAllObjects(ObjectType.Enemy);
+        // foreach(GameObject enemy in enemies)
+        // {
+        //     var enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
             
-            if(enemy_ctrl)
+        //     if(enemy_ctrl)
+        //     {
+        //         Destroy(enemy_ctrl);
+        //     }
+        // }     
+    }
+
+    public IEnumerator InitPlayers()
+    {
+        yield return new WaitForSeconds(1f);
+        PlayerCtrl[] all_players = FindObjectsByType<PlayerCtrl>(FindObjectsSortMode.None);
+
+        NetworkCallBack runner = NowRunner.GetComponent<NetworkCallBack>();
+
+        foreach (PlayerRef playerRef in runner.PlayerRefs)
+        {
+            foreach (PlayerCtrl player in all_players)
             {
-                Destroy(enemy_ctrl);
+                var authority = player.GetComponent<NetworkObject>().InputAuthority;
+
+                Debug.Log($"비교 중 - Ref: {playerRef}, Player Authority: {authority}, player ID {playerRef.PlayerId}");
+
+                if (playerRef == authority)
+                {
+                    if (playerRef.PlayerId == 1)
+                    {
+                        Player1 = player;
+                        Debug.Log($" Player1로 등록됨: {playerRef}");
+                    }
+                    else if (playerRef.PlayerId == 2)
+                    {
+                        Player2 = player;
+                        Debug.Log($" Player2로 등록됨: {playerRef}");
+                    }
+                }
             }
-        }     
+        }
     }
 
     private void PlayArrows()

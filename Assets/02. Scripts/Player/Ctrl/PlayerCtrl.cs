@@ -65,6 +65,8 @@ public class PlayerCtrl : NetworkBehaviour
 
         GameManager.Instance.Player = this;
 
+        GameManager.Instance.InitPlayers();
+
         GameEventBus.Publish(GameEventType.Playing);
     }
     public override void FixedUpdateNetwork()

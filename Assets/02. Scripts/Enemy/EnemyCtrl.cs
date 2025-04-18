@@ -1,13 +1,15 @@
 using System.Collections;
+using Fusion;
 using UnityEngine;
 
-public abstract class EnemyCtrl : MonoBehaviour
+public abstract class EnemyCtrl : NetworkBehaviour
 {
     [field: SerializeField] public Rigidbody2D Rigidbody { get; protected set; }
-
     [field: SerializeField] public SpriteRenderer Renderer { get; protected set; }
     [field: SerializeField] public Animator Animator { get; protected set; }
     [field: SerializeField] public CircleCollider2D Collider { get; protected set; }
+    public NetworkTransform NetworkTransform {get; protected set; }
+    
 
     protected Enemy m_scriptable_object;
     public Enemy Script
@@ -16,14 +18,17 @@ public abstract class EnemyCtrl : MonoBehaviour
         set { m_scriptable_object = value; }
     }
 
-    protected float m_current_hp;
-    protected float m_current_speed;
-    protected bool m_is_dead;
+    protected float HP { get; set; }
+    protected float SPD { get; set; }
+    protected bool IsDead { get; set; }
 
     protected Coroutine m_knockback_coroutine;
     protected Coroutine m_freeze_coroutine;
 
-    protected abstract void FixedUpdate();
+    public override void Spawned()
+    {
+        NetworkTransform = GetComponent<NetworkTransform>();
+    }
 
     public virtual void Initialize()
     {
@@ -37,28 +42,80 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     protected virtual void MoveTowardsPlayer()
     {
-        Vector2 direction = GameManager.Instance.Player.transform.position - transform.position;
+        var target_player = default(PlayerCtrl);
+        if(GameManager.Instance.Player1 && GameManager.Instance.Player2)
+        {
+            target_player = Vector2.Distance(GameManager.Instance.Player1.transform.position, transform.position) 
+                                    > Vector2.Distance(GameManager.Instance.Player2.transform.position, transform.position) ? GameManager.Instance.Player2 : GameManager.Instance.Player1;
+        }
+        else
+        {
+            target_player = GameManager.Instance.Player1;
+        }
+        
+        Vector2 direction = target_player.transform.position - transform.position;
         if(direction == Vector2.zero)
         {
             return;
         }
 
         direction.Normalize();
-        Rigidbody.linearVelocity = direction * m_current_speed;
+        Rigidbody.linearVelocity = direction * SPD;
 
-        Renderer.flipX = GameManager.Instance.Player.transform.position.x < transform.position.x;
+        SetFlip(target_player);
+    }
+
+    private void SetFlip(PlayerCtrl player)
+    {
+        if(HasStateAuthority)
+        {
+            RPC_SetFlip(player);
+        }
+        else
+        {
+            RPC_RequestSetFlip(player);
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetFlip(PlayerCtrl player)
+    {
+        RPC_SetFlip(player);
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetFlip(PlayerCtrl player)
+    {
+        Renderer.flipX = player.transform.position.x < transform.position.x;
     }
 
     public void UpdateHP(float amount)
     {
-        if(m_is_dead is true)
+        if(HasStateAuthority)
+        {
+            RPC_UpdateHP(amount);
+        }
+        else
+        {
+            RPC_RequestUpdateHP(amount);
+        }
+    }
+
+    private void RPC_RequestUpdateHP(float amount)
+    {
+        RPC_UpdateHP(amount);
+    }
+
+    private void RPC_UpdateHP(float amount)
+    {
+        if(IsDead is true)
         {
             return;
         }
 
-        m_current_hp += amount;
+        HP += amount;
 
-        if(m_current_hp <= 0f)
+        if(HP <= 0f)
         {
             Die();
         }
@@ -66,12 +123,17 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     public void Die()
     {
-        if(m_is_dead is true)
+        if(!HasStateAuthority)
+        {
+            return;
+        }
+        
+        if(IsDead is true)
         {
             return;
         }
 
-        m_is_dead = true;
+        IsDead = true;
 
         Rigidbody.linearVelocity = Vector2.zero;
         Rigidbody.simulated = false;
@@ -80,7 +142,7 @@ public abstract class EnemyCtrl : MonoBehaviour
 
         Collider.enabled = false;
 
-        Animator.SetTrigger("Die");
+        SetDieTrigger();
 
         if (m_knockback_coroutine != null)
         {
@@ -105,6 +167,30 @@ public abstract class EnemyCtrl : MonoBehaviour
         Invoke("ReturnEnemy", 2f);
     }
 
+    private void SetDieTrigger()
+    {
+        if(HasStateAuthority)
+        {
+            RPC_SetDieTrigger();
+        }
+        else
+        {
+            RPC_RequestSetDieTrigger();
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetDieTrigger()
+    {
+        RPC_SetDieTrigger();
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetDieTrigger()
+    {
+        Animator.SetTrigger("Die");
+    }
+
     protected void InstantiateExp()
     {
         GameObject exp = ObjectManager.Instance.GetObject(ObjectType.Exp);
@@ -115,11 +201,7 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     protected void ReturnEnemy()
     {
-        var ctrl = GetComponent<EnemyCtrl>();
-        if (ctrl != null)
-            Destroy(ctrl);
-
-        ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Enemy);
+        GameManager.Instance.NowRunner.Despawn(GetComponent<NetworkObject>());
     }
 
     public void KnockBack(Vector2 current_position, float amount)
@@ -164,12 +246,12 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     public void SlowEnter(float amount)
     {
-        m_current_speed *= amount + Script.AntiSlow;
+        SPD *= amount + Script.AntiSlow;
     }
 
     public void SlowExit()
     {
-        m_current_speed = Script.SPD;
+        SPD = Script.SPD;
     }
 
     public void Freeze(float duration)
@@ -184,7 +266,7 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     private IEnumerator CoFreeze(float duration)
     {
-        m_current_speed = 0f;
+        SPD = 0f;
 
         if(GameManager.Instance.GameState is not GameEventType.Playing)
         {
@@ -193,6 +275,6 @@ public abstract class EnemyCtrl : MonoBehaviour
 
         yield return new WaitForSeconds(duration - Script.AntiFreeze);
 
-        m_current_speed = Script.SPD;
+        SPD = Script.SPD;
     }
 }

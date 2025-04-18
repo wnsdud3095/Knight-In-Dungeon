@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f894b07f7ead04780881854ee960fe, type: 3}
   m_Name: 9_Skeleton Archer
   m_EditorClassIdentifier: 
+  m_id: 9
   m_hp: 10000
   m_atk: 15
   m_speed: 1

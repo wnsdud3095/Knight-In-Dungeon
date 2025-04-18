@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 3_Werewolf
   m_EditorClassIdentifier: 
+  m_id: 3
   m_hp: 960
   m_atk: 20
   m_speed: 1.5
@@ -20,4 +21,5 @@ MonoBehaviour:
   m_knockback_resistance: 0.1
   m_freeze_resistance: 1
   m_animator: {fileID: 9100000, guid: e2e0aa5c30b3cf941836c4831744c1d1, type: 2}
+  m_enemy_type: 0
   m_is_boss: 0

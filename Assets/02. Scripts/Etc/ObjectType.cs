@@ -9,6 +9,8 @@ public enum ObjectType
     Item_Bomb,
     Item_MoneyBag,
     Exp,
-    Enemy,
+    Melee_Enemy,
+    Ranged_Enemy,
+    Suicide_Enemy,
     Arrow,
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 10_Greatsword Skeleton
   m_EditorClassIdentifier: 
+  m_id: 10
   m_hp: 25000
   m_atk: 50
   m_speed: 0.7

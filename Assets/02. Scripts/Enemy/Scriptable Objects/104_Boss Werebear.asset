@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 104_Boss Werebear
   m_EditorClassIdentifier: 
+  m_id: 104
   m_hp: 40000
   m_atk: 50
   m_speed: 1.5
@@ -20,4 +21,5 @@ MonoBehaviour:
   m_knockback_resistance: 0.2
   m_freeze_resistance: 1.8
   m_animator: {fileID: 9100000, guid: 7069d82da443b48bfb57fa6535522b3f, type: 2}
+  m_enemy_type: 0
   m_is_boss: 1

@@ -1,8 +1,9 @@
+using Fusion;
 using UnityEngine;
 
-public class Magnet : MonoBehaviour, IItem
+public class Magnet : NetworkBehaviour, IItem
 {
-    public void Use()
+    public void Use(NetworkObject player_object)
     {
         GameObject[] m_exp_orbs = ObjectManager.Instance.GetActiveObjects(ObjectType.Exp);
         
@@ -14,9 +15,14 @@ public class Magnet : MonoBehaviour, IItem
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!HasStateAuthority)
+        {
+            return;
+        }
+
         if(collision.CompareTag("Player"))
         {
-            Use();
+            //Use();
             ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Item_Magnet);
         }
     }

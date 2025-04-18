@@ -3,6 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Scriptable Object/Create Enemy")]
 public class Enemy : ScriptableObject
 {
+    [Header("몬스터의 고유한 ID")]
+    [SerializeField] private int m_id;
+    public int ID
+    {
+        get { return m_id; }
+    }
+    
     [Header("몬스터의 체력")]
     [SerializeField] private float m_hp;
     public float HP

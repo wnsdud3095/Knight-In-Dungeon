@@ -1,6 +1,8 @@
+using System.Collections.Generic;
+using Fusion;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : NetworkBehaviour
 {
     private StageManager m_stage_manager;
 
@@ -17,6 +19,14 @@ public class SpawnManager : MonoBehaviour
 
     [Header("경고 UI 프리펩")]
     [SerializeField] private GameObject m_warning_ui_object;
+
+    [Header("네트워크 오브젝트 풀 매니저")]
+    [SerializeField] private NetworkObjectManager m_object_pool_manager;
+
+    [Space(30)]
+    [Header("몬스터의 목록")]
+    [SerializeField] private Enemy[] m_enemy_list;
+    private Dictionary<int, Enemy> m_enemy_dict;
 
     private int m_current_wave_index;
     private int m_spawned_count;
@@ -42,6 +52,12 @@ public class SpawnManager : MonoBehaviour
 
         m_stage_manager = GetComponent<StageManager>();
 
+        m_enemy_dict = new Dictionary<int, Enemy>();
+        for(int i = 0; i < m_enemy_list.Length; i++)
+        {
+            m_enemy_dict[m_enemy_list[i].ID] = m_enemy_list[i];
+        }
+
         float total_time = 0f;
         foreach(WaveData wave in Stage.Waves)
         {
@@ -61,8 +77,13 @@ public class SpawnManager : MonoBehaviour
         StartStage(Stage);
     }
     
-    private void Update()
+    public override void FixedUpdateNetwork()
     {
+        if(!HasStateAuthority)
+        {
+            return;
+        }
+
         if(GameManager.Instance.GameState != GameEventType.Playing || !m_wave_active)
         {
             return;
@@ -137,8 +158,8 @@ public class SpawnManager : MonoBehaviour
             {
                 TimeWave time_pattern = pattern as TimeWave;
 
-                m_wave_timer += Time.deltaTime;
-                m_spawn_timer += Time.deltaTime;
+                m_wave_timer += GameManager.Instance.NowRunner.DeltaTime;
+                m_spawn_timer += GameManager.Instance.NowRunner.DeltaTime;
 
                 if(m_spawn_timer >= time_pattern.Interval)
                 {
@@ -170,7 +191,7 @@ public class SpawnManager : MonoBehaviour
             {
                 BossWave boss_pattern = pattern as BossWave;
 
-                m_wave_timer += Time.deltaTime;
+                m_wave_timer += GameManager.Instance.NowRunner.DeltaTime;
                 
                 if(m_boss_spawn is false)
                 {
@@ -179,15 +200,15 @@ public class SpawnManager : MonoBehaviour
                     Spawn(wave);
                 }
 
-                GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
-                foreach(GameObject enemy in enemies)
-                {
-                    var enemy_ctrl = enemy.GetComponent<EnemyCtrl>(); 
-                    if(!enemy_ctrl.Script.Boss)
-                    {
-                        enemy_ctrl.Die();
-                    }
-                }
+                // GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+                // foreach(GameObject enemy in enemies)
+                // {
+                //     var enemy_ctrl = enemy.GetComponent<EnemyCtrl>(); 
+                //     if(!enemy_ctrl.Script.Boss)
+                //     {
+                //         enemy_ctrl.Die();
+                //     }
+                // }
 
                 if(m_wave_timer >= boss_pattern.Duration)
                 {
@@ -212,34 +233,54 @@ public class SpawnManager : MonoBehaviour
     {
         Enemy enemy_data = SelectEnemy(wave.Enemies);
 
-        GameObject obj = ObjectManager.Instance.GetObject(ObjectType.Enemy);
-        EnemyCtrl prev_enemy = obj.GetComponent<EnemyCtrl>();
-        if(prev_enemy)
-        {
-            Destroy(prev_enemy);
-        }
-
-        EnemyCtrl enemy = null;
+        var enemy_type = default(ObjectType);
+        Debug.Log(enemy_data.EnemyType);
         switch(enemy_data.EnemyType)
         {
             case EnemyType.Melee:
-                enemy = obj.AddComponent<MeleeEnemyCtrl>();
+                enemy_type = ObjectType.Melee_Enemy;
                 break;
             
             case EnemyType.Ranged:
-                enemy = obj.AddComponent<RangedEnemyCtrl>();
+                enemy_type = ObjectType.Ranged_Enemy;
                 break;
             
             case EnemyType.Suicide:
-                enemy = obj.AddComponent<SuicideEnemyCtrl>();
+                enemy_type = ObjectType.Suicide_Enemy;
                 break;
         }
-        
-        Vector2 spawn_position = GetSpawnPosition(wave.Pattern.Pattern);
 
-        enemy.transform.position = spawn_position;
-        enemy.Script = enemy_data;
+        Vector2 spawn_position = GetSpawnPosition(wave.Pattern.Pattern);
+        NetworkObject obj = GameManager.Instance.NowRunner.Spawn(m_object_pool_manager.GetPrefab(enemy_type), spawn_position);
+        
+        var enemy = obj.GetComponent<EnemyCtrl>();
+        
+        SetEnemyScript(enemy, enemy_data.ID);
         enemy.Initialize();
+    }
+
+    private void SetEnemyScript(EnemyCtrl enemy, int id)
+    {
+        if(HasStateAuthority)
+        {
+            RPC_SetEnemyScript(enemy, id);
+        }
+        else
+        {
+            RPC_RequestSetEnemyScript(enemy, id);
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetEnemyScript(EnemyCtrl enemy, int id)
+    {
+        RPC_SetEnemyScript(enemy, id);
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetEnemyScript(EnemyCtrl enemy, int id)
+    {
+        enemy.Script = m_enemy_dict[id];
     }
 
     private Vector2 GetSpawnPosition(SpawnPattern spawn_type)
@@ -294,16 +335,16 @@ public class SpawnManager : MonoBehaviour
 
     private void Recycle()
     {
-        GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
+        // GameObject[] enemies = ObjectManager.Instance.GetActiveObjects(ObjectType.Enemy);
 
-        foreach(var enemy in enemies)
-        {
-            float distance = Vector2.Distance(GameManager.Instance.Player.transform.position, enemy.transform.position);
+        // foreach(var enemy in enemies)
+        // {
+        //     float distance = Vector2.Distance(GameManager.Instance.Player.transform.position, enemy.transform.position);
 
-            if(distance > m_out_radius)
-            {
-                ObjectManager.Instance.ReturnObject(enemy.gameObject, ObjectType.Enemy);
-            }
-        }
+        //     if(distance > m_out_radius)
+        //     {
+        //         ObjectManager.Instance.ReturnObject(enemy.gameObject, ObjectType.Enemy);
+        //     }
+        // }
     }
 }

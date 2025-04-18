@@ -1,13 +1,21 @@
+using Fusion;
+using UnityEngine;
+
 public class MeleeEnemyCtrl : EnemyCtrl
 {
-    protected override void FixedUpdate()
+    public override void FixedUpdateNetwork()
     {
+        if(!HasStateAuthority)
+        {
+            return;
+        }
+
         if(GameManager.Instance.GameState is not GameEventType.Playing)
         {
             return;
         }
 
-        if(m_is_dead is false && m_knockback_coroutine is null)
+        if(IsDead is false && m_knockback_coroutine is null)
         {
             MoveTowardsPlayer();
         }
@@ -17,14 +25,15 @@ public class MeleeEnemyCtrl : EnemyCtrl
     {
         base.Initialize();
 
-        m_current_hp = Script.HP;
-        m_current_speed = Script.SPD;
+        HP = Script.HP;
+        SPD = Script.SPD;
 
-        m_is_dead = false;
+        IsDead = false;
 
         Rigidbody.simulated = true;
 
-        Animator.runtimeAnimatorController = Script.Animator;
+        SetAniamtor();
+        
         Animator.ResetTrigger("Die");
 
         if (m_knockback_coroutine != null)
@@ -39,5 +48,29 @@ public class MeleeEnemyCtrl : EnemyCtrl
         }
 
         Collider.enabled = true;
+    }
+
+    public void SetAniamtor()
+    {
+        if(HasStateAuthority)
+        {
+            RPC_SetAniamtor();
+        }
+        else
+        {
+            RPC_RequestSetAnimator();
+        }
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetAniamtor()
+    {
+        Animator.runtimeAnimatorController = Script.Animator;
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetAnimator()
+    {
+        RPC_SetAniamtor();
     }
 }

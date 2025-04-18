@@ -5,9 +5,14 @@ public class RangedEnemyCtrl : EnemyCtrl
     private float m_atk_elapsed_interval = 2f;
     private float m_atk_target_interval = 2f;
 
-    protected override void FixedUpdate()
+    public override void FixedUpdateNetwork()
     {
-        if(m_is_dead)
+        if(!HasStateAuthority)
+        {
+            return;
+        }
+        
+        if(IsDead)
         {
             return;
         }
@@ -17,7 +22,10 @@ public class RangedEnemyCtrl : EnemyCtrl
             return;
         }
 
-        if(m_is_dead is false && m_knockback_coroutine is null)
+        m_atk_elapsed_interval += GameManager.Instance.NowRunner.DeltaTime;
+        m_atk_elapsed_interval = Mathf.Clamp(m_atk_elapsed_interval, 0f, m_atk_target_interval);
+
+        if(IsDead is false && m_knockback_coroutine is null)
         {
             float distance = Vector2.Distance(GameManager.Instance.Player.transform.position, transform.position);
 
@@ -32,15 +40,6 @@ public class RangedEnemyCtrl : EnemyCtrl
         }
     }
 
-    public void Update()
-    {
-        if(GameManager.Instance.GameState is GameEventType.Playing)
-        {
-            m_atk_elapsed_interval += Time.deltaTime;
-            m_atk_elapsed_interval = Mathf.Clamp(m_atk_elapsed_interval, 0f, m_atk_target_interval);
-        }
-    }
-
     protected override void MoveTowardsPlayer()
     {
         Vector2 direction = GameManager.Instance.Player.transform.position - transform.position;
@@ -52,7 +51,7 @@ public class RangedEnemyCtrl : EnemyCtrl
         Animator.SetBool("IsMove", true);
 
         direction.Normalize();
-        Rigidbody.linearVelocity = direction * m_current_speed;
+        Rigidbody.linearVelocity = direction * SPD;
 
         Renderer.flipX = GameManager.Instance.Player.transform.position.x < transform.position.x;
     }
@@ -83,10 +82,10 @@ public class RangedEnemyCtrl : EnemyCtrl
     {
         base.Initialize();
 
-        m_current_hp = Script.HP;
-        m_current_speed = Script.SPD;
+        HP = Script.HP;
+        SPD = Script.SPD;
 
-        m_is_dead = false;
+        IsDead = false;
 
         Rigidbody.simulated = true;
         Rigidbody.linearVelocity = Vector2.zero;

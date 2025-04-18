@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 2655100794409883583}
   - component: {fileID: 491429874886430455}
   - component: {fileID: 5490759633782721941}
+  - component: {fileID: 3766370797097863739}
+  - component: {fileID: 488973158637586374}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Ranged Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 1508379008619853423}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ced84f142f552fd358751fa2d7c54a03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -189,12 +191,14 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 777353166
+  SortKey: 4219987630
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 5490759633782721941}
+  - {fileID: 3766370797097863739}
+  - {fileID: 488973158637586374}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &5490759633782721941
 MonoBehaviour:
@@ -212,4 +216,38 @@ MonoBehaviour:
   SyncScale: 0
   SyncParent: 0
   _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  DisableSharedModeInterpolation: 1
+--- !u!114 &3766370797097863739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508379008619853423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 2655100794409883583}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 00000000ebfbe7684ebf00d7
+  TriggerHashes: 00000000
+  TotalWords: 0
+--- !u!114 &488973158637586374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508379008619853423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab253b23591717213bee0582999e9e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 3271007804587997152}
+  <Renderer>k__BackingField: {fileID: 8615111544490398878}
+  <Animator>k__BackingField: {fileID: 2655100794409883583}
+  <Collider>k__BackingField: {fileID: 7657786713181314318}

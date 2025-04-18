@@ -1,4 +1,6 @@
+using Fusion;
+
 public interface IItem
 {
-    public void Use();
+    public void Use(NetworkObject player_object);
 }

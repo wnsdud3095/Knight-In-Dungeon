@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7111048887d21ab0895f3997276a5, type: 3}
   m_Name: 106_Boss Orc Rider
   m_EditorClassIdentifier: 
+  m_id: 106
   m_hp: 100000
   m_atk: 80
   m_speed: 1.5
