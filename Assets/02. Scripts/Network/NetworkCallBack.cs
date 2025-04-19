@@ -67,8 +67,8 @@ public class NetworkCallBack : MonoBehaviour, INetworkRunnerCallbacks
         PlayerRefs.Add(player);
         if (player == runner.LocalPlayer)
         {
-            runner.Spawn(m_player_prefab, Vector3.zero, Quaternion.identity, player);
-
+            var player_ob = runner.Spawn(m_player_prefab, Vector3.zero, Quaternion.identity, player);
+            GameManager.Instance.Player = player_ob.GetComponent<PlayerCtrl>();
             m_joy_stick_ctrl = GameObject.Find("TouchPanel").GetComponent<JoyStickCtrl>();
         }
 

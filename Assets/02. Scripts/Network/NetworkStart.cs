@@ -12,7 +12,7 @@ public class NetworkStart : NetworkBehaviour
 
         var pooledProvider = FindFirstObjectByType<NetworkObjectManager>();
 
-        SceneRef scene_ref = SceneRef.FromIndex(4);
+        SceneRef scene_ref = SceneRef.FromIndex(2);
 
         await runner.StartGame(new StartGameArgs()
         {

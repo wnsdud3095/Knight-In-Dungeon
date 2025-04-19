@@ -26,6 +26,13 @@ public class GameUICtrl : MonoBehaviour
     {
         if(GameManager.Instance.Player!= null && GameManager.Instance.Player.OriginStat!=null)
         {
+            if (GameManager.Instance == null) Debug.LogError("GameManager.Instance is NULL");
+            else if (GameManager.Instance.StageManager == null)
+            {
+                Debug.LogError("StageManager is NULL");
+                GameManager.Instance.StageManager = GameObject.Find("Stage Manager").GetComponent<StageManager>();
+            }
+            else Debug.Log("모든 참조 정상");
             m_exp_slider.value = Mathf.Clamp(GameManager.Instance.StageManager.CurrentExp / GameManager.Instance.StageManager.MaxExp, 0f, 1f);
         }
         if (GameManager.Instance.GameState is not GameEventType.Playing)

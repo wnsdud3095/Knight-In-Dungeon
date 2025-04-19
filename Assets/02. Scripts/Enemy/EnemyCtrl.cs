@@ -9,8 +9,8 @@ public abstract class EnemyCtrl : NetworkBehaviour
     [field: SerializeField] public Animator Animator { get; protected set; }
     [field: SerializeField] public CircleCollider2D Collider { get; protected set; }
     public NetworkTransform NetworkTransform {get; protected set; }
-    
 
+    [SerializeField]
     protected Enemy m_scriptable_object;
     public Enemy Script
     {

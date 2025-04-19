@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dd65654327eff4899d37ddb86003e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player_prefab: {fileID: 2657314724168796948, guid: 3818babc971a8464fb6aabc2877e632d, type: 3}
+  m_player_prefab: {fileID: 2657314724168796948, guid: fdbe8d373225ad347ba6379358c90581, type: 3}
   m_joy_stick_ctrl: {fileID: 0}
   PlayerRefs: []
 --- !u!114 &2682033781153004135

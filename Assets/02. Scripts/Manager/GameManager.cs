@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
     public StageManager StageManager
     {
         get { return m_stage_manager; }
-        private set { m_stage_manager = value; }
+        set { m_stage_manager = value; }
     }
 
     private Finisher m_finisher;
@@ -217,9 +217,9 @@ public class GameManager : Singleton<GameManager>
 
             SoundManager.Instance.PlayBGM("Game Background");
             
-            //Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
-            Debug.Log("스테이지 매니저 초기화");
+            //Player = GameObject.Find("Player").GetComponent<PlayerCtrl>();         
             StageManager = GameObject.Find("Stage Manager").GetComponent<StageManager>();
+            if (StageManager == null) { Debug.Log("스테이지 매니저 초기화 실패"); }
             Finisher = GameObject.Find("Finish UI").GetComponent<Finisher>();
             BulletPool = GameObject.Find("Bullet Pool Manager").GetComponent<BulletPoolManager>();
         }
@@ -270,7 +270,19 @@ public class GameManager : Singleton<GameManager>
         StopEnemies();
         StopArrows();
 
-        Finisher.OpenUI(false);
+        if(NowRunner.GetComponent<NetworkCallBack>().PlayerRefs.Count<2)
+        {
+            Finisher.OpenUI(false);
+            NowRunner.Shutdown();
+        }
+        else
+        {
+            if(Player1.m_is_dead && Player2.m_is_dead)
+            {
+                Finisher.OpenUI(false);
+                NowRunner.Shutdown();
+            }
+        }
     }
 
     public void Clear()

@@ -4,6 +4,7 @@ using UnityEngine;
 using Fusion;
 using UnityEngine.Windows;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerCtrl : NetworkBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerCtrl : NetworkBehaviour
     public NetworkTransform NetTransform { get; private set; }
     [Networked] public NetworkBool IsFlippedX { get; set; } = false;
     [Networked] public NetworkBool IsMoving { get; set; }
+
+    [Networked] public float ReSpawnTime { get; set; }
+    private float m_spawn_cool_time = 10f;
 
     [SerializeField]
     private PlayerStat m_stat_scriptable; //캐릭터 기본 스탯 스크립터블 오브젝트
@@ -30,7 +34,9 @@ public class PlayerCtrl : NetworkBehaviour
     private float m_regen_cool_time = 1f;
 
     private bool m_invincibility;
-    private bool m_is_dead;
+    public bool m_is_dead;
+
+    private bool m_is_respawning;
 
     [Space(30)]
     [Header("체력 UI")]
@@ -108,6 +114,8 @@ public class PlayerCtrl : NetworkBehaviour
         MoveLimit();
         HpRegen();
 
+        ReSpawn();
+
         m_skill_manager.UseSkills();
     }
 
@@ -122,10 +130,6 @@ public class PlayerCtrl : NetworkBehaviour
     public PlayerStat CloneStat(PlayerStat origin_stat)
     {
         PlayerStat new_stat = ScriptableObject.CreateInstance<PlayerStat>();
-        if(OriginStat == null)
-        {
-            Debug.Log("스탯이 없음");
-        }
         new_stat.HP = origin_stat.HP;
         new_stat.HpRegen = origin_stat.HpRegen;
         new_stat.MoveSpeed = origin_stat.MoveSpeed;
@@ -209,7 +213,7 @@ public class PlayerCtrl : NetworkBehaviour
 
     public void UpdateHP(float hp)
     {
-        if(HasStateAuthority)
+        if (HasStateAuthority)
         {
             RPC_UpdateHP(hp);
         }
@@ -235,6 +239,7 @@ public class PlayerCtrl : NetworkBehaviour
         }        
     }
 
+
     public void SetHpSlider()
     {
         if (HasStateAuthority)
@@ -246,7 +251,7 @@ public class PlayerCtrl : NetworkBehaviour
         {
             RPC_RequestSetHP();
         }
-
+        /*
         if (m_hp_slider.value == 1f)
         {
             m_hp_group.alpha = 0f;
@@ -255,6 +260,7 @@ public class PlayerCtrl : NetworkBehaviour
         {
             m_hp_group.alpha = 1f;
         }
+        */
     }
 
     public void Dead()
@@ -263,6 +269,29 @@ public class PlayerCtrl : NetworkBehaviour
 
         m_is_dead = true;
         Animator.SetTrigger("Death");
+
+        if(!GameManager.Instance.Player1.m_is_dead || !GameManager.Instance.Player2.m_is_dead)
+        {
+            m_is_respawning= true;
+            ReSpawnTime = m_spawn_cool_time;
+        }
+    }
+
+    public void ReSpawn()
+    {
+        if (!m_is_respawning) return;
+        
+        if(ReSpawnTime >0)
+        {
+            ReSpawnTime -= Runner.DeltaTime;
+        }
+        else
+        {
+            Animator.SetTrigger("ReSpawn");
+            m_is_dead=false;
+            m_is_respawning = false;
+        }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
