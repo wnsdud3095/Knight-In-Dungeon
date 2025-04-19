@@ -3052,7 +3052,7 @@ MonoBehaviour:
     m_container: {fileID: 399059328}
     m_prefab: {fileID: 8579022631231845375, guid: 0e7549ff70b9fbe10bacfa1b4295b9a4, type: 3}
     m_prefab_id:
-      RawValue: 5
+      RawValue: 7
   - m_object_type: 4
     m_max_size: 2
     m_container: {fileID: 1068826497}

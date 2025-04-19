@@ -30,37 +30,37 @@ public class GameUICtrl : MonoBehaviour
 
     public void Update()
     {
-        if(GameManager.Instance.Player!= null && GameManager.Instance.Player.OriginStat!=null)
-        {
-            RectTransform[] transforms = GameManager.Instance.Player.gameObject.GetComponentsInChildren<RectTransform>();
-            foreach(Transform t in transforms)
-            {
-                if (t.name == "HP UI") m_hp_group = t.gameObject.GetComponent<CanvasGroup>();
-                if(t.name == "Slider") m_hp_slider= t.gameObject.GetComponent<Slider>();
-            }
-            m_hp_slider.value = GameManager.Instance.Player.Stat.HP / GameManager.Instance.Player.OriginStat.HP;
-            m_exp_slider.value = Mathf.Clamp(GameManager.Instance.StageManager.CurrentExp / GameManager.Instance.StageManager.MaxExp, 0f, 1f);
-        }
-        if (GameManager.Instance.GameState is not GameEventType.Playing)
-        {
-            return;
-        }
+        // if(GameManager.Instance.Player!= null && GameManager.Instance.Player.OriginStat!=null)
+        // {
+        //     RectTransform[] transforms = GameManager.Instance.Player.gameObject.GetComponentsInChildren<RectTransform>();
+        //     foreach(Transform t in transforms)
+        //     {
+        //         if (t.name == "HP UI") m_hp_group = t.gameObject.GetComponent<CanvasGroup>();
+        //         if(t.name == "Slider") m_hp_slider= t.gameObject.GetComponent<Slider>();
+        //     }
+        //     m_hp_slider.value = GameManager.Instance.Player.Stat.HP / GameManager.Instance.Player.OriginStat.HP;
+        //     m_exp_slider.value = Mathf.Clamp(GameManager.Instance.StageManager.CurrentExp / GameManager.Instance.StageManager.MaxExp, 0f, 1f);
+        // }
+        // if (GameManager.Instance.GameState is not GameEventType.Playing)
+        // {
+        //     return;
+        // }
 
 
-        m_play_time_label.text = (GameManager.Instance.StageManager.GameTimer / 60).ToString("00") + ":" + (GameManager.Instance.StageManager.GameTimer % 60).ToString("00");
+        // m_play_time_label.text = (GameManager.Instance.StageManager.GameTimer / 60).ToString("00") + ":" + (GameManager.Instance.StageManager.GameTimer % 60).ToString("00");
 
-        m_level_label.text = $"LV.{GameManager.Instance.StageManager.Level}";
+        // m_level_label.text = $"LV.{GameManager.Instance.StageManager.Level}";
         
-        m_money_label.text = GameManager.Instance.StageManager.Kill.ToString("00000");
+        // m_money_label.text = GameManager.Instance.StageManager.Kill.ToString("00000");
 
-        if(m_hp_slider.value == 1f)
-        {
-            m_hp_group.alpha = 0f;
-        }
-        else
-        {
-            m_hp_group.alpha = 1f;
-        }
+        // if(m_hp_slider.value == 1f)
+        // {
+        //     m_hp_group.alpha = 0f;
+        // }
+        // else
+        // {
+        //     m_hp_group.alpha = 1f;
+        // }
     }
 
     public void Button_SettingEnter()

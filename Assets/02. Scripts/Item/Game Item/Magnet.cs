@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Magnet : NetworkBehaviour, IItem
 {
-    public void Use(NetworkObject player_object)
+    public void Use(PlayerCtrl player_ctrl)
     {
         GameObject[] m_exp_orbs = ObjectManager.Instance.GetActiveObjects(ObjectType.Exp);
         
@@ -15,11 +15,6 @@ public class Magnet : NetworkBehaviour, IItem
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!HasStateAuthority)
-        {
-            return;
-        }
-
         if(collision.CompareTag("Player"))
         {
             //Use();

@@ -6,7 +6,7 @@ public class Bomb : NetworkBehaviour, IItem
     [Header("폭발 이펙트")]
     [SerializeField] private GameObject m_explosion_effect;
 
-    public void Use(NetworkObject player_object)
+    public void Use(PlayerCtrl player_ctrl)
     {
         Instantiate(m_explosion_effect);
 
@@ -25,20 +25,19 @@ public class Bomb : NetworkBehaviour, IItem
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!HasStateAuthority)
-        {
-            return;
-        }
-
         if(collision.CompareTag("Player"))
         {
             NetworkObject player_object = collision.GetComponent<NetworkObject>();
-
-            if(player_object)
+            if(GameManager.Instance.Player1.GetComponent<NetworkObject>().InputAuthority == player_object.InputAuthority)
             {
-                Use(player_object);
-                ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Item_Bomb);
+                Use(GameManager.Instance.Player1);
             }
+            else
+            {
+                Use(GameManager.Instance.Player2);
+            }
+
+            Runner.Despawn(GetComponent<NetworkObject>());
         }
     }
 }
