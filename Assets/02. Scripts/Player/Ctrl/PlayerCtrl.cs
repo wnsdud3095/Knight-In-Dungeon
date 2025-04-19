@@ -87,6 +87,7 @@ public class PlayerCtrl : NetworkBehaviour
         Animator = m_visual_ob.GetComponent<Animator>();
         NetTransform = GetComponent<NetworkTransform>();
         m_screen = FindAnyObjectByType<ScreenOutlinCtrl>();
+        SpriteRenderer = m_visual_ob.GetComponent<SpriteRenderer>(); 
 
         GameManager.Instance.Player = this;
         SetHpSlider();
@@ -208,13 +209,30 @@ public class PlayerCtrl : NetworkBehaviour
 
     public void UpdateHP(float hp)
     {
+        if(HasStateAuthority)
+        {
+            RPC_UpdateHP(hp);
+        }
+        else
+        {
+            RPC_RequestUpdateHP(hp);
+        }
+    }
+
+    private void RPC_RequestUpdateHP(float hp)
+    {
+        RPC_UpdateHP(hp);
+    }
+
+    private void RPC_UpdateHP(float hp)
+    {
         Stat.HP += hp;
         Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
         SetHpSlider();
         if (Stat.HP <= 0f)
         {
             Dead();
-        }
+        }        
     }
 
     public void SetHpSlider()
@@ -270,7 +288,7 @@ public class PlayerCtrl : NetworkBehaviour
 
             UpdateHP(-collision.GetComponent<EnemyCtrl>().Script.ATK);
 
-            StartCoroutine(Invincibility());
+            SetInvincibility();
         }
         else if(collision.CompareTag("Projectile"))
         {
@@ -284,17 +302,41 @@ public class PlayerCtrl : NetworkBehaviour
                 return;
             }
 
+            m_invincibility = true;
+
             UpdateHP(-collision.GetComponent<Arrow>().ATK);
 
-            StartCoroutine(Invincibility());
+            SetInvincibility();
         }
+    }
+
+    private void SetInvincibility()
+    {
+        if(HasStateAuthority)
+        {
+            RPC_SetInvincibility();
+        }
+        else
+        {
+            RPC_RequestSetInvincibility();
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetInvincibility()
+    {
+        RPC_SetInvincibility();
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetInvincibility()
+    {
+        StartCoroutine(Invincibility());
     }
 
     private IEnumerator Invincibility()
     {
-        Color color = SpriteRenderer.color;
-        color.a = 100f / 255f;
-        SpriteRenderer.color = color;
+        SetInvicibilityBool(true);
 
         float elasped_time = 0f;
         float target_time = 1f;
@@ -309,9 +351,31 @@ public class PlayerCtrl : NetworkBehaviour
             yield return null;
         }
 
-        color.a = 1f;
-        SpriteRenderer.color = color;
-
+        SetInvicibilityBool(false);
         m_invincibility = false;
+    }
+
+    private void SetInvicibilityBool(bool flag)
+    {
+        if(HasStateAuthority)
+        {
+            RPC_SetInvicibilityBool(flag);
+        }
+        else
+        {
+            RPC_RequestSetInvicibilityBool(flag);
+        }
+    }
+
+    [Rpc(sources: RpcSources.All, targets: RpcTargets.StateAuthority)]
+    private void RPC_RequestSetInvicibilityBool(bool flag)
+    {
+        RPC_SetInvicibilityBool(flag);
+    }
+
+    [Rpc(sources: RpcSources.StateAuthority, targets: RpcTargets.All)]
+    private void RPC_SetInvicibilityBool(bool flag)
+    {
+        Animator.SetBool("Invicibility", flag);
     }
 }

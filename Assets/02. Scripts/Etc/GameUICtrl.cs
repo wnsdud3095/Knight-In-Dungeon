@@ -35,9 +35,9 @@ public class GameUICtrl : MonoBehaviour
 
         m_play_time_label.text = (GameManager.Instance.StageManager.GameTimer / 60).ToString("00") + ":" + (GameManager.Instance.StageManager.GameTimer % 60).ToString("00");
 
-        m_level_label.text = $"LV.{GameManager.Instance.StageManager.Level}";
+        // m_level_label.text = $"LV.{GameManager.Instance.StageManager.Level}";
         
-        m_money_label.text = GameManager.Instance.StageManager.Kill.ToString("00000");
+        // m_money_label.text = GameManager.Instance.StageManager.Kill.ToString("00000");
 
     }
 

@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
 using Fusion;
-using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -147,7 +145,6 @@ public class GameManager : Singleton<GameManager>
                 }
             }
         }
-
     }
 
     private void PlayArrows()
