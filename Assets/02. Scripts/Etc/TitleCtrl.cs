@@ -59,7 +59,7 @@ public class TitleCtrl : MonoBehaviour
             DataManager.Instance.Data.m_user_exp = DataManager.Instance.Data.m_user_exp - ExpData.m_exp_list[DataManager.Instance.Data.m_user_level / 10];
             DataManager.Instance.Data.m_user_level++;
         }
-        m_exp_slider.value = DataManager.Instance.Data.m_user_exp / ExpData.m_exp_list[DataManager.Instance.Data.m_user_level % 10];
+        m_exp_slider.value = DataManager.Instance.Data.m_user_exp / ExpData.m_exp_list[DataManager.Instance.Data.m_user_level / 10];
         m_level_label.text = $"LV.{DataManager.Instance.Data.m_user_level}";
     }
 
