@@ -75,6 +75,7 @@ public class GameManager : Singleton<GameManager>
             
             if(enemy_ctrl)
             {
+                enemy_ctrl.Rigidbody.WakeUp();
                 enemy.GetComponent<Animator>().speed = 1f;
             }
         }
@@ -90,6 +91,7 @@ public class GameManager : Singleton<GameManager>
             if(enemy_ctrl)
             {
                 enemy_ctrl.Rigidbody.linearVelocity = Vector2.zero;
+                enemy_ctrl.Rigidbody.Sleep();
                 enemy.GetComponent<Animator>().speed = 0f;
             }
         }        
