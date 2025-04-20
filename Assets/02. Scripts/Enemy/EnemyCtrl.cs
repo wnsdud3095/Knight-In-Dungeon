@@ -32,7 +32,7 @@ public abstract class EnemyCtrl : MonoBehaviour
         Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         Renderer = GetComponent<SpriteRenderer>();
-        
+
         Animator = GetComponent<Animator>();
         Animator[] animators = GetComponentsInChildren<Animator>();
         foreach(Animator animator in animators)
@@ -221,6 +221,8 @@ public abstract class EnemyCtrl : MonoBehaviour
 
             if(m_is_dead)
             {
+                Animator.speed = 1f;
+                FreezeAnimator.SetBool("Freeze", false);
                 yield break;
             }
 
