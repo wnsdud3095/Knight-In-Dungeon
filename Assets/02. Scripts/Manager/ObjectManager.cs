@@ -68,6 +68,12 @@ public class ObjectManager : Singleton<ObjectManager>
 
     public void ReturnObject(GameObject obj, ObjectType type)
     {
+        if(!obj)
+        {
+            Destroy(obj);
+            return;
+        }
+
         PoolInfo info = GetPoolByType(type);
 
         if(info.m_pool_queue.Count < info.m_init_count)
@@ -95,15 +101,12 @@ public class ObjectManager : Singleton<ObjectManager>
         {
             if(pool.m_type == type)
             {
-                Transform[] objects = pool.m_container.GetComponentsInChildren<Transform>();
-                foreach(Transform obj in objects)
+                foreach (Transform child in pool.m_container.transform)
                 {
-                    if(obj == pool.m_container.transform)
+                    if(child.gameObject.activeInHierarchy)
                     {
-                        continue;
+                        ReturnObject(child.gameObject, type);
                     }
-                    
-                    ReturnObject(obj.gameObject, type);
                 }
             }
         }
@@ -117,19 +120,13 @@ public class ObjectManager : Singleton<ObjectManager>
         {
             if(pool.m_type == type)
             {
-                Transform[] objects = pool.m_container.GetComponentsInChildren<Transform>();
-
-                foreach(Transform obj in objects)
+                foreach (Transform child in pool.m_container.transform)
                 {
-                    if(obj.gameObject == pool.m_container)
+                    if(child.gameObject.activeInHierarchy)
                     {
-                        continue;
+                        object_list.Add(child.gameObject);
                     }
-
-                    object_list.Add(obj.gameObject);
                 }
-
-                break;
             }
         }
 
@@ -144,19 +141,10 @@ public class ObjectManager : Singleton<ObjectManager>
         {
             if(pool.m_type == type)
             {
-                Transform[] objects = pool.m_container.GetComponentsInChildren<Transform>(true);
-
-                foreach(Transform obj in objects)
+                foreach (Transform child in pool.m_container.transform)
                 {
-                    if(obj.gameObject == pool.m_container)
-                    {
-                        continue;
-                    }
-
-                    object_list.Add(obj.gameObject);
+                    object_list.Add(child.gameObject);
                 }
-
-                break;
             }
         }
 

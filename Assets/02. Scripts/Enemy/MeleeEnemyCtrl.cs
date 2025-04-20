@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MeleeEnemyCtrl : EnemyCtrl
 {
     protected override void FixedUpdate()
@@ -39,5 +41,6 @@ public class MeleeEnemyCtrl : EnemyCtrl
         }
 
         Collider.enabled = true;
+        Debug.Log("호출됨");
     }
 }

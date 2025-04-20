@@ -62,7 +62,10 @@ public class GameManager : Singleton<GameManager>
         GameEventBus.Subscribe(GameEventType.None, None);
         GameEventBus.Subscribe(GameEventType.Loading, Loading);
         GameEventBus.Subscribe(GameEventType.Waiting, Waiting);
+    }
 
+    private void Start()
+    {
         GameEventBus.Publish(GameEventType.None);
     }
 

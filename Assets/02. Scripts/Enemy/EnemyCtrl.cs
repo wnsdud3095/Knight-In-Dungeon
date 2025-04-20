@@ -1,12 +1,13 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyCtrl : MonoBehaviour
 {
     [field: SerializeField] public Rigidbody2D Rigidbody { get; protected set; }
-
     [field: SerializeField] public SpriteRenderer Renderer { get; protected set; }
     [field: SerializeField] public Animator Animator { get; protected set; }
+    [field: SerializeField] public Animator FreezeAnimator { get; private set; }
     [field: SerializeField] public CircleCollider2D Collider { get; protected set; }
 
     protected Enemy m_scriptable_object;
@@ -28,8 +29,21 @@ public abstract class EnemyCtrl : MonoBehaviour
     public virtual void Initialize()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         Renderer = GetComponent<SpriteRenderer>();
+        
         Animator = GetComponent<Animator>();
+        Animator[] animators = GetComponentsInChildren<Animator>();
+        foreach(Animator animator in animators)
+        {
+            if(animator != Animator)
+            {
+                FreezeAnimator = animator;
+            }
+        }
+        Animator.speed = 1f;
+        
         Collider = GetComponent<CircleCollider2D>();
 
         Animator.speed = 1f;
@@ -76,12 +90,6 @@ public abstract class EnemyCtrl : MonoBehaviour
         Rigidbody.linearVelocity = Vector2.zero;
         Rigidbody.simulated = false;
 
-        Renderer.sortingOrder = 0;
-
-        Collider.enabled = false;
-
-        Animator.SetTrigger("Die");
-
         if (m_knockback_coroutine != null)
         {
             StopCoroutine(m_knockback_coroutine);
@@ -91,7 +99,15 @@ public abstract class EnemyCtrl : MonoBehaviour
         {
             StopCoroutine(m_freeze_coroutine);
             m_freeze_coroutine = null;
+
+            Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            FreezeAnimator.SetBool("Freeze", false);
         }
+
+        Animator.speed = 1f;
+        Renderer.sortingOrder = 0;
+        Collider.enabled = false;
+        Animator.SetTrigger("Die");
 
         GameObject.Find("Stage Manager").GetComponent<StageManager>().Kill++;
 
@@ -102,7 +118,7 @@ public abstract class EnemyCtrl : MonoBehaviour
 
         InstantiateExp();
 
-        Invoke("ReturnEnemy", 2f);
+        Invoke("ReturnEnemy", 2.5f);
     }
 
     protected void InstantiateExp()
@@ -117,7 +133,9 @@ public abstract class EnemyCtrl : MonoBehaviour
     {
         var ctrl = GetComponent<EnemyCtrl>();
         if (ctrl != null)
+        {
             Destroy(ctrl);
+        }
 
         ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Enemy);
     }
@@ -134,10 +152,11 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     public IEnumerator CoKnockBack(Vector2 current_position, float amount)
     {
+        Animator.speed = 0f;
         Vector2 direction = -((Vector2)GameManager.Instance.Player.transform.position - current_position).normalized;
 
         float elasped_time = 0f;
-        float target_time = 0.5f;
+        float target_time = 0.1f;
 
         Vector2 kps = direction * ((amount - Script.AntiKnockback) / target_time);
 
@@ -145,9 +164,12 @@ public abstract class EnemyCtrl : MonoBehaviour
         {
             while(elasped_time <= target_time)
             {
-                while (GameManager.Instance.GameState is not GameEventType.Playing)
+                yield return new WaitUntil(() => GameManager.Instance.GameState is GameEventType.Playing);
+
+                if(m_is_dead)
                 {
-                    yield return null;
+                    Animator.speed = 1f;
+                    yield break;
                 }
 
                 elasped_time += Time.deltaTime;
@@ -159,6 +181,7 @@ public abstract class EnemyCtrl : MonoBehaviour
             }
         }
 
+        Animator.speed = 1f;
         m_knockback_coroutine = null;
     }
 
@@ -185,14 +208,33 @@ public abstract class EnemyCtrl : MonoBehaviour
     private IEnumerator CoFreeze(float duration)
     {
         m_current_speed = 0f;
+        FreezeAnimator.SetBool("Freeze", true);
+        Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        Animator.speed = 0f;
 
-        if(GameManager.Instance.GameState is not GameEventType.Playing)
+        float elapsed_time = 0f;
+        float target_time = duration - Script.AntiFreeze;
+
+        while(elapsed_time <= target_time)
         {
+            yield return new WaitUntil(() => GameManager.Instance.GameState is GameEventType.Playing);
+
+            if(m_is_dead)
+            {
+                yield break;
+            }
+
+            elapsed_time += Time.deltaTime;
             yield return null;
         }
+
+        
 
         yield return new WaitForSeconds(duration - Script.AntiFreeze);
 
         m_current_speed = Script.SPD;
+        FreezeAnimator.SetBool("Freeze", false);
+        Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        Animator.speed = 1f;
     }
 }
