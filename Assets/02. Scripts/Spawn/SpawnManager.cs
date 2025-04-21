@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -302,7 +303,11 @@ public class SpawnManager : MonoBehaviour
 
             if(distance > m_out_radius)
             {
-                ObjectManager.Instance.ReturnObject(enemy.gameObject, ObjectType.Enemy);
+                var enemy_ctrl = enemy.GetComponent<EnemyCtrl>();
+                if(enemy_ctrl)
+                {
+                    ObjectManager.Instance.ReturnObject(enemy, ObjectType.Enemy);
+                }
             }
         }
     }
