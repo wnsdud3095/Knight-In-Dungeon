@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a5859f6508311d794893667addee24, type: 3}
+  m_Name: 3_Silver Ensure Gacha
+  m_EditorClassIdentifier: 
+  m_id: 3
+  m_name: "\uC2E4\uBC84 \uC7A5\uBE44 \uC0C1\uC790"
+  m_description: "<color=yellow>\uC2E4\uBC84</color>\uB4F1\uAE09\uC758 \uC7A5\uBE44
+    \uC911 \uD558\uB098\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+  m_cost: 25000
+  m_items:
+  - {fileID: 11400000, guid: 155b220ec93de3338a9abe6be4527c01, type: 2}
+  - {fileID: 11400000, guid: 971339896e7e17e47b3bf36998273b75, type: 2}
+  - {fileID: 11400000, guid: 58f9ed8e31a567aff90d81b95c496eb9, type: 2}
+  - {fileID: 11400000, guid: dfbc23b5e71823a9cb1c7f167d397b35, type: 2}
+  - {fileID: 11400000, guid: 0709560a15e68a613a5436575ad97a71, type: 2}
+  - {fileID: 11400000, guid: f9e8d8e70262344e78574d0f72d3daad, type: 2}
+  - {fileID: 11400000, guid: eebef0a163ec6aa938111f582c18f7bb, type: 2}
+  - {fileID: 11400000, guid: 5f66810f5237d9dd4b44497ece85858f, type: 2}
+  m_weights: 0f0000000f0000000f0000000f0000000a0000000a0000000a0000000a000000
+  m_level: 3
+  m_image: {fileID: -117011375, guid: 0226cca0ecca42c7898417215214dd0a, type: 3}
