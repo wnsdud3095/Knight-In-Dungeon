@@ -17,5 +17,5 @@ MonoBehaviour:
   m_skill_name: "\uBB34\uAE30\uC758 \uB2EC\uC778"
   m_skill_description:
   - "\xB7 \uAE30\uBCF8 \uACF5\uACA9\uB825 \uC99D\uAC00"
-  m_skill_image: {fileID: -1546403696, guid: 5b0fa73e84fa301e09797477f0bb7686, type: 3}
+  m_skill_image: {fileID: 1518831437, guid: cd0723ccbb2a7ed04bc63c3fe89e013d, type: 3}
   m_combination_skill: {fileID: 11400000, guid: 0c51d48cbe33284a2832b2d9915ec9ab, type: 2}

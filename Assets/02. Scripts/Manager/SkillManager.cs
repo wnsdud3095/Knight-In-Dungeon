@@ -30,6 +30,7 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
+        //AddSkill(23);
         AddSkill(24);
     }
 

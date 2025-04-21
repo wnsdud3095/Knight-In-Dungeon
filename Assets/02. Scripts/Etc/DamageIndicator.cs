@@ -31,6 +31,11 @@ public class DamageIndicator : MonoBehaviour
         m_damage_label.text = NumberFormatter.FormatNumber(damage);
     }
 
+    public void Initialize(string state)
+    {
+        m_damage_label.text = state;
+    }
+
     public void Return()
     {
         ObjectManager.Instance.ReturnObject(gameObject, ObjectType.DamageIndicator);

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a5859f6508311d794893667addee24, type: 3}
+  m_Name: 6_Diamond Ensure Gacha
+  m_EditorClassIdentifier: 
+  m_id: 6
+  m_name: "\uB2E4\uC774\uC544\uBAAC\uB4DC \uC0C1\uC790"
+  m_description: "<color=yellow>\uB2E4\uC774\uC544\uBAAC\uB4DC</color>\uB4F1\uAE09\uC758
+    \uC7A5\uBE44 \uC911 \uD558\uB098\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+  m_cost: 150000
+  m_items:
+  - {fileID: 11400000, guid: 0aff85bc51ed70824812bf0dc998e5ed, type: 2}
+  - {fileID: 11400000, guid: c67f36b0ad537e23b8b0cffa372e40b5, type: 2}
+  - {fileID: 11400000, guid: 92f09f57b932ba84483ecbc4ee506997, type: 2}
+  - {fileID: 11400000, guid: 6ce258c2a6637381a958900113d7540e, type: 2}
+  - {fileID: 11400000, guid: 5467436720022fa70b501a58c3d428e8, type: 2}
+  - {fileID: 11400000, guid: 4517edb8eec3ca8bbbcacacc6911c968, type: 2}
+  - {fileID: 11400000, guid: 9d57d63ddfb3051229d5c8e589e0dc5e, type: 2}
+  - {fileID: 11400000, guid: 5195ca31dddf6320d99ce5424bf5a4f2, type: 2}
+  m_weights: 0f0000000f0000000f0000000f0000000a0000000a0000000a0000000a000000
+  m_level: 10
+  m_image: {fileID: -215773690, guid: 0226cca0ecca42c7898417215214dd0a, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2_Pro Equipment Gacha
   m_EditorClassIdentifier: 
   m_id: 2
-  m_name: "\uACE0\uAE09 \uC7A5\uBE44 \uC0C1\uC790"
+  m_name: "\uC0C1\uAE09 \uC7A5\uBE44 \uC0C1\uC790"
   m_description: "<color=yellow>\uC5D0\uBA54\uB784\uB4DC</color>\uC640 <color=yellow>\uB2E4\uC774\uC544\uBAAC\uB4DC</color>
     \uC0AC\uC774\uC758 \uC7A5\uBE44\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
   m_cost: 50000
@@ -22,14 +22,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c67f36b0ad537e23b8b0cffa372e40b5, type: 2}
   - {fileID: 11400000, guid: 92f09f57b932ba84483ecbc4ee506997, type: 2}
   - {fileID: 11400000, guid: 6ce258c2a6637381a958900113d7540e, type: 2}
+  - {fileID: 11400000, guid: 5467436720022fa70b501a58c3d428e8, type: 2}
+  - {fileID: 11400000, guid: 4517edb8eec3ca8bbbcacacc6911c968, type: 2}
+  - {fileID: 11400000, guid: 9d57d63ddfb3051229d5c8e589e0dc5e, type: 2}
+  - {fileID: 11400000, guid: 5195ca31dddf6320d99ce5424bf5a4f2, type: 2}
   - {fileID: 11400000, guid: 25a9cdb7e0bdbb4ddb7c05ab671d1e87, type: 2}
   - {fileID: 11400000, guid: c8676c1a8504c1e4a8ee46641f7a0209, type: 2}
   - {fileID: 11400000, guid: c6a6bd0c787356bd09d6f1b859565d1a, type: 2}
   - {fileID: 11400000, guid: 1fc21bad16f64bec1b25e635cd9f16e0, type: 2}
+  - {fileID: 11400000, guid: 8b58f2527b4015b2c9e13e2e38fcf8f9, type: 2}
+  - {fileID: 11400000, guid: 72da42dd357eba7348cba2d41aaa361c, type: 2}
+  - {fileID: 11400000, guid: 42bb9ed0af85da003a258ba23264a7d0, type: 2}
+  - {fileID: 11400000, guid: bd90daf80d3208a91b5e345ede3e399a, type: 2}
   - {fileID: 11400000, guid: f55b343469caae056a51f14a51a2ef9c, type: 2}
   - {fileID: 11400000, guid: e5458a62fab6048dbb1ee4f5a4c45539, type: 2}
   - {fileID: 11400000, guid: 4efe2fee132846a8d9f8a683e3cad751, type: 2}
   - {fileID: 11400000, guid: e83d97f5cba00ffdba2800d63dd0ca3f, type: 2}
-  m_weights: 03000000030000000300000003000000090000000900000009000000090000000d0000000d0000000d0000000d000000
+  - {fileID: 11400000, guid: a8310372375c8d5dd9c605a829bb09c0, type: 2}
+  - {fileID: 11400000, guid: 6de9b4bb3aaaee0d59cfab8acdff06ca, type: 2}
+  - {fileID: 11400000, guid: ac7a1b9529fe4db03a9bd091f8da9656, type: 2}
+  - {fileID: 11400000, guid: 5c37f02dc7179568981330cd2da9e524, type: 2}
+  m_weights: 010000000100000001000000010000000100000001000000010000000100000004000000040000000400000004000000040000000400000004000000040000000700000007000000070000000700000008000000080000000800000008000000
   m_level: 10
   m_image: {fileID: 1759929512, guid: 0226cca0ecca42c7898417215214dd0a, type: 3}

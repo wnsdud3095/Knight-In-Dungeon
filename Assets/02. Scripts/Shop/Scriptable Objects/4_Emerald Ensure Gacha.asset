@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a5859f6508311d794893667addee24, type: 3}
+  m_Name: 4_Emerald Ensure Gacha
+  m_EditorClassIdentifier: 
+  m_id: 4
+  m_name: "\uC5D0\uBA54\uB784\uB4DC \uC0C1\uC790"
+  m_description: "<color=yellow>\uC5D0\uBA54\uB784\uB4DC</color>\uB4F1\uAE09\uC758
+    \uC7A5\uBE44 \uC911 \uD558\uB098\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+  m_cost: 25000
+  m_items:
+  - {fileID: 11400000, guid: f55b343469caae056a51f14a51a2ef9c, type: 2}
+  - {fileID: 11400000, guid: e5458a62fab6048dbb1ee4f5a4c45539, type: 2}
+  - {fileID: 11400000, guid: 4efe2fee132846a8d9f8a683e3cad751, type: 2}
+  - {fileID: 11400000, guid: e83d97f5cba00ffdba2800d63dd0ca3f, type: 2}
+  - {fileID: 11400000, guid: a8310372375c8d5dd9c605a829bb09c0, type: 2}
+  - {fileID: 11400000, guid: 6de9b4bb3aaaee0d59cfab8acdff06ca, type: 2}
+  - {fileID: 11400000, guid: ac7a1b9529fe4db03a9bd091f8da9656, type: 2}
+  - {fileID: 11400000, guid: 5c37f02dc7179568981330cd2da9e524, type: 2}
+  m_weights: 0f0000000f0000000f0000000f0000000a0000000a0000000a0000000a000000
+  m_level: 5
+  m_image: {fileID: 1447334405, guid: 0226cca0ecca42c7898417215214dd0a, type: 3}
