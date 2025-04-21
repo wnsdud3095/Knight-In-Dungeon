@@ -30,6 +30,7 @@ public abstract class EnemyCtrl : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        Rigidbody.simulated = true;
 
         Renderer = GetComponent<SpriteRenderer>();
 
@@ -42,11 +43,31 @@ public abstract class EnemyCtrl : MonoBehaviour
                 FreezeAnimator = animator;
             }
         }
+        Animator.runtimeAnimatorController = Script.Animator;
+        Animator.ResetTrigger("Die");
         Animator.speed = 1f;
         
         Collider = GetComponent<CircleCollider2D>();
+        Collider.enabled = true;
 
-        Animator.speed = 1f;
+        m_current_hp = Script.HP;
+        m_current_speed = Script.SPD;
+
+        m_is_dead = false;
+
+        if (m_knockback_coroutine != null)
+        {
+            StopCoroutine(m_knockback_coroutine);
+            m_knockback_coroutine = null;
+        }
+        if (m_freeze_coroutine != null)
+        {
+            StopCoroutine(m_freeze_coroutine);
+            m_freeze_coroutine = null;
+
+            Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            FreezeAnimator.SetBool("Freeze", false);
+        }
     }
 
     protected virtual void MoveTowardsPlayer()
@@ -131,10 +152,10 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     protected void ReturnEnemy()
     {
-        var ctrl = GetComponent<EnemyCtrl>();
-        if (ctrl != null)
+        var enemy_ctrl = GetComponent<EnemyCtrl>();
+        if (enemy_ctrl != null)
         {
-            Destroy(ctrl);
+            Destroy(enemy_ctrl);
         }
 
         ObjectManager.Instance.ReturnObject(gameObject, ObjectType.Enemy);

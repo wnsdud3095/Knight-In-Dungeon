@@ -78,7 +78,7 @@ public class GameManager : Singleton<GameManager>
             
             if(enemy_ctrl)
             {
-                enemy_ctrl.Rigidbody.WakeUp();
+                enemy_ctrl.Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
                 enemy.GetComponent<Animator>().speed = 1f;
             }
         }
@@ -94,7 +94,7 @@ public class GameManager : Singleton<GameManager>
             if(enemy_ctrl)
             {
                 enemy_ctrl.Rigidbody.linearVelocity = Vector2.zero;
-                enemy_ctrl.Rigidbody.Sleep();
+                enemy_ctrl.Rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
                 enemy.GetComponent<Animator>().speed = 0f;
             }
         }        
