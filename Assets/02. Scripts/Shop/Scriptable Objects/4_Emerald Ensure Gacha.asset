@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4_Emerald Ensure Gacha
   m_EditorClassIdentifier: 
   m_id: 4
-  m_name: "\uC5D0\uBA54\uB784\uB4DC \uC7A5\uBE44 \uC0C1\uC790"
+  m_name: "\uC5D0\uBA54\uB784\uB4DC \uC0C1\uC790"
   m_description: "<color=yellow>\uC5D0\uBA54\uB784\uB4DC</color>\uB4F1\uAE09\uC758
     \uC7A5\uBE44 \uC911 \uD558\uB098\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
   m_cost: 25000

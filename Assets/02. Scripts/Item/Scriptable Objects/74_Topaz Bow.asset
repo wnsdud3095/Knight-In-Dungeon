@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 74_Topaz Bow
   m_EditorClassIdentifier: 
   m_id: 74
-  m_item_type: 2
+  m_item_type: 4
   m_item_image: {fileID: 2054253592, guid: d1534ce0666f91b2abdc71e8f280372e, type: 3}
   m_effect:
     m_atk: 160

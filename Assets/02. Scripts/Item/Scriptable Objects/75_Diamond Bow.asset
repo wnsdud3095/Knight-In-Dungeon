@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 75_Diamond Bow
   m_EditorClassIdentifier: 
   m_id: 75
-  m_item_type: 2
+  m_item_type: 4
   m_item_image: {fileID: 497435996, guid: d1534ce0666f91b2abdc71e8f280372e, type: 3}
   m_effect:
     m_atk: 320

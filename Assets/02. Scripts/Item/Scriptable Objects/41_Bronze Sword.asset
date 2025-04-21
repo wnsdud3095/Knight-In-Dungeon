@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 41_Bronze Sword
   m_EditorClassIdentifier: 
   m_id: 41
-  m_item_type: 2
+  m_item_type: 4
   m_item_image: {fileID: -126129383, guid: d1534ce0666f91b2abdc71e8f280372e, type: 3}
   m_effect:
     m_atk: 20
