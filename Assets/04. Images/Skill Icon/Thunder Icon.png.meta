@@ -1,28 +1,10 @@
 fileFormatVersion: 2
-guid: 64e09e6789a2e721eb223b185ef4fd23
+guid: 3b91b0d4f782d263c807bbeeb0cb0238
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3300178353208201532
-    second: Severing Icon_0
-  - first:
-      213: -6297308713156556779
-    second: Severing Icon_1
-  - first:
-      213: -3869903690675438311
-    second: Severing Icon_2
-  - first:
-      213: 8892170488093095794
-    second: Severing Icon_3
-  - first:
-      213: 7678267769413793570
-    second: Severing Icon_4
-  - first:
-      213: -438289524815330737
-    second: Severing Icon_5
-  - first:
-      213: -4470570216630907055
-    second: Severing Icon_6
+      213: 6815821660076474801
+    second: Thunder Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -144,12 +126,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Severing Icon_0
+      name: Thunder Icon_0
       rect:
         serializedVersion: 2
-        x: 283
-        y: 403
-        width: 27
+        x: 0
+        y: 0
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -157,142 +139,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c3198662ab69ccd20800000000000000
-      internalID: 3300178353208201532
+      spriteID: b2f19795c969abdd68e0ed85f03f177f
+      internalID: 865127378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Severing Icon_1
+      name: Thunder Icon_1
       rect:
         serializedVersion: 2
-        x: 309
-        y: 424
-        width: 20
-        height: 31
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 518c45707177b98a0800000000000000
-      internalID: -6297308713156556779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Severing Icon_2
-      rect:
-        serializedVersion: 2
-        x: 319
-        y: 358
-        width: 77
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 91d3152d8175b4ac0800000000000000
-      internalID: -3869903690675438311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Severing Icon_3
-      rect:
-        serializedVersion: 2
-        x: 391
-        y: 419
-        width: 18
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 277300932f5576b70800000000000000
-      internalID: 8892170488093095794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Severing Icon_4
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 78
-        width: 337
-        height: 337
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2277d36eadfae8a60800000000000000
-      internalID: 7678267769413793570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Severing Icon_5
-      rect:
-        serializedVersion: 2
-        x: 383
-        y: 383
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f428b94dff1eae9f0800000000000000
-      internalID: -438289524815330737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Severing Icon_6
-      rect:
-        serializedVersion: 2
-        x: 377
-        y: 357
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15f0646f21855f1c0800000000000000
-      internalID: -4470570216630907055
+      spriteID: d8a20666bae576f6fb7c567c79db4ffb
+      internalID: 980683894
       vertices: []
       indices: 
       edges: []
@@ -301,7 +173,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: e66e844e34bce65a7985c02be43321d9
     internalID: 0
     vertices: []
     indices: 
@@ -311,13 +183,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Severing Icon_0: 3300178353208201532
-      Severing Icon_1: -6297308713156556779
-      Severing Icon_2: -3869903690675438311
-      Severing Icon_3: 8892170488093095794
-      Severing Icon_4: 7678267769413793570
-      Severing Icon_5: -438289524815330737
-      Severing Icon_6: -4470570216630907055
+      Thunder Icon_0: 865127378
+      Thunder Icon_1: 980683894
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

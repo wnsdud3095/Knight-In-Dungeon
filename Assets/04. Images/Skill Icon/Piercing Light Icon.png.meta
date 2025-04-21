@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4fc54a4eeaf6802948f2dbf3ab8152c1
+guid: 27b12a6a1e8ab317aa775beecd852c8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6815821660076474801
-    second: Thunder Icon_0
+      213: 2537032087961170801
+    second: Piercing Light Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,23 +126,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Thunder Icon_0
+      name: Piercing Light Icon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 500
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1b1854520b9a69e50800000000000000
-      internalID: 6815821660076474801
+      spriteID: 7140a0fdfc9a91bc5ba24a7480b2a238
+      internalID: 475726757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Piercing Light Icon_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cdaf8c094a2eda05a8594c6fcc49eeb
+      internalID: -312875415
       vertices: []
       indices: 
       edges: []
@@ -151,7 +173,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 074be9f78c5a82da98a439c37ba02d92
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +183,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Thunder Icon_0: 6815821660076474801
+      Piercing Light Icon_0: 475726757
+      Piercing Light Icon_1: -312875415
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
