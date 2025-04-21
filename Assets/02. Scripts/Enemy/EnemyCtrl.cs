@@ -209,6 +209,11 @@ public abstract class EnemyCtrl : MonoBehaviour
     public void SlowEnter(float amount)
     {
         m_current_speed *= amount + Script.AntiSlow;
+
+        GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
+        
+        damage_indicator.GetComponent<DamageIndicator>().Initialize("<size=0.125><color=#F6BB43>둔화</color></size>");
+        damage_indicator.transform.position = transform.position + new Vector3(0f, -0.25f, 0f);
     }
 
     public void SlowExit()
@@ -218,6 +223,11 @@ public abstract class EnemyCtrl : MonoBehaviour
 
     public void Freeze(float duration)
     {
+        GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
+        
+        damage_indicator.GetComponent<DamageIndicator>().Initialize("<size=0.125><color=#00BFFE>빙결</color></size>");
+        damage_indicator.transform.position = transform.position + new Vector3(0f, -0.25f, 0f);
+
         if(m_freeze_coroutine is not null)
         {
             StopCoroutine(m_freeze_coroutine);
