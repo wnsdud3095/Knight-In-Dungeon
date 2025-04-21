@@ -3,122 +3,242 @@
     {
       "m_item_id": 0,
       "m_item_name": "나무 투구",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
     },
     {
       "m_item_id": 1,
       "m_item_name": "동 투구",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
     },
     {
       "m_item_id": 2,
       "m_item_name": "은 투구",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
     },
     {
       "m_item_id": 3,
       "m_item_name": "에메랄드 투구",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
     },
     {
       "m_item_id": 4,
       "m_item_name": "토파즈 투구",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
     },
     {
       "m_item_id": 5,
       "m_item_name": "다이아몬드 투구",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
     },
     {
       "m_item_id": 10,
       "m_item_name": "나무 갑옷",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
     },
     {
       "m_item_id": 11,
       "m_item_name": "동 갑옷",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
     },
     {
       "m_item_id": 12,
       "m_item_name": "은 갑옷",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
     },
     {
       "m_item_id": 13,
       "m_item_name": "에메랄드 갑옷",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
     },
     {
       "m_item_id": 14,
       "m_item_name": "토파즈 갑옷",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
     },
     {
       "m_item_id": 15,
       "m_item_name": "다이아몬드 갑옷",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
     },
     {
       "m_item_id": 20,
       "m_item_name": "나무 신발",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
     },
     {
       "m_item_id": 21,
       "m_item_name": "동 신발",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
     },
     {
       "m_item_id": 22,
       "m_item_name": "은 신발",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
     },
     {
       "m_item_id": 23,
       "m_item_name": "에메랄드 신발",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
     },
     {
       "m_item_id": 24,
       "m_item_name": "토파즈 신발",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
     },
     {
       "m_item_id": 25,
       "m_item_name": "다이아몬드 신발",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
     },
     {
       "m_item_id": 30,
       "m_item_name": "나무 벨트",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
     },
     {
       "m_item_id": 31,
       "m_item_name": "동 벨트",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
     },
     {
       "m_item_id": 32,
       "m_item_name": "은 벨트",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
     },
     {
       "m_item_id": 33,
       "m_item_name": "에메랄드 벨트",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
     },
     {
       "m_item_id": 34,
       "m_item_name": "토파즈 벨트",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
     },
     {
       "m_item_id": 35,
       "m_item_name": "다이아몬드 벨트",
-      "m_item_description": "미정"
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
+    },
+    {
+      "m_item_id": 40,
+      "m_item_name": "나무 검",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
+    },
+    {
+      "m_item_id": 41,
+      "m_item_name": "동 검",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
+    },
+    {
+      "m_item_id": 42,
+      "m_item_name": "은 검",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
+    },
+    {
+      "m_item_id": 43,
+      "m_item_name": "에메랄드 검",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
+    },
+    {
+      "m_item_id": 44,
+      "m_item_name": "토파즈 검",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
+    },
+    {
+      "m_item_id": 45,
+      "m_item_name": "다이아몬드 검",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
+    },
+    {
+      "m_item_id": 50,
+      "m_item_name": "나무 도끼",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
+    },
+    {
+      "m_item_id": 51,
+      "m_item_name": "동 도끼",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
+    },
+    {
+      "m_item_id": 52,
+      "m_item_name": "은 도끼",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
+    },
+    {
+      "m_item_id": 53,
+      "m_item_name": "에메랄드 도끼",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
+    },
+    {
+      "m_item_id": 54,
+      "m_item_name": "토파즈 도끼",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
+    },
+    {
+      "m_item_id": 55,
+      "m_item_name": "다이아몬드 도끼",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
+    },
+    {
+      "m_item_id": 60,
+      "m_item_name": "나무 지팡이",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
+    },
+    {
+      "m_item_id": 61,
+      "m_item_name": "동 지팡이",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
+    },
+    {
+      "m_item_id": 62,
+      "m_item_name": "은 지팡이",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
+    },
+    {
+      "m_item_id": 63,
+      "m_item_name": "에메랄드 지팡이",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
+    },
+    {
+      "m_item_id": 64,
+      "m_item_name": "토파즈 지팡이",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
+    },
+    {
+      "m_item_id": 65,
+      "m_item_name": "다이아몬드 지팡이",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
+    },
+    {
+      "m_item_id": 70,
+      "m_item_name": "나무 활",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +10\n· 체력 +100\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +1\n· 체력 +10"
+    },
+    {
+      "m_item_id": 71,
+      "m_item_name": "동 활",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +20\n· 체력 +200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +2\n· 체력 +20"
+    },
+    {
+      "m_item_id": 72,
+      "m_item_name": "은 활",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +40\n· 체력 +400\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +4\n· 체력 +40"
+    },
+    {
+      "m_item_id": 73,
+      "m_item_name": "에메랄드 활",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +80\n· 체력 +800\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +8\n· 체력 +80"
+    },
+    {
+      "m_item_id": 74,
+      "m_item_name": "토파즈 활",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +160\n· 체력 +1600\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +16\n· 체력 +160"
+    },
+    {
+      "m_item_id": 75,
+      "m_item_name": "다이아몬드 활",
+      "m_item_description": "<color=#FF6464>[장착 효과]</color>\n· 공격력 +320\n· 체력 +3200\n\n\n<color=#FF6464>[강화 효과]</color>\n· 공격력 +32\n· 체력 +320"
     }
   ]
 }
