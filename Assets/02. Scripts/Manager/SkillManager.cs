@@ -23,7 +23,8 @@ public class SkillManager : MonoBehaviour
         {22, typeof(ESkill3_SpinningShuriken)},
         {23, typeof(ESkill4_CallThunder)},
         {24, typeof(ESkill5_MagicMissile)},
-        {25, typeof(ESkill6_PiercingLight)}
+        {25, typeof(ESkill6_PiercingLight)},
+        {100, typeof(Skill1_HolySword)},
     };
 
     private int m_max_using_skill = 9;

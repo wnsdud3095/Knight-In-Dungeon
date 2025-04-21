@@ -1822,6 +1822,7 @@ Transform:
   - {fileID: 966269849}
   - {fileID: 2130473789}
   - {fileID: 886875256}
+  - {fileID: 425080055}
   m_Father: {fileID: 1946301000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &317426393
@@ -2093,6 +2094,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398122539}
   m_CullTransparentMesh: 1
+--- !u!1 &425080054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425080055}
+  m_Layer: 0
+  m_Name: Holy Sword Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425080055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425080054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 317426392}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459051453
 GameObject:
   m_ObjectHideFlags: 0
@@ -12388,6 +12420,7 @@ MonoBehaviour:
   - {fileID: 2175614307476699641, guid: 85ddfeee87701284ca2644da11fd1ea8, type: 3}
   - {fileID: 3259691472786216708, guid: d77c7c6301594354e92aaa4cdd929649, type: 3}
   - {fileID: 6427437046304586041, guid: d5d500f982f65ef4ab0d39b189c723b6, type: 3}
+  - {fileID: 3627642759090544495, guid: fd6b498310402743eae589624fe068e6, type: 3}
 --- !u!1001 &817097563
 PrefabInstance:
   m_ObjectHideFlags: 0
