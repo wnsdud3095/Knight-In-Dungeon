@@ -95,28 +95,28 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.16666667
-    functionName: col1
+    functionName: ColActive
     data: 
     objectReferenceParameter: {fileID: 2491014117142741728, guid: 7dfc75a07903ce44da3c8229990ca42a, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.33333334
-    functionName: col2
+    functionName: ColActive
     data: 
     objectReferenceParameter: {fileID: 2491014117142741728, guid: 7dfc75a07903ce44da3c8229990ca42a, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: col3
+    functionName: ColActive
     data: 
     objectReferenceParameter: {fileID: 2491014117142741728, guid: 7dfc75a07903ce44da3c8229990ca42a, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.6666667
-    functionName: end
+    functionName: AniEnd
     data: 
     objectReferenceParameter: {fileID: 2491014117142741728, guid: 7dfc75a07903ce44da3c8229990ca42a, type: 3}
     floatParameter: 0

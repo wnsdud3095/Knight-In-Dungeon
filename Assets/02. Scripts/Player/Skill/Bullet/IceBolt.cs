@@ -2,19 +2,7 @@ using UnityEngine;
 
 public class IceBolt : MagicMissile
 {
-
-
-    void Update()
-    {
-        GameStateCheck();
-        if (GameManager.Instance.GameState != GameEventType.Playing) return;
-
-        transform.Translate(Vector3.up * Speed * Time.deltaTime);
-        PerCheck();
-        LifeTimeCheck();
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
+    protected override void OnTriggerEnter2D(Collider2D col)
     {       
         if (col.CompareTag("Enemy"))
         {

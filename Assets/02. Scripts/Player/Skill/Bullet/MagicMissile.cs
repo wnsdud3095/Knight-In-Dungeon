@@ -25,7 +25,7 @@ public class MagicMissile : BulletBase
     }
 
 
-    private void Update()
+    protected void Update()
     {
         GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
@@ -61,7 +61,7 @@ public class MagicMissile : BulletBase
     }
 
 
-    private void OnTriggerEnter2D(Collider2D col)
+    protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         
         if (col.CompareTag("Enemy"))

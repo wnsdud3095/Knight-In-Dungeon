@@ -13,7 +13,6 @@ public class ESevering : Severing
     [SerializeField] private BoxCollider2D[] m_combo5_cols;
 
     private int m_current_comb_index = 0; // 현재 진행 중인 콤보 인덱스
-    private int m_max_combo = 5; // 최대 콤보 수
 
     protected override void Awake()
     {

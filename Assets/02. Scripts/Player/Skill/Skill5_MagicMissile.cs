@@ -5,25 +5,28 @@ public class Skill5_MagicMissile : PlayerSkillBase
     private int m_skill_id = 4;
     //데미지 관련
     protected float m_skill5_damage_ratio = 1.1f; // 스킬의 공격력 계수
-    private float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
-    private float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
+    protected float m_damage_level_ratio = 1f; // 레벨별 공격력 배수
+    protected float m_damage_levelup_ratio = 0.2f; //레벨업시 공격력 배수가 증가하는 수치
 
     private float m_skill5_cool_time = 1f;
-    private float m_throw_speed = 6f;
+    protected float m_throw_speed = 6f;
 
     private float m_throw_speed_increase = 2f;
-    private float m_cool_time_decrease = 0.25f;
+    protected float m_cool_time_decrease = 0.25f;
 
-    private float m_detect_radius = 4f;
+    private float m_detect_radius = 3.5f;
 
     private Collider2D[] cols;
 
     protected Transform m_nearest_target;
 
+    protected SkillBullet m_bullet;
+
     protected override void Awake()
     {
         base.Awake();
         m_cool_time = m_skill5_cool_time;
+        m_bullet = SkillBullet.MagicMissile;
     }
 
     public override void UseSKill()
@@ -41,7 +44,7 @@ public class Skill5_MagicMissile : PlayerSkillBase
         if(m_can_use)
         {
 
-            SpawnMissile();
+            SpawnMissile(m_bullet);
         }
     }
 
@@ -68,9 +71,9 @@ public class Skill5_MagicMissile : PlayerSkillBase
         return result;
     }
 
-    protected virtual void SpawnMissile()
+    protected virtual void SpawnMissile(SkillBullet bullet)
     {
-        var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.MagicMissile);
+        var prefab = GameManager.Instance.BulletPool.Get(bullet);
         prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
         prefab.transform.position = GameManager.Instance.Player.transform.position;
 

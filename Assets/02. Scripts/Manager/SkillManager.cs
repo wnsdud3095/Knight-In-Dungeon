@@ -23,7 +23,8 @@ public class SkillManager : MonoBehaviour
         {22, typeof(ESkill3_SpinningShuriken)},
         {23, typeof(ESkill4_CallThunder)},
         {24, typeof(ESkill5_MagicMissile)},
-        {25, typeof(ESkill6_PiercingLight)}
+        {25, typeof(ESkill6_PiercingLight)},
+        {103, typeof(Bow)}
     };
 
     private int m_max_using_skill = 9;
@@ -31,8 +32,11 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         //AddSkill(23);
-        AddSkill(1);
-        AddSkill(21);
+        AddSkill(103);
+        for (int i = 0; i < 5; i++)
+        {
+            UsingSKills[0].GetComponent<PlayerSkillBase>().LevelUP();
+        }
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가
