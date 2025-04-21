@@ -31,7 +31,8 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         //AddSkill(23);
-        AddSkill(24);
+        AddSkill(1);
+        AddSkill(21);
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가

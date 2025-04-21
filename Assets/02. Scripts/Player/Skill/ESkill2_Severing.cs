@@ -4,7 +4,7 @@ public class ESkill2_Severing : Skill2_Severing
 {
     private float m_e_skill2_cool_time = 1.5f;
     private float m_damage_e_level_ratio = 2f; // 스킬 만랩의 레벨별 공격력 배수
-    private float m_e_heal_ratio = 0.6f;
+    private float m_e_heal_ratio = 0.15f;
 
     public override void UseSKill()
     {

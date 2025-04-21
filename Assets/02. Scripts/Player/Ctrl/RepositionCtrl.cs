@@ -19,8 +19,6 @@ public class RepositionCtrl : MonoBehaviour
         Vector3 player_pos = GameManager.Instance.Player.transform.position;
         Vector3 my_pos = transform.position;
 
-        Debug.Log($"[{name}] Exit! Player at {player_pos}, Me at {my_pos}");
-
         float dir_x = player_pos.x - my_pos.x;
         float dir_y = player_pos.y- my_pos.y;
 
