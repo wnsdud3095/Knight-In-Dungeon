@@ -335,7 +335,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Holy VFX 08(32x32)_0: 6146455892877118513
+      Holy VFX 08(32x32)_1: 1603728692458465505
+      Holy VFX 08(32x32)_2: 7143397171178035803
+      Holy VFX 08(32x32)_3: 2960403510022706483
+      Holy VFX 08(32x32)_4: 4991463939224029703
+      Holy VFX 08(32x32)_5: 4751970048609693679
+      Holy VFX 08(32x32)_6: 3971844962902278462
+      Holy VFX 08(32x32)_7: 4867684113346143839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

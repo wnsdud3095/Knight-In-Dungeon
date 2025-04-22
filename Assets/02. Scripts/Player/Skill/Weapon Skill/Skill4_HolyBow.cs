@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bow : Skill5_MagicMissile
+public class Skill4_HolyBow : Skill5_MagicMissile
 {
     private float m_bow_cool_time = 1.4f;
     private float m_damage_e_level_ratio = 1f; // 스킬 만랩의 레벨별 공격력 배수

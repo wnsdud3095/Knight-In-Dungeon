@@ -27,22 +27,45 @@ public class SkillManager : MonoBehaviour
         {100, typeof(Skill1_HolySword)},
         {101, typeof(Skill2_ThrowAxe)},
         {102, typeof(Skill3_HolyWand)},
+        {103, typeof(Skill4_HolyBow)}
     };
 
     private int m_max_using_skill = 9;
 
     void Start()
     {
-        AddSkill(101);
-        for(int i = 0; i < 6; i++)
+        GetWeaponSkill(GameManager.Instance.CalculatedStat.WeaponID);
+    }
+
+    public void GetWeaponSkill(int id)
+    {
+        int weapon = id / 10;
+        int level = id % 10;
+        int skill_code = 0;
+        switch (weapon)
         {
-            GetSkillBase(101).LevelUP();
+            case 0:
+                return;
+            case 4:
+                AddSkill(100);
+                skill_code = 100;
+                break;
+            case 5:
+                AddSkill(101);
+                skill_code = 101;
+                break;
+            case 6:
+                AddSkill(102);
+                skill_code = 102;
+                break;
+            case 7:
+                AddSkill(103);
+                skill_code = 103;
+                break;
         }
-        //AddSkill(23);
-        //AddSkill(103);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < level; i++)
         {
-            UsingSKills[0].GetComponent<PlayerSkillBase>().LevelUP();
+            GetSkillBase(skill_code).LevelUP();
         }
     }
 

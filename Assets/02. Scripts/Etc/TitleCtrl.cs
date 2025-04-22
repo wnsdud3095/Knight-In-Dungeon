@@ -74,8 +74,8 @@ public class TitleCtrl : MonoBehaviour
 
         GameManager.Instance.CalculatedStat.HP += m_equipment_inventory.EquipmentEffect.HP;
         GameManager.Instance.CalculatedStat.ATK += m_equipment_inventory.EquipmentEffect.ATK;
-
-        foreach(EvolutionSlot slot in m_evolution.Slots)
+        GameManager.Instance.CalculatedStat.WeaponID = m_equipment_inventory.GetEquipmentSlot(ItemType.WEAPON)?.Item?.ID ?? -1;
+        foreach (EvolutionSlot slot in m_evolution.Slots)
         {
             if(slot.Level > DataManager.Instance.Data.m_evolution_level)
             {
@@ -98,7 +98,7 @@ public class TitleCtrl : MonoBehaviour
             }
         }
 
-        Debug.Log($"HP:{GameManager.Instance.CalculatedStat.HP}\nATK:{GameManager.Instance.CalculatedStat.ATK}\nHP_REGEN:{GameManager.Instance.CalculatedStat.HP_REGEN}");
+        Debug.Log($"HP:{GameManager.Instance.CalculatedStat.HP}\nATK:{GameManager.Instance.CalculatedStat.ATK}\nHP_REGEN:{GameManager.Instance.CalculatedStat.HP_REGEN}\nWeapon_ID{GameManager.Instance.CalculatedStat.WeaponID}");
     }
 
     public void Toggle_Shop()

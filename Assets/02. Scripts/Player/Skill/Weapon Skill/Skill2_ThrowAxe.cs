@@ -11,7 +11,7 @@ public class Skill2_ThrowAxe : PlayerSkillBase
     private float m_damage_levelup_ratio = 0.2f;
 
     private float m_skill2_cool_time = 5f;
-    private int m_axe_count = 0;
+    private int m_axe_count = 1;
 
     private int m_axe_increase = 1;
     private float m_cool_time_decrease = 0.5f;
