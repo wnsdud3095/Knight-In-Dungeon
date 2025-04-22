@@ -4,6 +4,8 @@ public class Magnet : MonoBehaviour, IItem
 {
     public void Use()
     {
+        SoundManager.Instance.PlayEffect("Magnet SFX");
+
         GameObject[] m_exp_orbs = ObjectManager.Instance.GetActiveObjects(ObjectType.Exp);
         
         foreach(GameObject exp in m_exp_orbs)

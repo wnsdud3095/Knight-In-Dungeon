@@ -83,7 +83,8 @@ public class SoundManager : Singleton<SoundManager>
 
             if(!SettingManager.Instance.Data.SFX)
             {
-                effect_source.volume = 1f;
+                effect_source.volume = Random.Range(0.7f, 1.0f);
+                effect_source.pitch = Random.Range(0.8f, 1.1f);
             }
             else
             {

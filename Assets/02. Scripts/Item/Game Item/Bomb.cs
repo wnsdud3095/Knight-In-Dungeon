@@ -7,6 +7,8 @@ public class Bomb : MonoBehaviour, IItem
 
     public void Use()
     {
+        SoundManager.Instance.PlayEffect("Bomb SFX");
+        
         Instantiate(m_explosion_effect);
 
         EnemyCtrl[] enemies = FindObjectsByType<EnemyCtrl>(sortMode: FindObjectsSortMode.None);
