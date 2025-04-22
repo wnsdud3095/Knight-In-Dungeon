@@ -5191,7 +5191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pool_info_list:
   - m_type: 0
-    m_init_count: 100
+    m_init_count: 200
     m_Prefab: {fileID: 3994228217906456388, guid: 2a4d8b1fe31a0ee0f9f0e794c6cd5fbd, type: 3}
     m_container: {fileID: 47408702}
   - m_type: 1

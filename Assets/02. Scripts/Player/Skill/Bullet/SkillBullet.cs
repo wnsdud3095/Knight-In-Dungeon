@@ -14,4 +14,5 @@ public enum SkillBullet
     PiercingLight = 9,
 
     HolySword = 10,
+    MagicSphere = 11,
 }

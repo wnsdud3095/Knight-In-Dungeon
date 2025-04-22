@@ -25,14 +25,20 @@ public class SkillManager : MonoBehaviour
         {24, typeof(ESkill5_MagicMissile)},
         {25, typeof(ESkill6_PiercingLight)},
         {100, typeof(Skill1_HolySword)},
+        {102, typeof(Skill3_HolyWand)},
     };
 
     private int m_max_using_skill = 9;
 
     void Start()
     {
+        AddSkill(102);
+        for(int i = 0; i < 6; i++)
+        {
+            GetSkillBase(102).LevelUP();
+        }
         //AddSkill(23);
-        AddSkill(24);
+        //AddSkill(24);
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가
