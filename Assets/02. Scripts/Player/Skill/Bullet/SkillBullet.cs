@@ -11,5 +11,9 @@ public enum SkillBullet
     FireBall = 6,
     Meteor = 7,
     IceBolt = 8,
-    PiercingLight = 9
+    PiercingLight = 9,
+
+    HolySword = 10,
+    Axe = 11,
+    MagicSphere = 12,
 }
