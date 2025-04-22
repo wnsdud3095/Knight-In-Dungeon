@@ -19,6 +19,7 @@ public class Skill4_HolyBow : Skill5_MagicMissile
         m_damage_level_ratio = m_bow_damage_level_ratio;
         m_damage_levelup_ratio = m_bow_damage_levelup_ratio;
         m_cool_time_decrease = m_bos_cool_time_decrease;
+        m_sfx_name = "Holy Bow SFX";
     }
 
     protected override void ApplyLevelUpEffect(int level)

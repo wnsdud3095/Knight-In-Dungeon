@@ -33,6 +33,8 @@ public class Skill2_ThrowAxe : PlayerSkillBase
 
     protected virtual void SpawnAxe()
     {
+        SoundManager.Instance.PlayEffect("Axe SFX");
+
         for(int i = 0; i < m_axe_count; i++)
         {
             Vector2 throw_direction = Vector2.up;

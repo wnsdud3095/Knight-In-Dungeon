@@ -50,6 +50,8 @@ public class Skill1_KunaiThorw : PlayerSkillBase
         float start_angle = -total_angle / 2f;
         float angle_step = (m_kunal_count > 1) ? total_angle / (m_kunal_count - 1) : 0f;
 
+        SoundManager.Instance.PlayEffect("Kunai SFX");
+
         for (int i = 0; i < m_kunal_count; i++)
         {
             float angle = start_angle + angle_step * i;

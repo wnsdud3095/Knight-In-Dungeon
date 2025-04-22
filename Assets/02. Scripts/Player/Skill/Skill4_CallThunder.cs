@@ -54,6 +54,9 @@ public class Skill4_CallThunder : PlayerSkillBase
             Debug.Log("적이 범위 내에 없음");
             return;
         }
+
+        SoundManager.Instance.PlayEffect("Thunder SFX");
+
         Shuffle(rand_enemy_indexs);
 
         for (int i = 0; i < m_thunder_count; i++)

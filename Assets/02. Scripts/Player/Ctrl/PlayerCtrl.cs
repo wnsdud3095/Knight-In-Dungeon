@@ -128,6 +128,17 @@ public class PlayerCtrl : MonoBehaviour
 
     public void UpdateHP(float hp)
     {
+        if(hp == 0f)
+        {
+            return;
+        }
+
+        GameObject damage_indicator = ObjectManager.Instance.GetObject(ObjectType.DamageIndicator);
+        string damage_string = hp > 0 ? $"<color=green>+{hp}</color>" : $"<color=red>{hp}</color>"; 
+
+        damage_indicator.GetComponent<DamageIndicator>().Initialize(damage_string);
+        damage_indicator.transform.position = transform.position;
+
         Stat.HP += hp;
         Stat.HP = Mathf.Clamp(Stat.HP, 0f, OriginStat.HP);
 

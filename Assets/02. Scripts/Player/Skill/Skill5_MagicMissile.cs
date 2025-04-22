@@ -21,12 +21,14 @@ public class Skill5_MagicMissile : PlayerSkillBase
     protected Transform m_nearest_target;
 
     protected SkillBullet m_bullet;
+    protected string m_sfx_name;
 
     protected override void Awake()
     {
         base.Awake();
         m_cool_time = m_skill5_cool_time;
         m_bullet = SkillBullet.MagicMissile;
+        m_sfx_name = "Magic Bullet SFX";
     }
 
     public override void UseSKill()
@@ -73,6 +75,8 @@ public class Skill5_MagicMissile : PlayerSkillBase
 
     protected virtual void SpawnMissile(SkillBullet bullet)
     {
+        SoundManager.Instance.PlayEffect(m_sfx_name);
+
         var prefab = GameManager.Instance.BulletPool.Get(bullet);
         prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
         prefab.transform.position = GameManager.Instance.Player.transform.position;

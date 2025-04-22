@@ -21,6 +21,8 @@ public class ESkill1_KunaiThorw : Skill1_KunaiThorw
 
     protected override void SpawnKunai()
     {
+        SoundManager.Instance.PlayEffect("Kunai SFX");
+        
         for (int i = 0; i < m_e_kunai_count; i++)
         {
             var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.Kunai);
