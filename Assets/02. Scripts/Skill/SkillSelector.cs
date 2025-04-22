@@ -46,6 +46,7 @@ public class SkillSelector : MonoBehaviour
     public void OpenUI()
     {
         GameEventBus.Publish(GameEventType.Selecting);
+        SoundManager.Instance.PlayEffect("Skill Select SFX");
 
         m_selector_ui_animator.SetBool("Open", true);
 

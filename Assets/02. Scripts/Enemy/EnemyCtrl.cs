@@ -91,6 +91,8 @@ public abstract class EnemyCtrl : MonoBehaviour
             return;
         }
 
+        SoundManager.Instance.PlayEffect("Enemy Damage SFX");
+
         m_current_hp += amount;
 
         if(m_current_hp <= 0f)

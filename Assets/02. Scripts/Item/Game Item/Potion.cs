@@ -4,6 +4,7 @@ public class Potion : MonoBehaviour, IItem
 {
     public void Use()
     {
+        SoundManager.Instance.PlayEffect("Potion SFX");
         GameManager.Instance.Player.UpdateHP(GameManager.Instance.Player.OriginStat.HP);
     }
 

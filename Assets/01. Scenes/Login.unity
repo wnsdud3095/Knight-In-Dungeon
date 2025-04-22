@@ -1703,6 +1703,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c6e16e36cba49d64682061243a07f041, type: 3}
   m_effect_clips:
   - {fileID: 8300000, guid: 8c1e719c0c642c5299ba6bc4c02a2a94, type: 3}
+  - {fileID: 8300000, guid: d79aa7ae01d82aca28b949375e3d50b5, type: 3}
+  - {fileID: 8300000, guid: 6ea310758be2b8d0bb750669a9c0ca65, type: 3}
+  - {fileID: 8300000, guid: 890d975cd91298e068015ec493800968, type: 3}
+  - {fileID: 8300000, guid: e2d2c33082bbaae52a253dbf114b9d79, type: 3}
+  - {fileID: 8300000, guid: 2e8a792d43b8d175eae28561a84f06b9, type: 3}
+  - {fileID: 8300000, guid: c65b0e0d2cd3b1af1a37abe35fc494c3, type: 3}
+  - {fileID: 8300000, guid: 0a276da711ada38d998c6b23a79bd1e5, type: 3}
+  - {fileID: 8300000, guid: 91cb9c3b663e46fed97d47aa39bcf9b2, type: 3}
+  - {fileID: 8300000, guid: 45c6c6abe0ac5569c9f741988ae2e5f1, type: 3}
+  - {fileID: 8300000, guid: bdfe986ceb844befba42274d3ab77ba3, type: 3}
+  - {fileID: 8300000, guid: fddfe01498904473b84a834f01c97eec, type: 3}
+  - {fileID: 8300000, guid: abc7a0358cb593e01af083d4f066b11c, type: 3}
+  - {fileID: 8300000, guid: 81f1d291d73d310a2855d7831d27456e, type: 3}
+  - {fileID: 8300000, guid: d51b1544363fd8fb5af7e96190727c59, type: 3}
+  - {fileID: 8300000, guid: 50c800829d5a906b691923d3ff87d186, type: 3}
 --- !u!4 &592921303
 Transform:
   m_ObjectHideFlags: 0

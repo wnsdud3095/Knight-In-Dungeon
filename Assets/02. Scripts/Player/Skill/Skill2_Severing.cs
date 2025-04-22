@@ -40,6 +40,8 @@ public class Skill2_Severing : PlayerSkillBase
 
         if(m_can_use)
         {
+            SoundManager.Instance.PlayEffect("Severing SFX");
+
             if(GameManager.Instance.Player.m_sprite_renderer.flipX == false )
             {
                 m_effect.transform.rotation = Quaternion.Euler(0, 0, -72f);

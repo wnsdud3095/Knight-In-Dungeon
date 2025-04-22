@@ -41,6 +41,7 @@ public class Skill6_PiercingLight : PlayerSkillBase
 
     protected virtual void SpawnLight()
     {
+        SoundManager.Instance.PlayEffect("Piercing Light SFX");
         for (int i =0; i < m_light_count; i++)
         {
             var prefab = GameManager.Instance.BulletPool.Get(SkillBullet.PiercingLight);

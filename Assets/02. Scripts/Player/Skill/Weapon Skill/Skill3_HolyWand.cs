@@ -56,6 +56,8 @@ public class Skill3_HolyWand : PlayerSkillBase
 
         Shuffle(rand_enemy_indexs);
 
+        SoundManager.Instance.PlayEffect("Magic Sphere SFX");
+
         for(int i = 0; i < m_sphere_count; i++)
         {
             var prefab = GameManager.Instance.BulletPool.Get(m_bullet);

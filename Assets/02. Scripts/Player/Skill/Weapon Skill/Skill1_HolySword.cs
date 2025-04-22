@@ -63,6 +63,8 @@ public class Skill1_HolySword : PlayerSkillBase
         float start_angle = -total_angle / 2f;
         float angle_step = (m_sword_count > 1) ? total_angle / m_sword_count : 0f;
 
+        SoundManager.Instance.PlayEffect("Holy Sword SFX");
+
         for(int i = 0; i < m_sword_count; i++)
         {
             float angle = start_angle + angle_step * i;

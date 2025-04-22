@@ -224,6 +224,8 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameEventType.Dead;
 
+        SoundManager.Instance.PlayEffect("Stage Fail SFX");
+
         DataManager.Instance.Data.m_user_money += StageManager.Kill;
         DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);
 
@@ -236,6 +238,8 @@ public class GameManager : Singleton<GameManager>
     public void Clear()
     {
         GameState = GameEventType.Clear;
+
+        SoundManager.Instance.PlayEffect("Stage Clear SFX");
 
         DataManager.Instance.Data.m_user_money += StageManager.Kill * DataManager.Instance.Data.m_current_stage;
         DataManager.Instance.Data.m_user_exp += Mathf.FloorToInt(StageManager.OriginTimer - StageManager.GameTimer);

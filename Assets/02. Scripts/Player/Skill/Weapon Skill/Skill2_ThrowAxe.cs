@@ -33,6 +33,8 @@ public class Skill2_ThrowAxe : PlayerSkillBase
 
     protected virtual void SpawnAxe()
     {
+        SoundManager.Instance.PlayEffect("Axe SFX");
+
         for(int i = 0; i < m_axe_count; i++)
         {
             Vector2 throw_direction = Vector2.up;
@@ -44,6 +46,7 @@ public class Skill2_ThrowAxe : PlayerSkillBase
             float throw_force = Random.Range(7f, 10f);
 
             GameObject prefab = GameManager.Instance.BulletPool.Get(SkillBullet.Axe);
+            prefab.transform.SetParent(GameManager.Instance.BulletPool.transform);
             prefab.transform.position = (Vector2)GameManager.Instance.Player.transform.position + Vector2.up * 0.25f;
 
             float rotation_angle = Random.Range(0f, 360f);

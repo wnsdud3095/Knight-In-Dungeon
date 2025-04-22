@@ -48,6 +48,8 @@ public class Skill3_SpinningShuriken : PlayerSkillBase
 
     protected void SpawnShuriken()
     {
+        SoundManager.Instance.PlayEffect("Shuriken SFX");
+
         if (!m_rotater)
         {
             Transform[] transforms = GameManager.Instance.Player.transform.GetComponentsInChildren<Transform>(true);

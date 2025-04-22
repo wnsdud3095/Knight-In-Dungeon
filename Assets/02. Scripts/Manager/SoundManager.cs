@@ -83,7 +83,8 @@ public class SoundManager : Singleton<SoundManager>
 
             if(!SettingManager.Instance.Data.SFX)
             {
-                effect_source.volume = 1f;
+                effect_source.volume = Random.Range(0.7f, 1.0f);
+                effect_source.pitch = Random.Range(0.8f, 1.1f);
             }
             else
             {
@@ -114,7 +115,7 @@ public class SoundManager : Singleton<SoundManager>
     private IEnumerator Fade(AudioSource target_source, bool is_out, bool is_background)
     {
         float elapsed_time = 0f;
-        float target_time = 1f;
+        float target_time = 0.4f;
 
         while(elapsed_time < target_time)
         {
@@ -122,11 +123,11 @@ public class SoundManager : Singleton<SoundManager>
 
             if(is_out)
             {
-                target_source.volume = Mathf.Lerp(1f, 0f, f);
+                target_source.volume = Mathf.Lerp(0.4f, 0f, f);
             }
             else
             {
-                target_source.volume = Mathf.Lerp(0f, 1f, f);
+                target_source.volume = Mathf.Lerp(0f, 0.4f, f);
             }
 
             elapsed_time += Time.deltaTime;
@@ -140,7 +141,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         else
         {
-            target_source.volume = 1f;
+            target_source.volume = 0.4f;
         }
     }
 }
