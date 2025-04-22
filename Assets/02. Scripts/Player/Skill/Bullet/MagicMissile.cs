@@ -42,9 +42,7 @@ public class MagicMissile : BulletBase
     }
 
     protected void LifeTimeCheck()
-    {
-        
-
+    {      
         if (m_life_time > 0)
         {
             m_life_time -= Time.deltaTime;

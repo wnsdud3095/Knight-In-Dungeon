@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Holy VFX 07 Repeat10_0: 8672563764672463576
+      Holy VFX 07 Repeat10_1: -3274926125340659377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

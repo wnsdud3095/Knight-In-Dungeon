@@ -21,10 +21,20 @@ public class CalculatedStat
         set { m_hp_regen = value; }
     }
 
+    private int m_weapon_id;
+    public int WeaponID { get { return m_weapon_id; } set { m_weapon_id = value; } }
+
     public CalculatedStat(float hp, float atk, float hp_regen)
     {
         HP = hp;
         ATK = atk;
         HP_REGEN = hp_regen;
+    }
+    public CalculatedStat(float hp, float atk, float hp_regen, int weapon_id)
+    {
+        HP = hp;
+        ATK = atk;
+        HP_REGEN = hp_regen;
+        WeaponID = weapon_id;
     }
 }

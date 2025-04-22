@@ -335,7 +335,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Holy Effect 09(16x16)_0: 1239051849616523316
+      Holy Effect 09(16x16)_1: -533281356324438192
+      Holy Effect 09(16x16)_2: 6050727546040813170
+      Holy Effect 09(16x16)_3: -6754622640625049276
+      Holy Effect 09(16x16)_4: 70568658223213701
+      Holy Effect 09(16x16)_5: -8040287782928858121
+      Holy Effect 09(16x16)_6: 3395162469785825095
+      Holy Effect 09(16x16)_7: -2896178067066841063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
