@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerCtrl : MonoBehaviour
 { 
@@ -70,6 +71,11 @@ public class PlayerCtrl : MonoBehaviour
         HpRegen();
 
         m_skill_manager.UseSkills();
+    }
+
+    private void LateUpdate()
+    {
+        LimitPos();
     }
 
     public void GetCalculatedStat()
@@ -146,6 +152,32 @@ public class PlayerCtrl : MonoBehaviour
         {
             Dead();
         }
+    }
+
+    private void LimitPos()
+    {
+        int stage = DataManager.Instance.Data.m_current_stage;
+        Vector2 min;
+        Vector2 max;
+        switch (stage)
+        {
+            case 2:
+                min = new Vector2(-9999, -11.2f);
+                max = new Vector2(9999, 8.2f);
+                break;
+            case 3:
+                min = new Vector2(-19, -19);
+                max = new Vector2(19, 19);
+                break;
+            default:
+                min = new Vector2(-9999, -9999);
+                max = new Vector2(9999, 9999);
+                break;
+        }
+        Vector2 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+        transform.position = pos;
     }
 
     public void Dead()

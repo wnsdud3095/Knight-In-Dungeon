@@ -45,8 +45,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: TileLayer
+    uniqueID: 4114735069
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: DecorationLayer
+    uniqueID: 4017693381
     locked: 0
   m_RenderingLayers:
   - Default
