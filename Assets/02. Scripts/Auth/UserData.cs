@@ -19,7 +19,7 @@ public class UserData
         m_user_exp = 0f;
         m_user_money = 0;
         m_item_inventory = new List<SlotData>();
-        m_equipment_inventory = new List<SlotData>();
+        m_equipment_inventory = new List<SlotData> {new SlotData(40, ItemType.WEAPON, 0)};
         m_evolution_level = 1;
         m_current_stage = 1;
     }
