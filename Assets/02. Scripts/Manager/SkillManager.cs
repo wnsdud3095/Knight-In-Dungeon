@@ -25,6 +25,7 @@ public class SkillManager : MonoBehaviour
         {24, typeof(ESkill5_MagicMissile)},
         {25, typeof(ESkill6_PiercingLight)},
         {100, typeof(Skill1_HolySword)},
+        {101, typeof(Skill2_ThrowAxe)},
         {102, typeof(Skill3_HolyWand)},
     };
 
@@ -32,10 +33,10 @@ public class SkillManager : MonoBehaviour
 
     void Start()
     {
-        AddSkill(102);
+        AddSkill(101);
         for(int i = 0; i < 6; i++)
         {
-            GetSkillBase(102).LevelUP();
+            GetSkillBase(101).LevelUP();
         }
         //AddSkill(23);
         //AddSkill(24);
