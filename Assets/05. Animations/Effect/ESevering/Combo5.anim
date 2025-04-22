@@ -36,6 +36,8 @@ AnimationClip:
       value: {fileID: -8205186201752378459, guid: ba69292bb2cd77043baa93784c05dcb0, type: 3}
     - time: 0.5833333
       value: {fileID: 6079889099232372501, guid: 0271cef723ccd50418660ce867f4de94, type: 3}
+    - time: 0.6666667
+      value: {fileID: 6079889099232372501, guid: 0271cef723ccd50418660ce867f4de94, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -66,12 +68,13 @@ AnimationClip:
     - {fileID: 4301113103138232825, guid: 178a20d7f9140ca43967084e431fbf79, type: 3}
     - {fileID: -8205186201752378459, guid: ba69292bb2cd77043baa93784c05dcb0, type: 3}
     - {fileID: 6079889099232372501, guid: 0271cef723ccd50418660ce867f4de94, type: 3}
+    - {fileID: 6079889099232372501, guid: 0271cef723ccd50418660ce867f4de94, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666666
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -90,4 +93,39 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: ColActive
+    data: 
+    objectReferenceParameter: {fileID: 6056641468371740332, guid: f0f7132b7f6774c439f027f8aeb9a3ef, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: ColActive
+    data: 
+    objectReferenceParameter: {fileID: 6056641468371740332, guid: f0f7132b7f6774c439f027f8aeb9a3ef, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: ColActive
+    data: 
+    objectReferenceParameter: {fileID: 6056641468371740332, guid: f0f7132b7f6774c439f027f8aeb9a3ef, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: ColActive
+    data: 
+    objectReferenceParameter: {fileID: 6056641468371740332, guid: f0f7132b7f6774c439f027f8aeb9a3ef, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: AllAniEnd
+    data: 
+    objectReferenceParameter: {fileID: 6056641468371740332, guid: f0f7132b7f6774c439f027f8aeb9a3ef, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

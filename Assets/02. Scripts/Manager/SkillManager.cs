@@ -39,7 +39,11 @@ public class SkillManager : MonoBehaviour
             GetSkillBase(101).LevelUP();
         }
         //AddSkill(23);
-        //AddSkill(24);
+        //AddSkill(103);
+        for (int i = 0; i < 5; i++)
+        {
+            UsingSKills[0].GetComponent<PlayerSkillBase>().LevelUP();
+        }
     }
 
     public void AddSkill<T>() where T : PlayerSkillBase // 동적으로 스킬 추가

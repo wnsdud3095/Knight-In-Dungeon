@@ -3,10 +3,13 @@ using System.Collections;
 
 public abstract class PlayerSkillBase  : MonoBehaviour//인터페이스 말고 추상 클래스로 구현
 {
-    public int Level { get; protected set; } = 1;
+    [SerializeField]
+    private int l = 1;
+    public int Level { get { return l; } protected set {l=value; } } 
 
     protected bool m_can_use = true;
 
+    [SerializeField]
     protected float m_cool_time = 2f;
     protected float m_cool_down_time = 0;
 

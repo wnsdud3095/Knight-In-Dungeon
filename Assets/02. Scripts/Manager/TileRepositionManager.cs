@@ -10,9 +10,7 @@ public class TileRepositionManager : MonoBehaviour
     private Vector2Int m_last_center;
 
     void Start()
-    {
-        m_player = GameManager.Instance.Player.transform;
-        
+    {        
         for (int y = -1; y <= 1; y++)// 초기 3x3 타일 생성
         {
             for (int x = -1; x <= 1; x++)
@@ -23,11 +21,15 @@ public class TileRepositionManager : MonoBehaviour
             }
         }
 
-        m_last_center = GetPlayerTileIndex();
+        m_last_center = new Vector2Int(0, 0);
     }
 
     void Update()
     {
+        if (GameManager.Instance.GameState is not GameEventType.Playing) return;
+
+        if(m_player == null) m_player = GameManager.Instance.Player.transform;
+
         Vector2Int current_center = GetPlayerTileIndex(); // 플레이어의 현재 위치 불러옴
 
         if(current_center != m_last_center) // 현재 플레이어가 있는 타일 위치와 다르면 타일 재배치

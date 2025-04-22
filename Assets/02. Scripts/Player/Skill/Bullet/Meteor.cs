@@ -10,7 +10,7 @@ public class Meteor : MagicMissile
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         GameStateCheck();
         if (GameManager.Instance.GameState != GameEventType.Playing) return;
@@ -20,7 +20,7 @@ public class Meteor : MagicMissile
         LifeTimeCheck();
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private new void OnTriggerEnter2D(Collider2D col)
     {        
         if (col.CompareTag("Enemy"))
         {
