@@ -6,7 +6,7 @@ public class Axe : BulletBase
 
     public float Damage { get; set; }
 
-    private void Start()
+    private void OnEnable()
     {
         Invoke("ReturnObject", 8f);
     }
