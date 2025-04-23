@@ -35,6 +35,7 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         GetWeaponSkill(GameManager.Instance.CalculatedStat.WeaponID);
+        AddSkill(21);
     }
 
     public void GetWeaponSkill(int id)
