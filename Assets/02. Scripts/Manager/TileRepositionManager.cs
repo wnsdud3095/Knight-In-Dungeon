@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using static UnityEditor.PlayerSettings;
 
 public class TileRepositionManager : MonoBehaviour
 {
@@ -8,7 +7,12 @@ public class TileRepositionManager : MonoBehaviour
     private Transform m_player;
     public int m_tile_size = 20;
     private int m_stage2_tile_size = 32;
-    private List<Transform> m_tiles = new List<Transform> ();
+    private List<Transform> m_tiles = new List<Transform>();
+    public List<Transform> Tiles
+    {
+        get { return m_tiles; }
+    }
+    
     private Vector2Int m_last_center;
     private int m_now_stage;
     void Start()

@@ -1094,6 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb31a44380db84b6be122e7d06cfe39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tile_manager: {fileID: 256824279}
   m_out_radius: 10
   m_in_radius: 5
   m_timer: 0
@@ -1177,6 +1178,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9db64b0f2ae54192976679bef318f46, type: 2}
   m_current_stage: {fileID: 11400000, guid: 4178b0a533297ed199791ebd0a223b2a, type: 2}
   m_warning_ui_object: {fileID: 8797418888600897637, guid: f8c2f6cfbdd3fcef5bd52808e33391eb, type: 3}
+  m_tile_manager: {fileID: 256824279}
 --- !u!1 &198353669
 GameObject:
   m_ObjectHideFlags: 0

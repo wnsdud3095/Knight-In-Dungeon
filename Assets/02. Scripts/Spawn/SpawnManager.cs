@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -18,6 +17,9 @@ public class SpawnManager : MonoBehaviour
 
     [Header("경고 UI 프리펩")]
     [SerializeField] private GameObject m_warning_ui_object;
+
+    [Header("타일 재배치 매니저")]
+    [SerializeField] private TileRepositionManager m_tile_manager;
 
     private int m_current_wave_index;
     private int m_spawned_count;
@@ -236,11 +238,32 @@ public class SpawnManager : MonoBehaviour
                 break;
         }
         
-        Vector2 spawn_position = GetSpawnPosition(wave.Pattern.Pattern);
+        Vector2 spawn_position = GetValidSpawnPosition(wave.Pattern.Pattern);
 
         enemy.transform.position = spawn_position;
         enemy.Script = enemy_data;
         enemy.Initialize();
+    }
+
+    private Vector2 GetValidSpawnPosition(SpawnPattern spawn_type)
+    {
+        int attempt = 0;
+
+        while(attempt < 10)
+        {
+            Vector2 current_spawn_pos = GetSpawnPosition(spawn_type);
+
+            foreach(Transform tile in m_tile_manager.Tiles)
+            {
+                if(tile.GetComponent<BoxCollider2D>().OverlapPoint(current_spawn_pos))
+                {
+                    return current_spawn_pos;
+                }
+            }
+            attempt++;
+        }
+
+        return Vector2.zero;
     }
 
     private Vector2 GetSpawnPosition(SpawnPattern spawn_type)
